@@ -9,5 +9,6 @@ namespace ECX.HR.Application.Contracts.Persistent
 {
     public interface IDepartmentRepository : IGenericRepository<Department>
     {
+
     }
 }
