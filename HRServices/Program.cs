@@ -1,14 +1,7 @@
-using ECX.HR.Persistence;
-using ECX.HR.Infrastructure;
-using ECX.HR.Application;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.ConfigureApplicationServices();
-builder.Services.ConfigureInfrastructureServices(builder.Configuration);
-builder.Services.ConfigurePersistenceService(builder.Configuration);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
