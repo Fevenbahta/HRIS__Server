@@ -21,7 +21,6 @@ namespace ECX.HR.Application
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(_ => _.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-        
 
             return services;
         }

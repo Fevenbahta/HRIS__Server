@@ -18,7 +18,7 @@ namespace ECX.HR.Persistence
         {
             services.AddDbContext<ECXHRDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("ECXHRConnectionString")));
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            services.AddScoped<IDepartmentRepository, IDepartmentRepository>();
+            services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 
             return services;
         }
