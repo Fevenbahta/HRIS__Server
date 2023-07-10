@@ -7,14 +7,9 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Domain
 {
-    public class Department :BaseDomainEntity
+    public class EmployeeStatus :BaseDomainEntity
     {
-        public Guid DepartmentId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
-
-        public string Description { get; set; }
-
-        public ICollection<Division> Divisions { get; set; }    
-       
     }
 }

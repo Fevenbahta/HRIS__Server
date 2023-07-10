@@ -7,14 +7,12 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Domain
 {
-    public class Department :BaseDomainEntity
+    public class Supervisor : BaseDomainEntity
     {
-        public Guid DepartmentId { get; set; }
+        public int Id { get; set; }
+        public string AdId { get; set; }
         public string Name { get; set; }
 
-        public string Description { get; set; }
-
-        public ICollection<Division> Divisions { get; set; }    
-       
+        public string SupervisorLevel { get; set; }
     }
 }
