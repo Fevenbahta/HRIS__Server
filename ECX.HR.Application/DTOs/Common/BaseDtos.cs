@@ -8,7 +8,7 @@ namespace ECX.HR.Application.DTOs.Common
 {
     public abstract class BaseDtos
     {
-        public int Id { get; set; }
+     
 
         public string CreatedBy { get; set; }
 

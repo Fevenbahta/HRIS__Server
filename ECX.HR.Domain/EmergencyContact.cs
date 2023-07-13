@@ -21,7 +21,7 @@ namespace ECX.HR.Domain
         public string SubCity { get; set; }
         public string Kebele { get; set; }
         public string HouseNo { get; set; }
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         
         public string Relationship { get; set; }
 

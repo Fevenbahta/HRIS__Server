@@ -10,6 +10,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{E77231D1-99F5-4211-A00F-8D5D25FA9F68}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{605AC968-2A3A-4308-B922-3AB1B7282F39}"
+	ProjectSection(SolutionItems) = preProject
+		ECXHR_Service\WeatherForecast.cs = ECXHR_Service\WeatherForecast.cs
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{ED61907B-B565-4E11-87B2-2319BB275088}"
 EndProject
@@ -19,9 +22,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECX.HR.Application", "ECX.H
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECX.HR.Domain", "ECX.HR.Domain\ECX.HR.Domain.csproj", "{FB82B581-3408-4B41-8877-7AECF722D7A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECX.HR.Infrastructure", "ECX.HR.Infrastructure\ECX.HR.Infrastructure.csproj", "{641A8733-0DAA-47B0-BC13-CD3EAE86D4A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECX.HR.Infrastructure", "ECX.HR.Infrastructure\ECX.HR.Infrastructure.csproj", "{641A8733-0DAA-47B0-BC13-CD3EAE86D4A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECX.HR.Persistence", "ECX.HR.Persistence\ECX.HR.Persistence.csproj", "{530316F3-A7A8-4D83-8E5B-C67B3E7E94A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECX.HR.Persistence", "ECX.HR.Persistence\ECX.HR.Persistence.csproj", "{530316F3-A7A8-4D83-8E5B-C67B3E7E94A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

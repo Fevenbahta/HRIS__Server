@@ -29,8 +29,8 @@ namespace ECX.HR.Domain
         public byte[] ImageData { get; set; }
         public bool crime { get; set; }
         public string CrimeDescription{ get; set; }
-        public string FirstSupervisor { get; set; }
-        public string SecondSupervisor { get; set; }
+        //public string FirstSupervisor { get; set; }
+        //public string SecondSupervisor { get; set; }
 
         public ICollection<WorkExperience> WorkExperiences { get; set; }
         public ICollection<Education> Educations { get; set; }

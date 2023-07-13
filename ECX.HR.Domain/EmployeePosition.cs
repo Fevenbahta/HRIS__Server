@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,9 @@ namespace ECX.HR.Domain
 {
     public  class EmployeePosition 
     {
+        [ForeignKey("Employee")]
+        public Guid EmpId { get; set; }
+       
         public int id { get; set; }
         public string DivisionId { get; set; }
         public string StepId { get; set; }

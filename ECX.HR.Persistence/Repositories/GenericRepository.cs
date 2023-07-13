@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -35,6 +36,11 @@ namespace ECX.HR.Persistence.Repositories
         {
             var entiry = await GetById(id);
             return entiry != null;
+        }
+
+        public IEnumerable<T> Find(Expression<Func<T, bool>> expression)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<IEnumerable<T>> GetAll()
