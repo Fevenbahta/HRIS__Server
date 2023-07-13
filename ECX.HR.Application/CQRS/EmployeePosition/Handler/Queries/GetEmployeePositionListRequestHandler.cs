@@ -1,0 +1,30 @@
+﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistent;
+using ECX.HR.Application.CQRS.EmployeePosition.Request.Queries;
+using ECX.HR.Application.DTOs.EmployeePosition;
+
+using MediatR;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ECX.HR.Application.CQRS.EmployeePosition.Handler.Queries
+{
+    public class GetEmployeePositionListRequestHandler : IRequestHandler<GetEmployeePositionListRequest, List<EmployeePositionDto>>
+    {
+        private IEmployeePositionRepository _EmployeePositionRepository;
+        private IMapper _mapper;
+        public GetEmployeePositionListRequestHandler(IEmployeePositionRepository EmployeePositionRepository, IMapper mapper)
+        {
+            _EmployeePositionRepository= EmployeePositionRepository;
+            _mapper = mapper;
+        }
+        public async Task<List<EmployeePositionDto>> Handle(GetEmployeePositionListRequest request, CancellationToken cancellationToken)
+        {
+            var EmployeePosition =await _EmployeePositionRepository.GetAll();
+            return _mapper.Map<List<EmployeePositionDto>>(EmployeePosition);
+        }
+    }
+}
