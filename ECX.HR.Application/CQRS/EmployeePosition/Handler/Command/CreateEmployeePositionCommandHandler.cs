@@ -1,12 +1,8 @@
 ﻿using AutoMapper;
-using ECX.HR.Application.Contracts.Persistent;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.CQRS.EmployeePosition.Request.Command;
-using ECX.HR.Application.DTOs.EmployeePosition;
-using ECX.HR.Application.DTOs.EmployeePosition.Validators;
-using ECX.HR.Application.Exceptions;
-
+using ECX.HR.Application.DTOs.EmployeePositions.Validator;
 using ECX.HR.Application.Response;
-using ECX.HR.Domain;
 using MediatR;
 using Microsoft.VisualBasic;
 using System;

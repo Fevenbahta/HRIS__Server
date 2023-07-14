@@ -9,6 +9,7 @@ namespace ECX.HR.Application.DTOs.Department
 {
     public class DepartmentDto : BaseDtos
     {
+        public Guid Id { get; set; }
         public string Name { get; set; }
 
         public string Description { get; set; }

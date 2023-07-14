@@ -10,7 +10,7 @@ using ECX.HR.Application.DTOs.EducationLevels;
 using ECX.HR.Application.DTOs.EmergencyContacts;
 using ECX.HR.Application.DTOs.EmployeePositions;
 using ECX.HR.Application.DTOs.Employees;
-using ECX.HR.Application.DTOs.EmployeeStatuss;
+using ECX.HR.Application.DTOs.OrganizationalProfiles;
 using ECX.HR.Application.DTOs.Levels;
 using ECX.HR.Application.DTOs.OrganizationalProfiles;
 using ECX.HR.Application.DTOs.Positions;

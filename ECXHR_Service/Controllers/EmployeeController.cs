@@ -1,7 +1,5 @@
 ﻿
 using ECX.HR.Application.DTOs.Employee;
-using ECX.HR.Application.Features.Address.Request.Command;
-using ECX.HR.Application.Features.Address.Request.Queries;
 using ECX.HR.Application.Response;
 using HRMsystem.Application.Features.Address.Request.Command;
 using MediatR;
