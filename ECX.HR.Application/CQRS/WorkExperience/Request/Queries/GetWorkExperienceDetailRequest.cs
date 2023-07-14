@@ -1,4 +1,5 @@
-﻿using ECX.HR.Application.DTOs.WorkExperience;
+﻿
+using ECX.HR.Application.DTOs.WorkExperiences;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,6 @@ namespace ECX.HR.Application.CQRS.WorkExperience.Request.Queries
 {
     public class GetWorkExperienceDetailRequest :IRequest<WorkExperienceDto>
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

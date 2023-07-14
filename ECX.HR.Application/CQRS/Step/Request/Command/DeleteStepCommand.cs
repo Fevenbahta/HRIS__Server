@@ -9,6 +9,6 @@ namespace ECX.HR.Application.CQRS.Step.Request.Command
 {
     public class DeleteStepCommand : IRequest
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.Contracts.Persistence
 {
-    public interface IWorkExperienceRepository : IGenericRepository<WorkExperience>
+    public interface IWorkExperienceRepository : IGenericRepository<WorkExperiences>
     {
     }
 }

@@ -1,4 +1,5 @@
-﻿using ECX.HR.Application.DTOs.Supervisor;
+﻿
+using ECX.HR.Application.DTOs.Supervisors;
 using ECX.HR.Application.Response;
 using MediatR;
 using System;

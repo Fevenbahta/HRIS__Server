@@ -1,4 +1,5 @@
-﻿using ECX.HR.Application.DTOs.Supervisor;
+﻿
+using ECX.HR.Application.DTOs.Supervisors;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,6 @@ namespace ECX.HR.Application.CQRS.Supervisor.Request.Queries
 {
     public class GetSupervisorDetailRequest :IRequest<SupervisorDto>
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

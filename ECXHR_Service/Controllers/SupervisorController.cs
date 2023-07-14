@@ -1,9 +1,11 @@
 ﻿
-using ECX.HR.Application.DTOs.Supervisor;
-using ECX.HR.Application.Features.Address.Request.Command;
-using ECX.HR.Application.Features.Address.Request.Queries;
+using ECX.HR.Application.CQRS.Supervisor.Request.Command;
+using ECX.HR.Application.CQRS.Supervisor.Request.Queries;
+
+using ECX.HR.Application.DTOs.Supervisors;
+
 using ECX.HR.Application.Response;
-using HRMsystem.Application.Features.Address.Request.Command;
+
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -29,13 +31,13 @@ namespace ECXHR_Service.Controllers
         [HttpGet]
         public async Task<ActionResult<List<SupervisorDto>>> Get()
         {
-            var Supervisor = await _mediator.Send(new GetSupervisorRequest());
+            var Supervisor = await _mediator.Send(new GetSupervisorListRequest());
             return Ok(Supervisor);
         }
 
         // GET api/<SupervisorController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<SupervisorDto>> Get(int id)
+        public async Task<ActionResult<SupervisorDto>> Get(Guid id)
         {
             var Supervisor = await _mediator.Send(new GetSupervisorDetailRequest { Id = id });
             return Ok(Supervisor);
@@ -65,7 +67,7 @@ namespace ECXHR_Service.Controllers
 
         [HttpDelete("{id}")]
 
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(Guid id)
         {
             var command = new DeleteSupervisorCommand { Id = id };
             await _mediator.Send(command);

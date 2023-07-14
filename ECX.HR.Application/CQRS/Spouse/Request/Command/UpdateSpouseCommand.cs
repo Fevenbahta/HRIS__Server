@@ -1,4 +1,5 @@
-﻿using ECX.HR.Application.DTOs.Spouse;
+﻿
+using ECX.HR.Application.DTOs.Spouses;
 using MediatR;
 using System;
 using System.Collections.Generic;

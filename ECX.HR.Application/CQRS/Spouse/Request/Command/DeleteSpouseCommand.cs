@@ -9,6 +9,6 @@ namespace ECX.HR.Application.CQRS.Spouse.Request.Command
 {
     public class DeleteSpouseCommand : IRequest
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

@@ -1,9 +1,11 @@
 ﻿
-using ECX.HR.Application.DTOs.Training﻿﻿;
-using ECX.HR.Application.Features.Address.Request.Command;
-using ECX.HR.Application.Features.Address.Request.Queries;
+using ECX.HR.Application.CQRS.Training.Request.Command;
+using ECX.HR.Application.CQRS.Training.Request.Queries;
+
+using ECX.HR.Application.DTOs.Trainings;
+
 using ECX.HR.Application.Response;
-using HRMsystem.Application.Features.Address.Request.Command;
+
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -29,13 +31,13 @@ namespace ECXHR_Service.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Training﻿﻿Dto>>> Get()
         {
-            var Training﻿﻿ = await _mediator.Send(new GetTraining﻿﻿Request());
+            var Training﻿﻿ = await _mediator.Send(new GetTraining﻿﻿ListRequest());
             return Ok(Training﻿﻿);
         }
 
         // GET api/<Training﻿﻿Controller>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Training﻿﻿Dto>> Get(int id)
+        public async Task<ActionResult<Training﻿﻿Dto>> Get(Guid id)
         {
             var Training﻿﻿ = await _mediator.Send(new GetTraining﻿﻿DetailRequest { Id = id });
             return Ok(Training﻿﻿);
@@ -65,7 +67,7 @@ namespace ECXHR_Service.Controllers
 
         [HttpDelete("{id}")]
 
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(Guid id)
         {
             var command = new DeleteTraining﻿﻿Command { Id = id };
             await _mediator.Send(command);

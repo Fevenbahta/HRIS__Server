@@ -8,14 +8,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ECX.HR.Application.Contracts.Persistence;
 
 namespace ECX.HR.Application.CQRS.Supervisor.Handler.Command
 {
     public class DeleteSupervisorCommandHandler : IRequestHandler<DeleteSupervisorCommand>
     {
-        private ISupervisorRepository _SupervisorRepository;
+        private ISupervisiorRepository _SupervisorRepository;
         private IMapper _mapper;
-        public DeleteSupervisorCommandHandler(ISupervisorRepository SupervisorRepository, IMapper mapper)
+        public DeleteSupervisorCommandHandler(ISupervisiorRepository SupervisorRepository, IMapper mapper)
         {
             _SupervisorRepository = SupervisorRepository;
             _mapper = mapper;

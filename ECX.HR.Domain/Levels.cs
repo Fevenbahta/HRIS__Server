@@ -17,6 +17,6 @@ namespace ECX.HR.Domain
         public Guid LevelID { get; set; }    
         public string name { get; set; }
 
-        public ICollection<Step> Steps { get; set;}
+        public ICollection<Steps> Steps { get; set;}
     }
 }

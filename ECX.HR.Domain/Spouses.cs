@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Domain
 {
-    public class Spouse :BaseDomainEntity
+    public class Spouses :BaseDomainEntity
     {
        
         public Guid EmpId { get; set; }
-        public Employees Employee { get; set; }
-        public int Id { get; set; }
+     
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string Relationship { get; set; }

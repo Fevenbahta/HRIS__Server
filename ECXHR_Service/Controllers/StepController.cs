@@ -1,9 +1,10 @@
 ﻿
+using ECX.HR.Application.CQRS.Step.Request.Command;
+using ECX.HR.Application.CQRS.Step.Request.Queries;
 using ECX.HR.Application.DTOs.Step;
-using ECX.HR.Application.Features.Address.Request.Command;
-using ECX.HR.Application.Features.Address.Request.Queries;
+
 using ECX.HR.Application.Response;
-using HRMsystem.Application.Features.Address.Request.Command;
+
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -29,13 +30,13 @@ namespace ECXHR_Service.Controllers
         [HttpGet]
         public async Task<ActionResult<List<StepDto>>> Get()
         {
-            var Step = await _mediator.Send(new GetStepRequest());
+            var Step = await _mediator.Send(new GetStepListRequest());
             return Ok(Step);
         }
 
         // GET api/<StepController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<StepDto>> Get(int id)
+        public async Task<ActionResult<StepDto>> Get(Guid id)
         {
             var Step = await _mediator.Send(new GetStepDetailRequest { Id = id });
             return Ok(Step);
@@ -65,7 +66,7 @@ namespace ECXHR_Service.Controllers
 
         [HttpDelete("{id}")]
 
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(Guid id)
         {
             var command = new DeleteStepCommand { Id = id };
             await _mediator.Send(command);

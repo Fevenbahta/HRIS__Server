@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Domain
 {
-    public class Step : BaseDomainEntity
+    public class Supervisors : BaseDomainEntity
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
+        [ForeignKey("Division")]
+        public Guid DivisionId { get; set; }
         public string Name { get; set; }
 
-        public Guid LevelId { get; set; }
-        public virtual Levels Levels { get; set; }
-
+        public string FirstSupervisor { get; set; }
+        public string SecondSupervisor { get; set; }
     }
 }

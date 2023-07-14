@@ -1,4 +1,5 @@
-﻿using ECX.HR.Application.DTOs.Training;
+﻿
+using ECX.HR.Application.DTOs.Trainings;
 using ECX.HR.Application.Response;
 using MediatR;
 using System;

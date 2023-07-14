@@ -1,4 +1,5 @@
-﻿using ECX.HR.Application.DTOs.Training;
+﻿
+using ECX.HR.Application.DTOs.Trainings;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,6 @@ namespace ECX.HR.Application.CQRS.Training.Request.Queries
 {
     public class GetTrainingDetailRequest :IRequest<TrainingDto>
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

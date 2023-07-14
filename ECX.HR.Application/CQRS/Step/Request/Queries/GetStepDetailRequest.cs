@@ -10,6 +10,6 @@ namespace ECX.HR.Application.CQRS.Step.Request.Queries
 {
     public class GetStepDetailRequest :IRequest<StepDto>
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Step.Request.Command;
 using ECX.HR.Application.DTOs.Step.Validators;
