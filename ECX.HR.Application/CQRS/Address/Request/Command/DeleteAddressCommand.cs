@@ -9,6 +9,6 @@ namespace ECX.HR.Application.CQRS.Addresss.Request.Command
 {
     public class DeleteAddressCommand : IRequest
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

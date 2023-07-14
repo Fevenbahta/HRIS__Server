@@ -1,9 +1,11 @@
 ﻿
-using ECX.HR.Application.DTOs.EmergencyContact;
-using ECX.HR.Application.Features.Address.Request.Command;
-using ECX.HR.Application.Features.Address.Request.Queries;
+using ECX.HR.Application.CQRS.EmergencyContact.Request.Command;
+using ECX.HR.Application.CQRS.EmergencyContact.Request.Queries;
+
+using ECX.HR.Application.DTOs.EmergencyContacts;
+
 using ECX.HR.Application.Response;
-using HRMsystem.Application.Features.Address.Request.Command;
+
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -29,13 +31,13 @@ namespace ECXHR_Service.Controllers
         [HttpGet]
         public async Task<ActionResult<List<EmergencyContactDto>>> Get()
         {
-            var EmergencyContact = await _mediator.Send(new GetEmergencyContactRequest());
+            var EmergencyContact = await _mediator.Send(new GetEmergencyContactListRequest());
             return Ok(EmergencyContact);
         }
 
         // GET api/<EmergencyContactController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<EmergencyContactDto>> Get(int id)
+        public async Task<ActionResult<EmergencyContactDto>> Get(Guid id)
         {
             var EmergencyContact = await _mediator.Send(new GetEmergencyContactDetailRequest { Id = id });
             return Ok(EmergencyContact);
@@ -65,7 +67,7 @@ namespace ECXHR_Service.Controllers
 
         [HttpDelete("{id}")]
 
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(Guid id)
         {
             var command = new DeleteEmergencyContactCommand { Id = id };
             await _mediator.Send(command);

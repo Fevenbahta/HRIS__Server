@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.EmployeeStatus.Request.Queries;
-using ECX.HR.Application.DTOs.EmployeeStatus;
 
+
+using ECX.HR.Application.DTOs.EmployeeStatuss;
 using MediatR;
 using System;
 using System.Collections.Generic;

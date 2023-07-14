@@ -1,4 +1,5 @@
-﻿using ECX.HR.Application.DTOs.EmergencyContact;
+﻿
+using ECX.HR.Application.DTOs.EmergencyContacts;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,6 @@ namespace ECX.HR.Application.CQRS.EmergencyContact.Request.Queries
 {
     public class GetEmergencyContactDetailRequest :IRequest<EmergencyContactDto>
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

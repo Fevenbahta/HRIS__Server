@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ECX.HR.Application.Contracts.Persistence;
 
 namespace ECX.HR.Application.CQRS.EducationLevel.Handler.Command
 {

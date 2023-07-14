@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ECX.HR.Application.DTOs.EducationLevels
 {
     public class EducationLevelDto : BaseDtos {
-        public int id { get; set; }
+        public Guid id { get; set; }
         public string EducationName { get; set; }
     }
 }

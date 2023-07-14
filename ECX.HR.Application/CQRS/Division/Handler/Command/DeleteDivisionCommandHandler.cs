@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ECX.HR.Application.Contracts.Persistence;
+using ECX.HR.Domain;
 
 namespace ECX.HR.Application.CQRS.Division.Handler.Command
 {

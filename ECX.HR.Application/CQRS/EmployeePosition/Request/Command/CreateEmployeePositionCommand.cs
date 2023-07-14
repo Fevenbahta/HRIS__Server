@@ -1,4 +1,5 @@
-﻿using ECX.HR.Application.DTOs.EmployeePosition;
+﻿
+using ECX.HR.Application.DTOs.EmployeePositions;
 using ECX.HR.Application.Response;
 using MediatR;
 using System;

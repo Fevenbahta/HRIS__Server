@@ -1,4 +1,5 @@
-﻿using ECX.HR.Application.DTOs.EmployeeStatus;
+﻿
+using ECX.HR.Application.DTOs.EmployeeStatuss;
 using MediatR;
 using System;
 using System.Collections.Generic;

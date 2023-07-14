@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.EmergencyContact.Request.Command;
-using ECX.HR.Application.DTOs.EmergencyContact;
-using ECX.HR.Application.DTOs.EmergencyContact.Validators;
+
+using ECX.HR.Application.DTOs.EmergencyContacts.Validators;
 using ECX.HR.Application.Exceptions;
 
 using ECX.HR.Application.Response;
@@ -40,7 +41,7 @@ namespace ECX.HR.Application.CQRS.EmergencyContact.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var EmergencyContact = _mapper.Map<EmergencyContact>(request.EmergencyContactDto);
+            var EmergencyContact = _mapper.Map<EmergencyContacts>(request.EmergencyContactDto);
             var data =await _EmergencyContactRepository.Add(EmergencyContact);
             response.Success = true;
             response.Message = "Creation Successfull";

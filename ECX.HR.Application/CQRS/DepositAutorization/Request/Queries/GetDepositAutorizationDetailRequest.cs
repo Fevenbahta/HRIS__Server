@@ -11,6 +11,6 @@ namespace ECX.HR.Application.CQRS.DepositAutorization.Request.Queries
 {
     public class GetDepositAutorizationDetailRequest :IRequest<DepositAutorizationDto>
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

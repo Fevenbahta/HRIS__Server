@@ -5,7 +5,7 @@ using ECX.HR.Application.CQRS.Division.Request.Command;
 using ECX.HR.Application.DTOs.Division.Validator;
 
 using ECX.HR.Application.Exceptions;
-
+using ECX.HR.Domain;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -32,7 +32,8 @@ namespace ECX.HR.Application.CQRS.Division.Handler.Command
             if (validationResult.IsValid == false)
                 throw new ValidationException(validationResult);
             var Division = await _DivisionRepository.GetById(request.DivisionDto.DivisionId);
-            object value = _mapper.Map(request.DivisionDto, Division);
+           _mapper.Map(request.DivisionDto,Division);
+            
             await _DivisionRepository.Update(Division);
             return Unit.Value;
         }

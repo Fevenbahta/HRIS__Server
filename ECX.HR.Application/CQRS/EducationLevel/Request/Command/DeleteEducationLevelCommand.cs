@@ -9,6 +9,6 @@ namespace ECX.HR.Application.CQRS.EducationLevel.Request.Command
 {
     public class DeleteEducationLevelCommand : IRequest
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

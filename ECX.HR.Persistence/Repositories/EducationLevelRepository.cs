@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Persistence.Repositories
 {
-    public class EducationLevelRepository : GenericRepository<EducationLevel>, IEducationLevelRepository
+    public class EducationLevelRepository : GenericRepository<EducationLevels>, IEducationLevelRepository
     {
         private readonly ECXHRDbContext _context;
 

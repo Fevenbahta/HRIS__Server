@@ -37,7 +37,7 @@ namespace ECXHR_Service.Controllers
 
         // GET api/<AddressController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<AddressDto>> Get(int id)
+        public async Task<ActionResult<AddressDto>> Get(Guid id)
         {
             var address = await _mediator.Send(new GetAddressDetailRequest { Id = id });
             return Ok(address);
@@ -65,7 +65,7 @@ namespace ECXHR_Service.Controllers
 
         [HttpDelete("{id}")]
 
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(Guid id)
         {
             var command = new DeleteAddressCommand { Id = id };
             await _mediator.Send(command);

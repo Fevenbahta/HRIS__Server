@@ -12,7 +12,6 @@ namespace ECX.HR.Domain
     {
        
         public Guid EmpId { get; set; }
-        public Employees Employee { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime DateOfBirth { get; set; }

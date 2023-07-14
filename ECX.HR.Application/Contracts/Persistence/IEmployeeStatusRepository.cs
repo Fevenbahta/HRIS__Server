@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.Contracts.Persistence
 {
-    public interface IEmployeeStatusRepository :IGenericRepository<EmployeeStatus>
+    public interface IEmployeeStatusRepository :IGenericRepository<EmployeeStatuss>
     {
     }
 }

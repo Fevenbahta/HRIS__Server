@@ -1,15 +1,16 @@
-﻿using FluentValidation;
+﻿using ECX.HR.Application.DTOs.EmployeeStatuss;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECX.HR.Application.DTOs.OrganizationalProfiles.Validator
+namespace ECX.HR.Application.DTOs.EmployeeStatus.Validator
 {
-    public class LevelDtoValidators : AbstractValidator<EmployeeStatusDto>
+    public class EmployeeStatusDtoValidators : AbstractValidator<EmployeeStatusDto>
     {
-        public LevelDtoValidators()
+        public EmployeeStatusDtoValidators()
         {
             RuleFor(p => p.Id)
                .NotEmpty().WithMessage("{PropertyName} is requiered.")

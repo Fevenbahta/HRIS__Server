@@ -10,7 +10,7 @@ namespace ECX.HR.Application.DTOs.Addresss
     public class AdressDetailDto : BaseDtos
     {
         public Guid EmpId { get; set; }
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Region { get; set; }
         public string Town { get; set; }
         public string SubCity { get; set; }

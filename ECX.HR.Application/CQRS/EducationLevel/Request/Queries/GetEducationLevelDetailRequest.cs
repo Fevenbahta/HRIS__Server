@@ -1,4 +1,5 @@
-﻿using ECX.HR.Application.DTOs.EducationLevel;
+﻿
+using ECX.HR.Application.DTOs.EducationLevels;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,6 @@ namespace ECX.HR.Application.CQRS.EducationLevel.Request.Queries
 {
     public class GetEducationLevelDetailRequest :IRequest<EducationLevelDto>
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

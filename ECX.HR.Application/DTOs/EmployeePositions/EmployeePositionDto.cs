@@ -9,7 +9,7 @@ namespace ECX.HR.Application.DTOs.EmployeePositions
 {
     public class EmployeePositionDto : BaseDtos
     {
-        public int id { get; set; }
+        public Guid id { get; set; }
         public string DivisionId { get; set; }
         public string StepId { get; set; }
         public string BranchId { get; set; }

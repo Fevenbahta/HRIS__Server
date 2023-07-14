@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.EmergencyContact.Request.Queries;
-using ECX.HR.Application.DTOs.EmergencyContact;
 
+using ECX.HR.Application.DTOs.EmergencyContacts;
 using MediatR;
 using System;
 using System.Collections.Generic;

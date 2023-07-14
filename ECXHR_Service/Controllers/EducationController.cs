@@ -1,9 +1,9 @@
 ﻿
+using ECX.HR.Application.CQRS.Education.Request.Command;
+using ECX.HR.Application.CQRS.Education.Request.Queries;
 using ECX.HR.Application.DTOs.Education;
-using ECX.HR.Application.Features.Address.Request.Command;
-using ECX.HR.Application.Features.Address.Request.Queries;
+
 using ECX.HR.Application.Response;
-using HRMsystem.Application.Features.Address.Request.Command;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -29,13 +29,13 @@ namespace ECXHR_Service.Controllers
         [HttpGet]
         public async Task<ActionResult<List<EducationDto>>> Get()
         {
-            var Education = await _mediator.Send(new GetEducationRequest());
+            var Education = await _mediator.Send(new GetEducationListRequest());
             return Ok(Education);
         }
 
         // GET api/<EducationController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<EducationDto>> Get(int id)
+        public async Task<ActionResult<EducationDto>> Get(Guid id)
         {
             var Education = await _mediator.Send(new GetEducationDetailRequest { Id = id });
             return Ok(Education);

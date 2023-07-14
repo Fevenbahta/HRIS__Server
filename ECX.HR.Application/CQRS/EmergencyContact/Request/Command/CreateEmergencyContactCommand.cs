@@ -1,4 +1,5 @@
-﻿using ECX.HR.Application.DTOs.EmergencyContact;
+﻿
+using ECX.HR.Application.DTOs.EmergencyContacts;
 using ECX.HR.Application.Response;
 using MediatR;
 using System;

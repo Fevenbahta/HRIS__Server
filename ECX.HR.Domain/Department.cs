@@ -14,7 +14,7 @@ namespace ECX.HR.Domain
 
         public string Description { get; set; }
 
-        public ICollection<Division> Divisions { get; set; }    
+        public ICollection<Divisions> Divisions { get; set; }    
        
     }
 }

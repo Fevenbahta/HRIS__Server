@@ -37,7 +37,7 @@ namespace ECXHR_Service.Controllers
 
         // GET api/<DepositAutorizationController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<DepositAutorizationDto>> Get(int id)
+        public async Task<ActionResult<DepositAutorizationDto>> Get(Guid id)
         {
             var DepositAutorization = await _mediator.Send(new GetDepositAutorizationDetailRequest { Id = id });
             return Ok(DepositAutorization);
@@ -67,7 +67,7 @@ namespace ECXHR_Service.Controllers
 
         [HttpDelete("{id}")]
 
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(Guid id)
         {
             var command = new DeleteDepositAutorizationCommand { Id = id };
             await _mediator.Send(command);

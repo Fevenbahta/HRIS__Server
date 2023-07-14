@@ -1,4 +1,5 @@
-﻿using ECX.HR.Application.DTOs.EducationLevel;
+﻿
+using ECX.HR.Application.DTOs.EducationLevels;
 using MediatR;
 using System;
 using System.Collections.Generic;

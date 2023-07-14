@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.Contracts.Persistence
 {
-    public interface IDivisionRepository : IGenericRepository<Division>
+    public interface IDivisionRepository : IGenericRepository<Divisions>
     {
-        Task<Action<IMappingOperationOptions<object, void>>> GetById(Guid divisionId);
-        Task Update(Action<IMappingOperationOptions<object, void>> division);
+        //Task<Action<IMappingOperationOptions<object, void>>> GetById(Guid divisionId);
+        //Task Update(Action<IMappingOperationOptions<object, void>> division);
     }
 }

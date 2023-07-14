@@ -1,5 +1,5 @@
-﻿using ECX.HR.Application.DTOs.Level;
-
+﻿
+using ECX.HR.Application.DTOs.Levels;
 using MediatR;
 using System;
 using System.Collections.Generic;

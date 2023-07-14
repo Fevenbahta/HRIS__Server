@@ -1,9 +1,10 @@
 ﻿
+using ECX.HR.Application.CQRS.Division.Request.Command;
+using ECX.HR.Application.CQRS.Division.Request.Queries;
 using ECX.HR.Application.DTOs.Division;
-using ECX.HR.Application.Features.Address.Request.Command;
-using ECX.HR.Application.Features.Address.Request.Queries;
+
 using ECX.HR.Application.Response;
-using HRMsystem.Application.Features.Address.Request.Command;
+
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -29,15 +30,15 @@ namespace ECXHR_Service.Controllers
         [HttpGet]
         public async Task<ActionResult<List<DivisionDto>>> Get()
         {
-            var Division = await _mediator.Send(new GetDivisionRequest());
+            var Division = await _mediator.Send(new GetDivisionListRequest());
             return Ok(Division);
         }
 
         // GET api/<DivisionController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<DivisionDto>> Get(int id)
+        public async Task<ActionResult<DivisionDto>> Get(Guid id)
         {
-            var Division = await _mediator.Send(new GetDivisionDetailRequest { Id = id });
+            var Division = await _mediator.Send(new GetDivisionDetailRequest { DivisionId = id });
             return Ok(Division);
         }
 
@@ -65,7 +66,7 @@ namespace ECXHR_Service.Controllers
 
         [HttpDelete("{id}")]
 
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(Guid id)
         {
             var command = new DeleteDivisionCommand { Id = id };
             await _mediator.Send(command);

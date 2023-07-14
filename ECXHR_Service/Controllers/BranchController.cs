@@ -37,7 +37,7 @@ namespace ECXHR_Service.Controllers
 
         // GET api/<BranchController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<BranchDto>> Get(int id)
+        public async Task<ActionResult<BranchDto>> Get(Guid id)
         {
             var Branch = await _mediator.Send(new GetBranchDetailRequest { Id = id });
             return Ok(Branch);
@@ -67,7 +67,7 @@ namespace ECXHR_Service.Controllers
 
         [HttpDelete("{id}")]
 
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(Guid id)
         {
             var command = new DeleteBranchCommand { Id = id };
             await _mediator.Send(command);

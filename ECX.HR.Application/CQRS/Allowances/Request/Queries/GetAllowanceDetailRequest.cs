@@ -11,6 +11,6 @@ namespace ECX.HR.Application.CQRS.Allowance.Request.Queries
 {
     public class GetAllowanceDetailRequest :IRequest<AllowanceDto>
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

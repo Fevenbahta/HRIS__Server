@@ -11,6 +11,6 @@ namespace ECX.HR.Application.CQRS.Branch.Request.Queries
 {
     public class GetBranchDetailRequest :IRequest<BranchDto>
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

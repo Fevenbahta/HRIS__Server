@@ -9,7 +9,7 @@ namespace ECX.HR.Domain
 {
     public class Branches : BaseDomainEntity
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string name { get; set; }
          public string city { get; set; }
 

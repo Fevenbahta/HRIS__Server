@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.EmployeeStatus.Request.Command;
 using ECX.HR.Application.DTOs.EmployeeStatus;
-using ECX.HR.Application.DTOs.EmployeeStatus.Validators;
+using ECX.HR.Application.DTOs.EmployeeStatus.Validator;
 using ECX.HR.Application.Exceptions;
 
 using ECX.HR.Application.Response;
@@ -30,7 +31,7 @@ namespace ECX.HR.Application.CQRS.EmployeeStatus.Handler.Command
         public async Task<BaseCommandResponse> Handle(CreateEmployeeStatusCommand request, CancellationToken cancellationToken)
         {
             response = new BaseCommandResponse();
-            var validator =new EmployeeStatusDtoValidator();
+            var validator =new EmployeeStatusDtoValidators();
             var validationResult =await validator.ValidateAsync(request.EmployeeStatusDto);
             
             if(validationResult.IsValid == false)
@@ -40,7 +41,7 @@ namespace ECX.HR.Application.CQRS.EmployeeStatus.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var EmployeeStatus = _mapper.Map<EmployeeStatus>(request.EmployeeStatusDto);
+            var EmployeeStatus = _mapper.Map<EmployeeStatuss>(request.EmployeeStatusDto);
             var data =await _EmployeeStatusRepository.Add(EmployeeStatus);
             response.Success = true;
             response.Message = "Creation Successfull";

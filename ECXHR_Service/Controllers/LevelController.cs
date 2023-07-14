@@ -1,9 +1,9 @@
 ﻿
-using ECX.HR.Application.DTOs.Level;
-using ECX.HR.Application.Features.Address.Request.Command;
-using ECX.HR.Application.Features.Address.Request.Queries;
+
+using ECX.HR.Application.CQRS.Level.Request.Command;
+using ECX.HR.Application.CQRS.Level.Request.Queries;
+using ECX.HR.Application.DTOs.Levels;
 using ECX.HR.Application.Response;
-using HRMsystem.Application.Features.Address.Request.Command;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -29,13 +29,13 @@ namespace ECXHR_Service.Controllers
         [HttpGet]
         public async Task<ActionResult<List<LevelDto>>> Get()
         {
-            var Level = await _mediator.Send(new GetLevelRequest());
+            var Level = await _mediator.Send(new GetLevelListRequest());
             return Ok(Level);
         }
 
         // GET api/<LevelController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<LevelDto>> Get(int id)
+        public async Task<ActionResult<LevelDto>> Get(Guid id)
         {
             var Level = await _mediator.Send(new GetLevelDetailRequest { Id = id });
             return Ok(Level);
@@ -65,7 +65,7 @@ namespace ECXHR_Service.Controllers
 
         [HttpDelete("{id}")]
 
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(Guid id)
         {
             var command = new DeleteLevelCommand { Id = id };
             await _mediator.Send(command);

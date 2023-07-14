@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.EducationLevel.Request.Command;
 using ECX.HR.Application.DTOs.EducationLevel;
 using ECX.HR.Application.DTOs.EducationLevel.Validators;
+using ECX.HR.Application.DTOs.EducationLevels.Validators;
 using ECX.HR.Application.Exceptions;
 
 using ECX.HR.Application.Response;
@@ -40,7 +42,7 @@ namespace ECX.HR.Application.CQRS.EducationLevel.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var EducationLevel = _mapper.Map<EducationLevel>(request.EducationLevelDto);
+            var EducationLevel = _mapper.Map<EducationLevels>(request.EducationLevelDto);
             var data =await _EducationLevelRepository.Add(EducationLevel);
             response.Success = true;
             response.Message = "Creation Successfull";

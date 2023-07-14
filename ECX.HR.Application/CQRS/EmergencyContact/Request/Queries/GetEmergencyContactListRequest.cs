@@ -1,5 +1,5 @@
-﻿using ECX.HR.Application.DTOs.EmergencyContact;
-
+﻿
+using ECX.HR.Application.DTOs.EmergencyContacts;
 using MediatR;
 using System;
 using System.Collections.Generic;

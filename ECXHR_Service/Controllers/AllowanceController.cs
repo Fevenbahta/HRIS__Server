@@ -36,7 +36,7 @@ namespace ECXHR_Service.Controllers
 
         // GET api/<AllowanceController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<AllowanceDto>> Get(int id)
+        public async Task<ActionResult<AllowanceDto>> Get(Guid id)
         {
             var Allowance = await _mediator.Send(new GetAllowanceDetailRequest { Id = id });
             return Ok(Allowance);
@@ -66,7 +66,7 @@ namespace ECXHR_Service.Controllers
 
         [HttpDelete("{id}")]
 
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(Guid id)
         {
             var command = new DeleteAllowanceCommand { Id = id };
             await _mediator.Send(command);

@@ -9,6 +9,6 @@ namespace ECX.HR.Application.CQRS.EmployeePosition.Request.Command
 {
     public class DeleteEmployeePositionCommand : IRequest
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

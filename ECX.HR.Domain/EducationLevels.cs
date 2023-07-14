@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Domain
 {
-    public class EducationLevel : BaseDomainEntity
+    public class EducationLevels : BaseDomainEntity
 
     {
-        public int id { get; set; }
+        public Guid id { get; set; }
         public string EducationName { get; set; }
     }
 }

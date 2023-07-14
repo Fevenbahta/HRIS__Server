@@ -2,7 +2,7 @@
 using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Allowance.Request.Command;
-using ECX.HR.Application.DTOs.Allowance.Validators;
+
 using ECX.HR.Application.DTOs.Allowances.Validator;
 using ECX.HR.Application.Exceptions;
 

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Education.Request.Queries;
 using ECX.HR.Application.DTOs.Education;

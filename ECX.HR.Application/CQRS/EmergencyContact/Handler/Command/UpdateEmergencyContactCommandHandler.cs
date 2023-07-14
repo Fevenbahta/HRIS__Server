@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.EmergencyContact.Request.Command;
-using ECX.HR.Application.DTOs.EmergencyContact.Validators;
+
+using ECX.HR.Application.DTOs.EmergencyContacts.Validators;
 using ECX.HR.Application.Exceptions;
 
 using MediatR;
@@ -29,7 +31,7 @@ namespace ECX.HR.Application.CQRS.EmergencyContact.Handler.Command
             var validationResult = await validator.ValidateAsync(request.EmergencyContactDto);
             if (validationResult.IsValid == false)
                 throw new ValidationException(validationResult);
-            var EmergencyContact = await _EmergencyContactRepository.GetById(request.EmergencyContactDto.Id);
+            var EmergencyContact = await _EmergencyContactRepository.GetById(request.EmergencyContactDto.id);
             _mapper.Map(request.EmergencyContactDto, EmergencyContact);
             await _EmergencyContactRepository.Update(EmergencyContact);
             return Unit.Value;

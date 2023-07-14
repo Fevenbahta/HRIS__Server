@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Persistence.Repositories
 {
-    public class EmergencyContactRepository : GenericRepository<EmergencyContact>, IEmergencyContactRepository
+    public class EmergencyContactRepository : GenericRepository<EmergencyContacts>, IEmergencyContactRepository
     {
         private readonly ECXHRDbContext _context;
 

@@ -13,7 +13,6 @@ namespace ECX.HR.Domain
         
         public Guid EmpId { get; set; }
         public int id { get; set; }
-        public Employees Employee { get; set; }
         public string TypeOfTraining { get; set; }
         public DateTime From { get; set; }  
         public DateTime To { get; set; }

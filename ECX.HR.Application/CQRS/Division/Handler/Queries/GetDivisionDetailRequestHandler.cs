@@ -23,7 +23,7 @@ namespace ECX.HR.Application.CQRS.Division.Handler.Queries
         }
         public async Task<DivisionDto> Handle(GetDivisionDetailRequest request, CancellationToken cancellationToken)
         {
-            var Division =await _DivisionRepository.GetById(request.Id);
+            var Division =await _DivisionRepository.GetById(request.DivisionId);
             return _mapper.Map<DivisionDto>(request);
         }
     }

@@ -9,6 +9,6 @@ namespace ECX.HR.Application.CQRS.DepositAutorization.Request.Command
 {
     public class DeleteDepositAutorizationCommand : IRequest
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

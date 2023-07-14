@@ -1,9 +1,11 @@
 ﻿
-using ECX.HR.Application.DTOs.EducationLevel;
-using ECX.HR.Application.Features.Address.Request.Command;
-using ECX.HR.Application.Features.Address.Request.Queries;
+using ECX.HR.Application.CQRS.Education.Request.Queries;
+using ECX.HR.Application.CQRS.EducationLevel.Request.Command;
+
+using ECX.HR.Application.DTOs.EducationLevels;
+
 using ECX.HR.Application.Response;
-using HRMsystem.Application.Features.Address.Request.Command;
+
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -29,15 +31,15 @@ namespace ECXHR_Service.Controllers
         [HttpGet]
         public async Task<ActionResult<List<EducationLevelDto>>> Get()
         {
-            var EducationLevel = await _mediator.Send(new GetEducationLevelRequest());
+            var EducationLevel = await _mediator.Send(new GetEducationListRequest());
             return Ok(EducationLevel);
         }
 
         // GET api/<EducationLevelController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<EducationLevelDto>> Get(int id)
+        public async Task<ActionResult<EducationLevelDto>> Get(Guid id)
         {
-            var EducationLevel = await _mediator.Send(new GetEducationLevelDetailRequest { Id = id });
+            var EducationLevel = await _mediator.Send(new GetEducationDetailRequest { Id = id });
             return Ok(EducationLevel);
         }
 
@@ -65,7 +67,7 @@ namespace ECXHR_Service.Controllers
 
         [HttpDelete("{id}")]
 
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(Guid id)
         {
             var command = new DeleteEducationLevelCommand { Id = id };
             await _mediator.Send(command);

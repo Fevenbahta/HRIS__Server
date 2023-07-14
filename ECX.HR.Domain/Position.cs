@@ -14,7 +14,7 @@ namespace ECX.HR.Domain
         
         public Guid PositionId { get; set; }
         public Guid DivisionId { get; set; }
-        public virtual Division Divisions { get; set; }
+        public virtual Divisions Divisions { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
 

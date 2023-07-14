@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Addresss.Request.Command;
-using ECX.HR.Application.DTOs.Address.Validators;
+using ECX.HR.Application.DTOs.Addresss.Validator;
 using ECX.HR.Application.Exceptions;
 
 using MediatR;
@@ -15,9 +16,9 @@ namespace ECX.HR.Application.CQRS.Addresss.Handler.Command
 {
     public class UpdateAddressCommandHandler : IRequestHandler<UpdateAddressCommand, Unit>
     {
-        private IAddressRepository _AddressRepository;
+        private IAdressRepository _AddressRepository;
         private IMapper _mapper;
-        public UpdateAddressCommandHandler(IAddressRepository AddressRepository, IMapper mapper)
+        public UpdateAddressCommandHandler(IAdressRepository AddressRepository, IMapper mapper)
         {
             _AddressRepository = AddressRepository;
             _mapper = mapper;
@@ -25,7 +26,7 @@ namespace ECX.HR.Application.CQRS.Addresss.Handler.Command
 
         public async Task<Unit> Handle(UpdateAddressCommand request, CancellationToken cancellationToken)
         {
-            var validator = new AddressDtoValidator();
+            var validator = new AdressDtoValidator();
             var validationResult = await validator.ValidateAsync(request.AddressDto);
             if (validationResult.IsValid == false)
                 throw new ValidationException(validationResult);

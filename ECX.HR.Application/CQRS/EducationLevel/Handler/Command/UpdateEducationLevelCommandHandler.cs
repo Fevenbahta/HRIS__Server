@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.EducationLevel.Request.Command;
-using ECX.HR.Application.DTOs.EducationLevel.Validators;
+
+using ECX.HR.Application.DTOs.EducationLevels.Validators;
 using ECX.HR.Application.Exceptions;
 
 using MediatR;
@@ -29,7 +31,7 @@ namespace ECX.HR.Application.CQRS.EducationLevel.Handler.Command
             var validationResult = await validator.ValidateAsync(request.EducationLevelDto);
             if (validationResult.IsValid == false)
                 throw new ValidationException(validationResult);
-            var EducationLevel = await _EducationLevelRepository.GetById(request.EducationLevelDto.Id);
+            var EducationLevel = await _EducationLevelRepository.GetById(request.EducationLevelDto.id);
             _mapper.Map(request.EducationLevelDto, EducationLevel);
             await _EducationLevelRepository.Update(EducationLevel);
             return Unit.Value;
