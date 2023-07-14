@@ -1,4 +1,5 @@
-﻿using ECX.HR.Application.DTOs.WorkExperience;
+﻿
+using ECX.HR.Application.DTOs.WorkExperiences;
 using MediatR;
 using System;
 using System.Collections.Generic;

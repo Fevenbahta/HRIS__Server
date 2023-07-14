@@ -1,5 +1,5 @@
-﻿using ECX.HR.Application.DTOs.Supervisor;
-
+﻿
+using ECX.HR.Application.DTOs.Supervisors;
 using MediatR;
 using System;
 using System.Collections.Generic;

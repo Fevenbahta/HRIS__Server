@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.WorkExperience.Request.Command;
-using ECX.HR.Application.DTOs.WorkExperience;
-using ECX.HR.Application.DTOs.WorkExperience.Validators;
+
+using ECX.HR.Application.DTOs.WorkExperiences.Validator;
 using ECX.HR.Application.Exceptions;
 
 using ECX.HR.Application.Response;
@@ -40,7 +41,7 @@ namespace ECX.HR.Application.CQRS.WorkExperience.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var WorkExperience = _mapper.Map<WorkExperience>(request.WorkExperienceDto);
+            var WorkExperience = _mapper.Map<WorkExperiences>(request.WorkExperienceDto);
             var data =await _WorkExperienceRepository.Add(WorkExperience);
             response.Success = true;
             response.Message = "Creation Successfull";

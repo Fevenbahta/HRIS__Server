@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Supervisor.Request.Queries;
-using ECX.HR.Application.DTOs.Supervisor;
+
+using ECX.HR.Application.DTOs.Supervisors;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -13,9 +15,9 @@ namespace ECX.HR.Application.CQRS.Supervisor.Handler.Queries
 {
     public class GetSupervisorDetailRequestHandler : IRequestHandler<GetSupervisorDetailRequest, SupervisorDto>
     {
-        private ISupervisorRepository _SupervisorRepository;
+        private ISupervisiorRepository _SupervisorRepository;
         private IMapper _mapper;
-        public GetSupervisorDetailRequestHandler(ISupervisorRepository SupervisorRepository, IMapper mapper)
+        public GetSupervisorDetailRequestHandler(ISupervisiorRepository SupervisorRepository, IMapper mapper)
         {
             _SupervisorRepository = SupervisorRepository;
             _mapper = mapper;

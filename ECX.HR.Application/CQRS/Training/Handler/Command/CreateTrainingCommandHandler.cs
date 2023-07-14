@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Training.Request.Command;
-using ECX.HR.Application.DTOs.Training;
-using ECX.HR.Application.DTOs.Training.Validators;
+using ECX.HR.Application.DTOs.Trainings.Validator;
 using ECX.HR.Application.Exceptions;
 
 using ECX.HR.Application.Response;
@@ -40,7 +40,7 @@ namespace ECX.HR.Application.CQRS.Training.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var Training = _mapper.Map<Training>(request.TrainingDto);
+            var Training = _mapper.Map<Trainings>(request.TrainingDto);
             var data =await _TrainingRepository.Add(Training);
             response.Success = true;
             response.Message = "Creation Successfull";

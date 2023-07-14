@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Domain
 {
-    public class WorkExperience : BaseDomainEntity
+    public class WorkExperiences : BaseDomainEntity
     {
         
         public Guid EmpId { get; set; }
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string CompanyName { get; set; }
         public string PostionHeld { get; set; }
         public DateTime From { get; set; }

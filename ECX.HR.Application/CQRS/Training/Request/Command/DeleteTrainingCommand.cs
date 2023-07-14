@@ -9,6 +9,6 @@ namespace ECX.HR.Application.CQRS.Training.Request.Command
 {
     public class DeleteTrainingCommand : IRequest
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

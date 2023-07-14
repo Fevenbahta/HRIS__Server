@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Spouse.Request.Command;
-using ECX.HR.Application.DTOs.Spouse;
-using ECX.HR.Application.DTOs.Spouse.Validators;
+using ECX.HR.Application.DTOs.Spouses.Validator;
 using ECX.HR.Application.Exceptions;
 
 using ECX.HR.Application.Response;
@@ -30,7 +30,7 @@ namespace ECX.HR.Application.CQRS.Spouse.Handler.Command
         public async Task<BaseCommandResponse> Handle(CreateSpouseCommand request, CancellationToken cancellationToken)
         {
             response = new BaseCommandResponse();
-            var validator =new SpouseDtoValidator();
+            var validator =new SpouseValidator();
             var validationResult =await validator.ValidateAsync(request.SpouseDto);
             
             if(validationResult.IsValid == false)
@@ -40,7 +40,7 @@ namespace ECX.HR.Application.CQRS.Spouse.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var Spouse = _mapper.Map<Spouse>(request.SpouseDto);
+            var Spouse = _mapper.Map<Spouses>(request.SpouseDto);
             var data =await _SpouseRepository.Add(Spouse);
             response.Success = true;
             response.Message = "Creation Successfull";

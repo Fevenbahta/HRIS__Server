@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Supervisor.Request.Command;
-using ECX.HR.Application.DTOs.Supervisor.Validators;
+
+using ECX.HR.Application.DTOs.Supervisors.Validator;
 using ECX.HR.Application.Exceptions;
 
 using MediatR;
@@ -15,9 +17,9 @@ namespace ECX.HR.Application.CQRS.Supervisor.Handler.Command
 {
     public class UpdateSupervisorCommandHandler : IRequestHandler<UpdateSupervisorCommand, Unit>
     {
-        private ISupervisorRepository _SupervisorRepository;
+        private ISupervisiorRepository _SupervisorRepository;
         private IMapper _mapper;
-        public UpdateSupervisorCommandHandler(ISupervisorRepository SupervisorRepository, IMapper mapper)
+        public UpdateSupervisorCommandHandler(ISupervisiorRepository SupervisorRepository, IMapper mapper)
         {
             _SupervisorRepository = SupervisorRepository;
             _mapper = mapper;
