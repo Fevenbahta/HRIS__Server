@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.DepositAutorization.Request.Queries;
-using ECX.HR.Application.DTOs.DepositAutorization;
 
+using ECX.HR.Application.DTOs.DepositAutorizations;
 using MediatR;
 using System;
 using System.Collections.Generic;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Domain
 {
-    public class Allowance :BaseDomainEntity
+    public class Allowancee :BaseDomainEntity
     {
         public int Id { get; set; }
         public string AllowanceType { get; set; }

@@ -1,4 +1,5 @@
-﻿using ECX.HR.Application.DTOs.DepositAutorization;
+﻿
+using ECX.HR.Application.DTOs.DepositAutorizations;
 using ECX.HR.Application.Response;
 using MediatR;
 using System;

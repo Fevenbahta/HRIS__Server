@@ -1,4 +1,5 @@
-﻿using ECX.HR.Application.DTOs.Department;
+﻿using ECX.HR.Application.DTOs.Addresss;
+using ECX.HR.Application.DTOs.Department;
 using ECX.HR.Application.Response;
 using MediatR;
 using System;

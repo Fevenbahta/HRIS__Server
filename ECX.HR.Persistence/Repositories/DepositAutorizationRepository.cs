@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Persistence.Repositories
 {
-    public class DepositAutorizationRepository : GenericRepository<DepositAutorization>
+    public class DepositAutorizationRepository : GenericRepository<DepositAutorizations>
     {
         private readonly ECXHRDbContext _context;
 

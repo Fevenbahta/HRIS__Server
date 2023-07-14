@@ -1,4 +1,5 @@
-﻿using ECX.HR.Application.DTOs.Allowance;
+﻿
+using ECX.HR.Application.DTOs.Allowances.cs;
 using MediatR;
 using System;
 using System.Collections.Generic;

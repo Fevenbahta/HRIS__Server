@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.Contracts.Persistence
 {
-    public interface IAllwoanceRepository : IGenericRepository<Allowance>
+    public interface IAllwoanceRepository : IGenericRepository<Allowancee>
     {
     }
 }

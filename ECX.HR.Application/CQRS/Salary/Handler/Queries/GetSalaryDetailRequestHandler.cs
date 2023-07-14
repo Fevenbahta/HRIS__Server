@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Salary.Request.Queries;
-using ECX.HR.Application.DTOs.Salary;
+using ECX.HR.Application.DTOs.Salaries;
+
 using MediatR;
 using System;
 using System.Collections.Generic;

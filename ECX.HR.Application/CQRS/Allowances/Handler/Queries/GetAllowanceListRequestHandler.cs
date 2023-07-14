@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Allowance.Request.Queries;
-using ECX.HR.Application.DTOs.Allowance;
 
+using ECX.HR.Application.DTOs.Allowances.cs;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -14,9 +15,9 @@ namespace ECX.HR.Application.CQRS.Allowance.Handler.Queries
 {
     public class GetAllowanceListRequestHandler : IRequestHandler<GetAllowanceListRequest, List<AllowanceDto>>
     {
-        private IAllowanceRepository _AllowanceRepository;
+        private IAllwoanceRepository _AllowanceRepository;
         private IMapper _mapper;
-        public GetAllowanceListRequestHandler(IAllowanceRepository AllowanceRepository, IMapper mapper)
+        public GetAllowanceListRequestHandler(IAllwoanceRepository AllowanceRepository, IMapper mapper)
         {
             _AllowanceRepository= AllowanceRepository;
             _mapper = mapper;

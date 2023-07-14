@@ -33,16 +33,16 @@ namespace ECX.HR.Application.Profiles
         public MappingProfiles()
         {
             CreateMap<Adress, AdressDetailDto>().ReverseMap();
-            CreateMap<Allowance, AllowanceDto>().ReverseMap();
-            CreateMap<Branch, BranchDto>().ReverseMap();
+            CreateMap<Allowancee, AllowanceDto>().ReverseMap();
+            CreateMap<Branches, BranchDto>().ReverseMap();
             CreateMap<Department, DepartmentDto>().ReverseMap();
-            CreateMap<DepositAutorization, DepositAutorizationDto>().ReverseMap();
+            CreateMap<DepositAutorizations, DepositAutorizationDto>().ReverseMap();
             CreateMap<Division, DivisionDto>().ReverseMap();
             CreateMap<Education, EducationDto>().ReverseMap();
             CreateMap<EducationLevel, EducationLevelDto>().ReverseMap();
             CreateMap<EmergencyContact, EmergencyContactDto>().ReverseMap();
             CreateMap<EmployeePosition, EmployeePositionDto>().ReverseMap();
-            CreateMap<Employee, EmployeeDto>().ReverseMap();
+            CreateMap<Employees, EmployeeDto>().ReverseMap();
             CreateMap<EmployeeStatus, EmployeeStatusDto>().ReverseMap();
             CreateMap<Level, LevelDto>().ReverseMap();
             CreateMap<OrganizationalProfile, OrganizationalProfileDto>().ReverseMap();

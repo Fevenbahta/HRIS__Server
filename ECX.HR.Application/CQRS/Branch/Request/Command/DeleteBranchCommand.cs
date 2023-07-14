@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.CQRS.Branch.Request.Command
 {
-    public class DeleteDepartmentCommand : IRequest
+    public class DeleteBranchCommand : IRequest
     {
         public int Id { get; set; }
     }

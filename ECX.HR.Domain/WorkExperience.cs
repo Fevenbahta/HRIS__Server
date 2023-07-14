@@ -20,7 +20,7 @@ namespace ECX.HR.Domain
         public DateTime To { get; set; }
         public double Salary { get; set; }
         public string ReasonTermination { get; set; }
-        public virtual Employee Employees { get; set; }
+        public virtual Employees Employees { get; set; }
 
 
     }

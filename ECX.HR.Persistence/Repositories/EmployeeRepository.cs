@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Persistence.Repositories
 {
-    public class EmployeeRepository : GenericRepository<Employee>
+    public class EmployeeRepository : GenericRepository<Employees>
     {
     }
 }

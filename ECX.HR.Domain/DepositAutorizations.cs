@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Domain
 {
-    public class DepositAutorization :BaseDomainEntity
+    public class DepositAutorizations :BaseDomainEntity
     {
         [ForeignKey("Employeee")]
         public Guid EcxId { get; set; }
-        public Employee Employee { get; set; }
+        public Employees Employee { get; set; }
         public int Id { get; set; }
         public string Bank { get; set; }
         public string BankBranch { get; set;}

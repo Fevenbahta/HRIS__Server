@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Addresss.Request.Queries;
-using ECX.HR.Application.DTOs.Address;
-
+using ECX.HR.Application.DTOs.Addresss;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -14,9 +14,9 @@ namespace ECX.HR.Application.CQRS.Addresss.Handler.Queries
 {
     public class GetAddressListRequestHandler : IRequestHandler<GetAddressListRequest, List<AddressDto>>
     {
-        private IAddressRepository _AddressRepository;
+        private IAdressRepository _AddressRepository;
         private IMapper _mapper;
-        public GetAddressListRequestHandler(IAddressRepository AddressRepository, IMapper mapper)
+        public GetAddressListRequestHandler(IAdressRepository AddressRepository, IMapper mapper)
         {
             _AddressRepository= AddressRepository;
             _mapper = mapper;

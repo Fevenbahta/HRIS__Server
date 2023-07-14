@@ -1,4 +1,5 @@
-﻿using ECX.HR.Application.DTOs.Allowance;
+﻿
+using ECX.HR.Application.DTOs.Allowances.cs;
 using ECX.HR.Application.Response;
 using MediatR;
 using System;

@@ -1,4 +1,5 @@
 ﻿using ECX.HR.Application.DTOs.Address;
+using ECX.HR.Application.DTOs.Addresss;
 using MediatR;
 using System;
 using System.Collections.Generic;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Domain
 {
-    public class Branch : BaseDomainEntity
+    public class Branches : BaseDomainEntity
     {
         public int Id { get; set; }
         public string name { get; set; }

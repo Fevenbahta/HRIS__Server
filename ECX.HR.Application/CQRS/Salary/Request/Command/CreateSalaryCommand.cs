@@ -1,4 +1,5 @@
-﻿using ECX.HR.Application.DTOs.Salary;
+﻿using ECX.HR.Application.DTOs.Salaries;
+using ECX.HR.Application.DTOs.Salary;
 using ECX.HR.Application.Response;
 using MediatR;
 using System;

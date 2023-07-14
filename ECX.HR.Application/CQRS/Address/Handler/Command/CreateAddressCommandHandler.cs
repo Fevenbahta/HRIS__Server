@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Addresss.Request.Command;
+using ECX.HR.Application.CQRS.Departments.Request.Command;
 using ECX.HR.Application.DTOs.Address;
 using ECX.HR.Application.DTOs.Address.Validators;
+using ECX.HR.Application.DTOs.Addresss.Validator;
 using ECX.HR.Application.Exceptions;
 
 using ECX.HR.Application.Response;
@@ -20,9 +23,9 @@ namespace ECX.HR.Application.CQRS.Address.Handler.Command
     public class CreateAddressCommandHandler : IRequestHandler<CreateAddressCommand, BaseCommandResponse>
     {
         BaseCommandResponse response;
-        private IAddressRepository _AddressRepository;
+        private IAdressRepository _AddressRepository;
         private IMapper _mapper;
-        public CreateAddressCommandHandler(IAddressRepository AddressRepository, IMapper mapper)
+        public CreateAddressCommandHandler(IAdressRepository AddressRepository, IMapper mapper)
         {
             _AddressRepository = AddressRepository;
             _mapper = mapper;
@@ -30,7 +33,7 @@ namespace ECX.HR.Application.CQRS.Address.Handler.Command
         public async Task<BaseCommandResponse> Handle(CreateAddressCommand request, CancellationToken cancellationToken)
         {
             response = new BaseCommandResponse();
-            var validator =new AddressDtoValidator();
+            var validator =new AdressDtoValidator();
             var validationResult =await validator.ValidateAsync(request.AddressDto);
             
             if(validationResult.IsValid == false)
@@ -40,7 +43,7 @@ namespace ECX.HR.Application.CQRS.Address.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var Address = _mapper.Map<Address>(request.AddressDto);
+            var Address = _mapper.Map<Adress>(request.AddressDto);
             var data =await _AddressRepository.Add(Address);
             response.Success = true;
             response.Message = "Creation Successfull";

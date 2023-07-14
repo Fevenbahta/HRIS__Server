@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Employee.Request.Queries;
-using ECX.HR.Application.DTOs.Employee;
 
+using ECX.HR.Application.DTOs.Employees;
 using MediatR;
 using System;
 using System.Collections.Generic;

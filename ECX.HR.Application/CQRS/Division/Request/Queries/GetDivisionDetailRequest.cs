@@ -10,6 +10,6 @@ namespace ECX.HR.Application.CQRS.Division.Request.Queries
 {
     public class GetDivisionDetailRequest :IRequest<DivisionDto>
     {
-        public int Id { get; set; }
+        public Guid DivisionId { get; set; }
     }
 }

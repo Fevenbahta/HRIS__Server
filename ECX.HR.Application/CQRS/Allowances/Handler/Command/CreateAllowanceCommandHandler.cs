@@ -1,10 +1,7 @@
 ﻿using AutoMapper;
-using ECX.HR.Application.Contracts.Persistent;
-using ECX.HR.Application.CQRS.Allowance.Request.Command;
-using ECX.HR.Application.DTOs.Allowance;
-using ECX.HR.Application.DTOs.Allowance.Validators;
-using ECX.HR.Application.Exceptions;
-
+using ECX.HR.Application.Contracts.Persistence;
+using ECX.HR.Application.CQRS.Allowances.Request.Command;
+using ECX.HR.Application.DTOs.Allowances.Validator;
 using ECX.HR.Application.Response;
 using ECX.HR.Domain;
 using MediatR;
@@ -20,9 +17,9 @@ namespace ECX.HR.Application.CQRS.Allowances.Handler.Command
     public class CreateAllowanceCommandHandler : IRequestHandler<CreateAllowanceCommand, BaseCommandResponse>
     {
         BaseCommandResponse response;
-        private IAllowanceRepository _AllowanceRepository;
+        private IAllwoanceRepository _AllowanceRepository;
         private IMapper _mapper;
-        public CreateAllowanceCommandHandler(IAllowanceRepository AllowanceRepository, IMapper mapper)
+        public CreateAllowanceCommandHandler(IAllwoanceRepository AllowanceRepository, IMapper mapper)
         {
             _AllowanceRepository = AllowanceRepository;
             _mapper = mapper;
@@ -30,7 +27,7 @@ namespace ECX.HR.Application.CQRS.Allowances.Handler.Command
         public async Task<BaseCommandResponse> Handle(CreateAllowanceCommand request, CancellationToken cancellationToken)
         {
             response = new BaseCommandResponse();
-            var validator =new AllowanceDtoValidator();
+            var validator =new AlowanceValidator();
             var validationResult =await validator.ValidateAsync(request.AllowanceDto);
             
             if(validationResult.IsValid == false)
@@ -40,7 +37,7 @@ namespace ECX.HR.Application.CQRS.Allowances.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var Allowance = _mapper.Map<Allowance>(request.AllowanceDto);
+            var Allowance = _mapper.Map<Allowancee>(request.AllowanceDto);
             var data =await _AllowanceRepository.Add(Allowance);
             response.Success = true;
             response.Message = "Creation Successfull";

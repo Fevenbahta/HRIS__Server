@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.DepositAutorization.Request.Command;
-using ECX.HR.Application.DTOs.DepositAutorization.Validators;
+
+using ECX.HR.Application.DTOs.DepositAutorizations.Validator;
 using ECX.HR.Application.Exceptions;
 
 using MediatR;

@@ -8,14 +8,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ECX.HR.Application.Contracts.Persistence;
 
 namespace ECX.HR.Application.CQRS.Addresss.Handler.Command
 {
     public class DeleteAddressCommandHandler : IRequestHandler<DeleteAddressCommand>
     {
-        private IAddressRepository _AddressRepository;
+        private IAdressRepository _AddressRepository;
         private IMapper _mapper;
-        public DeleteAddressCommandHandler(IAddressRepository AddressRepository, IMapper mapper)
+        public DeleteAddressCommandHandler(IAdressRepository AddressRepository, IMapper mapper)
         {
             _AddressRepository = AddressRepository;
             _mapper = mapper;

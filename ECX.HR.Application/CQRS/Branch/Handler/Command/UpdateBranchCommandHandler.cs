@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Branch.Request.Command;
-using ECX.HR.Application.DTOs.Branch.Validators;
+
+using ECX.HR.Application.DTOs.Branchs.Validator;
 using ECX.HR.Application.Exceptions;
 
 using MediatR;
@@ -25,7 +27,7 @@ namespace ECX.HR.Application.CQRS.Branch.Handler.Command
 
         public async Task<Unit> Handle(UpdateBranchCommand request, CancellationToken cancellationToken)
         {
-            var validator = new BranchDtoValidator();
+            var validator = new BranchValidator();
             var validationResult = await validator.ValidateAsync(request.BranchDto);
             if (validationResult.IsValid == false)
                 throw new ValidationException(validationResult);

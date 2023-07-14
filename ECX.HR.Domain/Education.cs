@@ -21,6 +21,6 @@ namespace ECX.HR.Domain
         
         public string EductionName { get; set; }
 
-        public virtual Employee Employees { get; set; }
+        public virtual Employees Employees { get; set; }
     }
 }

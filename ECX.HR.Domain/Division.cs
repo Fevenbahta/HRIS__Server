@@ -10,6 +10,7 @@ namespace ECX.HR.Domain
 {
     public class Division : BaseDomainEntity
     {
+
         public Guid DivisionId { get; set; }
          public string Name { get; set; }
 

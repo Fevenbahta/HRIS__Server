@@ -1,4 +1,5 @@
-﻿using ECX.HR.Application.Contracts.Persistent;
+﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Domain;
 using System;
 using System.Collections.Generic;
@@ -10,5 +11,7 @@ namespace ECX.HR.Application.Contracts.Persistence
 {
     public interface IDivisionRepository : IGenericRepository<Division>
     {
+        Task<Action<IMappingOperationOptions<object, void>>> GetById(Guid divisionId);
+        Task Update(Action<IMappingOperationOptions<object, void>> division);
     }
 }

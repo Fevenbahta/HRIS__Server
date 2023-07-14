@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Employee.Request.Command;
-using ECX.HR.Application.DTOs.Employee.Validators;
+using ECX.HR.Application.DTOs.Employees.Validator;
 using ECX.HR.Application.Exceptions;
 
 using MediatR;
@@ -25,7 +26,7 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
 
         public async Task<Unit> Handle(UpdateEmployeeCommand request, CancellationToken cancellationToken)
         {
-            var validator = new EmployeeDtoValidator();
+            var validator = new EmployeeDtoValidators();
             var validationResult = await validator.ValidateAsync(request.EmployeeDto);
             if (validationResult.IsValid == false)
                 throw new ValidationException(validationResult);

@@ -8,14 +8,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ECX.HR.Application.CQRS.Allowances.Request.Command;
+using ECX.HR.Application.Contracts.Persistence;
 
 namespace ECX.HR.Application.CQRS.Allowance.Handler.Command
 {
     public class DeleteAllowanceCommandHandler : IRequestHandler<DeleteAllowanceCommand>
     {
-        private IAllowanceRepository _AllowanceRepository;
+        private IAllwoanceRepository _AllowanceRepository;
         private IMapper _mapper;
-        public DeleteAllowanceCommandHandler(IAllowanceRepository AllowanceRepository, IMapper mapper)
+        public DeleteAllowanceCommandHandler(IAllwoanceRepository AllowanceRepository, IMapper mapper)
         {
             _AllowanceRepository = AllowanceRepository;
             _mapper = mapper;

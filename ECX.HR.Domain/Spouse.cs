@@ -12,12 +12,12 @@ namespace ECX.HR.Domain
     {
        
         public Guid EmpId { get; set; }
-        public Employee Employee { get; set; }
+        public Employees Employee { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string Relationship { get; set; }
-        public virtual Employee Employees { get; set; } 
+        public virtual Employees Employees { get; set; } 
 
     }
 }

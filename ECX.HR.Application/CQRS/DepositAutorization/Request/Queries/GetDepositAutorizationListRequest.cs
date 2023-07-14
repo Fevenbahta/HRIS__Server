@@ -1,5 +1,5 @@
-﻿using ECX.HR.Application.DTOs.DepositAutorization;
-
+﻿
+using ECX.HR.Application.DTOs.DepositAutorizations;
 using MediatR;
 using System;
 using System.Collections.Generic;

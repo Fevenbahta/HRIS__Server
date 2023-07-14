@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.DepositAutorization.Request.Command;
-using ECX.HR.Application.DTOs.DepositAutorization;
-using ECX.HR.Application.DTOs.DepositAutorization.Validators;
+
+using ECX.HR.Application.DTOs.DepositAutorizations.Validator;
 using ECX.HR.Application.Exceptions;
 
 using ECX.HR.Application.Response;
@@ -40,7 +41,7 @@ namespace ECX.HR.Application.CQRS.DepositAutorization.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var DepositAutorization = _mapper.Map<DepositAutorization>(request.DepositAutorizationDto);
+            var DepositAutorization = _mapper.Map<DepositAutorizations>(request.DepositAutorizationDto);
             var data =await _DepositAutorizationRepository.Add(DepositAutorization);
             response.Success = true;
             response.Message = "Creation Successfull";

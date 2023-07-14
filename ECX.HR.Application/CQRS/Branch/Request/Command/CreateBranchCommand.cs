@@ -1,4 +1,5 @@
-﻿using ECX.HR.Application.DTOs.Branch;
+﻿
+using ECX.HR.Application.DTOs.Branchs;
 using ECX.HR.Application.Response;
 using MediatR;
 using System;

@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Division.Request.Command;
 using ECX.HR.Application.DTOs.Division;
-using ECX.HR.Application.DTOs.Division.Validators;
+using ECX.HR.Application.DTOs.Division.Validator;
+
 using ECX.HR.Application.Exceptions;
 
 using ECX.HR.Application.Response;
@@ -30,7 +32,7 @@ namespace ECX.HR.Application.CQRS.Division.Handler.Command
         public async Task<BaseCommandResponse> Handle(CreateDivisionCommand request, CancellationToken cancellationToken)
         {
             response = new BaseCommandResponse();
-            var validator =new DivisionDtoValidator();
+            var validator =new DivisionValidator();
             var validationResult =await validator.ValidateAsync(request.DivisionDto);
             
             if(validationResult.IsValid == false)
@@ -40,7 +42,7 @@ namespace ECX.HR.Application.CQRS.Division.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var Division = _mapper.Map<Division>(request.DivisionDto);
+            var Division = _mapper.Map<Divisions>(request.DivisionDto);
             var data =await _DivisionRepository.Add(Division);
             response.Success = true;
             response.Message = "Creation Successfull";

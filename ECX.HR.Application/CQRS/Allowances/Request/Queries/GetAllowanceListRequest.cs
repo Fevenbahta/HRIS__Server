@@ -1,4 +1,5 @@
-﻿using ECX.HR.Application.DTOs.Allowance;
+﻿
+using ECX.HR.Application.DTOs.Allowances.cs;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -8,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.CQRS.Allowance.Request.Queries
 {
-    public class GetAllowanceDetailRequest :IRequest<AllowanceDto>
+    public class GetAllowanceListRequest :IRequest<List<AllowanceDto>>
     {
-        public int Id { get; set; }
+       
     }
 }

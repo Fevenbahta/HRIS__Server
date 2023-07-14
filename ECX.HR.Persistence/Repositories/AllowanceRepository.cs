@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Persistence.Repositories
 {
-    public class AllowanceRepository : GenericRepository<Allowance>, IAllwoanceRepository
+    public class AllowanceRepository : GenericRepository<Allowancee>, IAllwoanceRepository
     {
         private readonly ECXHRDbContext context;
 

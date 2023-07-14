@@ -13,7 +13,7 @@ namespace ECX.HR.Domain
         
         public Guid EmpId { get; set; }
         public int id { get; set; }
-        public Employee Employee { get; set; }
+        public Employees Employee { get; set; }
         public string Name { get; set; }    
         public string Town { get; set; }
         public string Region { get; set; }
@@ -21,11 +21,11 @@ namespace ECX.HR.Domain
         public string SubCity { get; set; }
         public string Kebele { get; set; }
         public string HouseNo { get; set; }
-        public string PhoneNumber { get; set; }
+        public int PhoneNumber { get; set; }
         
         public string Relationship { get; set; }
 
-        public virtual Employee Employees { get; set; }
+        public virtual Employees Employees { get; set; }
         
     }
 }
