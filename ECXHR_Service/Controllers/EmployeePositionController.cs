@@ -1,5 +1,5 @@
 ﻿
-using ECX.HR.Application.DTOs.EmployeePosition;
+using ECX.HR.Application.CQRS.Departments.Request.Queries;
 using ECX.HR.Application.Features.Address.Request.Command;
 using ECX.HR.Application.Features.Address.Request.Queries;
 using ECX.HR.Application.Response;
