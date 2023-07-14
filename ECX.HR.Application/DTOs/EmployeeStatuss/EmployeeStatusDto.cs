@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECX.HR.Application.DTOs.EmployeeStatuss
+namespace ECX.HR.Application.DTOs.OrganizationalProfiles
 {
     public class EmployeeStatusDto
     {

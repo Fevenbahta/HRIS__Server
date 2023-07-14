@@ -13,6 +13,6 @@ namespace ECX.HR.Application.DTOs.Levels
         public int posId { get; set; }
        
         public Guid LevelID { get; set; }
-        public string name { get; set; }
+        public string Name { get; set; }
     }
 }
