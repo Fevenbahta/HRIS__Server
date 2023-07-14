@@ -1,9 +1,11 @@
 ﻿
 using ECX.HR.Application.CQRS.Departments.Request.Queries;
-using ECX.HR.Application.Features.Address.Request.Command;
-using ECX.HR.Application.Features.Address.Request.Queries;
+using ECX.HR.Application.CQRS.EmployeePosition.Request.Command;
+using ECX.HR.Application.CQRS.EmployeePosition.Request.Queries;
+using ECX.HR.Application.DTOs.EmployeePositions;
+using ECX.HR.Application.Models;
 using ECX.HR.Application.Response;
-using HRMsystem.Application.Features.Address.Request.Command;
+
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -29,15 +31,15 @@ namespace ECXHR_Service.Controllers
         [HttpGet]
         public async Task<ActionResult<List<EmployeePositionDto>>> Get()
         {
-            var EmployeePosition = await _mediator.Send(new GetEmployeePositionRequest());
+            var EmployeePosition = await _mediator.Send(new GetEmployeePositionListRequest());
             return Ok(EmployeePosition);
         }
 
         // GET api/<EmployeePositionController>/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<EmployeePositionDto>> Get(int id)
+        [HttpGet("{EmpId}")]
+        public async Task<ActionResult<EmployeePositionDto>> Get(Guid EmpId)
         {
-            var EmployeePosition = await _mediator.Send(new GetEmployeePositionDetailRequest { Id = id });
+            var EmployeePosition = await _mediator.Send(new GetEmployeePositionDetailRequest { Id = EmpId });
             return Ok(EmployeePosition);
         }
 
@@ -53,7 +55,7 @@ namespace ECXHR_Service.Controllers
         }
 
         // PUT api/<EmployeePositionController>/5
-        [HttpPut("{id}")]
+        [HttpPut("{EmpId}")]
 
 
         public async Task<ActionResult> Put([FromBody] EmployeePositionDto EmployeePosition)
@@ -63,11 +65,11 @@ namespace ECXHR_Service.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{EmpId}")]
 
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(Guid EmpId)
         {
-            var command = new DeleteEmployeePositionCommand { Id = id };
+            var command = new DeleteEmployeePositionCommand { EmpId = EmpId };
             await _mediator.Send(command);
             return NoContent();
         }

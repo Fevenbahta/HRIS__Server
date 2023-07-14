@@ -14,7 +14,7 @@ namespace ECX.HR.Domain
         public string Name { get; set; }
 
         public Guid LevelId { get; set; }
-        public virtual Level Levels { get; set; }
+        public virtual Levels Levels { get; set; }
 
     }
 }

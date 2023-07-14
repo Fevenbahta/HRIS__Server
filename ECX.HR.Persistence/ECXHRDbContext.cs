@@ -55,7 +55,7 @@ namespace ECX.HR.Persistence
             .WithOne(ex => ex.Divisions)
             .HasForeignKey(e => e.DivisionId);
 
-            modelBuilder.Entity<Level>()
+            modelBuilder.Entity<Levels>()
             .HasMany(e => e.Steps)
             .WithOne(ex => ex.Levels)
             .HasForeignKey(e => e.LevelId);
@@ -93,10 +93,10 @@ namespace ECX.HR.Persistence
         public DbSet<EducationLevel> eduactionLevel { get; set; }
         public DbSet<EmergencyContact> emergencyContact { get; set; }
         public DbSet<Employees> employee { get; set; }
-        public DbSet<EmployeePosition> employeePosition { get; set; }
+        public DbSet<EmployeePositions> employeePosition { get; set; }
         public DbSet<EmployeeStatus> emploeeStatus { get; set; }
-        public DbSet<Level> level { get; set; }
-        public DbSet<Position> job { get; set; }
+        public DbSet<Levels> level { get; set; }
+        public DbSet<Positions> job { get; set; }
        
         public DbSet<Salary> salary { get; set; }
         public DbSet<Spouse> spouse { get; set; }

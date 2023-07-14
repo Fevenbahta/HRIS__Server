@@ -1,4 +1,5 @@
 ﻿using ECX.HR.Application.DTOs.OrganizationalProfile;
+using ECX.HR.Application.DTOs.OrganizationalProfiles;
 using ECX.HR.Application.Response;
 using MediatR;
 using System;

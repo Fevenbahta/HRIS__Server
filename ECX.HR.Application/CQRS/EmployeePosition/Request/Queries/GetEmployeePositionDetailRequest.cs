@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.CQRS.Departments.Request.Queries
 {
-    public class GetDepartmentDetailRequest :IRequest<DepartmentDto>
+    public class GetEmployeePositionDetailRequest : IRequest<DepartmentDto>
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

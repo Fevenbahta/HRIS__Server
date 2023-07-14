@@ -9,6 +9,6 @@ namespace ECX.HR.Application.CQRS.OrganizationalProfile.Request.Command
 {
     public class DeleteOrganizationalProfileCommand : IRequest
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

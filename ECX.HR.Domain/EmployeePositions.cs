@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Domain
 {
-    public  class EmployeePosition 
+    public  class EmployeePositions 
     {
         [ForeignKey("Employee")]
         public Guid EmpId { get; set; }

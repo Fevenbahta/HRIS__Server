@@ -1,9 +1,11 @@
 ﻿
+using ECX.HR.Application.CQRS.OrganizationalProfile.Request.Command;
+using ECX.HR.Application.CQRS.OrganizationalProfile.Request.Queries;
 using ECX.HR.Application.DTOs.OrganizationalProfile;
-using ECX.HR.Application.Features.Address.Request.Command;
-using ECX.HR.Application.Features.Address.Request.Queries;
+using ECX.HR.Application.DTOs.OrganizationalProfiles;
 using ECX.HR.Application.Response;
-using HRMsystem.Application.Features.Address.Request.Command;
+
+
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -29,13 +31,13 @@ namespace ECXHR_Service.Controllers
         [HttpGet]
         public async Task<ActionResult<List<OrganizationalProfileDto>>> Get()
         {
-            var OrganizationalProfile = await _mediator.Send(new GetOrganizationalProfileRequest());
+            var OrganizationalProfile = await _mediator.Send(new GetOrganizationalProfileListRequest());
             return Ok(OrganizationalProfile);
         }
 
         // GET api/<OrganizationalProfileController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<OrganizationalProfileDto>> Get(int id)
+        public async Task<ActionResult<OrganizationalProfileDto>> Get(Guid id)
         {
             var OrganizationalProfile = await _mediator.Send(new GetOrganizationalProfileDetailRequest { Id = id });
             return Ok(OrganizationalProfile);
@@ -65,7 +67,7 @@ namespace ECXHR_Service.Controllers
 
         [HttpDelete("{id}")]
 
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(Guid id)
         {
             var command = new DeleteOrganizationalProfileCommand { Id = id };
             await _mediator.Send(command);

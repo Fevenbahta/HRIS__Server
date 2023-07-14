@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.Contracts.Persistence
 {
-    public interface IPositionRepository : IGenericRepository<Position>
+    public interface IPositionRepository : IGenericRepository<Positions>
     {
+        Task<Positions> GetById(Guid id);
     }
 }

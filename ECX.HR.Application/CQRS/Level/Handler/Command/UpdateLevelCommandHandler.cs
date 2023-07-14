@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Level.Request.Command;
-using ECX.HR.Application.DTOs.Level.Validators;
+using ECX.HR.Application.DTOs.Levels.Validator;
 using ECX.HR.Application.Exceptions;
 
 using MediatR;
@@ -25,11 +26,11 @@ namespace ECX.HR.Application.CQRS.Level.Handler.Command
 
         public async Task<Unit> Handle(UpdateLevelCommand request, CancellationToken cancellationToken)
         {
-            var validator = new LevelDtoValidator();
+            var validator = new LevelDtoValidators();
             var validationResult = await validator.ValidateAsync(request.LevelDto);
             if (validationResult.IsValid == false)
                 throw new ValidationException(validationResult);
-            var Level = await _LevelRepository.GetById(request.LevelDto.Id);
+            var Level = await _LevelRepository.GetById(request.LevelDto.LevelID);
             _mapper.Map(request.LevelDto, Level);
             await _LevelRepository.Update(Level);
             return Unit.Value;

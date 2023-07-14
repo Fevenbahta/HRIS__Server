@@ -1,7 +1,9 @@
 ﻿
-using ECX.HR.Application.DTOs.Employee;
+using ECX.HR.Application.CQRS.Employee.Request.Command;
+using ECX.HR.Application.CQRS.Employee.Request.Queries;
+using ECX.HR.Application.DTOs.Employees;
 using ECX.HR.Application.Response;
-using HRMsystem.Application.Features.Address.Request.Command;
+
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -27,13 +29,13 @@ namespace ECXHR_Service.Controllers
         [HttpGet]
         public async Task<ActionResult<List<EmployeeDto>>> Get()
         {
-            var Employee = await _mediator.Send(new GetEmployeeRequest());
+            var Employee = await _mediator.Send(new GetEmployeeListRequest());
             return Ok(Employee);
         }
 
         // GET api/<EmployeeController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<EmployeeDto>> Get(int id)
+        public async Task<ActionResult<EmployeeDto>> Get(Guid id)
         {
             var Employee = await _mediator.Send(new GetEmployeeDetailRequest { Id = id });
             return Ok(Employee);
@@ -63,7 +65,7 @@ namespace ECXHR_Service.Controllers
 
         [HttpDelete("{id}")]
 
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(Guid id)
         {
             var command = new DeleteEmployeeCommand { Id = id };
             await _mediator.Send(command);

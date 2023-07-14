@@ -9,11 +9,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ECX.HR.Domain
 {
-    public class Level :BaseDomainEntity
+    public class Levels :BaseDomainEntity
     {
         [ForeignKey("Position")]
         public int posId { get; set; }
-        public Position position { get; set; }
+        public Positions position { get; set; }
         public Guid LevelID { get; set; }    
         public string name { get; set; }
 

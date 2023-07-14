@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.Contracts.Persistence
 {
-    public interface IOrganizationalProfileRepository : IGenericRepository<OrganizationalProfile>
+    public interface IOrganizationalProfileRepository : IGenericRepository<OrganizationalProfiles>
     {
     }
 }

@@ -18,6 +18,6 @@ namespace ECX.HR.Domain
         public Guid DepartmentId { get; set; }
         public virtual Department Departments {  get; set; }    
 
-        public ICollection<Position> Positions { get; set; }
+        public ICollection<Positions> Positions { get; set; }
     }
 }

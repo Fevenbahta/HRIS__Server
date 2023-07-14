@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using ECX.HR.Application.Contracts.Persistence;
-using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Employee.Request.Command;
 using ECX.HR.Application.DTOs.Employees.Validator;
 using ECX.HR.Application.Exceptions;

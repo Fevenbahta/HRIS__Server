@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Domain
 {
-    public class OrganizationalProfile
+    public class OrganizationalProfiles
     {
         public int Id { get; set; } 
         public string Name { get; set; }

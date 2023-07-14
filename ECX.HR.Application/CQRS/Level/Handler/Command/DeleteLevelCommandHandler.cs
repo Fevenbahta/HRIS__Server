@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ECX.HR.Application.Contracts.Persistence;
 
 namespace ECX.HR.Application.CQRS.Level.Handler.Command
 {
@@ -23,16 +24,16 @@ namespace ECX.HR.Application.CQRS.Level.Handler.Command
 
         public async Task<Unit> Handle(DeleteLevelCommand request, CancellationToken cancellationToken)
         {
-            var Level = await _LevelRepository.GetById(request.Id);
+            var Level = await _LevelRepository.GetById(request.LevelID);
             await _LevelRepository.Delete(Level);
             return Unit.Value;
         }
 
         async Task IRequestHandler<DeleteLevelCommand>.Handle(DeleteLevelCommand request, CancellationToken cancellationToken)
         {
-            var Level = await _LevelRepository.GetById(request.Id);
+            var Level = await _LevelRepository.GetById(request.LevelID);
             if(Level == null) 
-                throw new NotFoundException(nameof(Level), request.Id);
+                throw new NotFoundException(nameof(Level), request.LevelID);
             await _LevelRepository.Delete(Level);
         }
     }

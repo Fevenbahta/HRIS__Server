@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Domain
 {
-    public class Position :BaseDomainEntity
+    public class Positions :BaseDomainEntity
     {
         
         public Guid PositionId { get; set; }

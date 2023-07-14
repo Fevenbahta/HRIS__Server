@@ -3,6 +3,7 @@ using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.CQRS.EmployeePosition.Request.Command;
 using ECX.HR.Application.DTOs.EmployeePositions.Validator;
 using ECX.HR.Application.Response;
+using ECX.HR.Domain;
 using MediatR;
 using Microsoft.VisualBasic;
 using System;
@@ -36,7 +37,7 @@ namespace ECX.HR.Application.CQRS.EmployeePosition.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var EmployeePosition = _mapper.Map<EmployeePosition>(request.EmployeePositionDto);
+            var EmployeePosition = _mapper.Map<EmployeePositions>(request.EmployeePositionDto);
             var data =await _EmployeePositionRepository.Add(EmployeePosition);
             response.Success = true;
             response.Message = "Creation Successfull";

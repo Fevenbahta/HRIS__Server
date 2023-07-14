@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
-using ECX.HR.Application.Contracts.Persistent;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.CQRS.Level.Request.Command;
-using ECX.HR.Application.DTOs.Level;
-using ECX.HR.Application.DTOs.Level.Validators;
+using ECX.HR.Application.DTOs.Levels.Validator;
 using ECX.HR.Application.Exceptions;
 
 using ECX.HR.Application.Response;
@@ -30,7 +29,7 @@ namespace ECX.HR.Application.CQRS.Level.Handler.Command
         public async Task<BaseCommandResponse> Handle(CreateLevelCommand request, CancellationToken cancellationToken)
         {
             response = new BaseCommandResponse();
-            var validator =new LevelDtoValidator();
+            var validator =new LevelDtoValidators();
             var validationResult =await validator.ValidateAsync(request.LevelDto);
             
             if(validationResult.IsValid == false)
@@ -40,7 +39,7 @@ namespace ECX.HR.Application.CQRS.Level.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var Level = _mapper.Map<Level>(request.LevelDto);
+            var Level = _mapper.Map<Levels>(request.LevelDto);
             var data =await _LevelRepository.Add(Level);
             response.Success = true;
             response.Message = "Creation Successfull";
