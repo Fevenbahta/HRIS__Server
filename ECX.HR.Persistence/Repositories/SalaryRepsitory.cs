@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Persistence.Repositories
 {
-    public class SalaryRepsitory : GenericRepository<Salary>, ISalaryRepository
+    public class SalaryRepsitory : GenericRepository<Salarys>, ISalaryRepository
     {
         private readonly ECXHRDbContext _context;
 

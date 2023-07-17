@@ -14,7 +14,7 @@ namespace ECX.HR.Application.Contracts.Persistent
         Task<T> Add(T entity);
         Task Update(T entity);
         Task Delete(T entity);
-        IEnumerable<T> Find(Expression<Func<T, bool>> expression);
-        Task<bool> Exists(int id);
+        //IEnumerable<T> Find(Expression<Func<T, bool>> expression);
+        Task<bool> Exists(Guid id);
     }
 }

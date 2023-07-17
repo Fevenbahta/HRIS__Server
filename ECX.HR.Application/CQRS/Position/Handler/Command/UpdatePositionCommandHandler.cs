@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using ECX.HR.Application.Contracts.Persistent;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.CQRS.Position.Request.Command;
-using ECX.HR.Application.DTOs.Position.Validators;
+using ECX.HR.Application.DTOs.Positions.Validator;
 using ECX.HR.Application.Exceptions;
 
 using MediatR;
@@ -25,11 +25,11 @@ namespace ECX.HR.Application.CQRS.Position.Handler.Command
 
         public async Task<Unit> Handle(UpdatePositionCommand request, CancellationToken cancellationToken)
         {
-            var validator = new PositionDtoValidator();
+            var validator = new PositionDtoValidators();
             var validationResult = await validator.ValidateAsync(request.PositionDto);
             if (validationResult.IsValid == false)
                 throw new ValidationException(validationResult);
-            var Position = await _PositionRepository.GetById(request.PositionDto.Id);
+            var Position = await _PositionRepository.GetById(request.PositionDto.PositionId);
             _mapper.Map(request.PositionDto, Position);
             await _PositionRepository.Update(Position);
             return Unit.Value;

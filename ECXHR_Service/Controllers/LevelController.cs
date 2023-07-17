@@ -37,7 +37,7 @@ namespace ECXHR_Service.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<LevelDto>> Get(Guid id)
         {
-            var Level = await _mediator.Send(new GetLevelDetailRequest { Id = id });
+            var Level = await _mediator.Send(new GetLevelDetailRequest { LevelId = id });
             return Ok(Level);
         }
 
@@ -67,7 +67,7 @@ namespace ECXHR_Service.Controllers
 
         public async Task<ActionResult> Delete(Guid id)
         {
-            var command = new DeleteLevelCommand { Id = id };
+            var command = new DeleteLevelCommand { LevelId = id };
             await _mediator.Send(command);
             return NoContent();
         }

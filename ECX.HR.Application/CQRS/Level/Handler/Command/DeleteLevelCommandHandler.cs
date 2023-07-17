@@ -24,16 +24,16 @@ namespace ECX.HR.Application.CQRS.Level.Handler.Command
 
         public async Task<Unit> Handle(DeleteLevelCommand request, CancellationToken cancellationToken)
         {
-            var Level = await _LevelRepository.GetById(request.Id);
+            var Level = await _LevelRepository.GetById(request.LevelId);
             await _LevelRepository.Delete(Level);
             return Unit.Value;
         }
 
         async Task IRequestHandler<DeleteLevelCommand>.Handle(DeleteLevelCommand request, CancellationToken cancellationToken)
         {
-            var Level = await _LevelRepository.GetById(request.Id);
+            var Level = await _LevelRepository.GetById(request.LevelId);
             if(Level == null) 
-                throw new NotFoundException(nameof(Level), request.Id);
+                throw new NotFoundException(nameof(Level), request.LevelId);
             await _LevelRepository.Delete(Level);
         }
     }

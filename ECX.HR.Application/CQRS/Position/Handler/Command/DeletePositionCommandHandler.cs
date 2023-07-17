@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ECX.HR.Application.Contracts.Persistence;
 
 namespace ECX.HR.Application.CQRS.Position.Handler.Command
 {
@@ -23,16 +24,16 @@ namespace ECX.HR.Application.CQRS.Position.Handler.Command
 
         public async Task<Unit> Handle(DeletePositionCommand request, CancellationToken cancellationToken)
         {
-            var Position = await _PositionRepository.GetById(request.Id);
+            var Position = await _PositionRepository.GetById(request.PositionId);
             await _PositionRepository.Delete(Position);
             return Unit.Value;
         }
 
         async Task IRequestHandler<DeletePositionCommand>.Handle(DeletePositionCommand request, CancellationToken cancellationToken)
         {
-            var Position = await _PositionRepository.GetById(request.Id);
+            var Position = await _PositionRepository.GetById(request.PositionId);
             if(Position == null) 
-                throw new NotFoundException(nameof(Position), request.Id);
+                throw new NotFoundException(nameof(Position), request.PositionId);
             await _PositionRepository.Delete(Position);
         }
     }

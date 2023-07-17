@@ -15,9 +15,6 @@ namespace ECX.HR.Application.DTOs.Division.Validator
             RuleFor(p => p.Name)
                     .NotEmpty().WithMessage("{PropertyName} is requiered.")
                     .NotNull();
-            RuleFor(p => p.Name)
-                  .NotEmpty().WithMessage("{PropertyName} is requiered.")
-                  .NotNull();
         }
     }
 }

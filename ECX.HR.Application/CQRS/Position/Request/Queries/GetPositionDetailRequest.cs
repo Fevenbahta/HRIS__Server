@@ -1,4 +1,5 @@
-﻿using ECX.HR.Application.DTOs.Position;
+﻿
+using ECX.HR.Application.DTOs.Positions;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,6 @@ namespace ECX.HR.Application.CQRS.Position.Request.Queries
 {
     public class GetPositionDetailRequest :IRequest<PositionDto>
     {
-        public int Id { get; set; }
+        public Guid PositionId { get; set; }
     }
 }

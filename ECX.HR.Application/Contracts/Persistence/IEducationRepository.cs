@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.Contracts.Persistence
 {
-    public interface IEducationRepository : IGenericRepository<Education>
+    public interface IEducationRepository : IGenericRepository<Educations>
     {
     }
 }

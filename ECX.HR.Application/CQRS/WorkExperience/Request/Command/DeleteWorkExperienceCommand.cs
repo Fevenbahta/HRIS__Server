@@ -9,6 +9,6 @@ namespace ECX.HR.Application.CQRS.WorkExperience.Request.Command
 {
     public class DeleteWorkExperienceCommand : IRequest
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

@@ -3,8 +3,7 @@ using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Addresss.Request.Command;
 using ECX.HR.Application.CQRS.Departments.Request.Command;
-using ECX.HR.Application.DTOs.Address;
-using ECX.HR.Application.DTOs.Address.Validators;
+
 using ECX.HR.Application.DTOs.Addresss.Validator;
 using ECX.HR.Application.Exceptions;
 

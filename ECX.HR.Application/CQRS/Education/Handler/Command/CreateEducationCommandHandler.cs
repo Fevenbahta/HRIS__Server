@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Education.Request.Command;
-using ECX.HR.Application.DTOs.Education;
-using ECX.HR.Application.DTOs.Education.Validators;
+using ECX.HR.Application.DTOs.Education.Validator;
 using ECX.HR.Application.Exceptions;
 
 using ECX.HR.Application.Response;
@@ -30,7 +30,7 @@ namespace ECX.HR.Application.CQRS.Education.Handler.Command
         public async Task<BaseCommandResponse> Handle(CreateEducationCommand request, CancellationToken cancellationToken)
         {
             response = new BaseCommandResponse();
-            var validator =new EducationDtoValidator();
+            var validator =new EducationValidator();
             var validationResult =await validator.ValidateAsync(request.EducationDto);
             
             if(validationResult.IsValid == false)
@@ -40,7 +40,7 @@ namespace ECX.HR.Application.CQRS.Education.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var Education = _mapper.Map<Education>(request.EducationDto);
+            var Education = _mapper.Map<Educations>(request.EducationDto);
             var data =await _EducationRepository.Add(Education);
             response.Success = true;
             response.Message = "Creation Successfull";

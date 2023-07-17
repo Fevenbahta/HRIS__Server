@@ -30,7 +30,7 @@ namespace ECX.HR.Application.CQRS.Salary.Handler.Command
             var validationResult = await validator.ValidateAsync(request.SalaryDto);
             if (validationResult.IsValid == false)
                 throw new ValidationException(validationResult);
-            var Salary = await _SalaryRepository.GetById(request.SalaryDto.Id);
+            var Salary = await _SalaryRepository.GetById(request.SalaryDto.EmpId);
             _mapper.Map(request.SalaryDto, Salary);
             await _SalaryRepository.Update(Salary);
             return Unit.Value;

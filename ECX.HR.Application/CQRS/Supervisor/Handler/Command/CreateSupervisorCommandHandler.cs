@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Supervisor.Request.Command;
-using ECX.HR.Application.DTOs.Supervisor;
-using ECX.HR.Application.DTOs.Supervisor.Validators;
+
+using ECX.HR.Application.DTOs.Supervisors.Validator;
 using ECX.HR.Application.Exceptions;
 
 using ECX.HR.Application.Response;
@@ -20,9 +21,9 @@ namespace ECX.HR.Application.CQRS.Supervisor.Handler.Command
     public class CreateSupervisorCommandHandler : IRequestHandler<CreateSupervisorCommand, BaseCommandResponse>
     {
         BaseCommandResponse response;
-        private ISupervisorRepository _SupervisorRepository;
+        private ISupervisiorRepository _SupervisorRepository;
         private IMapper _mapper;
-        public CreateSupervisorCommandHandler(ISupervisorRepository SupervisorRepository, IMapper mapper)
+        public CreateSupervisorCommandHandler(ISupervisiorRepository SupervisorRepository, IMapper mapper)
         {
             _SupervisorRepository = SupervisorRepository;
             _mapper = mapper;
@@ -40,7 +41,7 @@ namespace ECX.HR.Application.CQRS.Supervisor.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var Supervisor = _mapper.Map<Supervisor>(request.SupervisorDto);
+            var Supervisor = _mapper.Map<Supervisors>(request.SupervisorDto);
             var data =await _SupervisorRepository.Add(Supervisor);
             response.Success = true;
             response.Message = "Creation Successfull";

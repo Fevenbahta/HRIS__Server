@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Domain
 {
-    public class Education : BaseDomainEntity
+    public class Educations : BaseDomainEntity
     {
         
         public Guid EmpId { get; set; }

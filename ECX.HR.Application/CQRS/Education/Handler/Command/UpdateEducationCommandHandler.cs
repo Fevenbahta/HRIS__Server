@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Education.Request.Command;
-using ECX.HR.Application.DTOs.Education.Validators;
+using ECX.HR.Application.DTOs.Education.Validator;
+
 using ECX.HR.Application.Exceptions;
 
 using MediatR;
@@ -25,7 +27,7 @@ namespace ECX.HR.Application.CQRS.Education.Handler.Command
 
         public async Task<Unit> Handle(UpdateEducationCommand request, CancellationToken cancellationToken)
         {
-            var validator = new EducationDtoValidator();
+            var validator = new EducationValidator();
             var validationResult = await validator.ValidateAsync(request.EducationDto);
             if (validationResult.IsValid == false)
                 throw new ValidationException(validationResult);

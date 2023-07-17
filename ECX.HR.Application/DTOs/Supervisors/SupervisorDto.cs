@@ -9,7 +9,7 @@ namespace ECX.HR.Application.DTOs.Supervisors
 {
     public class SupervisorDto : BaseDtos
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string AdId { get; set; }
         public string Name { get; set; }
 

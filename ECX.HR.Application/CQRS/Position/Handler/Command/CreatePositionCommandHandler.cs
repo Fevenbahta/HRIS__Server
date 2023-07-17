@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Position.Request.Command;
-using ECX.HR.Application.DTOs.Position;
-using ECX.HR.Application.DTOs.Position.Validators;
+using ECX.HR.Application.DTOs.Positions.Validator;
 using ECX.HR.Application.Exceptions;
 
 using ECX.HR.Application.Response;
@@ -30,7 +30,7 @@ namespace ECX.HR.Application.CQRS.Position.Handler.Command
         public async Task<BaseCommandResponse> Handle(CreatePositionCommand request, CancellationToken cancellationToken)
         {
             response = new BaseCommandResponse();
-            var validator =new PositionDtoValidator();
+            var validator =new PositionDtoValidators();
             var validationResult =await validator.ValidateAsync(request.PositionDto);
             
             if(validationResult.IsValid == false)
@@ -40,7 +40,7 @@ namespace ECX.HR.Application.CQRS.Position.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var Position = _mapper.Map<Position>(request.PositionDto);
+            var Position = _mapper.Map<Positions>(request.PositionDto);
             var data =await _PositionRepository.Add(Position);
             response.Success = true;
             response.Message = "Creation Successfull";

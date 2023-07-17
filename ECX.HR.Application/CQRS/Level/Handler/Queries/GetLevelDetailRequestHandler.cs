@@ -2,7 +2,6 @@
 using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Level.Request.Queries;
-
 using ECX.HR.Application.DTOs.Levels;
 using MediatR;
 using System;
@@ -24,7 +23,7 @@ namespace ECX.HR.Application.CQRS.Level.Handler.Queries
         }
         public async Task<LevelDto> Handle(GetLevelDetailRequest request, CancellationToken cancellationToken)
         {
-            var Level =await _LevelRepository.GetById(request.Id);
+            var Level =await _LevelRepository.GetById(request.LevelId);
             return _mapper.Map<LevelDto>(request);
         }
     }

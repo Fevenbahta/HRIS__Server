@@ -4,7 +4,7 @@ using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Salary.Request.Command;
 using ECX.HR.Application.DTOs.Salary;
 using ECX.HR.Application.DTOs.Salary.Validator;
-using ECX.HR.Application.DTOs.Salary.Validators;
+
 using ECX.HR.Application.Exceptions;
 
 using ECX.HR.Application.Response;
@@ -42,7 +42,7 @@ namespace ECX.HR.Application.CQRS.Salary.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var Salary = _mapper.Map<Salary>(request.SalaryDto);
+            var Salary = _mapper.Map<Salarys>(request.SalaryDto);
             var data =await _SalaryRepository.Add(Salary);
             response.Success = true;
             response.Message = "Creation Successfull";

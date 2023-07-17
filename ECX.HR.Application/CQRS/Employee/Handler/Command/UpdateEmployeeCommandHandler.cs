@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using ECX.HR.Application.Contracts.Persistence;
-using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Employee.Request.Command;
 using ECX.HR.Application.DTOs.Employees.Validator;
 using ECX.HR.Application.Exceptions;
@@ -30,7 +29,7 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
             var validationResult = await validator.ValidateAsync(request.EmployeeDto);
             if (validationResult.IsValid == false)
                 throw new ValidationException(validationResult);
-            var Employee = await _EmployeeRepository.GetById(request.EmployeeDto.Id);
+            var Employee = await _EmployeeRepository.GetById(request.EmployeeDto.EmpId);
             _mapper.Map(request.EmployeeDto, Employee);
             await _EmployeeRepository.Update(Employee);
             return Unit.Value;

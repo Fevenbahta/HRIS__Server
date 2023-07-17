@@ -25,6 +25,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ECX.HR.Application.DTOs.EmployeeStatuss;
 
 namespace ECX.HR.Application.Profiles
 {
@@ -38,20 +39,20 @@ namespace ECX.HR.Application.Profiles
             CreateMap<Department, DepartmentDto>().ReverseMap();
             CreateMap<DepositAutorizations, DepositAutorizationDto>().ReverseMap();
             CreateMap<Divisions, DivisionDto>().ReverseMap();
-            CreateMap<Education, EducationDto>().ReverseMap();
+            CreateMap<Educations, EducationDto>().ReverseMap();
             CreateMap<EducationLevels, EducationLevelDto>().ReverseMap();
             CreateMap<EmergencyContacts, EmergencyContactDto>().ReverseMap();
             CreateMap<EmployeePositions, EmployeePositionDto>().ReverseMap();
             CreateMap<Employees, EmployeeDto>().ReverseMap();
             CreateMap<EmployeeStatuss, EmployeeStatusDto>().ReverseMap();
             CreateMap<Levels, LevelDto>().ReverseMap();
-            CreateMap<OrganizationalProfile, OrganizationalProfileDto>().ReverseMap();
-            CreateMap<Position, PositionDto>().ReverseMap();
-            CreateMap<Salary, SalaryDto>().ReverseMap();
-            CreateMap<Spouse, SpouseDto>().ReverseMap();
-            CreateMap<Supervisor, SupervisorDto>().ReverseMap();
-            CreateMap<Training, TrainingDto>().ReverseMap();
-            CreateMap<WorkExperience, WorkExperienceDto>().ReverseMap();
+            CreateMap<OrganizationalProfiles, OrganizationalProfileDto>().ReverseMap();
+            CreateMap<Positions, PositionDto>().ReverseMap();
+            CreateMap<Salarys, SalaryDto>().ReverseMap();
+            CreateMap<Spouses, SpouseDto>().ReverseMap();
+            CreateMap<Supervisors, SupervisorDto>().ReverseMap();
+            CreateMap<Trainings, TrainingDto>().ReverseMap();
+            CreateMap<WorkExperiences, WorkExperienceDto>().ReverseMap();
         }
     }
 }

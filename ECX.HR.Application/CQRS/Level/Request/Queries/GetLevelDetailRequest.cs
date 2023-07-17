@@ -1,5 +1,4 @@
-﻿
-using ECX.HR.Application.DTOs.Levels;
+﻿using ECX.HR.Application.DTOs.Levels;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -11,6 +10,6 @@ namespace ECX.HR.Application.CQRS.Level.Request.Queries
 {
     public class GetLevelDetailRequest :IRequest<LevelDto>
     {
-        public Guid Id { get; set; }
+        public Guid LevelId { get; set; }
     }
 }

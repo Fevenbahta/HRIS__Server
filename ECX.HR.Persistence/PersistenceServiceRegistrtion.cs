@@ -1,4 +1,5 @@
 ﻿
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -18,7 +19,28 @@ namespace ECX.HR.Persistence
         {
             services.AddDbContext<ECXHRDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("ECXHRConnectionString")));
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped<IAdressRepository, AdressRepository>();
+            services.AddScoped<IAllwoanceRepository, AllowanceRepository>();
+            services.AddScoped<IBranchRepository, BranchrRepository>();
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            services.AddScoped<IDepositAutorizationRepository, DepositAutorizationRepository>();
+            services.AddScoped<IDivisionRepository, DivisionRepository>();
+            services.AddScoped<IEducationLevelRepository, EducationLevelRepository>();
+            services.AddScoped<IEducationRepository, EducationRepository>();
+            services.AddScoped<IEmergencyContactRepository, EmergencyContactRepository>();
+            services.AddScoped<IEmployeePositionRepository, EmployeePositionRepository>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IEmployeeStatusRepository, EmployeeStatusRepository>();
+            services.AddScoped<ILevelRepository, LevelRepository>();
+            services.AddScoped<IOrganizationalProfileRepository, OrganizationalProfileRepository>();
+            services.AddScoped<IPositionRepository, PositionRepository>();
+            services.AddScoped<ISalaryRepository, SalaryRepsitory>();
+            services.AddScoped<ISpouseRepository, SpouseRepository>();
+            services.AddScoped<IStepRepository, StepRepository>();
+            services.AddScoped<ISupervisiorRepository, SupervisorRepository>();
+            services.AddScoped<ITrainingRepository, TrainingRepository>();
+            services.AddScoped<IWorkExperienceRepository, WorkExperienceRepository>();
+
 
             return services;
         }

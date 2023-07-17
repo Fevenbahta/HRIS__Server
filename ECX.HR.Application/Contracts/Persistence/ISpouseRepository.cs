@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.Contracts.Persistence
 {
-    public interface ISpouseRepository : IGenericRepository<Spouse>
+    public interface ISpouseRepository : IGenericRepository<Spouses>
     {
     }
 }

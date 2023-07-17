@@ -1,4 +1,4 @@
-﻿using ECX.HR.Application.DTOs.Position;
+﻿using ECX.HR.Application.DTOs.Positions;
 using ECX.HR.Application.Response;
 using MediatR;
 using System;

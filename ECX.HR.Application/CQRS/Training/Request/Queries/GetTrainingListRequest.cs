@@ -1,5 +1,5 @@
-﻿using ECX.HR.Application.DTOs.Training;
-
+﻿
+using ECX.HR.Application.DTOs.Trainings;
 using MediatR;
 using System;
 using System.Collections.Generic;

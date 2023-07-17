@@ -89,21 +89,21 @@ namespace ECX.HR.Persistence
         public DbSet<Branches> branch { get; set; }
         public DbSet<DepositAutorizations> depositAutorizations { get; set; }
         public DbSet<Divisions> division { get; set; }
-        public DbSet<Education> education { get; set; }
+        public DbSet<Educations> education { get; set; }
         public DbSet<EducationLevels> eduactionLevel { get; set; }
         public DbSet<EmergencyContacts> emergencyContact { get; set; }
         public DbSet<Employees> employee { get; set; }
         public DbSet<EmployeePositions> employeePosition { get; set; }
         public DbSet<EmployeeStatuss> emploeeStatus { get; set; }
         public DbSet<Levels> level { get; set; }
-        public DbSet<Position> job { get; set; }
+        public DbSet<Positions> job { get; set; }
        
-        public DbSet<Salary> salary { get; set; }
-        public DbSet<Spouse> spouse { get; set; }
-        public DbSet<Step> step { get; set; }
-        public DbSet<Supervisor> supervisor { get; set; }
-        public DbSet<Training> training { get; set; }
-        public DbSet<WorkExperience> WorkExperiences { get; set; }
+        public DbSet<Salarys> salary { get; set; }
+        public DbSet<Spouses> spouse { get; set; }
+        public DbSet<Steps> step { get; set; }
+        public DbSet<Supervisors> supervisor { get; set; }
+        public DbSet<Trainings> training { get; set; }
+        public DbSet<WorkExperiences> WorkExperiences { get; set; }
 
     }
 }

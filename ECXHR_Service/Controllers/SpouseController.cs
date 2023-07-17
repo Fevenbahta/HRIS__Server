@@ -1,9 +1,11 @@
 ﻿
-using ECX.HR.Application.DTOs.Spouse;
-using ECX.HR.Application.Features.Address.Request.Command;
-using ECX.HR.Application.Features.Address.Request.Queries;
+using ECX.HR.Application.CQRS.Spouse.Request.Command;
+using ECX.HR.Application.CQRS.Spouse.Request.Queries;
+
+using ECX.HR.Application.DTOs.Spouses;
+
 using ECX.HR.Application.Response;
-using HRMsystem.Application.Features.Address.Request.Command;
+
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -29,13 +31,13 @@ namespace ECXHR_Service.Controllers
         [HttpGet]
         public async Task<ActionResult<List<SpouseDto>>> Get()
         {
-            var Spouse = await _mediator.Send(new GetSpouseRequest());
+            var Spouse = await _mediator.Send(new GetSpouseListRequest());
             return Ok(Spouse);
         }
 
         // GET api/<SpouseController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<SpouseDto>> Get(int id)
+        public async Task<ActionResult<SpouseDto>> Get(Guid id)
         {
             var Spouse = await _mediator.Send(new GetSpouseDetailRequest { Id = id });
             return Ok(Spouse);
@@ -65,7 +67,7 @@ namespace ECXHR_Service.Controllers
 
         [HttpDelete("{id}")]
 
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(Guid id)
         {
             var command = new DeleteSpouseCommand { Id = id };
             await _mediator.Send(command);

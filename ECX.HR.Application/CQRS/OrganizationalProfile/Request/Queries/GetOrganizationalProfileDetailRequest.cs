@@ -1,4 +1,5 @@
 ﻿using ECX.HR.Application.DTOs.OrganizationalProfile;
+using ECX.HR.Application.DTOs.OrganizationalProfiles;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,6 @@ namespace ECX.HR.Application.CQRS.OrganizationalProfile.Request.Queries
 {
     public class GetOrganizationalProfileDetailRequest :IRequest<OrganizationalProfileDto>
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

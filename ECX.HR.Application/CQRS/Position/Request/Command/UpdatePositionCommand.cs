@@ -1,4 +1,4 @@
-﻿using ECX.HR.Application.DTOs.Position;
+﻿using ECX.HR.Application.DTOs.Positions;
 using MediatR;
 using System;
 using System.Collections.Generic;

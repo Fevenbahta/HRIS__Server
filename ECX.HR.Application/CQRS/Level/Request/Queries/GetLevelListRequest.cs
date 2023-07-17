@@ -1,4 +1,5 @@
-﻿
+﻿using ECX.HR.Application.DTOs.Levels;
+
 using ECX.HR.Application.DTOs.Levels;
 using MediatR;
 using System;

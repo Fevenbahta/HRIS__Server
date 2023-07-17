@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Persistence.Repositories
 {
-    public class WorkExperienceRepository : GenericRepository<WorkExperience>, IWorkExperienceRepository
+    public class WorkExperienceRepository : GenericRepository<WorkExperiences>, IWorkExperienceRepository
     {
         private readonly ECXHRDbContext _context;
 

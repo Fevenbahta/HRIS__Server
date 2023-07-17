@@ -1,9 +1,9 @@
 ﻿
-using ECX.HR.Application.DTOs.WorkExperience﻿﻿;
-using ECX.HR.Application.Features.Address.Request.Command;
-using ECX.HR.Application.Features.Address.Request.Queries;
+
+using ECX.HR.Application.CQRS.WorkExperience.Request.Command;
+using ECX.HR.Application.CQRS.WorkExperience.Request.Queries;
+using ECX.HR.Application.DTOs.WorkExperiences;
 using ECX.HR.Application.Response;
-using HRMsystem.Application.Features.Address.Request.Command;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -29,13 +29,13 @@ namespace ECXHR_Service.Controllers
         [HttpGet]
         public async Task<ActionResult<List<WorkExperience﻿﻿Dto>>> Get()
         {
-            var WorkExperience﻿﻿ = await _mediator.Send(new GetWorkExperience﻿﻿Request());
+            var WorkExperience﻿﻿ = await _mediator.Send(new GetWorkExperience﻿﻿ListRequest());
             return Ok(WorkExperience﻿﻿);
         }
 
         // GET api/<WorkExperience﻿﻿Controller>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<WorkExperience﻿﻿Dto>> Get(int id)
+        public async Task<ActionResult<WorkExperience﻿﻿Dto>> Get(Guid id)
         {
             var WorkExperience﻿﻿ = await _mediator.Send(new GetWorkExperience﻿﻿DetailRequest { Id = id });
             return Ok(WorkExperience﻿﻿);
@@ -65,7 +65,7 @@ namespace ECXHR_Service.Controllers
 
         [HttpDelete("{id}")]
 
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(Guid id)
         {
             var command = new DeleteWorkExperience﻿﻿Command { Id = id };
             await _mediator.Send(command);

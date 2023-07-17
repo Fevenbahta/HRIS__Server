@@ -2,8 +2,7 @@
 using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.EducationLevel.Request.Command;
-using ECX.HR.Application.DTOs.EducationLevel;
-using ECX.HR.Application.DTOs.EducationLevel.Validators;
+
 using ECX.HR.Application.DTOs.EducationLevels.Validators;
 using ECX.HR.Application.Exceptions;
 

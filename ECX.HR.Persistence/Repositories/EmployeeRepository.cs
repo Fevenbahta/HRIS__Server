@@ -1,4 +1,5 @@
-﻿using ECX.HR.Domain;
+﻿using ECX.HR.Application.Contracts.Persistence;
+using ECX.HR.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,13 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Persistence.Repositories
 {
-    public class EmployeeRepository : GenericRepository<Employees>
+    public class EmployeeRepository : GenericRepository<Employees>, IEmployeeRepository
     {
+        private readonly ECXHRDbContext _context;
+
+        public EmployeeRepository(ECXHRDbContext context) : base(context)
+        {
+            _context = context;
+        }
     }
 }

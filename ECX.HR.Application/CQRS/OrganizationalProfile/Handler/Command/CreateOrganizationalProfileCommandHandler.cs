@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
-using ECX.HR.Application.Contracts.Persistent;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.CQRS.OrganizationalProfile.Request.Command;
-using ECX.HR.Application.DTOs.OrganizationalProfile;
-using ECX.HR.Application.DTOs.OrganizationalProfile.Validators;
+using ECX.HR.Application.DTOs.OrganizationalProfile.Validator;
 using ECX.HR.Application.Exceptions;
 
 using ECX.HR.Application.Response;
@@ -24,9 +23,12 @@ namespace ECX.HR.Application.CQRS.OrganizationalProfile.Handler.Command
         private IMapper _mapper;
         public CreateOrganizationalProfileCommandHandler(IOrganizationalProfileRepository OrganizationalProfileRepository, IMapper mapper)
         {
-            _OrganizationalProfileRepository = OrganizationalProfileRepository;
+            this.OrganizationalProfileRepository = OrganizationalProfileRepository;
             _mapper = mapper;
         }
+
+        public IOrganizationalProfileRepository OrganizationalProfileRepository { get => _OrganizationalProfileRepository; set => _OrganizationalProfileRepository = value; }
+
         public async Task<BaseCommandResponse> Handle(CreateOrganizationalProfileCommand request, CancellationToken cancellationToken)
         {
             response = new BaseCommandResponse();
@@ -40,8 +42,8 @@ namespace ECX.HR.Application.CQRS.OrganizationalProfile.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var OrganizationalProfile = _mapper.Map<OrganizationalProfile>(request.OrganizationalProfileDto);
-            var data =await _OrganizationalProfileRepository.Add(OrganizationalProfile);
+            var OrganizationalProfile = _mapper.Map<OrganizationalProfiles>(request.OrganizationalProfileDto);
+            var data =await OrganizationalProfileRepository.Add(OrganizationalProfile);
             response.Success = true;
             response.Message = "Creation Successfull";
             return response;

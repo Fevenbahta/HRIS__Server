@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.OrganizationalProfile.Request.Command;
-using ECX.HR.Application.DTOs.OrganizationalProfile.Validators;
+using ECX.HR.Application.DTOs.OrganizationalProfile.Validator;
 using ECX.HR.Application.Exceptions;
 
 using MediatR;

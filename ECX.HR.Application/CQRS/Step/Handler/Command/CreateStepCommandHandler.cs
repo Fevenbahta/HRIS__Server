@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Step.Request.Command;
 using ECX.HR.Application.DTOs.Step;
@@ -40,7 +41,7 @@ namespace ECX.HR.Application.CQRS.Step.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var Step = _mapper.Map<Step>(request.StepDto);
+            var Step = _mapper.Map<Steps>(request.StepDto);
             var data =await _StepRepository.Add(Step);
             response.Success = true;
             response.Message = "Creation Successfull";

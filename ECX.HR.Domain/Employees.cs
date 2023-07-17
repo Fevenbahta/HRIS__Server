@@ -32,13 +32,13 @@ namespace ECX.HR.Domain
         //public string FirstSupervisor { get; set; }
         //public string SecondSupervisor { get; set; }
 
-        public ICollection<WorkExperience> WorkExperiences { get; set; }
-        public ICollection<Education> Educations { get; set; }
+        public ICollection<WorkExperiences> WorkExperiences { get; set; }
+        public ICollection<Educations> Educations { get; set; }
 
-        public ICollection<Training> Trainings { get; set; }
+        public ICollection<Trainings> Trainings { get; set; }
         public ICollection<EmergencyContacts> EmergencyContacts { get; set; }
 
-        public ICollection<Spouse> Spouses { get; set; }
+        public ICollection<Spouses> Spouses { get; set; }
 
 
 

@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
+using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Position.Request.Queries;
-using ECX.HR.Application.DTOs.Position;
+using ECX.HR.Application.DTOs.Positions;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace ECX.HR.Application.CQRS.Position.Handler.Queries
         }
         public async Task<PositionDto> Handle(GetPositionDetailRequest request, CancellationToken cancellationToken)
         {
-            var Position =await _PositionRepository.GetById(request.Id);
+            var Position =await _PositionRepository.GetById(request.PositionId);
             return _mapper.Map<PositionDto>(request);
         }
     }

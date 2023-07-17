@@ -11,6 +11,6 @@ namespace ECX.HR.Application.CQRS.Salary.Request.Queries
 {
     public class GetSalaryDetailRequest :IRequest<SalaryDto>
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

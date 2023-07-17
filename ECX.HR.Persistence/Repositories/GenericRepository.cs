@@ -32,7 +32,7 @@ namespace ECX.HR.Persistence.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<bool> Exists(int id)
+        public async Task<bool> Exists(Guid id)
         {
             var entiry = await GetById(id);
             return entiry != null;
@@ -48,7 +48,7 @@ namespace ECX.HR.Persistence.Repositories
             return await _context.Set<T>().ToListAsync();
         }
 
-        public async Task<T> GetById(int id)
+        public async Task<T> GetById(Guid id)
         {
             return await _context.Set<T>().FindAsync(id);
         }
