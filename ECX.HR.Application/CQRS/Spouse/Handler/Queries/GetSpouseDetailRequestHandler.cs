@@ -24,8 +24,8 @@ namespace ECX.HR.Application.CQRS.Spouse.Handler.Queries
         }
         public async Task<SpouseDto> Handle(GetSpouseDetailRequest request, CancellationToken cancellationToken)
         {
-            var Spouse =await _SpouseRepository.GetById(request.Id);
-            return _mapper.Map<SpouseDto>(request);
+            var spouse =await _SpouseRepository.GetById(request.Id);
+            return _mapper.Map<SpouseDto>(spouse);
         }
     }
 }

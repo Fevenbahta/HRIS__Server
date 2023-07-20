@@ -30,9 +30,9 @@ namespace ECX.HR.Application.CQRS.Addresss.Handler.Command
             var validationResult = await validator.ValidateAsync(request.AddressDto);
             if (validationResult.IsValid == false)
                 throw new ValidationException(validationResult);
-            var Address = await _AddressRepository.GetById(request.AddressDto.Id);
-            _mapper.Map(request.AddressDto, Address);
-            await _AddressRepository.Update(Address);
+            var address = await _AddressRepository.GetById(request.AddressDto.Id);
+            _mapper.Map(request.AddressDto, address);
+            await _AddressRepository.Update(address);
             return Unit.Value;
         }
     }

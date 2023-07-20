@@ -16,15 +16,15 @@ namespace ECX.HR.Application.DTOs.DepositAutorizations.Validator
                 .NotEmpty().WithMessage("{PropertyName} is requiered.")
                 .NotNull();
             RuleFor(p => p.TinNumber)
-                .NotEmpty().WithMessage("{PropertyName} is requiered.")
-                .Must(IsTinNumberValid).WithMessage("Please specify a valid Tinnumber");
+                .NotEmpty().WithMessage("{PropertyName} is requiered.");
+                //.Must(IsTinNumberValid).WithMessage("Please specify a valid Tinnumber");
         }
-        public static bool IsTinNumberValid(string Tinnumber)
-        {
-            string regex = @"^[0-9]{0,9}$";
-            if (Tinnumber != null)
-                return Regex.IsMatch(Tinnumber, regex);
-            else return false;
-        }
+        //public static bool IsTinNumberValid(string Tinnumber)
+        //{
+        //    string regex = @"^[0-9]{0,9}$";
+        //    if (Tinnumber != null)
+        //        return Regex.IsMatch(Tinnumber, regex);
+        //    else return false;
+        //}
     }
 }

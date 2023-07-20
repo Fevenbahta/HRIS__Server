@@ -24,8 +24,8 @@ namespace ECX.HR.Application.CQRS.Salary.Handler.Queries
         }
         public async Task<SalaryTypeDto> Handle(GetSalaryDetailRequest request, CancellationToken cancellationToken)
         {
-            var Salary =await _SalaryRepository.GetById(request.Id);
-            return _mapper.Map<SalaryTypeDto>(request);
+            var salary =await _SalaryRepository.GetById(request.Id);
+            return _mapper.Map<SalaryTypeDto>(salary);
         }
     }
 }

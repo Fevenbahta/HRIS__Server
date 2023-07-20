@@ -24,17 +24,17 @@ namespace ECX.HR.Application.CQRS.Addresss.Handler.Command
 
         public async Task<Unit> Handle(DeleteAddressCommand request, CancellationToken cancellationToken)
         {
-            var Address = await _AddressRepository.GetById(request.Id);
-            await _AddressRepository.Delete(Address);
+            var address = await _AddressRepository.GetById(request.Id);
+            await _AddressRepository.Delete(address);
             return Unit.Value;
         }
 
         async Task IRequestHandler<DeleteAddressCommand>.Handle(DeleteAddressCommand request, CancellationToken cancellationToken)
         {
-            var Address = await _AddressRepository.GetById(request.Id);
-            if(Address == null) 
-                throw new NotFoundException(nameof(Address), request.Id);
-            await _AddressRepository.Delete(Address);
+            var address = await _AddressRepository.GetById(request.Id);
+            if(address == null) 
+                throw new NotFoundException(nameof(address), request.Id);
+            await _AddressRepository.Delete(address);
         }
     }
 }

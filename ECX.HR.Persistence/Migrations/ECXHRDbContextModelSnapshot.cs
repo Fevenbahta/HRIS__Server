@@ -46,6 +46,9 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<string>("Kebele")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("PId")
+                        .HasColumnType("int");
+
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
@@ -90,6 +93,9 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("PId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Position")
                         .HasColumnType("nvarchar(max)");
 
@@ -128,6 +134,9 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("PId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
@@ -163,7 +172,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Id")
+                    b.Property<int>("PId")
                         .HasColumnType("int");
 
                     b.Property<int>("Status")
@@ -204,6 +213,9 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<Guid>("EcxId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("PId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
@@ -239,7 +251,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Id")
+                    b.Property<int>("PId")
                         .HasColumnType("int");
 
                     b.Property<int>("Status")
@@ -272,6 +284,9 @@ namespace ECX.HR.Persistence.Migrations
 
                     b.Property<string>("EducationName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -313,6 +328,9 @@ namespace ECX.HR.Persistence.Migrations
 
                     b.Property<string>("NameOfInstitute")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -356,6 +374,9 @@ namespace ECX.HR.Persistence.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PId")
+                        .HasColumnType("int");
 
                     b.Property<int>("PhoneNumber")
                         .HasColumnType("int");
@@ -438,6 +459,9 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("PId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
@@ -482,9 +506,6 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<string>("FirstSupervisor")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
-
                     b.Property<string>("ImageData")
                         .HasColumnType("nvarchar(max)");
 
@@ -502,6 +523,9 @@ namespace ECX.HR.Persistence.Migrations
 
                     b.Property<string>("Nationality")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PId")
+                        .HasColumnType("int");
 
                     b.Property<string>("PensionNo")
                         .HasColumnType("nvarchar(max)");
@@ -550,7 +574,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Id")
+                    b.Property<int>("PId")
                         .HasColumnType("int");
 
                     b.Property<Guid>("PositionId")
@@ -572,11 +596,9 @@ namespace ECX.HR.Persistence.Migrations
 
             modelBuilder.Entity("ECX.HR.Domain.Positions", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("PositionId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -593,8 +615,8 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("PositionId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("PId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -605,7 +627,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("Id");
+                    b.HasKey("PositionId");
 
                     b.HasIndex("DivisionId");
 
@@ -626,6 +648,9 @@ namespace ECX.HR.Persistence.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -661,6 +686,9 @@ namespace ECX.HR.Persistence.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Relationship")
                         .HasColumnType("nvarchar(max)");
@@ -699,6 +727,9 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<Guid>("LevelId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("PId")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("Salary")
                         .HasColumnType("decimal(18,2)");
 
@@ -736,6 +767,9 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<Guid>("EmpId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<int>("PId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
@@ -770,6 +804,9 @@ namespace ECX.HR.Persistence.Migrations
 
                     b.Property<DateTime>("From")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("PId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -813,6 +850,9 @@ namespace ECX.HR.Persistence.Migrations
 
                     b.Property<DateTime>("From")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("PId")
+                        .HasColumnType("int");
 
                     b.Property<string>("PostionHeld")
                         .HasColumnType("nvarchar(max)");

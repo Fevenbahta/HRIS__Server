@@ -25,17 +25,17 @@ namespace ECX.HR.Application.CQRS.Allowance.Handler.Command
 
         public async Task<Unit> Handle(DeleteAllowanceCommand request, CancellationToken cancellationToken)
         {
-            var Allowance = await _AllowanceRepository.GetById(request.Id);
-            await _AllowanceRepository.Delete(Allowance);
+            var allowance = await _AllowanceRepository.GetById(request.Id);
+            await _AllowanceRepository.Delete(allowance);
             return Unit.Value;
         }
 
         async Task IRequestHandler<DeleteAllowanceCommand>.Handle(DeleteAllowanceCommand request, CancellationToken cancellationToken)
         {
-            var Allowance = await _AllowanceRepository.GetById(request.Id);
-            if(Allowance == null) 
-                throw new NotFoundException(nameof(Allowance), request.Id);
-            await _AllowanceRepository.Delete(Allowance);
+            var allowance = await _AllowanceRepository.GetById(request.Id);
+            if(allowance == null) 
+                throw new NotFoundException(nameof(allowance), request.Id);
+            await _AllowanceRepository.Delete(allowance);
         }
     }
 }

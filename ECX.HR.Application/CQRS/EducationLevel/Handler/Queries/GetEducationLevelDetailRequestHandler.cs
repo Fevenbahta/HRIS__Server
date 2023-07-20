@@ -24,8 +24,8 @@ namespace ECX.HR.Application.CQRS.EducationLevel.Handler.Queries
         }
         public async Task<EducationLevelDto> Handle(GetEducationLevelDetailRequest request, CancellationToken cancellationToken)
         {
-            var EducationLevel =await _EducationLevelRepository.GetById(request.Id);
-            return _mapper.Map<EducationLevelDto>(request);
+            var educationLevel =await _EducationLevelRepository.GetById(request.Id);
+            return _mapper.Map<EducationLevelDto>(educationLevel);
         }
     }
 }

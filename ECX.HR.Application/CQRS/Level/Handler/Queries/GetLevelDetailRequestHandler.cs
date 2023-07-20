@@ -23,8 +23,8 @@ namespace ECX.HR.Application.CQRS.Level.Handler.Queries
         }
         public async Task<LevelDto> Handle(GetLevelDetailRequest request, CancellationToken cancellationToken)
         {
-            var Level =await _LevelRepository.GetById(request.LevelId);
-            return _mapper.Map<LevelDto>(request);
+            var level =await _LevelRepository.GetById(request.LevelId);
+            return _mapper.Map<LevelDto>(level);
         }
     }
 }

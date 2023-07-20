@@ -23,7 +23,7 @@ namespace ECX.HR.Application.CQRS.Departments.Handler.Queries
         public async Task<DepartmentDto> Handle(GetDepartmentDetailRequest request, CancellationToken cancellationToken)
         {
             var department =await _departmentRepository.GetById(request.Id);
-            return _mapper.Map<DepartmentDto>(request);
+            return _mapper.Map<DepartmentDto>(department);
         }
     }
 }

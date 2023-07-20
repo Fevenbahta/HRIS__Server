@@ -31,9 +31,9 @@ namespace ECX.HR.Application.CQRS.Allowance.Handler.Command
             var validationResult = await validator.ValidateAsync(request.AllowanceDto);
             if (validationResult.IsValid == false)
                 throw new ValidationException(validationResult);
-            var Allowance = await _AllowanceRepository.GetById(request.AllowanceDto.Id);
-            _mapper.Map(request.AllowanceDto, Allowance);
-            await _AllowanceRepository.Update(Allowance);
+            var allowance = await _AllowanceRepository.GetById(request.AllowanceDto.Id);
+            _mapper.Map(request.AllowanceDto, allowance);
+            await _AllowanceRepository.Update(allowance);
             return Unit.Value;
         }
     }

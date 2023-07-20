@@ -24,8 +24,8 @@ namespace ECX.HR.Application.CQRS.DepositAutorization.Handler.Queries
         }
         public async Task<DepositAutorizationDto> Handle(GetDepositAutorizationDetailRequest request, CancellationToken cancellationToken)
         {
-            var DepositAutorization =await _DepositAutorizationRepository.GetById(request.Id);
-            return _mapper.Map<DepositAutorizationDto>(request);
+            var depositAutorization =await _DepositAutorizationRepository.GetById(request.Id);
+            return _mapper.Map<DepositAutorizationDto>(depositAutorization);
         }
     }
 }

@@ -24,8 +24,8 @@ namespace ECX.HR.Application.CQRS.Branch.Handler.Queries
         }
         public async Task<BranchDto> Handle(GetBranchDetailRequest request, CancellationToken cancellationToken)
         {
-            var Branch =await _BranchRepository.GetById(request.Id);
-            return _mapper.Map<BranchDto>(request);
+            var branch =await _BranchRepository.GetById(request.Id);
+            return _mapper.Map<BranchDto>(branch);
         }
     }
 }

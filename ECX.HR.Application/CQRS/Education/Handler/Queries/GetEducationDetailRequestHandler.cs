@@ -23,8 +23,8 @@ namespace ECX.HR.Application.CQRS.Education.Handler.Queries
         }
         public async Task<EducationDto> Handle(GetEducationDetailRequest request, CancellationToken cancellationToken)
         {
-            var Education =await _EducationRepository.GetById(request.Id);
-            return _mapper.Map<EducationDto>(request);
+            var education =await _EducationRepository.GetById(request.Id);
+            return _mapper.Map<EducationDto>(education);
         }
     }
 }

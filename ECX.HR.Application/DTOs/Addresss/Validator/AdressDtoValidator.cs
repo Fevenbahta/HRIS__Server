@@ -22,8 +22,8 @@ namespace ECX.HR.Application.DTOs.Addresss.Validator
                 .NotNull();
             RuleFor(p => p.PhoneNumber)
                 .Must(IsPhoneValid).WithMessage("Please specify a valid PhoneNumber");
-            RuleFor(p => p.Email)
-                .Must(IsEmailValid).WithMessage("please specify a valid Email");
+            //RuleFor(p => p.Email)
+            //    .Must(IsEmailValid).WithMessage("please specify a valid Email");
         }
 
        
@@ -35,14 +35,14 @@ namespace ECX.HR.Application.DTOs.Addresss.Validator
             else return false;
         }
 
-        public static bool IsEmailValid(string Email)
-        {
+        //public static bool IsEmailValid(string Email)
+        //{
           
-            string regex = @"^[A-Z0-9+_.-]+@[A-Z0-9.-]+$";
-            if (Email != null)
-                return Regex.IsMatch(Email, regex);
-            else return false;
-        }
+        //    string regex = @"^[A-Z0-9+_.-]+@[A-Z0-9.-]+$";
+        //    if (Email != null)
+        //        return Regex.IsMatch(Email, regex);
+        //    else return false;
+        //}
     }
 }
 

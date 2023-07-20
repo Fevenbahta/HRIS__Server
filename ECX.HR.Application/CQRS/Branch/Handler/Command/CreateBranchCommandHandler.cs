@@ -41,8 +41,8 @@ namespace ECX.HR.Application.CQRS.Branch.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var Branch = _mapper.Map<Branches>(request.BranchDto);
-            var data =await _BranchRepository.Add(Branch);
+            var branch = _mapper.Map<Branches>(request.BranchDto);
+            var data =await _BranchRepository.Add(branch);
             response.Success = true;
             response.Message = "Creation Successfull";
             return response;

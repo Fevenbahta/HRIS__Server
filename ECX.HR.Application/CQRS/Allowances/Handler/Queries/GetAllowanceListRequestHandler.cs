@@ -24,8 +24,8 @@ namespace ECX.HR.Application.CQRS.Allowance.Handler.Queries
         }
         public async Task<List<AllowanceDto>> Handle(GetAllowanceListRequest request, CancellationToken cancellationToken)
         {
-            var Allowance =await _AllowanceRepository.GetAll();
-            return _mapper.Map<List<AllowanceDto>>(Allowance);
+            var allowance =await _AllowanceRepository.GetAll();
+            return _mapper.Map<List<AllowanceDto>>(allowance);
         }
     }
 }

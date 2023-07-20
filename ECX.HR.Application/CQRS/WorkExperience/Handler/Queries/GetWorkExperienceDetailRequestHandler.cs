@@ -24,8 +24,8 @@ namespace ECX.HR.Application.CQRS.WorkExperience.Handler.Queries
         }
         public async Task<WorkExperienceDto> Handle(GetWorkExperienceDetailRequest request, CancellationToken cancellationToken)
         {
-            var WorkExperience =await _WorkExperienceRepository.GetById(request.Id);
-            return _mapper.Map<WorkExperienceDto>(request);
+            var workExperience =await _WorkExperienceRepository.GetById(request.Id);
+            return _mapper.Map<WorkExperienceDto>(workExperience);
         }
     }
 }

@@ -25,8 +25,8 @@ namespace ECX.HR.Application.CQRS.OrganizationalProfile.Handler.Queries
         }
         public async Task<List<OrganizationalProfileDto>> Handle(GetOrganizationalProfileListRequest request, CancellationToken cancellationToken)
         {
-            var OrganizationalProfile =await _OrganizationalProfileRepository.GetAll();
-            return _mapper.Map<List<OrganizationalProfileDto>>(OrganizationalProfile);
+            var organizationalProfile =await _OrganizationalProfileRepository.GetAll();
+            return _mapper.Map<List<OrganizationalProfileDto>>(organizationalProfile);
         }
     }
 }

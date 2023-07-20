@@ -24,8 +24,8 @@ namespace ECX.HR.Application.CQRS.Supervisor.Handler.Queries
         }
         public async Task<SupervisorDto> Handle(GetSupervisorDetailRequest request, CancellationToken cancellationToken)
         {
-            var Supervisor =await _SupervisorRepository.GetById(request.Id);
-            return _mapper.Map<SupervisorDto>(request);
+            var supervisor =await _SupervisorRepository.GetById(request.Id);
+            return _mapper.Map<SupervisorDto>(supervisor);
         }
     }
 }

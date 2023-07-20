@@ -24,8 +24,8 @@ namespace ECX.HR.Application.CQRS.EmployeeStatus.Handler.Queries
         }
         public async Task<EmployeeStatusDto> Handle(GetEmployeeStatusDetailRequest request, CancellationToken cancellationToken)
         {
-            var EmployeeStatus =await _EmployeeStatusRepository.GetById(request.Id);
-            return _mapper.Map<EmployeeStatusDto>(request);
+            var employeeStatus =await _EmployeeStatusRepository.GetById(request.Id);
+            return _mapper.Map<EmployeeStatusDto>(employeeStatus);
         }
     }
 }

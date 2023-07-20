@@ -24,17 +24,17 @@ namespace ECX.HR.Application.CQRS.Branch.Handler.Command
 
         public async Task<Unit> Handle(DeleteBranchCommand request, CancellationToken cancellationToken)
         {
-            var Branch = await _BranchRepository.GetById(request.Id);
-            await _BranchRepository.Delete(Branch);
+            var branch = await _BranchRepository.GetById(request.Id);
+            await _BranchRepository.Delete(branch);
             return Unit.Value;
         }
 
         async Task IRequestHandler<DeleteBranchCommand>.Handle(DeleteBranchCommand request, CancellationToken cancellationToken)
         {
-            var Branch = await _BranchRepository.GetById(request.Id);
-            if(Branch == null) 
-                throw new NotFoundException(nameof(Branch), request.Id);
-            await _BranchRepository.Delete(Branch);
+            var branch = await _BranchRepository.GetById(request.Id);
+            if(branch == null) 
+                throw new NotFoundException(nameof(branch), request.Id);
+            await _BranchRepository.Delete(branch);
         }
     }
 }

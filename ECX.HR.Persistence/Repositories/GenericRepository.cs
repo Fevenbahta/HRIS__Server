@@ -35,6 +35,7 @@ namespace ECX.HR.Persistence.Repositories
         public async Task<bool> Exists(Guid id)
         {
             var entiry = await GetById(id);
+            Console.WriteLine(entiry);
             return entiry != null;
         }
 

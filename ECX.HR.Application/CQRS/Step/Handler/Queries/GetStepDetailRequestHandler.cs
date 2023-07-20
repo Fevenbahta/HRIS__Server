@@ -23,8 +23,8 @@ namespace ECX.HR.Application.CQRS.Step.Handler.Queries
         }
         public async Task<StepDto> Handle(GetStepDetailRequest request, CancellationToken cancellationToken)
         {
-            var Step =await _StepRepository.GetById(request.Id);
-            return _mapper.Map<StepDto>(request);
+            var step =await _StepRepository.GetById(request.Id);
+            return _mapper.Map<StepDto>(step);
         }
     }
 }

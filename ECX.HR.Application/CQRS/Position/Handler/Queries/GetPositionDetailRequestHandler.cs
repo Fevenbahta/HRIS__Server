@@ -23,8 +23,8 @@ namespace ECX.HR.Application.CQRS.Position.Handler.Queries
         }
         public async Task<PositionDto> Handle(GetPositionDetailRequest request, CancellationToken cancellationToken)
         {
-            var Position =await _PositionRepository.GetById(request.PositionId);
-            return _mapper.Map<PositionDto>(request);
+            var position =await _PositionRepository.GetById(request.PositionId);
+            return _mapper.Map<PositionDto>(position);
         }
     }
 }

@@ -31,9 +31,9 @@ namespace ECX.HR.Application.CQRS.Branch.Handler.Command
             var validationResult = await validator.ValidateAsync(request.BranchDto);
             if (validationResult.IsValid == false)
                 throw new ValidationException(validationResult);
-            var Branch = await _BranchRepository.GetById(request.BranchDto.Id);
-            _mapper.Map(request.BranchDto, Branch);
-            await _BranchRepository.Update(Branch);
+            var branch = await _BranchRepository.GetById(request.BranchDto.Id);
+            _mapper.Map(request.BranchDto, branch);
+            await _BranchRepository.Update(branch);
             return Unit.Value;
         }
     }
