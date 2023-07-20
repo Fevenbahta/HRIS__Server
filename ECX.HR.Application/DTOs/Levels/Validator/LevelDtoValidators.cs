@@ -11,10 +11,10 @@ namespace ECX.HR.Application.DTOs.Levels.Validator
     {
         public LevelDtoValidators()
         {
-            RuleFor(p => p.LevelID)
+            RuleFor(p => p.LevelId)
                .NotEmpty().WithMessage("{PropertyName} is requiered.")
                .NotNull();
-            RuleFor(p => p.Name)
+            RuleFor(p => p.Description)
                .NotEmpty().WithMessage("{PropertyName} is requiered.")
                .NotNull();
             

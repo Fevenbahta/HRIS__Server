@@ -12,7 +12,7 @@ namespace ECX.HR.Domain
     {
         
         public Guid EmpId { get; set; }
-        public Guid id { get; set; }
+        public Guid Id { get; set; }
         public string NameOfInstitute { get; set; }
         public DateTime From { get; set; }
         public DateTime To { get; set; }

@@ -12,7 +12,7 @@ namespace ECX.HR.Application.DTOs.Supervisors.Validator
     {
         public SupervisorDtoValidator()
         {
-            RuleFor(p => p.Name)
+            RuleFor(p => p.SupervisorLevel)
                   .NotEmpty().WithMessage("{PropertyName} is requiered.")
                   .NotNull();
          

@@ -11,6 +11,6 @@ namespace ECX.HR.Application.CQRS.Salary.Request.Command
 {
     public class UpdateSalaryCommand :IRequest<Unit>
     {
-        public SalaryDto SalaryDto { get; set; }
+        public SalaryTypeDto SalaryDto { get; set; }
     }
 }

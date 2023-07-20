@@ -83,26 +83,26 @@ namespace ECX.HR.Persistence
             }
             return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
-        public DbSet<Adress> adress { get; set; }
+        public DbSet<Adress> Adress { get; set; }
         public DbSet<Department> Departments { get; set; }
-        public DbSet<Allowancee> allowance { get; set; }
-        public DbSet<Branches> branch { get; set; }
-        public DbSet<DepositAutorizations> depositAutorizations { get; set; }
-        public DbSet<Divisions> division { get; set; }
-        public DbSet<Educations> education { get; set; }
-        public DbSet<EducationLevels> eduactionLevel { get; set; }
-        public DbSet<EmergencyContacts> emergencyContact { get; set; }
-        public DbSet<Employees> employee { get; set; }
-        public DbSet<EmployeePositions> employeePosition { get; set; }
-        public DbSet<EmployeeStatuss> emploeeStatus { get; set; }
-        public DbSet<Levels> level { get; set; }
-        public DbSet<Positions> job { get; set; }
+        public DbSet<Allowancee> Allowance { get; set; }
+        public DbSet<Branches> Branch { get; set; }
+        public DbSet<DepositAutorizations> DepositAutorizations { get; set; }
+        public DbSet<Divisions> Division { get; set; }
+        public DbSet<Educations> Education { get; set; }
+        public DbSet<EducationLevels> EduactionLevel { get; set; }
+        public DbSet<EmergencyContacts> EmergencyContact { get; set; }
+        public DbSet<Employees> Employee { get; set; }
+        public DbSet<EmployeePositions> EmployeePosition { get; set; }
+        public DbSet<EmployeeStatuss> EmploeeStatus { get; set; }
+        public DbSet<Levels> Level { get; set; }
+        public DbSet<Positions> Job { get; set; }
        
-        public DbSet<Salarys> salary { get; set; }
-        public DbSet<Spouses> spouse { get; set; }
-        public DbSet<Steps> step { get; set; }
-        public DbSet<Supervisors> supervisor { get; set; }
-        public DbSet<Trainings> training { get; set; }
+        public DbSet<SalaryTypes> SalaryType { get; set; }
+        public DbSet<Spouses> Spouse { get; set; }
+        public DbSet<Steps> Step { get; set; }
+        public DbSet<Supervisors> Supervisor { get; set; }
+        public DbSet<Trainings> Training { get; set; }
         public DbSet<WorkExperiences> WorkExperiences { get; set; }
 
     }

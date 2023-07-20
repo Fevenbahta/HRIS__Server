@@ -10,7 +10,7 @@ namespace ECX.HR.Domain
     public class EducationLevels : BaseDomainEntity
 
     {
-        public Guid id { get; set; }
+        public Guid Id { get; set; }
         public string EducationName { get; set; }
     }
 }

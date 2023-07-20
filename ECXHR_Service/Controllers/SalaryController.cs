@@ -28,7 +28,7 @@ namespace ECXHR_Service.Controllers
         }
         // GET: api/<SalaryController>
         [HttpGet]
-        public async Task<ActionResult<List<SalaryDto>>> Get()
+        public async Task<ActionResult<List<SalaryTypeDto>>> Get()
         {
             var Salary = await _mediator.Send(new GetSalaryListRequest());
             return Ok(Salary);
@@ -36,7 +36,7 @@ namespace ECXHR_Service.Controllers
 
         // GET api/<SalaryController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<SalaryDto>> Get(Guid id)
+        public async Task<ActionResult<SalaryTypeDto>> Get(Guid id)
         {
             var Salary = await _mediator.Send(new GetSalaryDetailRequest { Id = id });
             return Ok(Salary);
@@ -45,7 +45,7 @@ namespace ECXHR_Service.Controllers
         // POST api/<SalaryController>
         [HttpPost]
 
-        public async Task<ActionResult<BaseCommandResponse>> Post([FromBody] SalaryDto Salary)
+        public async Task<ActionResult<BaseCommandResponse>> Post([FromBody] SalaryTypeDto Salary)
         {
             var user = _httpContextAccessor.HttpContext.User;
             var command = new CreateSalaryCommand { SalaryDto = Salary };
@@ -57,7 +57,7 @@ namespace ECXHR_Service.Controllers
         [HttpPut("{id}")]
 
 
-        public async Task<ActionResult> Put([FromBody] SalaryDto Salary)
+        public async Task<ActionResult> Put([FromBody] SalaryTypeDto Salary)
         {
             var command = new UpdateSalaryCommand { SalaryDto = Salary };
             await _mediator.Send(command);

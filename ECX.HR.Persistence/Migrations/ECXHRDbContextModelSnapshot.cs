@@ -24,11 +24,9 @@ namespace ECX.HR.Persistence.Migrations
 
             modelBuilder.Entity("ECX.HR.Domain.Adress", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -48,14 +46,17 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<string>("Kebele")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PhoneNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PostCode")
                         .HasColumnType("int");
 
                     b.Property<string>("Region")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("SubCity")
                         .HasColumnType("nvarchar(max)");
@@ -71,18 +72,14 @@ namespace ECX.HR.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmpId");
-
-                    b.ToTable("adress");
+                    b.ToTable("Adress");
                 });
 
-            modelBuilder.Entity("ECX.HR.Domain.Allowance", b =>
+            modelBuilder.Entity("ECX.HR.Domain.Allowancee", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("AllowanceType")
                         .HasColumnType("nvarchar(max)");
@@ -102,6 +99,9 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<double>("RatePercent")
                         .HasColumnType("float");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.Property<string>("Step")
                         .HasColumnType("nvarchar(max)");
 
@@ -113,22 +113,23 @@ namespace ECX.HR.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("allowance");
+                    b.ToTable("Allowance");
                 });
 
-            modelBuilder.Entity("ECX.HR.Domain.Branch", b =>
+            modelBuilder.Entity("ECX.HR.Domain.Branches", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -144,7 +145,7 @@ namespace ECX.HR.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("branch");
+                    b.ToTable("Branch");
                 });
 
             modelBuilder.Entity("ECX.HR.Domain.Department", b =>
@@ -162,8 +163,11 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -176,13 +180,11 @@ namespace ECX.HR.Persistence.Migrations
                     b.ToTable("Departments");
                 });
 
-            modelBuilder.Entity("ECX.HR.Domain.DepositAutorization", b =>
+            modelBuilder.Entity("ECX.HR.Domain.DepositAutorizations", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Bank")
                         .HasColumnType("nvarchar(max)");
@@ -202,8 +204,8 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<Guid>("EcxId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("EmployeeEmpId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("TinNumber")
                         .HasColumnType("nvarchar(max)");
@@ -216,12 +218,10 @@ namespace ECX.HR.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmployeeEmpId");
-
-                    b.ToTable("depositAutorizations");
+                    b.ToTable("DepositAutorizations");
                 });
 
-            modelBuilder.Entity("ECX.HR.Domain.Division", b =>
+            modelBuilder.Entity("ECX.HR.Domain.Divisions", b =>
                 {
                     b.Property<Guid>("DivisionId")
                         .ValueGeneratedOnAdd()
@@ -236,8 +236,14 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<Guid>("DepartmentId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -249,16 +255,43 @@ namespace ECX.HR.Persistence.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("division");
+                    b.ToTable("Division");
                 });
 
-            modelBuilder.Entity("ECX.HR.Domain.Education", b =>
+            modelBuilder.Entity("ECX.HR.Domain.EducationLevels", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("EducationName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EduactionLevel");
+                });
+
+            modelBuilder.Entity("ECX.HR.Domain.Educations", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -281,6 +314,9 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<string>("NameOfInstitute")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("To")
                         .HasColumnType("datetime2");
 
@@ -290,48 +326,18 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.HasIndex("EmpId");
 
-                    b.ToTable("education");
+                    b.ToTable("Education");
                 });
 
-            modelBuilder.Entity("ECX.HR.Domain.EducationLevel", b =>
+            modelBuilder.Entity("ECX.HR.Domain.EmergencyContacts", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("EducationName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("id");
-
-                    b.ToTable("eduactionLevel");
-                });
-
-            modelBuilder.Entity("ECX.HR.Domain.EmergencyContact", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -340,9 +346,6 @@ namespace ECX.HR.Persistence.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<Guid>("EmpId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("EmployeeEmpId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("HouseNo")
@@ -363,6 +366,9 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<string>("Relationship")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.Property<string>("SubCity")
                         .HasColumnType("nvarchar(max)");
 
@@ -375,16 +381,78 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.HasIndex("EmpId");
 
-                    b.HasIndex("EmployeeEmpId");
-
-                    b.ToTable("emergencyContact");
+                    b.ToTable("EmergencyContact");
                 });
 
-            modelBuilder.Entity("ECX.HR.Domain.Employee", b =>
+            modelBuilder.Entity("ECX.HR.Domain.EmployeePositions", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("BranchId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DivisionId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("EmpId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StepId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("position")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EmployeePosition");
+                });
+
+            modelBuilder.Entity("ECX.HR.Domain.EmployeeStatuss", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EmploeeStatus");
+                });
+
+            modelBuilder.Entity("ECX.HR.Domain.Employees", b =>
                 {
                     b.Property<Guid>("EmpId")
                         .ValueGeneratedOnAdd()
@@ -414,8 +482,11 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<string>("FirstSupervisor")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("ImageData")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ImageData")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("JoinDate")
                         .HasColumnType("datetime2");
@@ -441,6 +512,9 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<string>("SecondSupervisor")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -458,110 +532,51 @@ namespace ECX.HR.Persistence.Migrations
 
                     b.HasKey("EmpId");
 
-                    b.ToTable("employee");
+                    b.ToTable("Employee");
                 });
 
-            modelBuilder.Entity("ECX.HR.Domain.EmployeePosition", b =>
+            modelBuilder.Entity("ECX.HR.Domain.Levels", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<Guid>("LevelId")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Id")
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+                    b.Property<Guid>("PositionId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("BranchId")
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("DivisionId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("EndDate")
+                    b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
+                    b.HasKey("LevelId");
 
-                    b.Property<string>("Status")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StepId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("position")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("id");
-
-                    b.ToTable("employeePosition");
+                    b.ToTable("Level");
                 });
 
-            modelBuilder.Entity("ECX.HR.Domain.EmployeeStatus", b =>
+            modelBuilder.Entity("ECX.HR.Domain.Positions", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("emploeeStatus");
-                });
-
-            modelBuilder.Entity("ECX.HR.Domain.Level", b =>
-                {
-                    b.Property<Guid>("LevelID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("PositionId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("posId")
-                        .HasColumnType("int");
-
-                    b.HasKey("LevelID");
-
-                    b.HasIndex("PositionId");
-
-                    b.ToTable("level");
-                });
-
-            modelBuilder.Entity("ECX.HR.Domain.Position", b =>
-                {
-                    b.Property<Guid>("PositionId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -578,29 +593,30 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("PositionId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("PositionId");
+                    b.HasKey("Id");
 
                     b.HasIndex("DivisionId");
 
-                    b.ToTable("job");
+                    b.ToTable("Job");
                 });
 
-            modelBuilder.Entity("ECX.HR.Domain.Salary", b =>
+            modelBuilder.Entity("ECX.HR.Domain.SalaryTypes", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("BasicSalary")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -608,14 +624,11 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Currency")
+                    b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("EmpId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("EmployeeEmpId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -623,23 +636,16 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("step")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("EmployeeEmpId");
-
-                    b.ToTable("salary");
+                    b.ToTable("SalaryType");
                 });
 
-            modelBuilder.Entity("ECX.HR.Domain.Spouse", b =>
+            modelBuilder.Entity("ECX.HR.Domain.Spouses", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -653,14 +659,14 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<Guid>("EmpId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("EmployeeEmpId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Relationship")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -672,18 +678,14 @@ namespace ECX.HR.Persistence.Migrations
 
                     b.HasIndex("EmpId");
 
-                    b.HasIndex("EmployeeEmpId");
-
-                    b.ToTable("spouse");
+                    b.ToTable("Spouse");
                 });
 
-            modelBuilder.Entity("ECX.HR.Domain.Step", b =>
+            modelBuilder.Entity("ECX.HR.Domain.Steps", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -691,11 +693,20 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<Guid>("LevelId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<decimal>("Salary")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<Guid>("SalaryTypeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -707,19 +718,14 @@ namespace ECX.HR.Persistence.Migrations
 
                     b.HasIndex("LevelId");
 
-                    b.ToTable("step");
+                    b.ToTable("Step");
                 });
 
-            modelBuilder.Entity("ECX.HR.Domain.Supervisor", b =>
+            modelBuilder.Entity("ECX.HR.Domain.Supervisors", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("AdId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -727,8 +733,11 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("EmpId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("SupervisorLevel")
                         .HasColumnType("nvarchar(max)");
@@ -741,16 +750,14 @@ namespace ECX.HR.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("supervisor");
+                    b.ToTable("Supervisor");
                 });
 
-            modelBuilder.Entity("ECX.HR.Domain.Training", b =>
+            modelBuilder.Entity("ECX.HR.Domain.Trainings", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -761,11 +768,11 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<Guid>("EmpId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("EmployeeEmpId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime>("From")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("To")
                         .HasColumnType("datetime2");
@@ -779,22 +786,18 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.HasIndex("EmpId");
 
-                    b.HasIndex("EmployeeEmpId");
-
-                    b.ToTable("training");
+                    b.ToTable("Training");
                 });
 
-            modelBuilder.Entity("ECX.HR.Domain.WorkExperience", b =>
+            modelBuilder.Entity("ECX.HR.Domain.WorkExperiences", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CompanyName")
                         .HasColumnType("nvarchar(max)");
@@ -820,6 +823,9 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<double>("Salary")
                         .HasColumnType("float");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("To")
                         .HasColumnType("datetime2");
 
@@ -836,27 +842,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.ToTable("WorkExperiences");
                 });
 
-            modelBuilder.Entity("ECX.HR.Domain.Adress", b =>
-                {
-                    b.HasOne("ECX.HR.Domain.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmpId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Employee");
-                });
-
-            modelBuilder.Entity("ECX.HR.Domain.DepositAutorization", b =>
-                {
-                    b.HasOne("ECX.HR.Domain.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeEmpId");
-
-                    b.Navigation("Employee");
-                });
-
-            modelBuilder.Entity("ECX.HR.Domain.Division", b =>
+            modelBuilder.Entity("ECX.HR.Domain.Divisions", b =>
                 {
                     b.HasOne("ECX.HR.Domain.Department", "Departments")
                         .WithMany("Divisions")
@@ -867,9 +853,9 @@ namespace ECX.HR.Persistence.Migrations
                     b.Navigation("Departments");
                 });
 
-            modelBuilder.Entity("ECX.HR.Domain.Education", b =>
+            modelBuilder.Entity("ECX.HR.Domain.Educations", b =>
                 {
-                    b.HasOne("ECX.HR.Domain.Employee", "Employees")
+                    b.HasOne("ECX.HR.Domain.Employees", "Employees")
                         .WithMany("Educations")
                         .HasForeignKey("EmpId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -878,35 +864,20 @@ namespace ECX.HR.Persistence.Migrations
                     b.Navigation("Employees");
                 });
 
-            modelBuilder.Entity("ECX.HR.Domain.EmergencyContact", b =>
+            modelBuilder.Entity("ECX.HR.Domain.EmergencyContacts", b =>
                 {
-                    b.HasOne("ECX.HR.Domain.Employee", "Employees")
+                    b.HasOne("ECX.HR.Domain.Employees", "Employees")
                         .WithMany("EmergencyContacts")
                         .HasForeignKey("EmpId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ECX.HR.Domain.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeEmpId");
-
-                    b.Navigation("Employee");
-
                     b.Navigation("Employees");
                 });
 
-            modelBuilder.Entity("ECX.HR.Domain.Level", b =>
+            modelBuilder.Entity("ECX.HR.Domain.Positions", b =>
                 {
-                    b.HasOne("ECX.HR.Domain.Position", "position")
-                        .WithMany()
-                        .HasForeignKey("PositionId");
-
-                    b.Navigation("position");
-                });
-
-            modelBuilder.Entity("ECX.HR.Domain.Position", b =>
-                {
-                    b.HasOne("ECX.HR.Domain.Division", "Divisions")
+                    b.HasOne("ECX.HR.Domain.Divisions", "Divisions")
                         .WithMany("Positions")
                         .HasForeignKey("DivisionId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -915,35 +886,20 @@ namespace ECX.HR.Persistence.Migrations
                     b.Navigation("Divisions");
                 });
 
-            modelBuilder.Entity("ECX.HR.Domain.Salary", b =>
+            modelBuilder.Entity("ECX.HR.Domain.Spouses", b =>
                 {
-                    b.HasOne("ECX.HR.Domain.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeEmpId");
-
-                    b.Navigation("Employee");
-                });
-
-            modelBuilder.Entity("ECX.HR.Domain.Spouse", b =>
-                {
-                    b.HasOne("ECX.HR.Domain.Employee", "Employees")
+                    b.HasOne("ECX.HR.Domain.Employees", "Employees")
                         .WithMany("Spouses")
                         .HasForeignKey("EmpId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ECX.HR.Domain.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeEmpId");
-
-                    b.Navigation("Employee");
-
                     b.Navigation("Employees");
                 });
 
-            modelBuilder.Entity("ECX.HR.Domain.Step", b =>
+            modelBuilder.Entity("ECX.HR.Domain.Steps", b =>
                 {
-                    b.HasOne("ECX.HR.Domain.Level", "Levels")
+                    b.HasOne("ECX.HR.Domain.Levels", "Levels")
                         .WithMany("Steps")
                         .HasForeignKey("LevelId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -952,26 +908,20 @@ namespace ECX.HR.Persistence.Migrations
                     b.Navigation("Levels");
                 });
 
-            modelBuilder.Entity("ECX.HR.Domain.Training", b =>
+            modelBuilder.Entity("ECX.HR.Domain.Trainings", b =>
                 {
-                    b.HasOne("ECX.HR.Domain.Employee", "Employees")
+                    b.HasOne("ECX.HR.Domain.Employees", "Employees")
                         .WithMany("Trainings")
                         .HasForeignKey("EmpId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ECX.HR.Domain.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeEmpId");
-
-                    b.Navigation("Employee");
-
                     b.Navigation("Employees");
                 });
 
-            modelBuilder.Entity("ECX.HR.Domain.WorkExperience", b =>
+            modelBuilder.Entity("ECX.HR.Domain.WorkExperiences", b =>
                 {
-                    b.HasOne("ECX.HR.Domain.Employee", "Employees")
+                    b.HasOne("ECX.HR.Domain.Employees", "Employees")
                         .WithMany("WorkExperiences")
                         .HasForeignKey("EmpId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -985,12 +935,12 @@ namespace ECX.HR.Persistence.Migrations
                     b.Navigation("Divisions");
                 });
 
-            modelBuilder.Entity("ECX.HR.Domain.Division", b =>
+            modelBuilder.Entity("ECX.HR.Domain.Divisions", b =>
                 {
                     b.Navigation("Positions");
                 });
 
-            modelBuilder.Entity("ECX.HR.Domain.Employee", b =>
+            modelBuilder.Entity("ECX.HR.Domain.Employees", b =>
                 {
                     b.Navigation("Educations");
 
@@ -1003,7 +953,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Navigation("WorkExperiences");
                 });
 
-            modelBuilder.Entity("ECX.HR.Domain.Level", b =>
+            modelBuilder.Entity("ECX.HR.Domain.Levels", b =>
                 {
                     b.Navigation("Steps");
                 });

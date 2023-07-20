@@ -12,7 +12,7 @@ namespace ECX.HR.Domain
     {
         
         public Guid EmpId { get; set; }
-        public Guid id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }    
         public string Town { get; set; }
         public string Region { get; set; }

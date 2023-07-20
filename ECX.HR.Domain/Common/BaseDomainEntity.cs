@@ -8,7 +8,7 @@ namespace ECX.HR.Domain.Common
 {
     public abstract class BaseDomainEntity
     {
-    
+         public int Id { get; set; }
         public string CreatedBy { get; set; }
 
         public DateTime CreatedDate { get; set; }
@@ -16,5 +16,7 @@ namespace ECX.HR.Domain.Common
         public DateTime UpdatedDate { get; set; }
 
         public string UpdatedBy { get; set; }
+         
+        public int Status { get; set; } 
     }
 }

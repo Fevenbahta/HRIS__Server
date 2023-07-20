@@ -12,7 +12,7 @@ namespace ECX.HR.Domain
         [ForeignKey("Employee")]
         public Guid EmpId { get; set; }
        
-        public Guid id { get; set; }
+        public Guid Id { get; set; }
         public string DivisionId { get; set; }
         public string StepId { get; set; }
         public string BranchId { get; set; }

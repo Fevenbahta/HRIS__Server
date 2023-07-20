@@ -6,14 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECX.HR.Application.DTOs.Positions
+namespace ECX.HR.Application.DTOs.Salaries
 {
-    public class PositionDto : BaseDtos
+    public class SalaryTypeDto : BaseDtos
     {
-        public Guid PositionId { get; set; }
-        public Guid DivisionId { get; set; }
-
-        public string Name { get; set; }
+        public Guid Id { get; set; }
         public string Description { get; set; }
     }
 }

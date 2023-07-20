@@ -4,16 +4,14 @@ using FluentValidation;
 
 namespace ECX.HR.Application.DTOs.Salary.Validator
 {
-    public class SalaryDtoValidators : AbstractValidator<SalaryDto>
+    public class SalaryDtoValidators : AbstractValidator<SalaryTypeDto>
     {
         public SalaryDtoValidators()
         {
-            RuleFor(p => p.BasicSalary)
+            RuleFor(p => p.Description)
                .NotEmpty().WithMessage("{PropertyName} is requiered.")
                .NotNull();
-            RuleFor(p => p.Currency)
-               .NotEmpty().WithMessage("{PropertyName} is requiered.")
-               .NotNull();
+            
             
         }
     }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.CQRS.Salary.Request.Queries
 {
-    public class GetSalaryListRequest :IRequest<List<SalaryDto>>
+    public class GetSalaryListRequest :IRequest<List<SalaryTypeDto>>
     {
        
     }

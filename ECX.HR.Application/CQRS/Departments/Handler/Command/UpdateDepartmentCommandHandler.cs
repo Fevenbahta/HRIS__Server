@@ -29,7 +29,7 @@ namespace ECX.HR.Application.CQRS.Departments.Handler.Command
             var validationResult = await validator.ValidateAsync(request.DepartmentDto);
             if (validationResult.IsValid == false)
                 throw new ValidationException(validationResult);
-            var department = await _departmentRepository.GetById(request.DepartmentDto.Id);
+            var department = await _departmentRepository.GetById(request.DepartmentDto.DepartmentId);
             _mapper.Map(request.DepartmentDto, department);
             await _departmentRepository.Update(department);
             return Unit.Value;

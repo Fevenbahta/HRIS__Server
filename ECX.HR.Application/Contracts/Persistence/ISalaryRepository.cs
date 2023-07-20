@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.Contracts.Persistence
 {
-    public interface ISalaryRepository : IGenericRepository<Salarys>
+    public interface ISalaryRepository : IGenericRepository<SalaryTypes>
     {
     }
 }

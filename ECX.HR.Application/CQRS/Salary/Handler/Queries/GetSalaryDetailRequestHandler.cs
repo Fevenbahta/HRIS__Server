@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.CQRS.Salary.Handler.Queries
 {
-    public class GetSalaryDetailRequestHandler : IRequestHandler<GetSalaryDetailRequest, SalaryDto>
+    public class GetSalaryDetailRequestHandler : IRequestHandler<GetSalaryDetailRequest, SalaryTypeDto>
     {
         private ISalaryRepository _SalaryRepository;
         private IMapper _mapper;
@@ -22,10 +22,10 @@ namespace ECX.HR.Application.CQRS.Salary.Handler.Queries
             _SalaryRepository = SalaryRepository;
             _mapper = mapper;
         }
-        public async Task<SalaryDto> Handle(GetSalaryDetailRequest request, CancellationToken cancellationToken)
+        public async Task<SalaryTypeDto> Handle(GetSalaryDetailRequest request, CancellationToken cancellationToken)
         {
             var Salary =await _SalaryRepository.GetById(request.Id);
-            return _mapper.Map<SalaryDto>(request);
+            return _mapper.Map<SalaryTypeDto>(request);
         }
     }
 }

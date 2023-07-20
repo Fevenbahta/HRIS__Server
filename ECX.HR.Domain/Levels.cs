@@ -16,8 +16,8 @@ namespace ECX.HR.Domain
         [ForeignKey("Position")]
         public Guid PositionId { get; set; }
        
-        public Guid LevelID { get; set; }    
-        public string name { get; set; }
+           
+        public string Description { get; set; }
 
         public ICollection<Steps> Steps { get; set;}
     }

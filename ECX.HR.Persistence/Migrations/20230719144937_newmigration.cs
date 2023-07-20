@@ -6,17 +6,41 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ECX.HR.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class FirstMigration : Migration
+    public partial class newmigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "allowance",
+                name: "Adress",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Region = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Town = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SubCity = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Kebele = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HouseNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PostCode = table.Column<int>(type: "int", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Adress", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Allowance",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     AllowanceType = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Position = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Step = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -25,29 +49,30 @@ namespace ECX.HR.Persistence.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_allowance", x => x.Id);
+                    table.PrimaryKey("PK_Allowance", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "branch",
+                name: "Branch",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     city = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_branch", x => x.Id);
+                    table.PrimaryKey("PK_Branch", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -55,12 +80,13 @@ namespace ECX.HR.Persistence.Migrations
                 columns: table => new
                 {
                     DepartmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -68,41 +94,62 @@ namespace ECX.HR.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "eduactionLevel",
+                name: "DepositAutorizations",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    EcxId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Bank = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BankBranch = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BankAccount = table.Column<int>(type: "int", nullable: false),
+                    TinNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DepositAutorizations", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EduactionLevel",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     EducationName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_eduactionLevel", x => x.id);
+                    table.PrimaryKey("PK_EduactionLevel", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "emploeeStatus",
+                name: "EmploeeStatus",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_emploeeStatus", x => x.Id);
+                    table.PrimaryKey("PK_EmploeeStatus", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "employee",
+                name: "Employee",
                 columns: table => new
                 {
                     EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -119,27 +166,29 @@ namespace ECX.HR.Persistence.Migrations
                     salutation = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Nationality = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PensionNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ImageData = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    ImageData = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     crime = table.Column<bool>(type: "bit", nullable: false),
                     CrimeDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FirstSupervisor = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SecondSupervisor = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_employee", x => x.EmpId);
+                    table.PrimaryKey("PK_Employee", x => x.EmpId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "employeePosition",
+                name: "EmployeePosition",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DivisionId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     StepId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BranchId = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -150,45 +199,82 @@ namespace ECX.HR.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_employeePosition", x => x.id);
+                    table.PrimaryKey("PK_EmployeePosition", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "supervisor",
+                name: "Level",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    AdId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LevelId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PositionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Level", x => x.LevelId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SalaryType",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SalaryType", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Supervisor",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     SupervisorLevel = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_supervisor", x => x.Id);
+                    table.PrimaryKey("PK_Supervisor", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "division",
+                name: "Division",
                 columns: table => new
                 {
                     DivisionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DepartmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_division", x => x.DivisionId);
+                    table.PrimaryKey("PK_Division", x => x.DivisionId);
                     table.ForeignKey(
-                        name: "FK_division_Departments_DepartmentId",
+                        name: "FK_Division_Departments_DepartmentId",
                         column: x => x.DepartmentId,
                         principalTable: "Departments",
                         principalColumn: "DepartmentId",
@@ -196,69 +282,10 @@ namespace ECX.HR.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "adress",
+                name: "Education",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Region = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Town = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SubCity = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Kebele = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    HouseNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<int>(type: "int", nullable: false),
-                    PostCode = table.Column<int>(type: "int", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_adress", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_adress_employee_EmpId",
-                        column: x => x.EmpId,
-                        principalTable: "employee",
-                        principalColumn: "EmpId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "depositAutorizations",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EcxId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    EmployeeEmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    Bank = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    BankBranch = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    BankAccount = table.Column<int>(type: "int", nullable: false),
-                    TinNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_depositAutorizations", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_depositAutorizations_employee_EmployeeEmpId",
-                        column: x => x.EmployeeEmpId,
-                        principalTable: "employee",
-                        principalColumn: "EmpId");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "education",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     NameOfInstitute = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     From = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -268,27 +295,26 @@ namespace ECX.HR.Persistence.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_education", x => x.id);
+                    table.PrimaryKey("PK_Education", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_education_employee_EmpId",
+                        name: "FK_Education_Employee_EmpId",
                         column: x => x.EmpId,
-                        principalTable: "employee",
+                        principalTable: "Employee",
                         principalColumn: "EmpId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "emergencyContact",
+                name: "EmergencyContact",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    EmployeeEmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Town = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Region = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -300,120 +326,77 @@ namespace ECX.HR.Persistence.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_emergencyContact", x => x.id);
+                    table.PrimaryKey("PK_EmergencyContact", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_emergencyContact_employee_EmpId",
+                        name: "FK_EmergencyContact_Employee_EmpId",
                         column: x => x.EmpId,
-                        principalTable: "employee",
+                        principalTable: "Employee",
                         principalColumn: "EmpId",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_emergencyContact_employee_EmployeeEmpId",
-                        column: x => x.EmployeeEmpId,
-                        principalTable: "employee",
-                        principalColumn: "EmpId");
                 });
 
             migrationBuilder.CreateTable(
-                name: "salary",
+                name: "Spouse",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    EmployeeEmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    step = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Currency = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    BasicSalary = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_salary", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_salary_employee_EmployeeEmpId",
-                        column: x => x.EmployeeEmpId,
-                        principalTable: "employee",
-                        principalColumn: "EmpId");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "spouse",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    EmployeeEmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Relationship = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_spouse", x => x.Id);
+                    table.PrimaryKey("PK_Spouse", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_spouse_employee_EmpId",
+                        name: "FK_Spouse_Employee_EmpId",
                         column: x => x.EmpId,
-                        principalTable: "employee",
+                        principalTable: "Employee",
                         principalColumn: "EmpId",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_spouse_employee_EmployeeEmpId",
-                        column: x => x.EmployeeEmpId,
-                        principalTable: "employee",
-                        principalColumn: "EmpId");
                 });
 
             migrationBuilder.CreateTable(
-                name: "training",
+                name: "Training",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    EmployeeEmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     TypeOfTraining = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     From = table.Column<DateTime>(type: "datetime2", nullable: false),
                     To = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_training", x => x.id);
+                    table.PrimaryKey("PK_Training", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_training_employee_EmpId",
+                        name: "FK_Training_Employee_EmpId",
                         column: x => x.EmpId,
-                        principalTable: "employee",
+                        principalTable: "Employee",
                         principalColumn: "EmpId",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_training_employee_EmployeeEmpId",
-                        column: x => x.EmployeeEmpId,
-                        principalTable: "employee",
-                        principalColumn: "EmpId");
                 });
 
             migrationBuilder.CreateTable(
                 name: "WorkExperiences",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PostionHeld = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -424,23 +407,52 @@ namespace ECX.HR.Persistence.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_WorkExperiences", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_WorkExperiences_employee_EmpId",
+                        name: "FK_WorkExperiences_Employee_EmpId",
                         column: x => x.EmpId,
-                        principalTable: "employee",
+                        principalTable: "Employee",
                         principalColumn: "EmpId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "job",
+                name: "Step",
                 columns: table => new
                 {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Salary = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    SalaryTypeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    LevelId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Step", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Step_Level_LevelId",
+                        column: x => x.LevelId,
+                        principalTable: "Level",
+                        principalColumn: "LevelId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Job",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     PositionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DivisionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -448,135 +460,54 @@ namespace ECX.HR.Persistence.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_job", x => x.PositionId);
+                    table.PrimaryKey("PK_Job", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_job_division_DivisionId",
+                        name: "FK_Job_Division_DivisionId",
                         column: x => x.DivisionId,
-                        principalTable: "division",
+                        principalTable: "Division",
                         principalColumn: "DivisionId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "level",
-                columns: table => new
-                {
-                    LevelID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    posId = table.Column<int>(type: "int", nullable: false),
-                    PositionId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_level", x => x.LevelID);
-                    table.ForeignKey(
-                        name: "FK_level_job_PositionId",
-                        column: x => x.PositionId,
-                        principalTable: "job",
-                        principalColumn: "PositionId");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "step",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LevelId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_step", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_step_level_LevelId",
-                        column: x => x.LevelId,
-                        principalTable: "level",
-                        principalColumn: "LevelID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.CreateIndex(
-                name: "IX_adress_EmpId",
-                table: "adress",
-                column: "EmpId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_depositAutorizations_EmployeeEmpId",
-                table: "depositAutorizations",
-                column: "EmployeeEmpId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_division_DepartmentId",
-                table: "division",
+                name: "IX_Division_DepartmentId",
+                table: "Division",
                 column: "DepartmentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_education_EmpId",
-                table: "education",
+                name: "IX_Education_EmpId",
+                table: "Education",
                 column: "EmpId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_emergencyContact_EmpId",
-                table: "emergencyContact",
+                name: "IX_EmergencyContact_EmpId",
+                table: "EmergencyContact",
                 column: "EmpId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_emergencyContact_EmployeeEmpId",
-                table: "emergencyContact",
-                column: "EmployeeEmpId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_job_DivisionId",
-                table: "job",
+                name: "IX_Job_DivisionId",
+                table: "Job",
                 column: "DivisionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_level_PositionId",
-                table: "level",
-                column: "PositionId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_salary_EmployeeEmpId",
-                table: "salary",
-                column: "EmployeeEmpId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_spouse_EmpId",
-                table: "spouse",
+                name: "IX_Spouse_EmpId",
+                table: "Spouse",
                 column: "EmpId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_spouse_EmployeeEmpId",
-                table: "spouse",
-                column: "EmployeeEmpId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_step_LevelId",
-                table: "step",
+                name: "IX_Step_LevelId",
+                table: "Step",
                 column: "LevelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_training_EmpId",
-                table: "training",
+                name: "IX_Training_EmpId",
+                table: "Training",
                 column: "EmpId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_training_EmployeeEmpId",
-                table: "training",
-                column: "EmployeeEmpId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_WorkExperiences_EmpId",
@@ -588,61 +519,61 @@ namespace ECX.HR.Persistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "adress");
+                name: "Adress");
 
             migrationBuilder.DropTable(
-                name: "allowance");
+                name: "Allowance");
 
             migrationBuilder.DropTable(
-                name: "branch");
+                name: "Branch");
 
             migrationBuilder.DropTable(
-                name: "depositAutorizations");
+                name: "DepositAutorizations");
 
             migrationBuilder.DropTable(
-                name: "eduactionLevel");
+                name: "EduactionLevel");
 
             migrationBuilder.DropTable(
-                name: "education");
+                name: "Education");
 
             migrationBuilder.DropTable(
-                name: "emergencyContact");
+                name: "EmergencyContact");
 
             migrationBuilder.DropTable(
-                name: "emploeeStatus");
+                name: "EmploeeStatus");
 
             migrationBuilder.DropTable(
-                name: "employeePosition");
+                name: "EmployeePosition");
 
             migrationBuilder.DropTable(
-                name: "salary");
+                name: "Job");
 
             migrationBuilder.DropTable(
-                name: "spouse");
+                name: "SalaryType");
 
             migrationBuilder.DropTable(
-                name: "step");
+                name: "Spouse");
 
             migrationBuilder.DropTable(
-                name: "supervisor");
+                name: "Step");
 
             migrationBuilder.DropTable(
-                name: "training");
+                name: "Supervisor");
+
+            migrationBuilder.DropTable(
+                name: "Training");
 
             migrationBuilder.DropTable(
                 name: "WorkExperiences");
 
             migrationBuilder.DropTable(
-                name: "level");
+                name: "Division");
 
             migrationBuilder.DropTable(
-                name: "employee");
+                name: "Level");
 
             migrationBuilder.DropTable(
-                name: "job");
-
-            migrationBuilder.DropTable(
-                name: "division");
+                name: "Employee");
 
             migrationBuilder.DropTable(
                 name: "Departments");

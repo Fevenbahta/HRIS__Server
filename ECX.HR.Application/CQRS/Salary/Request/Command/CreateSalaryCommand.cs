@@ -12,6 +12,6 @@ namespace ECX.HR.Application.CQRS.Salary.Request.Command
 {
     public class CreateSalaryCommand : IRequest<BaseCommandResponse>
     {
-        public SalaryDto SalaryDto { get; set; }
+        public SalaryTypeDto SalaryDto { get; set; }
     }
 }

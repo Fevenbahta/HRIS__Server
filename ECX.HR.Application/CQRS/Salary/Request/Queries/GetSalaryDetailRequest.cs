@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.CQRS.Salary.Request.Queries
 {
-    public class GetSalaryDetailRequest :IRequest<SalaryDto>
+    public class GetSalaryDetailRequest :IRequest<SalaryTypeDto>
     {
         public Guid Id { get; set; }
     }
