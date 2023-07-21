@@ -10,6 +10,8 @@ namespace ECX.HR.Domain
 {
     public class OrganizationalProfiles
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int PId { get; set; }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; } 
@@ -24,5 +26,6 @@ namespace ECX.HR.Domain
         public string Manager { get; set; }
         public int VatNumber { get; set; }
         public int TinNumber { get; set; }
+        public int Status { get; set; }
     }
 }

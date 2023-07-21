@@ -11,12 +11,14 @@ namespace ECX.HR.Domain
 {
     public class DepositAutorizations :BaseDomainEntity
     {
+        
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
+        public Guid Id { get; set; }
         [ForeignKey("Employeee")]
         public Guid EmpId { get; set; }
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid Id { get; set; }
         public string Bank { get; set; }
         public string BankBranch { get; set;}
         public int BankAccount { get; set; }

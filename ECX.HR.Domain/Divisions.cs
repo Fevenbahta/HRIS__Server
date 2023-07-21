@@ -11,14 +11,21 @@ namespace ECX.HR.Domain
 {
     public class Divisions : BaseDomainEntity
     {
-        public int PId { get; set; }
-        [Key]
+        
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int PId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public Guid DivisionId { get; set; }
+        [ForeignKey("Employee")]
+        public Guid EmpId { get; set; }
+        [ForeignKey("Department")]
         public Guid DepartmentId { get; set; }
-        public virtual Department Departments { get; set; }
         public string Description { get; set; }
-        public ICollection<Positions> Positions { get; set; }
         public int Status { get; set; }
+        public virtual Department Departments { get; set; }
+        
+        public ICollection<Positions> Positions { get; set; }
+       
     }
 }

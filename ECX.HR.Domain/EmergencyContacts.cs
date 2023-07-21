@@ -11,11 +11,15 @@ namespace ECX.HR.Domain
 {
     public class EmergencyContacts :BaseDomainEntity
     {
+        
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PId { get; set; }
-        public Guid EmpId { get; set; }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
+        [ForeignKey("Employee")]
+        public Guid EmpId { get; set; }
+        
         public string Name { get; set; }    
         public string Town { get; set; }
         public string Region { get; set; }
@@ -26,9 +30,10 @@ namespace ECX.HR.Domain
         public int PhoneNumber { get; set; }
         
         public string Relationship { get; set; }
+        public int Status { get; set; }
 
         public virtual Employees Employees { get; set; }
-        public int Status { get; set; }
+       
 
     }
 }

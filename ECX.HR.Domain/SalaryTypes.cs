@@ -11,10 +11,13 @@ namespace ECX.HR.Domain
 {
     public class SalaryTypes :BaseDomainEntity
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int PId { get; set; }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         public string Description { get; set; }
-        
+        public int Status { get; set; }
+
     }
 }

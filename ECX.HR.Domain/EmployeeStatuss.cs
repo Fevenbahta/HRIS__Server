@@ -11,9 +11,12 @@ namespace ECX.HR.Domain
 {
     public class EmployeeStatuss :BaseDomainEntity
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int PId { get; set; }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         public string Name { get; set; }
+        public int Status { get; set; }
     }
 }

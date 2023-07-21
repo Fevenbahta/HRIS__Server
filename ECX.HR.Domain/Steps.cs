@@ -11,6 +11,8 @@ namespace ECX.HR.Domain
 {
     public class Steps : BaseDomainEntity
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int PId { get; set; }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
@@ -18,8 +20,11 @@ namespace ECX.HR.Domain
         public decimal Salary { get; set; }
         [ForeignKey("SalaryTypes")]
         public Guid SalaryTypeId { get; set; }
-   
+        [ForeignKey("Levels")]
         public Guid LevelId { get; set; }
+        public int Status { get; set; }
+
         public virtual Levels Levels { get; set; }
+        
     }
 }

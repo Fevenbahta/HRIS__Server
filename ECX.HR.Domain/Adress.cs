@@ -11,12 +11,15 @@ namespace ECX.HR.Domain
 {
     public class Adress :BaseDomainEntity
     {
+        
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PId { get; set; }
-        [ForeignKey("Employee")]
-        public Guid EmpId { get; set; }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
+        [ForeignKey("Employee")]
+        public Guid EmpId { get; set; }
+        
         public string Region { get; set; }
         public string Town { get; set; }
         public string SubCity { get; set; }

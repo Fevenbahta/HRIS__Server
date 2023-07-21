@@ -11,17 +11,21 @@ namespace ECX.HR.Domain
 {
     public class Trainings :BaseDomainEntity
     {
-        
-        public Guid EmpId { get; set; }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int PId { get; set; }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
+        public Guid EmpId { get; set; }
        
         public string TypeOfTraining { get; set; }
         public DateTime From { get; set; }  
         public DateTime To { get; set; }
+        public int Status { get; set; }
 
         public virtual Employees Employees { get; set; }
+        
 
 
     }

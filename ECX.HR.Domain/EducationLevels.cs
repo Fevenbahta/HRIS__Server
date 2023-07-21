@@ -12,6 +12,8 @@ namespace ECX.HR.Domain
     public class EducationLevels : BaseDomainEntity
 
     {
+        
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PId { get; set; }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

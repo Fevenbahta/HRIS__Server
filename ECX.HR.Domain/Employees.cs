@@ -11,6 +11,9 @@ namespace ECX.HR.Domain
 {
     public class Employees : BaseDomainEntity
     {
+        
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid PId { get; set; }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid EmpId { get; set; }
@@ -26,13 +29,13 @@ namespace ECX.HR.Domain
         public string MartialStatus { get; set; }
         public string salutation { get; set; }
         public string Nationality { get; set; }
-        public string PensionNo { get; set; }   
-     
+        public string PensionNo { get; set; }      
         public string ImageData { get; set; }
         public bool crime { get; set; }
         public string CrimeDescription{ get; set; }
         public string FirstSupervisor { get; set; }
         public string SecondSupervisor { get; set; }
+        public int Status { get; set; }
 
         public ICollection<WorkExperiences> WorkExperiences { get; set; }
         public ICollection<Educations> Educations { get; set; }

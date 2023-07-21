@@ -12,17 +12,22 @@ namespace ECX.HR.Domain
     public class WorkExperiences : BaseDomainEntity
     {
         
-        public Guid EmpId { get; set; }
+        
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
+        [ForeignKey("Employee")]
+        public Guid EmpId { get; set; }
         public string CompanyName { get; set; }
         public string PostionHeld { get; set; }
         public DateTime From { get; set; }
         public DateTime To { get; set; }
         public double Salary { get; set; }
         public string ReasonTermination { get; set; }
+        public int Status { get; set; }
+
         public virtual Employees Employees { get; set; }
+        
 
 
     }

@@ -11,15 +11,21 @@ namespace ECX.HR.Domain
 {
     public class Spouses :BaseDomainEntity
     {
-       
-        public Guid EmpId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int PId { get; set; }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
+       
+        [ForeignKey("Employees")]
+        public Guid EmpId { get; set; }
+
         public string Name { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string Relationship { get; set; }
-        public virtual Employees Employees { get; set; } 
+        public int Status { get; set; }
+        public virtual Employees Employees { get; set; }
+        
 
     }
 }
