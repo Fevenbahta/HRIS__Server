@@ -12,6 +12,7 @@ namespace ECX.HR.Domain
     public class Divisions : BaseDomainEntity
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid DivisionId { get; set; }
          public string Description { get; set; }
 

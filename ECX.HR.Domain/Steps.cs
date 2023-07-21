@@ -12,6 +12,7 @@ namespace ECX.HR.Domain
     public class Steps : BaseDomainEntity
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         public string Description { get; set; }
         public decimal Salary { get; set; }

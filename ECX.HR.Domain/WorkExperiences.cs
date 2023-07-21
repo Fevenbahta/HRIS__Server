@@ -13,6 +13,8 @@ namespace ECX.HR.Domain
     {
         
         public Guid EmpId { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         public string CompanyName { get; set; }
         public string PostionHeld { get; set; }

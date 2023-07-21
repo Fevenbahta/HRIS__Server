@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 using ECX.HR.Domain.Common;
+using System.ComponentModel.DataAnnotations;
 
 namespace ECX.HR.Domain
 {
@@ -12,7 +13,7 @@ namespace ECX.HR.Domain
     {
         [ForeignKey("Employee")]
         public Guid EmpId { get; set; }
-
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         public string Region { get; set; }

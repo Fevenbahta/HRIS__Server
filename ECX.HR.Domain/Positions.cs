@@ -12,6 +12,7 @@ namespace ECX.HR.Domain
     public class Positions :BaseDomainEntity
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid PositionId { get; set; }
         public Guid DivisionId { get; set; }
         public virtual Divisions Divisions { get; set; }
