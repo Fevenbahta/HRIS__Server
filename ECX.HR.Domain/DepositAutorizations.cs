@@ -11,6 +11,7 @@ namespace ECX.HR.Domain
 {
     public class DepositAutorizations :BaseDomainEntity
     {
+        public int PId { get; set; }
         [ForeignKey("Employeee")]
         public Guid EmpId { get; set; }
         [Key]
@@ -20,6 +21,7 @@ namespace ECX.HR.Domain
         public string BankBranch { get; set;}
         public int BankAccount { get; set; }
         public string TinNumber { get; set; }
+        public int Status { get; set; }
 
     }
 }

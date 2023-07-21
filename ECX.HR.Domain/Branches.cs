@@ -11,11 +11,13 @@ namespace ECX.HR.Domain
 {
     public class Branches : BaseDomainEntity
     {
+        public int PId { get; set; }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         public string name { get; set; }
          public string city { get; set; }
+        public int Status { get; set; }
 
     }
 }

@@ -11,13 +11,15 @@ namespace ECX.HR.Domain
 {
     public class Department :BaseDomainEntity
     {
+        public int PId { get; set; }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid DepartmentId { get; set; }
        
         public string Description { get; set; }
 
-        public ICollection<Divisions> Divisions { get; set; }    
-       
+        public ICollection<Divisions> Divisions { get; set; }
+        public int Status { get; set; }
+
     }
 }

@@ -11,6 +11,7 @@ namespace ECX.HR.Domain
 {
     public class Allowancee :BaseDomainEntity
     {
+        public int PId { get; set; }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
@@ -19,5 +20,6 @@ namespace ECX.HR.Domain
         public string Step { get; set; }
         public bool Rate { get; set; }
         public double RatePercent { get; set; }
+        public int Status { get; set; }
     }
 }
