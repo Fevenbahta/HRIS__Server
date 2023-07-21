@@ -17,7 +17,7 @@ namespace ECX.HR.Persistence
     {
         public static IServiceCollection ConfigurePersistenceService(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<ECXHRDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("ECXHRConnectionString")));
+            services.AddDbContext<ECXHRDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("staggingConnectionString")));
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IAdressRepository, AdressRepository>();
             services.AddScoped<IAllwoanceRepository, AllowanceRepository>();

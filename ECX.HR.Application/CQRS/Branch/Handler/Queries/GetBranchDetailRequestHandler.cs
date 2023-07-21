@@ -4,6 +4,8 @@ using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Branch.Request.Queries;
 
 using ECX.HR.Application.DTOs.Branchs;
+using ECX.HR.Application.Exceptions;
+using ECX.HR.Domain;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -25,7 +27,11 @@ namespace ECX.HR.Application.CQRS.Branch.Handler.Queries
         public async Task<BranchDto> Handle(GetBranchDetailRequest request, CancellationToken cancellationToken)
         {
             var branch =await _BranchRepository.GetById(request.Id);
-            return _mapper.Map<BranchDto>(branch);
+            if (branch == null)
+                throw new NotFoundException(nameof(branch), request.Id);
+
+            else
+                return _mapper.Map<BranchDto>(branch);
         }
     }
 }

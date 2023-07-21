@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Departments.Request.Queries;
+using ECX.HR.Application.DTOs.Branchs;
 using ECX.HR.Application.DTOs.Department;
+using ECX.HR.Application.Exceptions;
+using ECX.HR.Domain;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -23,7 +26,12 @@ namespace ECX.HR.Application.CQRS.Departments.Handler.Queries
         public async Task<DepartmentDto> Handle(GetDepartmentDetailRequest request, CancellationToken cancellationToken)
         {
             var department =await _departmentRepository.GetById(request.Id);
-            return _mapper.Map<DepartmentDto>(department);
+            //return _mapper.Map<DepartmentDto>(department);
+            if (department == null)
+                throw new NotFoundException(nameof(department), request.Id);
+
+            else
+                return _mapper.Map<DepartmentDto>(department);
         }
     }
 }

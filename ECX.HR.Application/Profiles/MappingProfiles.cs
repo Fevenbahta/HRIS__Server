@@ -28,6 +28,7 @@ using System.Threading.Tasks;
 using ECX.HR.Application.DTOs.EmployeeStatuss;
 using ECX.HR.Application.CQRS.Addresss.Request.Queries;
 using ECX.HR.Application.CQRS.Employee.Request.Queries;
+using ECX.HR.Application.DTOs.Step;
 
 namespace ECX.HR.Application.Profiles
 {
@@ -54,6 +55,7 @@ namespace ECX.HR.Application.Profiles
             CreateMap<Positions, PositionDto>().ReverseMap();
             CreateMap<SalaryTypes, SalaryTypeDto>().ReverseMap();
             CreateMap<Spouses, SpouseDto>().ReverseMap();
+            CreateMap<Steps, StepDto>().ReverseMap();
             CreateMap<Supervisors, SupervisorDto>().ReverseMap();
             CreateMap<Trainings, TrainingDto>().ReverseMap();
             CreateMap<WorkExperiences, WorkExperienceDto>().ReverseMap();

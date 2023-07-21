@@ -14,7 +14,7 @@ namespace ECX.HR.Persistence
                 IConfigurationRoot configuration = new ConfigurationBuilder()
                     .SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json").Build();
                 var builder = new DbContextOptionsBuilder<ECXHRDbContext>();
-                var connectionString = configuration.GetConnectionString("ECXHRConnectionString");
+                var connectionString = configuration.GetConnectionString("staggingConnectionString");
                 builder.UseSqlServer(connectionString);
                 return new ECXHRDbContext(builder.Options);
             }

@@ -4,6 +4,8 @@ using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Training.Request.Queries;
 
 using ECX.HR.Application.DTOs.Trainings;
+using ECX.HR.Application.Exceptions;
+using ECX.HR.Domain;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -25,7 +27,12 @@ namespace ECX.HR.Application.CQRS.Training.Handler.Queries
         public async Task<TrainingDto> Handle(GetTrainingDetailRequest request, CancellationToken cancellationToken)
         {
             var training =await _TrainingRepository.GetById(request.Id);
-            return _mapper.Map<TrainingDto>(training);
+            
+            if (training == null)
+                throw new NotFoundException(nameof(training), request.Id);
+
+            else
+                return _mapper.Map<TrainingDto>(training);
         }
     }
 }

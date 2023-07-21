@@ -4,6 +4,8 @@ using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.CQRS.WorkExperience.Request.Queries;
 
 using ECX.HR.Application.DTOs.WorkExperiences;
+using ECX.HR.Application.Exceptions;
+using ECX.HR.Domain;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -25,7 +27,12 @@ namespace ECX.HR.Application.CQRS.WorkExperience.Handler.Queries
         public async Task<WorkExperienceDto> Handle(GetWorkExperienceDetailRequest request, CancellationToken cancellationToken)
         {
             var workExperience =await _WorkExperienceRepository.GetById(request.Id);
-            return _mapper.Map<WorkExperienceDto>(workExperience);
+            
+            if (workExperience == null)
+                throw new NotFoundException(nameof(workExperience), request.Id);
+
+            else
+                return _mapper.Map<WorkExperienceDto>(workExperience);
         }
     }
 }

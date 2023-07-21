@@ -4,6 +4,8 @@ using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.EducationLevel.Request.Queries;
 
 using ECX.HR.Application.DTOs.EducationLevels;
+using ECX.HR.Application.Exceptions;
+using ECX.HR.Domain;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -25,7 +27,12 @@ namespace ECX.HR.Application.CQRS.EducationLevel.Handler.Queries
         public async Task<EducationLevelDto> Handle(GetEducationLevelDetailRequest request, CancellationToken cancellationToken)
         {
             var educationLevel =await _EducationLevelRepository.GetById(request.Id);
-            return _mapper.Map<EducationLevelDto>(educationLevel);
+            
+            if (educationLevel == null)
+                throw new NotFoundException(nameof(educationLevel), request.Id);
+
+            else
+                return _mapper.Map<EducationLevelDto>(educationLevel);
         }
     }
 }

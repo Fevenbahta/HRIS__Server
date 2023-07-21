@@ -29,6 +29,7 @@ namespace ECX.HR.Application.CQRS.Addresss.Handler.Queries
             
             if (address == null)
                 throw new NotFoundException(nameof(address), request.Id);
+           
             else
                 return _mapper.Map<AddressDto>(address);
         }

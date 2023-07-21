@@ -4,6 +4,7 @@ using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Allowance.Request.Queries;
 
 using ECX.HR.Application.DTOs.Allowances.cs;
+using ECX.HR.Application.Exceptions;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,12 @@ namespace ECX.HR.Application.CQRS.Allowance.Handler.Queries
         public async Task<AllowanceDto> Handle(GetAllowanceDetailRequest request, CancellationToken cancellationToken)
         {
             var allowance =await _AllowanceRepository.GetById(request.Id);
-            return _mapper.Map<AllowanceDto>(allowance);
+            if (allowance == null)
+                throw new NotFoundException(nameof(allowance), request.Id);
+
+            else
+                return _mapper.Map<AllowanceDto>(allowance);
+           
         }
     }
 }

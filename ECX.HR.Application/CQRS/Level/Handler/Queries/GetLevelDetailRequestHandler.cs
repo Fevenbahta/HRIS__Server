@@ -2,7 +2,10 @@
 using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Level.Request.Queries;
+using ECX.HR.Application.DTOs.EmployeeStatuss;
 using ECX.HR.Application.DTOs.Levels;
+using ECX.HR.Application.Exceptions;
+using ECX.HR.Domain;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -24,7 +27,12 @@ namespace ECX.HR.Application.CQRS.Level.Handler.Queries
         public async Task<LevelDto> Handle(GetLevelDetailRequest request, CancellationToken cancellationToken)
         {
             var level =await _LevelRepository.GetById(request.LevelId);
-            return _mapper.Map<LevelDto>(level);
+           
+            if (level == null)
+                throw new NotFoundException(nameof(level), request.LevelId);
+
+            else
+                return _mapper.Map<LevelDto>(level);
         }
     }
 }

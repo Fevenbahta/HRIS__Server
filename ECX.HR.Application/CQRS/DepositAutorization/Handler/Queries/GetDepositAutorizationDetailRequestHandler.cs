@@ -4,6 +4,8 @@ using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.DepositAutorization.Request.Queries;
 
 using ECX.HR.Application.DTOs.DepositAutorizations;
+using ECX.HR.Application.Exceptions;
+using ECX.HR.Domain;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -25,7 +27,12 @@ namespace ECX.HR.Application.CQRS.DepositAutorization.Handler.Queries
         public async Task<DepositAutorizationDto> Handle(GetDepositAutorizationDetailRequest request, CancellationToken cancellationToken)
         {
             var depositAutorization =await _DepositAutorizationRepository.GetById(request.Id);
-            return _mapper.Map<DepositAutorizationDto>(depositAutorization);
+           
+            if (depositAutorization == null)
+                throw new NotFoundException(nameof(depositAutorization), request.Id);
+
+            else
+                return _mapper.Map<DepositAutorizationDto>(depositAutorization);
         }
     }
 }

@@ -210,7 +210,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("EcxId")
+                    b.Property<Guid>("EmpId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("PId")

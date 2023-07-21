@@ -4,6 +4,9 @@ using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.EmployeePosition.Request.Queries;
 
 using ECX.HR.Application.DTOs.EmployeePositions;
+using ECX.HR.Application.DTOs.Employees;
+using ECX.HR.Application.Exceptions;
+using ECX.HR.Domain;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -25,7 +28,12 @@ namespace ECX.HR.Application.CQRS.EmployeePosition.Handler.Queries
         public async Task<EmployeePositionDto> Handle(GetEmployeePositionDetailRequest request, CancellationToken cancellationToken)
         {
             var employeePosition =await _EmployeePositionRepository.GetById(request.Id);
-            return _mapper.Map<EmployeePositionDto>(employeePosition);
+           
+            if (employeePosition == null)
+                throw new NotFoundException(nameof(employeePosition), request.Id);
+
+            else
+                return _mapper.Map<EmployeePositionDto>(employeePosition);
         }
     }
 }

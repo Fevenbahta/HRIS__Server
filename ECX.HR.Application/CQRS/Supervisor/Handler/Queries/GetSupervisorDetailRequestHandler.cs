@@ -4,6 +4,8 @@ using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Supervisor.Request.Queries;
 
 using ECX.HR.Application.DTOs.Supervisors;
+using ECX.HR.Application.Exceptions;
+using ECX.HR.Domain;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -25,7 +27,12 @@ namespace ECX.HR.Application.CQRS.Supervisor.Handler.Queries
         public async Task<SupervisorDto> Handle(GetSupervisorDetailRequest request, CancellationToken cancellationToken)
         {
             var supervisor =await _SupervisorRepository.GetById(request.Id);
-            return _mapper.Map<SupervisorDto>(supervisor);
+           
+            if (supervisor == null)
+                throw new NotFoundException(nameof(supervisor), request.Id);
+
+            else
+                return _mapper.Map<SupervisorDto>(supervisor);
         }
     }
 }

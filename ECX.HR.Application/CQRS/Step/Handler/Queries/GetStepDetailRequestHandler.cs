@@ -2,7 +2,10 @@
 using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Step.Request.Queries;
+using ECX.HR.Application.DTOs.Spouses;
 using ECX.HR.Application.DTOs.Step;
+using ECX.HR.Application.Exceptions;
+using ECX.HR.Domain;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -23,8 +26,13 @@ namespace ECX.HR.Application.CQRS.Step.Handler.Queries
         }
         public async Task<StepDto> Handle(GetStepDetailRequest request, CancellationToken cancellationToken)
         {
-            var step =await _StepRepository.GetById(request.Id);
-            return _mapper.Map<StepDto>(step);
+            var step = await _StepRepository.GetById(request.Id);
+
+            if (step == null)
+                throw new NotFoundException(nameof(step), request.Id);
+
+            else
+                return _mapper.Map<StepDto>(step);
         }
     }
 }

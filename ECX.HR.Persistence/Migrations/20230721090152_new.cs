@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ECX.HR.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class newmigration : Migration
+    public partial class @new : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,6 +15,7 @@ namespace ECX.HR.Persistence.Migrations
                 name: "Adress",
                 columns: table => new
                 {
+                   
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Region = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -101,7 +102,7 @@ namespace ECX.HR.Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    EcxId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Bank = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BankBranch = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BankAccount = table.Column<int>(type: "int", nullable: false),
