@@ -3,6 +3,7 @@ using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Addresss.Request.Queries;
 using ECX.HR.Application.DTOs.Addresss;
+using ECX.HR.Application.Exceptions;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,7 @@ namespace ECX.HR.Application.CQRS.Addresss.Handler.Queries
                 return _mapper.Map<List<AddressDto>>(address);
             else
                 return null;
+           
         }
     }
 }
