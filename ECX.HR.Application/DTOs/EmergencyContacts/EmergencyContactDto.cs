@@ -22,7 +22,7 @@ namespace ECX.HR.Application.DTOs.EmergencyContacts
         public string SubCity { get; set; }
         public string Kebele { get; set; }
         public string HouseNo { get; set; }
-        public int PhoneNumber { get; set; }
+        public String PhoneNumber { get; set; }
         public string Relationship { get; set; }
         public int Status { get; set; }
 

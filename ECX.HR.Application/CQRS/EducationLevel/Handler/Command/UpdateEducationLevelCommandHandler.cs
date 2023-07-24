@@ -31,7 +31,7 @@ namespace ECX.HR.Application.CQRS.EducationLevel.Handler.Command
             var validationResult = await validator.ValidateAsync(request.EducationLevelDto);
             if (validationResult.IsValid == false)
                 throw new ValidationException(validationResult);
-            var EducationLevel = await _EducationLevelRepository.GetById(request.EducationLevelDto.id);
+            var EducationLevel = await _EducationLevelRepository.GetById(request.EducationLevelDto.Id);
             _mapper.Map(request.EducationLevelDto, EducationLevel);
             await _EducationLevelRepository.Update(EducationLevel);
             return Unit.Value;

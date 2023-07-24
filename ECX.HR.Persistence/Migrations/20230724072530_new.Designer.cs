@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECX.HR.Persistence.Migrations
 {
     [DbContext(typeof(ECXHRDbContext))]
-    [Migration("20230721090152_new")]
+    [Migration("20230724072530_new")]
     partial class @new
     {
         /// <inheritdoc />
@@ -50,7 +50,10 @@ namespace ECX.HR.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PId"));
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
@@ -97,7 +100,10 @@ namespace ECX.HR.Persistence.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<int>("PId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PId"));
 
                     b.Property<string>("Position")
                         .HasColumnType("nvarchar(max)");
@@ -138,7 +144,10 @@ namespace ECX.HR.Persistence.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<int>("PId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PId"));
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -176,7 +185,10 @@ namespace ECX.HR.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PId"));
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -217,7 +229,10 @@ namespace ECX.HR.Persistence.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("PId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PId"));
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -255,7 +270,10 @@ namespace ECX.HR.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PId"));
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -289,7 +307,10 @@ namespace ECX.HR.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PId"));
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -333,7 +354,10 @@ namespace ECX.HR.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PId"));
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -379,7 +403,10 @@ namespace ECX.HR.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PId"));
 
                     b.Property<int>("PhoneNumber")
                         .HasColumnType("int");
@@ -430,11 +457,17 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("PId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PId"));
+
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Status")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("StepId")
                         .HasColumnType("nvarchar(max)");
@@ -463,7 +496,10 @@ namespace ECX.HR.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PId"));
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -527,8 +563,9 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<string>("Nationality")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("PId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("PensionNo")
                         .HasColumnType("nvarchar(max)");
@@ -578,7 +615,10 @@ namespace ECX.HR.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PId"));
 
                     b.Property<Guid>("PositionId")
                         .HasColumnType("uniqueidentifier");
@@ -619,7 +659,10 @@ namespace ECX.HR.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PId"));
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -653,7 +696,10 @@ namespace ECX.HR.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PId"));
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -691,7 +737,10 @@ namespace ECX.HR.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PId"));
 
                     b.Property<string>("Relationship")
                         .HasColumnType("nvarchar(max)");
@@ -731,10 +780,13 @@ namespace ECX.HR.Persistence.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("PId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PId"));
+
                     b.Property<decimal>("Salary")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,8)");
 
                     b.Property<Guid>("SalaryTypeId")
                         .HasColumnType("uniqueidentifier");
@@ -771,7 +823,10 @@ namespace ECX.HR.Persistence.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("PId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PId"));
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -809,7 +864,10 @@ namespace ECX.HR.Persistence.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<int>("PId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PId"));
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -853,9 +911,6 @@ namespace ECX.HR.Persistence.Migrations
 
                     b.Property<DateTime>("From")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("PId")
-                        .HasColumnType("int");
 
                     b.Property<string>("PostionHeld")
                         .HasColumnType("nvarchar(max)");

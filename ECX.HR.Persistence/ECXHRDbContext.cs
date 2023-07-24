@@ -62,6 +62,11 @@ namespace ECX.HR.Persistence
 
 
 
+            modelBuilder.Entity<Steps>()
+            .Property(p => p.Salary)
+            .HasColumnType("decimal(18,8)");
+
+
 
 
 
