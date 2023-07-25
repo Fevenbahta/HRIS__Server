@@ -20,10 +20,12 @@ namespace ECXHR_Service.Controllers
     {
         private readonly IMediator _mediator;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private static int _nextPId = 1;
         public EmployeeController(IMediator mediator, IHttpContextAccessor httpContextAccessor)
         {
             _mediator = mediator;
             this._httpContextAccessor = httpContextAccessor;
+
         }
         // GET: api/<EmployeeController>
         [HttpGet]
@@ -47,7 +49,10 @@ namespace ECXHR_Service.Controllers
         public async Task<ActionResult<BaseCommandResponse>> Post([FromBody] EmployeeDto Employee)
         {
             var user = _httpContextAccessor.HttpContext.User;
+            Employee.EmpId= Guid.NewGuid();
+            Employee.PId = _nextPId++;
             var command = new CreateEmployeeCommand { EmployeeDto = Employee };
+           
             var response = await _mediator.Send(command);
             return Ok(response);
         }
