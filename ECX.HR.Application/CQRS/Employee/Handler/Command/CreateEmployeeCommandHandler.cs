@@ -43,9 +43,13 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
            
             var Employee = _mapper.Map<Employees>(request.EmployeeDto);
             Employee.EmpId = Guid.NewGuid();
+            var emp = Employee.EmpId;
             var data =await _EmployeeRepository.Add(Employee);
             response.Success = true;
             response.Message = "Creation Successfull";
+            response.Id = (Guid)emp;
+
+
             return response;
         }
     }

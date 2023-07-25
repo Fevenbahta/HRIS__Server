@@ -12,7 +12,7 @@ namespace ECX.HR.Application.DTOs.Addresss
     public class AdressDetailDto : BaseDtos
     {
 
-        public int PId { get; set; }
+        //public int PId { get; set; }
         public Guid Id { get; set; }
         public Guid EmpId { get; set; }
         public string Region { get; set; }
