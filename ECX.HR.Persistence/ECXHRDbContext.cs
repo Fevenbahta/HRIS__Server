@@ -18,6 +18,20 @@ namespace ECX.HR.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ECXHRDbContext).Assembly);
+           
+            foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+            {
+                if (typeof(BaseDomainEntity).IsAssignableFrom(entityType.ClrType))
+                {
+                    modelBuilder.Entity(entityType.ClrType)
+                        .Property(nameof(BaseDomainEntity.CreatedDate))
+                        .HasDefaultValue(DateTime.UtcNow);
+
+                    modelBuilder.Entity(entityType.ClrType)
+                        .Property(nameof(BaseDomainEntity.UpdatedDate))
+                        .HasDefaultValue(DateTime.UtcNow);
+                }
+            }
 
             modelBuilder.Entity<Employees>()
             .HasMany(e => e.WorkExperiences)
