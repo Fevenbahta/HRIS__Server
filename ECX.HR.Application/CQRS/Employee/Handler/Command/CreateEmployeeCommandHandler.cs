@@ -34,7 +34,7 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
             var validator =new EmployeeDtoValidators();
             var validationResult =await validator.ValidateAsync(request.EmployeeDto);
             
-            if(validationResult.IsValid == false)
+            if (validationResult.IsValid == false)
             {
                 response.Success = false;
                 response.Message = "Creation Faild";
@@ -42,6 +42,7 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
             }
            
             var Employee = _mapper.Map<Employees>(request.EmployeeDto);
+            Employee.EmpId = Guid.NewGuid();
             var data =await _EmployeeRepository.Add(Employee);
             response.Success = true;
             response.Message = "Creation Successfull";

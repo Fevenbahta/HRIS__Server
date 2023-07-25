@@ -1,18 +1,15 @@
-﻿using ECX.HR.Application.DTOs.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ECX.HR.Application.DTOs.Employees
 {
-    public class EmployeeDto : BaseDtos
+    internal class EmpCreateDto
     {
         //public int PId { get; set; }
-        public Guid EmpId { get; set; }
+        //public Guid EmpId { get; set; }
         public string EcxId { get; set; }
         public string AdId { get; set; }
         public string FirstName { get; set; }
@@ -32,6 +29,5 @@ namespace ECX.HR.Application.DTOs.Employees
         public string FirstSupervisor { get; set; }
         public string SecondSupervisor { get; set; }
         public int Status { get; set; }
-
     }
 }

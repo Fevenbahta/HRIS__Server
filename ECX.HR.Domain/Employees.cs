@@ -13,10 +13,10 @@ namespace ECX.HR.Domain
     {
         
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid PId { get; set; }
+        public int PId { get; set; }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid EmpId { get; set; }
+        public Guid? EmpId { get; set; }
         public string EcxId { get; set; }
         public string AdId { get; set; }
         public string FirstName { get; set; }

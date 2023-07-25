@@ -16,9 +16,9 @@ namespace ECX.HR.Domain
         public int PId { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
-        public Guid Id { get; set; }
-        [ForeignKey("Employeee")]
-        public Guid EmpId { get; set; }
+        public Guid? Id { get; set; }
+        [ForeignKey("Employees")]
+        public Guid? EmpId { get; set; }
         public string Bank { get; set; }
         public string BankBranch { get; set;}
         public int BankAccount { get; set; }

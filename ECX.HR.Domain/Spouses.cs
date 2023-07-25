@@ -15,10 +15,10 @@ namespace ECX.HR.Domain
         public int PId { get; set; }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid Id { get; set; }
+        public Guid? Id { get; set; }
        
         [ForeignKey("Employees")]
-        public Guid EmpId { get; set; }
+        public Guid? EmpId { get; set; }
 
         public string Name { get; set; }
         public DateTime DateOfBirth { get; set; }

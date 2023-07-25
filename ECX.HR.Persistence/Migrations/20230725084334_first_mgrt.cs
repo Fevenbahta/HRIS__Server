@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ECX.HR.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class @new : Migration
+    public partial class first_mgrt : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,7 +18,7 @@ namespace ECX.HR.Persistence.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Region = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Town = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SubCity = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -107,7 +107,7 @@ namespace ECX.HR.Persistence.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Bank = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BankBranch = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BankAccount = table.Column<int>(type: "int", nullable: false),
@@ -166,7 +166,8 @@ namespace ECX.HR.Persistence.Migrations
                 columns: table => new
                 {
                     EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    PId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     EcxId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AdId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -203,7 +204,7 @@ namespace ECX.HR.Persistence.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     DivisionId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     StepId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BranchId = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -224,7 +225,7 @@ namespace ECX.HR.Persistence.Migrations
                     LevelId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    PositionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PositionId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -263,7 +264,7 @@ namespace ECX.HR.Persistence.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     SupervisorLevel = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -283,7 +284,7 @@ namespace ECX.HR.Persistence.Migrations
                     DivisionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DepartmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DepartmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -298,8 +299,7 @@ namespace ECX.HR.Persistence.Migrations
                         name: "FK_Division_Departments_DepartmentId",
                         column: x => x.DepartmentId,
                         principalTable: "Departments",
-                        principalColumn: "DepartmentId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "DepartmentId");
                 });
 
             migrationBuilder.CreateTable(
@@ -309,7 +309,7 @@ namespace ECX.HR.Persistence.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     NameOfInstitute = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     From = table.Column<DateTime>(type: "datetime2", nullable: false),
                     To = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -328,8 +328,7 @@ namespace ECX.HR.Persistence.Migrations
                         name: "FK_Education_Employee_EmpId",
                         column: x => x.EmpId,
                         principalTable: "Employee",
-                        principalColumn: "EmpId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "EmpId");
                 });
 
             migrationBuilder.CreateTable(
@@ -339,7 +338,7 @@ namespace ECX.HR.Persistence.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Town = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Region = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -361,8 +360,7 @@ namespace ECX.HR.Persistence.Migrations
                         name: "FK_EmergencyContact_Employee_EmpId",
                         column: x => x.EmpId,
                         principalTable: "Employee",
-                        principalColumn: "EmpId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "EmpId");
                 });
 
             migrationBuilder.CreateTable(
@@ -372,7 +370,7 @@ namespace ECX.HR.Persistence.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Relationship = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -389,8 +387,7 @@ namespace ECX.HR.Persistence.Migrations
                         name: "FK_Spouse_Employee_EmpId",
                         column: x => x.EmpId,
                         principalTable: "Employee",
-                        principalColumn: "EmpId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "EmpId");
                 });
 
             migrationBuilder.CreateTable(
@@ -400,7 +397,7 @@ namespace ECX.HR.Persistence.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     TypeOfTraining = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     From = table.Column<DateTime>(type: "datetime2", nullable: false),
                     To = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -417,8 +414,7 @@ namespace ECX.HR.Persistence.Migrations
                         name: "FK_Training_Employee_EmpId",
                         column: x => x.EmpId,
                         principalTable: "Employee",
-                        principalColumn: "EmpId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "EmpId");
                 });
 
             migrationBuilder.CreateTable(
@@ -426,6 +422,8 @@ namespace ECX.HR.Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PostionHeld = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -459,8 +457,8 @@ namespace ECX.HR.Persistence.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Salary = table.Column<decimal>(type: "decimal(18,8)", nullable: false),
-                    SalaryTypeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    LevelId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SalaryTypeId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    LevelId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -474,8 +472,7 @@ namespace ECX.HR.Persistence.Migrations
                         name: "FK_Step_Level_LevelId",
                         column: x => x.LevelId,
                         principalTable: "Level",
-                        principalColumn: "LevelId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "LevelId");
                 });
 
             migrationBuilder.CreateTable(
@@ -485,7 +482,7 @@ namespace ECX.HR.Persistence.Migrations
                     PositionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DivisionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DivisionId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
@@ -501,8 +498,7 @@ namespace ECX.HR.Persistence.Migrations
                         name: "FK_Job_Division_DivisionId",
                         column: x => x.DivisionId,
                         principalTable: "Division",
-                        principalColumn: "DivisionId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "DivisionId");
                 });
 
             migrationBuilder.CreateIndex(

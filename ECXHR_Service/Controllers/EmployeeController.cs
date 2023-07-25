@@ -47,6 +47,7 @@ namespace ECXHR_Service.Controllers
         public async Task<ActionResult<BaseCommandResponse>> Post([FromBody] EmployeeDto Employee)
         {
             var user = _httpContextAccessor.HttpContext.User;
+            //Employee.EmpId = Guid.NewGuid();
             var command = new CreateEmployeeCommand { EmployeeDto = Employee };
             var response = await _mediator.Send(command);
             return Ok(response);

@@ -16,9 +16,9 @@ namespace ECX.HR.Domain
         public int PId { get; set; }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
-        public Guid DivisionId { get; set; }
+        public Guid? DivisionId { get; set; }
         [ForeignKey("Department")]
-        public Guid DepartmentId { get; set; }
+        public Guid? DepartmentId { get; set; }
         public string Description { get; set; }
         public int Status { get; set; }
         public virtual Department Departments { get; set; }

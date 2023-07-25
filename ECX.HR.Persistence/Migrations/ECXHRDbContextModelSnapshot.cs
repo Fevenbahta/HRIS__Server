@@ -24,7 +24,7 @@ namespace ECX.HR.Persistence.Migrations
 
             modelBuilder.Entity("ECX.HR.Domain.Adress", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -37,7 +37,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("EmpId")
+                    b.Property<Guid?>("EmpId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("HouseNo")
@@ -83,7 +83,7 @@ namespace ECX.HR.Persistence.Migrations
 
             modelBuilder.Entity("ECX.HR.Domain.Allowancee", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -130,7 +130,7 @@ namespace ECX.HR.Persistence.Migrations
 
             modelBuilder.Entity("ECX.HR.Domain.Branches", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -168,7 +168,7 @@ namespace ECX.HR.Persistence.Migrations
 
             modelBuilder.Entity("ECX.HR.Domain.Department", b =>
                 {
-                    b.Property<Guid>("DepartmentId")
+                    b.Property<Guid?>("DepartmentId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -203,7 +203,7 @@ namespace ECX.HR.Persistence.Migrations
 
             modelBuilder.Entity("ECX.HR.Domain.DepositAutorizations", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -222,7 +222,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("EmpId")
+                    b.Property<Guid?>("EmpId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("PId")
@@ -250,7 +250,7 @@ namespace ECX.HR.Persistence.Migrations
 
             modelBuilder.Entity("ECX.HR.Domain.Divisions", b =>
                 {
-                    b.Property<Guid>("DivisionId")
+                    b.Property<Guid?>("DivisionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -260,7 +260,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("DepartmentId")
+                    b.Property<Guid?>("DepartmentId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
@@ -290,7 +290,7 @@ namespace ECX.HR.Persistence.Migrations
 
             modelBuilder.Entity("ECX.HR.Domain.EducationLevels", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -325,7 +325,7 @@ namespace ECX.HR.Persistence.Migrations
 
             modelBuilder.Entity("ECX.HR.Domain.Educations", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -338,7 +338,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<string>("EductionName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("EmpId")
+                    b.Property<Guid?>("EmpId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("FieldOfStudy")
@@ -377,7 +377,7 @@ namespace ECX.HR.Persistence.Migrations
 
             modelBuilder.Entity("ECX.HR.Domain.EmergencyContacts", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -387,7 +387,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("EmpId")
+                    b.Property<Guid?>("EmpId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("HouseNo")
@@ -438,7 +438,7 @@ namespace ECX.HR.Persistence.Migrations
 
             modelBuilder.Entity("ECX.HR.Domain.EmployeePositions", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -448,7 +448,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<string>("DivisionId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("EmpId")
+                    b.Property<Guid?>("EmpId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("EndDate")
@@ -479,7 +479,7 @@ namespace ECX.HR.Persistence.Migrations
 
             modelBuilder.Entity("ECX.HR.Domain.EmployeeStatuss", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -514,7 +514,7 @@ namespace ECX.HR.Persistence.Migrations
 
             modelBuilder.Entity("ECX.HR.Domain.Employees", b =>
                 {
-                    b.Property<Guid>("EmpId")
+                    b.Property<Guid?>("EmpId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -560,9 +560,11 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<string>("Nationality")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("PId")
+                    b.Property<int>("PId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PId"));
 
                     b.Property<string>("PensionNo")
                         .HasColumnType("nvarchar(max)");
@@ -598,7 +600,7 @@ namespace ECX.HR.Persistence.Migrations
 
             modelBuilder.Entity("ECX.HR.Domain.Levels", b =>
                 {
-                    b.Property<Guid>("LevelId")
+                    b.Property<Guid?>("LevelId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -617,7 +619,7 @@ namespace ECX.HR.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PId"));
 
-                    b.Property<Guid>("PositionId")
+                    b.Property<Guid?>("PositionId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Status")
@@ -636,7 +638,7 @@ namespace ECX.HR.Persistence.Migrations
 
             modelBuilder.Entity("ECX.HR.Domain.Positions", b =>
                 {
-                    b.Property<Guid>("PositionId")
+                    b.Property<Guid?>("PositionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -649,7 +651,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("DivisionId")
+                    b.Property<Guid?>("DivisionId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
@@ -679,7 +681,7 @@ namespace ECX.HR.Persistence.Migrations
 
             modelBuilder.Entity("ECX.HR.Domain.SalaryTypes", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -714,7 +716,7 @@ namespace ECX.HR.Persistence.Migrations
 
             modelBuilder.Entity("ECX.HR.Domain.Spouses", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -727,7 +729,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("EmpId")
+                    b.Property<Guid?>("EmpId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
@@ -760,7 +762,7 @@ namespace ECX.HR.Persistence.Migrations
 
             modelBuilder.Entity("ECX.HR.Domain.Steps", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -773,7 +775,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("LevelId")
+                    b.Property<Guid?>("LevelId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("PId")
@@ -785,7 +787,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<decimal>("Salary")
                         .HasColumnType("decimal(18,8)");
 
-                    b.Property<Guid>("SalaryTypeId")
+                    b.Property<Guid?>("SalaryTypeId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Status")
@@ -806,7 +808,7 @@ namespace ECX.HR.Persistence.Migrations
 
             modelBuilder.Entity("ECX.HR.Domain.Supervisors", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -816,7 +818,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("EmpId")
+                    b.Property<Guid?>("EmpId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("PId")
@@ -844,7 +846,7 @@ namespace ECX.HR.Persistence.Migrations
 
             modelBuilder.Entity("ECX.HR.Domain.Trainings", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -854,7 +856,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("EmpId")
+                    b.Property<Guid?>("EmpId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("From")
@@ -890,7 +892,7 @@ namespace ECX.HR.Persistence.Migrations
 
             modelBuilder.Entity("ECX.HR.Domain.WorkExperiences", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -908,6 +910,12 @@ namespace ECX.HR.Persistence.Migrations
 
                     b.Property<DateTime>("From")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("PId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PId"));
 
                     b.Property<string>("PostionHeld")
                         .HasColumnType("nvarchar(max)");
@@ -941,9 +949,7 @@ namespace ECX.HR.Persistence.Migrations
                 {
                     b.HasOne("ECX.HR.Domain.Department", "Departments")
                         .WithMany("Divisions")
-                        .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DepartmentId");
 
                     b.Navigation("Departments");
                 });
@@ -952,9 +958,7 @@ namespace ECX.HR.Persistence.Migrations
                 {
                     b.HasOne("ECX.HR.Domain.Employees", "Employees")
                         .WithMany("Educations")
-                        .HasForeignKey("EmpId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EmpId");
 
                     b.Navigation("Employees");
                 });
@@ -963,9 +967,7 @@ namespace ECX.HR.Persistence.Migrations
                 {
                     b.HasOne("ECX.HR.Domain.Employees", "Employees")
                         .WithMany("EmergencyContacts")
-                        .HasForeignKey("EmpId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EmpId");
 
                     b.Navigation("Employees");
                 });
@@ -974,9 +976,7 @@ namespace ECX.HR.Persistence.Migrations
                 {
                     b.HasOne("ECX.HR.Domain.Divisions", "Divisions")
                         .WithMany("Positions")
-                        .HasForeignKey("DivisionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DivisionId");
 
                     b.Navigation("Divisions");
                 });
@@ -985,9 +985,7 @@ namespace ECX.HR.Persistence.Migrations
                 {
                     b.HasOne("ECX.HR.Domain.Employees", "Employees")
                         .WithMany("Spouses")
-                        .HasForeignKey("EmpId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EmpId");
 
                     b.Navigation("Employees");
                 });
@@ -996,9 +994,7 @@ namespace ECX.HR.Persistence.Migrations
                 {
                     b.HasOne("ECX.HR.Domain.Levels", "Levels")
                         .WithMany("Steps")
-                        .HasForeignKey("LevelId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("LevelId");
 
                     b.Navigation("Levels");
                 });
@@ -1007,9 +1003,7 @@ namespace ECX.HR.Persistence.Migrations
                 {
                     b.HasOne("ECX.HR.Domain.Employees", "Employees")
                         .WithMany("Trainings")
-                        .HasForeignKey("EmpId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EmpId");
 
                     b.Navigation("Employees");
                 });
