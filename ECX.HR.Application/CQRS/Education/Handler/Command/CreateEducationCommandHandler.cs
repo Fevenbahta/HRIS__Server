@@ -41,9 +41,13 @@ namespace ECX.HR.Application.CQRS.Education.Handler.Command
             }
            
             var Education = _mapper.Map<Educations>(request.EducationDto);
-            var data =await _EducationRepository.Add(Education);
+           
+            Education.Id = Guid.NewGuid();
+            var Edu = Education.Id;
+            var data = await _EducationRepository.Add(Education);
             response.Success = true;
             response.Message = "Creation Successfull";
+            response.Id = (Guid)Edu;
             return response;
         }
     }

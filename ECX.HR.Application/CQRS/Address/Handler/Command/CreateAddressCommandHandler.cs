@@ -43,9 +43,12 @@ namespace ECX.HR.Application.CQRS.Address.Handler.Command
             }
            
             var Address = _mapper.Map<Adress>(request.AddressDto);
+            Address.Id = Guid.NewGuid();
+            var add = Address.Id;
             var data =await _AddressRepository.Add(Address);
             response.Success = true;
             response.Message = "Creation Successfull";
+            response.Id = (Guid)add;
             return response;
         }
     }
