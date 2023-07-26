@@ -16,7 +16,7 @@ namespace ECX.HR.Domain
         public int PId { get; set; }
        
         [Key]
-        public Guid DivisionId { get; set; }
+        public Guid? DivisionId { get; set; }
         [ForeignKey("Department")]
         public Guid? DepartmentId { get; set; }
         public string Description { get; set; }
