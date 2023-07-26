@@ -41,8 +41,9 @@ namespace ECX.HR.Application.CQRS.EmergencyContact.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var EmergencyContact = _mapper.Map<EmergencyContacts>(request.EmergencyContactDto);
-            var data =await _EmergencyContactRepository.Add(EmergencyContact);
+            var emergencyContact = _mapper.Map<EmergencyContacts>(request.EmergencyContactDto);
+            emergencyContact.Id = Guid.NewGuid();
+            var data =await _EmergencyContactRepository.Add(emergencyContact);
             response.Success = true;
             response.Message = "Creation Successfull";
             return response;

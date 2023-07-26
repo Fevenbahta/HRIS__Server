@@ -41,8 +41,9 @@ namespace ECX.HR.Application.CQRS.EmployeeStatus.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var EmployeeStatus = _mapper.Map<EmployeeStatuss>(request.EmployeeStatusDto);
-            var data =await _EmployeeStatusRepository.Add(EmployeeStatus);
+            var employeeStatus = _mapper.Map<EmployeeStatuss>(request.EmployeeStatusDto);
+            employeeStatus.Id = Guid.NewGuid();
+            var data =await _EmployeeStatusRepository.Add(employeeStatus);
             response.Success = true;
             response.Message = "Creation Successfull";
             return response;

@@ -40,8 +40,9 @@ namespace ECX.HR.Application.CQRS.Position.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var Position = _mapper.Map<Positions>(request.PositionDto);
-            var data =await _PositionRepository.Add(Position);
+            var position = _mapper.Map<Positions>(request.PositionDto);
+            position.PositionId = Guid.NewGuid();
+            var data =await _PositionRepository.Add(position);
             response.Success = true;
             response.Message = "Creation Successfull";
             return response;

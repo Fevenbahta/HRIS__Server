@@ -42,8 +42,9 @@ namespace ECX.HR.Application.CQRS.Salary.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var Salary = _mapper.Map<SalaryTypes>(request.SalaryDto);
-            var data =await _SalaryRepository.Add(Salary);
+            var salary = _mapper.Map<SalaryTypes>(request.SalaryDto);
+            salary.Id = Guid.NewGuid();
+            var data =await _SalaryRepository.Add(salary);
             response.Success = true;
             response.Message = "Creation Successfull";
             return response;

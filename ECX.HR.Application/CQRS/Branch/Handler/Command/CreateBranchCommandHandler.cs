@@ -42,9 +42,12 @@ namespace ECX.HR.Application.CQRS.Branch.Handler.Command
             }
            
             var branch = _mapper.Map<Branches>(request.BranchDto);
+            branch.Id = Guid.NewGuid();
+            var bra = branch.Id;
             var data =await _BranchRepository.Add(branch);
             response.Success = true;
             response.Message = "Creation Successfull";
+            response.Id = (Guid)bra;
             return response;
         }
     }

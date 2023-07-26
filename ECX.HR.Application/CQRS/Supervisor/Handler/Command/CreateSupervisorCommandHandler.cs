@@ -41,8 +41,9 @@ namespace ECX.HR.Application.CQRS.Supervisor.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var Supervisor = _mapper.Map<Supervisors>(request.SupervisorDto);
-            var data =await _SupervisorRepository.Add(Supervisor);
+            var supervisor = _mapper.Map<Supervisors>(request.SupervisorDto);
+            supervisor.Id = Guid.NewGuid();
+            var data =await _SupervisorRepository.Add(supervisor);
             response.Success = true;
             response.Message = "Creation Successfull";
             return response;

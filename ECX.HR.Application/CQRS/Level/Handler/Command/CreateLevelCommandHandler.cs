@@ -39,8 +39,9 @@ namespace ECX.HR.Application.CQRS.Level.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var Level = _mapper.Map<Levels>(request.LevelDto);
-            var data =await _LevelRepository.Add(Level);
+            var level = _mapper.Map<Levels>(request.LevelDto);
+            level.LevelId = Guid.NewGuid();
+            var data =await _LevelRepository.Add(level);
             response.Success = true;
             response.Message = "Creation Successfull";
             return response;

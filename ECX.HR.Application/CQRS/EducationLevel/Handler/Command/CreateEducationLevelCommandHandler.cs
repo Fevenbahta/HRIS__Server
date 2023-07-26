@@ -41,8 +41,9 @@ namespace ECX.HR.Application.CQRS.EducationLevel.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var EducationLevel = _mapper.Map<EducationLevels>(request.EducationLevelDto);
-            var data =await _EducationLevelRepository.Add(EducationLevel);
+            var educationLevel = _mapper.Map<EducationLevels>(request.EducationLevelDto);
+            educationLevel.Id = Guid.NewGuid();
+            var data =await _EducationLevelRepository.Add(educationLevel);
             response.Success = true;
             response.Message = "Creation Successfull";
             return response;

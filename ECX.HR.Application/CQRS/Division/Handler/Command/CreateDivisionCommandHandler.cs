@@ -42,8 +42,9 @@ namespace ECX.HR.Application.CQRS.Division.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var Division = _mapper.Map<Divisions>(request.DivisionDto);
-            var data =await _DivisionRepository.Add(Division);
+            var division = _mapper.Map<Divisions>(request.DivisionDto);
+            division.DivisionId = Guid.NewGuid();
+            var data =await _DivisionRepository.Add(division);
             response.Success = true;
             response.Message = "Creation Successfull";
             return response;

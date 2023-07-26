@@ -37,8 +37,9 @@ namespace ECX.HR.Application.CQRS.EmployeePosition.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var EmployeePosition = _mapper.Map<EmployeePositions>(request.EmployeePositionDto);
-            var data =await _EmployeePositionRepository.Add(EmployeePosition);
+            var employeePosition = _mapper.Map<EmployeePositions>(request.EmployeePositionDto);
+            employeePosition.Id = Guid.NewGuid();
+            var data =await _EmployeePositionRepository.Add(employeePosition);
             response.Success = true;
             response.Message = "Creation Successfull";
             return response;

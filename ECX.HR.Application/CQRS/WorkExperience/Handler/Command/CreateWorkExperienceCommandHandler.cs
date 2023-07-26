@@ -41,8 +41,9 @@ namespace ECX.HR.Application.CQRS.WorkExperience.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var WorkExperience = _mapper.Map<WorkExperiences>(request.WorkExperienceDto);
-            var data =await _WorkExperienceRepository.Add(WorkExperience);
+            var workExperience = _mapper.Map<WorkExperiences>(request.WorkExperienceDto);
+            workExperience.Id = Guid.NewGuid();
+            var data =await _WorkExperienceRepository.Add(workExperience);
             response.Success = true;
             response.Message = "Creation Successfull";
             return response;

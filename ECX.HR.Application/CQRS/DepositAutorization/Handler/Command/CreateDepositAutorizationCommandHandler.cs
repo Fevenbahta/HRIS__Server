@@ -41,8 +41,9 @@ namespace ECX.HR.Application.CQRS.DepositAutorization.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var DepositAutorization = _mapper.Map<DepositAutorizations>(request.DepositAutorizationDto);
-            var data =await _DepositAutorizationRepository.Add(DepositAutorization);
+            var depositAutorization = _mapper.Map<DepositAutorizations>(request.DepositAutorizationDto);
+            depositAutorization.Id = Guid.NewGuid();
+            var data =await _DepositAutorizationRepository.Add(depositAutorization);
             response.Success = true;
             response.Message = "Creation Successfull";
             return response;

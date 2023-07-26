@@ -11,6 +11,7 @@ using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -42,8 +43,9 @@ namespace ECX.HR.Application.CQRS.OrganizationalProfile.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var OrganizationalProfile = _mapper.Map<OrganizationalProfiles>(request.OrganizationalProfileDto);
-            var data =await OrganizationalProfileRepository.Add(OrganizationalProfile);
+            var organizationalProfile = _mapper.Map<OrganizationalProfiles>(request.OrganizationalProfileDto);
+            organizationalProfile.Id = Guid.NewGuid();
+            var data =await OrganizationalProfileRepository.Add(organizationalProfile);
             response.Success = true;
             response.Message = "Creation Successfull";
             return response;

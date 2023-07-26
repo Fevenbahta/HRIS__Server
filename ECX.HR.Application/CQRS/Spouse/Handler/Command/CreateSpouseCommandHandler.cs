@@ -40,8 +40,9 @@ namespace ECX.HR.Application.CQRS.Spouse.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var Spouse = _mapper.Map<Spouses>(request.SpouseDto);
-            var data =await _SpouseRepository.Add(Spouse);
+            var spouse = _mapper.Map<Spouses>(request.SpouseDto);
+            spouse.Id = Guid.NewGuid();
+            var data =await _SpouseRepository.Add(spouse);
             response.Success = true;
             response.Message = "Creation Successfull";
             return response;

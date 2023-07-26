@@ -38,9 +38,12 @@ namespace ECX.HR.Application.CQRS.Allowances.Handler.Command
             }
            
             var Allowance = _mapper.Map<Allowancee>(request.AllowanceDto);
+            Allowance.Id = Guid.NewGuid();
+            var allowance = Allowance.Id;
             var data =await _AllowanceRepository.Add(Allowance);
             response.Success = true;
             response.Message = "Creation Successfull";
+            response.Id = (Guid)allowance;
             return response;
         }
     }

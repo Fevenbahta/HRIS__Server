@@ -40,8 +40,9 @@ namespace ECX.HR.Application.CQRS.Training.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var Training = _mapper.Map<Trainings>(request.TrainingDto);
-            var data =await _TrainingRepository.Add(Training);
+            var training = _mapper.Map<Trainings>(request.TrainingDto);
+            training.Id = Guid.NewGuid();
+            var data =await _TrainingRepository.Add(training);
             response.Success = true;
             response.Message = "Creation Successfull";
             return response;

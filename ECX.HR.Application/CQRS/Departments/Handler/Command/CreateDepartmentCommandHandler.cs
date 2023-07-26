@@ -41,6 +41,7 @@ namespace ECX.HR.Application.CQRS.Departments.Handler.Command
             }
            
             var department = _mapper.Map<Department>(request.DepartmentDto);
+            department.DepartmentId = Guid.NewGuid();
             var data =await _departmentRepository.Add(department);
             response.Success = true;
             response.Message = "Creation Successfull";

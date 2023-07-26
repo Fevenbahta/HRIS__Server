@@ -41,8 +41,9 @@ namespace ECX.HR.Application.CQRS.Step.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var Step = _mapper.Map<Steps>(request.StepDto);
-            var data =await _StepRepository.Add(Step);
+            var step = _mapper.Map<Steps>(request.StepDto);
+            step.Id = Guid.NewGuid();
+            var data =await _StepRepository.Add(step);
             response.Success = true;
             response.Message = "Creation Successfull";
             return response;
