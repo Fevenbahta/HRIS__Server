@@ -36,43 +36,51 @@ namespace ECX.HR.Persistence
             modelBuilder.Entity<Employees>()
             .HasMany(e => e.WorkExperiences)
             .WithOne(ex => ex.Employees)
-            .HasForeignKey(e => e.EmpId);
+            .HasForeignKey(e => e.EmpId)
+             .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Employees>()
             .HasMany(e => e.Educations)
             .WithOne(ex => ex.Employees)
-            .HasForeignKey(e => e.EmpId);
+            .HasForeignKey(e => e.EmpId)
+              .OnDelete(DeleteBehavior.Cascade); ;
 
             modelBuilder.Entity<Employees>()
             .HasMany(e => e.Trainings)
             .WithOne(ex => ex.Employees)
-            .HasForeignKey(e => e.EmpId);
+            .HasForeignKey(e => e.EmpId)
+              .OnDelete(DeleteBehavior.Cascade); ;
 
             modelBuilder.Entity<Employees>()
            .HasMany(e => e.EmergencyContacts)
            .WithOne(ex => ex.Employees)
-           .HasForeignKey(e => e.EmpId);
+           .HasForeignKey(e => e.EmpId)
+             .OnDelete(DeleteBehavior.Cascade);
 
 
             modelBuilder.Entity<Employees>()
             .HasMany(e => e.Spouses)
             .WithOne(ex => ex.Employees)
-            .HasForeignKey(e => e.EmpId);
+            .HasForeignKey(e => e.EmpId)
+              .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Department>()
             .HasMany(e => e.Divisions)
             .WithOne(ex => ex.Departments)
-            .HasForeignKey(e => e.DepartmentId);
+            .HasForeignKey(e => e.DepartmentId)
+              .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Divisions>()
             .HasMany(e => e.Positions)
             .WithOne(ex => ex.Divisions)
-            .HasForeignKey(e => e.DivisionId);
+            .HasForeignKey(e => e.DivisionId)
+              .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Levels>()
             .HasMany(e => e.Steps)
             .WithOne(ex => ex.Levels)
-            .HasForeignKey(e => e.LevelId);
+            .HasForeignKey(e => e.LevelId)
+              .OnDelete(DeleteBehavior.Cascade);
 
 
 
