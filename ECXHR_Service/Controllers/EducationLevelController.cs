@@ -1,7 +1,6 @@
 ﻿
-using ECX.HR.Application.CQRS.Education.Request.Queries;
 using ECX.HR.Application.CQRS.EducationLevel.Request.Command;
-
+using ECX.HR.Application.CQRS.EducationLevel.Request.Queries;
 using ECX.HR.Application.DTOs.EducationLevels;
 
 using ECX.HR.Application.Response;
@@ -31,7 +30,7 @@ namespace ECXHR_Service.Controllers
         [HttpGet]
         public async Task<ActionResult<List<EducationLevelDto>>> Get()
         {
-            var EducationLevel = await _mediator.Send(new GetEducationListRequest());
+            var EducationLevel = await _mediator.Send(new GetEducationLevelListRequest());
             return Ok(EducationLevel);
         }
 
@@ -39,7 +38,7 @@ namespace ECXHR_Service.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<EducationLevelDto>> Get(Guid id)
         {
-            var EducationLevel = await _mediator.Send(new GetEducationDetailRequest { Id = id });
+            var EducationLevel = await _mediator.Send(new GetEducationLevelDetailRequest { Id = id });
             return Ok(EducationLevel);
         }
 
