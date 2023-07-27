@@ -66,7 +66,7 @@ namespace ECXHR_Service.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{EmpId}")]
+        [HttpDelete("{id}")]
 
         public async Task<ActionResult> Delete(Guid id)
         {
