@@ -49,14 +49,12 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
 
             var Empl = await _EmployeeRepository.GetAll();
             var Emp_count = Empl.Count() + 1;
+            int Digit_Length = (int)Emp_count.ToString().Length;
+            string EcxId_number = Digit_Length >= 4 ? Emp_count.ToString() : Emp_count.ToString("D4");
             DateTime Today = DateTime.Now;
-            var Emp_EcxId = "ECX/" + Emp_count + "/" + Today.Year;
+            var Emp_EcxId = "ECX/" + EcxId_number + "/" + Today.Year;
             Employee.EcxId = Emp_EcxId;
-
             var data =await _EmployeeRepository.Add(Employee);
-
-            
-
 
             response.Success = true;
             response.Message = "Creation Successfull";
