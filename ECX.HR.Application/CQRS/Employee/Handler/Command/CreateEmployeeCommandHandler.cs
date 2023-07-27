@@ -2,7 +2,8 @@
 using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Employee.Request.Command;
-
+using ECX.HR.Application.CQRS.Employee.Request.Queries;
+using ECX.HR.Application.DTOs.Employees;
 using ECX.HR.Application.DTOs.Employees.Validator;
 using ECX.HR.Application.Exceptions;
 
@@ -27,7 +28,8 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
         {
             _EmployeeRepository = EmployeeRepository;
             _mapper = mapper;
-        }
+            var _employeeLists = new List<Employees>();
+    }
         public async Task<BaseCommandResponse> Handle(CreateEmployeeCommand request, CancellationToken cancellationToken)
         {
             response = new BaseCommandResponse();
@@ -44,13 +46,27 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
             var Employee = _mapper.Map<Employees>(request.EmployeeDto);
             Employee.EmpId = Guid.NewGuid();
             var emp = Employee.EmpId;
+
+            var Empl = await _EmployeeRepository.GetAll();
+            var Emp_count = Empl.Count() + 1;
+            DateTime Today = DateTime.Now;
+            var Emp_EcxId = "ECX/" + Emp_count + "/" + Today.Year;
+            Employee.EcxId = Emp_EcxId;
+
             var data =await _EmployeeRepository.Add(Employee);
+
+            
+
+
             response.Success = true;
             response.Message = "Creation Successfull";
             response.Id = (Guid)emp;
 
+           
+           
 
             return response;
         }
+
     }
 }
