@@ -13,9 +13,9 @@ namespace ECX.HR.Application.DTOs.Spouses.Validator
         public SpouseValidator()
         {
 
-            RuleFor(p => p.Name)
-                    .NotEmpty().WithMessage("{PropertyName} is requiered.")
-                    .NotNull();
+            //RuleFor(p => p.Name)
+            //        .NotEmpty().WithMessage("{PropertyName} is requiered.")
+            //        .NotNull();
         
         }
     }

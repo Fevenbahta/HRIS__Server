@@ -12,7 +12,7 @@ namespace ECX.HR.Application.DTOs.Trainings
 {
     public class TrainingDto : BaseDtos
     {
-        public int PId { get; set; }
+       
         public Guid Id { get; set; }
         public Guid EmpId { get; set; }
         public string TypeOfTraining { get; set; }

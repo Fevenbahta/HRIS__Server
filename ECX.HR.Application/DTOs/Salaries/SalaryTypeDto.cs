@@ -12,7 +12,7 @@ namespace ECX.HR.Application.DTOs.Salaries
 {
     public class SalaryTypeDto : BaseDtos
     {
-        public int PId { get; set; }
+       
         public Guid Id { get; set; }
         public string Description { get; set; }
         public int Status { get; set; }

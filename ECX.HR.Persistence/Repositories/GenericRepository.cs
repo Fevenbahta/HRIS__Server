@@ -56,7 +56,9 @@ namespace ECX.HR.Persistence.Repositories
 
         public async Task Update(T entity)
         {
+           
             _context.Entry(entity).State = EntityState.Modified;
+
             await _context.SaveChangesAsync();
         }
     }

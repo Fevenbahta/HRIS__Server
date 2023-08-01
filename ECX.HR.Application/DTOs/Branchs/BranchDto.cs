@@ -12,7 +12,7 @@ namespace ECX.HR.Application.DTOs.Branchs
     public class BranchDto : BaseDtos
     {
 
-        public int PId { get; set; }
+        
         public Guid Id { get; set; }
         public string name { get; set; }
         public string city { get; set; }

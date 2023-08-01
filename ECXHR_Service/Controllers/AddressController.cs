@@ -48,7 +48,7 @@ namespace ECXHR_Service.Controllers
         public async Task<ActionResult<BaseCommandResponse>> Post([FromBody] AddressDto address)
         {
             var user = _httpContextAccessor.HttpContext.User;
-            var command = new CreateAddressCommand { AddressDto = address };
+            var command = new CreateAddressCommand { AdressDetailDto = address };
             var response = await _mediator.Send(command);
             return Ok(response);
         }
@@ -59,7 +59,9 @@ namespace ECXHR_Service.Controllers
         public async Task<ActionResult> Put([FromBody] AddressDto address)
         {
             var command = new UpdateAddressCommand { AddressDto = address };
+            //_context.Entry(existingEvent).Property(x => x.ReferenceNumber).IsModified = false;
             await _mediator.Send(command);
+            
             return NoContent();
         }
 

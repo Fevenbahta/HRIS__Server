@@ -12,6 +12,6 @@ namespace ECX.HR.Application.CQRS.Departments.Request.Command
 {
     public class CreateAddressCommand : IRequest<BaseCommandResponse>
     {
-        public AddressDto AddressDto { get; set; }
+        public AddressDto AdressDetailDto { get; set; }
     }
 }

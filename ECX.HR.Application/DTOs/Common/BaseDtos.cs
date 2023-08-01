@@ -9,7 +9,7 @@ namespace ECX.HR.Application.DTOs.Common
     public abstract class BaseDtos
     {
 
-        public int PId { get; set; }
+     
         public string CreatedBy { get; set; }
 
         public DateTime CreatedDate { get; set; }
@@ -17,6 +17,6 @@ namespace ECX.HR.Application.DTOs.Common
         public DateTime UpdatedDate { get; set; }
 
         public string UpdatedBy { get; set; }
-        public int Status { get; set; }
+   
     }
 }

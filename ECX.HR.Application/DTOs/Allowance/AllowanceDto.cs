@@ -11,7 +11,7 @@ namespace ECX.HR.Application.DTOs.Allowances.cs
 {
     public class AllowanceDto : BaseDtos
     {
-        public int PId { get; set; }
+       
         public Guid Id { get; set; }
         public string AllowanceType { get; set; }
         public string Position { get; set; }

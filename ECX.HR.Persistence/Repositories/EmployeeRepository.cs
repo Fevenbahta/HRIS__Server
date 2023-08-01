@@ -16,5 +16,6 @@ namespace ECX.HR.Persistence.Repositories
         {
             _context = context;
         }
+
     }
 }

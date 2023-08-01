@@ -29,6 +29,8 @@ namespace ECX.HR.Application.CQRS.Allowance.Handler.Command
         {
             var validator = new AlowanceValidator();
             var validationResult = await validator.ValidateAsync(request.AllowanceDto);
+           
+           
             if (validationResult.IsValid == false)
                 throw new ValidationException(validationResult);
             var allowance = await _AllowanceRepository.GetById(request.AllowanceDto.Id);

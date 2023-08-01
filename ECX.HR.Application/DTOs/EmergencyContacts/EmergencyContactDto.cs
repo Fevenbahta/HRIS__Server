@@ -12,7 +12,7 @@ namespace ECX.HR.Application.DTOs.EmergencyContacts
 {
     public class EmergencyContactDto :BaseDtos
     {
-        public int PId { get; set; }
+        
 
         public Guid Id { get; set; }
         public Guid EmpId { get; set; }

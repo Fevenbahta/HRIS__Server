@@ -14,26 +14,26 @@ namespace ECX.HR.Application.DTOs.Addresss.Validator
     {
         public AdressDtoValidator()
         {
-            RuleFor(p => p.Region)
-                .NotEmpty().WithMessage("{PropertyName} is requiered.")
-                .NotNull();
-            RuleFor(p => p.Town)
-                .NotEmpty().WithMessage("{PropertyName} is requiered.")
-                .NotNull();
-            RuleFor(p => p.PhoneNumber)
-                .Must(IsPhoneValid).WithMessage("Please specify a valid PhoneNumber");
-            //RuleFor(p => p.Email)
+            //RuleFor(p => p.Region)
+            //    .NotEmpty().WithMessage("{PropertyName} is requiered.")
+            //    .NotNull();
+            //RuleFor(p => p.Town)
+            //    .NotEmpty().WithMessage("{PropertyName} is requiered.")
+            //    .NotNull();
+            //RuleFor(p => p.PhoneNumber)
+            //    .Must(IsPhoneValid).WithMessage("Please specify a valid PhoneNumber");
+            ////RuleFor(p => p.Email)
             //    .Must(IsEmailValid).WithMessage("please specify a valid Email");
         }
 
        
-        public static bool IsPhoneValid(string PhoneNumber)
-        {
-            string regex = @"^([\+]?251[-]?|[0])?[1-9][0-9]{8}$";
-            if (PhoneNumber != null)
-                return Regex.IsMatch(PhoneNumber, regex);
-            else return false;
-        }
+        //public static bool IsPhoneValid(string PhoneNumber)
+        //{
+        //    string regex = @"^([\+]?251[-]?|[0])?[1-9][0-9]{8}$";
+        //    if (PhoneNumber != null)
+        //        return Regex.IsMatch(PhoneNumber, regex);
+        //    else return false;
+        //}
 
         //public static bool IsEmailValid(string Email)
         //{

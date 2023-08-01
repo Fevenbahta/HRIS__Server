@@ -18,6 +18,7 @@ namespace ECX.HR.Application.CQRS.Addresss.Handler.Command
     {
         private IAdressRepository _AddressRepository;
         private IMapper _mapper;
+
         public UpdateAddressCommandHandler(IAdressRepository AddressRepository, IMapper mapper)
         {
             _AddressRepository = AddressRepository;
@@ -30,10 +31,17 @@ namespace ECX.HR.Application.CQRS.Addresss.Handler.Command
             var validationResult = await validator.ValidateAsync(request.AddressDto);
             if (validationResult.IsValid == false)
                 throw new ValidationException(validationResult);
+
+            request.AddressDto.UpdatedDate = DateTime.Now;
             var address = await _AddressRepository.GetById(request.AddressDto.Id);
+
+           
+
             _mapper.Map(request.AddressDto, address);
+
             await _AddressRepository.Update(address);
             return Unit.Value;
         }
     }
 }
+

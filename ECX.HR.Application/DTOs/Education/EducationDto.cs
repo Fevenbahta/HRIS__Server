@@ -12,7 +12,7 @@ namespace ECX.HR.Application.DTOs.Education
 {
     public class EducationDto : BaseDtos
     {
-        public int PId { get; set; }
+        
         public Guid Id { get; set; }
         public Guid EmpId { get; set; }
         public string NameOfInstitute { get; set; }

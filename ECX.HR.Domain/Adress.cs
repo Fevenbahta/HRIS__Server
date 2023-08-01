@@ -11,7 +11,7 @@ namespace ECX.HR.Domain
 {
     public class Adress :BaseDomainEntity
     {
-        
+
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PId { get; set; }
         [Key]

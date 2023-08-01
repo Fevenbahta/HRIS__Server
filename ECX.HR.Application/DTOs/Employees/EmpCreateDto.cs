@@ -8,8 +8,7 @@ namespace ECX.HR.Application.DTOs.Employees
 {
     internal class EmpCreateDto
     {
-        //public int PId { get; set; }
-        //public Guid EmpId { get; set; }
+       
         public string EcxId { get; set; }
         public string AdId { get; set; }
         public string FirstName { get; set; }

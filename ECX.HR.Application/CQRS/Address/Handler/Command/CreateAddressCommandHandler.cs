@@ -33,7 +33,7 @@ namespace ECX.HR.Application.CQRS.Address.Handler.Command
         {
             response = new BaseCommandResponse();
             var validator =new AdressDtoValidator();
-            var validationResult =await validator.ValidateAsync(request.AddressDto);
+            var validationResult =await validator.ValidateAsync(request.AdressDetailDto);
             
             if(validationResult.IsValid == false)
             {
@@ -42,7 +42,7 @@ namespace ECX.HR.Application.CQRS.Address.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var Address = _mapper.Map<Adress>(request.AddressDto);
+            var Address = _mapper.Map<Adress>(request.AdressDetailDto);
             Address.Id = Guid.NewGuid();
             var add = Address.Id;
             var data =await _AddressRepository.Add(Address);
