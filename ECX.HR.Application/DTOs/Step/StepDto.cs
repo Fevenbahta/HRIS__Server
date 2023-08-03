@@ -13,7 +13,7 @@ namespace ECX.HR.Application.DTOs.Step
 {
    public class StepDto: BaseDtos
     {
-        
+        public int PId { get; set; }
         public Guid Id { get; set; }
         public string Description { get; set; }
         public decimal Salary { get; set; }

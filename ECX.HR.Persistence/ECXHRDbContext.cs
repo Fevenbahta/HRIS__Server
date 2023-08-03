@@ -110,13 +110,6 @@ namespace ECX.HR.Persistence
 
 
 
-
-
-            //  modelBuilder.Entity<Employee>()
-            //.HasRequired<WorkExperience>(s => s.WorkExperiences)
-            //.WithMany(g => g.WorkExperiences)
-            //.HasForeignKey<int>(s => s.EmpId);
-
         }
         public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
         {
@@ -143,6 +136,7 @@ namespace ECX.HR.Persistence
         public DbSet<EmployeePositions> EmployeePosition { get; set; }
         public DbSet<EmployeeStatuss> EmploeeStatus { get; set; }
         public DbSet<Levels> Level { get; set; }
+       public DbSet<OrganizationalProfiles> OrganizationalProfile { get; set; }
         public DbSet<Positions> Job { get; set; }
        
         public DbSet<SalaryTypes> SalaryType { get; set; }

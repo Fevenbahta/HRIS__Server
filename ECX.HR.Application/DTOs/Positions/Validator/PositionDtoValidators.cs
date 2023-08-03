@@ -12,12 +12,12 @@ namespace ECX.HR.Application.DTOs.Positions.Validator
     {
         public PositionDtoValidators()
         {
-            RuleFor(p => p.PositionId)
+           /* RuleFor(p => p.PositionId)
                .NotEmpty().WithMessage("{PropertyName} is requiered.")
                .NotNull();
             RuleFor(p => p.Name)
                .NotEmpty().WithMessage("{PropertyName} is requiered.")
-               .NotNull();
+               .NotNull();*/
             
         }
     }

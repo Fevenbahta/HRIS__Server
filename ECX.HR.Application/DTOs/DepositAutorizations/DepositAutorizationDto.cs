@@ -12,7 +12,7 @@ namespace ECX.HR.Application.DTOs.DepositAutorizations
 {
     public class DepositAutorizationDto : BaseDtos
     {
-       
+        public int PId { get; set; }
         public Guid Id { get; set; }
         public Guid EmpId { get; set; }
         public string Bank { get; set; }

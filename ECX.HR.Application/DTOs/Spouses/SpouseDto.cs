@@ -12,7 +12,7 @@ namespace ECX.HR.Application.DTOs.Spouses
 {
     public class SpouseDto : BaseDtos
     {
-        
+        public int PId { get; set; }
         public Guid EmpId { get; set; }
         public Guid Id { get; set; }
         public string Name { get; set; }

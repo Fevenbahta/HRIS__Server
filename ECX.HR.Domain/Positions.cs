@@ -16,11 +16,13 @@ namespace ECX.HR.Domain
         [Key]
        
         public Guid PositionId { get; set; }
-        public Guid? DivisionId { get; set; }
-        public virtual Divisions Divisions { get; set; }
+        [ForeignKey("Divisions")]
+        public Guid DivisionId { get; set; }
+     
         public string Name { get; set; }
         public string Description { get; set; }
         public int Status { get; set; }
+        public virtual Divisions Divisions { get; set; }
 
     }
 }

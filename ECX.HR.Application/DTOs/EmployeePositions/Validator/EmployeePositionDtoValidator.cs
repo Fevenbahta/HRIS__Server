@@ -11,7 +11,7 @@ namespace ECX.HR.Application.DTOs.EmployeePositions.Validator
     {
         public EmployeePositionDtoValidator()
         {
-            RuleFor(p => p.position)
+           /* RuleFor(p => p.position)
                .NotEmpty().WithMessage("{PropertyName} is requiered.")
                .NotNull();
             RuleFor(p => p.DivisionId)
@@ -24,7 +24,7 @@ namespace ECX.HR.Application.DTOs.EmployeePositions.Validator
             RuleFor(P => P.StartDate).NotEmpty();
             RuleFor(P => P.EndDate).NotEmpty();
             RuleFor(P => P).Must(P => P.EndDate == default(DateTime) || P.StartDate == default(DateTime) || P.EndDate > P.StartDate)
-            .WithMessage("EndTime must greater than StartTime");
+            .WithMessage("EndTime must greater than StartTime");*/
         }
     }
 }

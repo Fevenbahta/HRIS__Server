@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.DTOs.Education.Validator
 {
-    public class EducationValidator :AbstractValidator<EducationDto>
+    public class EducationValidator : AbstractValidator<EducationDto>
     {
         public EducationValidator()
-        {
+        {/*
 
             RuleFor(p => p.NameOfInstitute)
                     .NotEmpty().WithMessage("{PropertyName} is requiered.")
@@ -31,8 +31,9 @@ namespace ECX.HR.Application.DTOs.Education.Validator
             if (PhoneNumber != null)
                 return Regex.IsMatch(PhoneNumber, regex);
             else return false;
-        }
-    
+        }*/
 
+
+        }
     }
 }

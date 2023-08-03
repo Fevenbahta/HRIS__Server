@@ -11,9 +11,9 @@ namespace ECX.HR.Application.DTOs.Division
 {
     public class DivisionDto : BaseDtos
     {
-      
+        public int PId { get; set; }
         public Guid DivisionId { get; set; }
-        public Guid EmpId { get; set; }
+      
         public Guid DepartmentId { get; set; }
         public string Description { get; set; }
         public int Status { get; set; }

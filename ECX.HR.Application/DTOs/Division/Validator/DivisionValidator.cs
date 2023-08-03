@@ -11,10 +11,10 @@ namespace ECX.HR.Application.DTOs.Division.Validator
     {
         public DivisionValidator()
         {
-
+/*
             RuleFor(p => p.Description)
                     .NotEmpty().WithMessage("{PropertyName} is requiered.")
-                    .NotNull();
+                    .NotNull();*/
         }
     }
 }

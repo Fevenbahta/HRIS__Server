@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ECX.HR.Domain.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Domain
 {
-    public  class EmployeePositions 
+    public  class EmployeePositions : BaseDomainEntity
     {
         
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

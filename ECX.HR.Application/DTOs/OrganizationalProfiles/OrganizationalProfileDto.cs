@@ -11,7 +11,7 @@ namespace ECX.HR.Application.DTOs.OrganizationalProfiles
 {
     public class OrganizationalProfileDto : BaseDtos
     {
-        
+        public int PId { get; set; }
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string city { get; set; }

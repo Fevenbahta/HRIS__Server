@@ -11,7 +11,7 @@ namespace ECX.HR.Application.DTOs.EmployeePositions
 {
     public class EmployeePositionDto : BaseDtos
     {
-        
+        public int PId { get; set; }
         public Guid Id { get; set; }
         public Guid EmpId { get; set; }
         public string DivisionId { get; set; }

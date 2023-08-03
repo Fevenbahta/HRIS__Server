@@ -11,7 +11,7 @@ namespace ECX.HR.Application.DTOs.WorkExperiences.Validator
     {
         public WorkExperienceDtoValidator()
         {
-            RuleFor(p => p.CompanyName)
+          /*  RuleFor(p => p.CompanyName)
                  .NotEmpty().WithMessage("{PropertyName} is requiered.")
                  .NotNull();
             RuleFor(p => p.PostionHeld)
@@ -21,7 +21,7 @@ namespace ECX.HR.Application.DTOs.WorkExperiences.Validator
             RuleFor(P => P.From).NotEmpty();
             RuleFor(P => P.To).NotEmpty();
             RuleFor(P => P).Must(P => P.To == default(DateTime) || P.From == default(DateTime) || P.To > P.From)
-            .WithMessage("EndTime must greater than StartTime");
+            .WithMessage("EndTime must greater than StartTime");*/
         }
     }
 }

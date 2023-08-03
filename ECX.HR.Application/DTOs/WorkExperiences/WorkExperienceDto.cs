@@ -10,6 +10,7 @@ namespace ECX.HR.Application.DTOs.WorkExperiences
 {
     public class WorkExperienceDto : BaseDtos
     {
+        public int PId { get; set; }
         public Guid Id { get; set; }
         public Guid EmpId { get; set; }
         public string CompanyName { get; set; }
