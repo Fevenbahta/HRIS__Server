@@ -17,7 +17,7 @@ namespace ECX.HR.Application.DTOs.DepositAutorizations
         public Guid EmpId { get; set; }
         public string Bank { get; set; }
         public string BankBranch { get; set; }
-        public int BankAccount { get; set; }
+        public long BankAccount { get; set; }
         public string TinNumber { get; set; }
         public int Status { get; set; }
     }
