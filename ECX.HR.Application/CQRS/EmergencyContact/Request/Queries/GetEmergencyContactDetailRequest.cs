@@ -12,5 +12,6 @@ namespace ECX.HR.Application.CQRS.EmergencyContact.Request.Queries
     public class GetEmergencyContactDetailRequest :IRequest<EmergencyContactDto>
     {
         public Guid Id { get; set; }
+        public Guid EmpId { get; set; }
     }
 }

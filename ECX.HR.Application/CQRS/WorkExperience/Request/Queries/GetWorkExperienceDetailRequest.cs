@@ -11,6 +11,6 @@ namespace ECX.HR.Application.CQRS.WorkExperience.Request.Queries
 {
     public class GetWorkExperienceDetailRequest :IRequest<WorkExperienceDto>
     {
-        public Guid Id { get; set; }
+        public Guid EmpId { get; set; }
     }
 }

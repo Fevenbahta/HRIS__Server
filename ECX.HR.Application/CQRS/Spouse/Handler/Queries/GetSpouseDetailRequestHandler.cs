@@ -25,10 +25,10 @@ namespace ECX.HR.Application.CQRS.Spouse.Handler.Queries
         }
         public async Task<SpouseDto> Handle(GetSpouseDetailRequest request, CancellationToken cancellationToken)
         {
-            var spouse =await _SpouseRepository.GetById(request.Id);
+            var spouse =await _SpouseRepository.GetByEmpId(request.EmpId);
           
             if (spouse == null)
-                throw new NotFoundException(nameof(spouse), request.Id);
+                throw new NotFoundException(nameof(spouse), request.EmpId);
 
             else
                 return _mapper.Map<SpouseDto>(spouse);

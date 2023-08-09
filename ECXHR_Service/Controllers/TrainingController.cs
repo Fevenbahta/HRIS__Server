@@ -36,10 +36,10 @@ namespace ECXHR_Service.Controllers
         }
 
         // GET api/<Training﻿﻿Controller>/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Training﻿﻿Dto>> Get(Guid id)
+        [HttpGet("{empid}")]
+        public async Task<ActionResult<Training﻿﻿Dto>> Get(Guid empid)
         {
-            var Training﻿﻿ = await _mediator.Send(new GetTraining﻿﻿DetailRequest { Id = id });
+            var Training﻿﻿ = await _mediator.Send(new GetTraining﻿﻿DetailRequest { EmpId = empid });
             return Ok(Training﻿﻿);
         }
 

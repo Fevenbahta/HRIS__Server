@@ -10,5 +10,6 @@ namespace ECX.HR.Application.Contracts.Persistence
 {
     public interface IDepositAutorizationRepository : IGenericRepository<DepositAutorizations>
     {
+        Task<DepositAutorizations> GetByEmpId(Guid id);
     }
 }

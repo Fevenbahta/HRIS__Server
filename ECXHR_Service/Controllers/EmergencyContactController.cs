@@ -36,10 +36,10 @@ namespace ECXHR_Service.Controllers
         }
 
         // GET api/<EmergencyContactController>/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<EmergencyContactDto>> Get(Guid id)
+        [HttpGet("{Empid}")]
+        public async Task<ActionResult<EmergencyContactDto>> Get(Guid Empid)
         {
-            var EmergencyContact = await _mediator.Send(new GetEmergencyContactDetailRequest { Id = id });
+            var EmergencyContact = await _mediator.Send(new GetEmergencyContactDetailRequest { EmpId = Empid });
             return Ok(EmergencyContact);
         }
 

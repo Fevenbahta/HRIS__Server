@@ -36,10 +36,10 @@ namespace ECXHR_Service.Controllers
         }
 
         // GET api/<DepositAutorizationController>/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<DepositAutorizationDto>> Get(Guid id)
+        [HttpGet("{empid}")]
+        public async Task<ActionResult<DepositAutorizationDto>> Get(Guid empid)
         {
-            var DepositAutorization = await _mediator.Send(new GetDepositAutorizationDetailRequest { Id = id });
+            var DepositAutorization = await _mediator.Send(new GetDepositAutorizationDetailRequest { EmpId = empid });
             return Ok(DepositAutorization);
         }
 

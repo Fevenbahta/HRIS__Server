@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.Contracts.Persistence
 {
-    public interface IAdressRepository : IGenericRepository<Adress>
+    public interface IAdressRepository  : IGenericRepository<Adress> 
     {
+        Task<Adress> GetByEmpId(Guid id);
     }
 }

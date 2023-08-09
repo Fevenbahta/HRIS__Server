@@ -36,10 +36,10 @@ namespace ECXHR_Service.Controllers
         }
 
         // GET api/<SpouseController>/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<SpouseDto>> Get(Guid id)
+        [HttpGet("{Empid}")]
+        public async Task<ActionResult<SpouseDto>> Get(Guid Empid)
         {
-            var Spouse = await _mediator.Send(new GetSpouseDetailRequest { Id = id });
+            var Spouse = await _mediator.Send(new GetSpouseDetailRequest { EmpId = Empid });
             return Ok(Spouse);
         }
 

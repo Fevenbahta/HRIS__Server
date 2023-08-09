@@ -36,10 +36,10 @@ namespace ECXHR_Service.Controllers
         }
 
         // GET api/<EmployeePositionController>/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<EmployeePositionDto>> Get(Guid id)
+        [HttpGet("{Empid}")]
+        public async Task<ActionResult<EmployeePositionDto>> Get(Guid Empid)
         {
-            var EmployeePosition = await _mediator.Send(new GetEmployeePositionDetailRequest { Id = id });
+            var EmployeePosition = await _mediator.Send(new GetEmployeePositionDetailRequest { EmpId = Empid });
             return Ok(EmployeePosition);
         }
 

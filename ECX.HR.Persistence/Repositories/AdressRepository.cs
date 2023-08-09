@@ -1,6 +1,8 @@
 ﻿using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
+using ECX.HR.Application.Models;
 using ECX.HR.Domain;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +19,13 @@ namespace ECX.HR.Persistence.Repositories
         {
             _context = context;
         }
+     
+        public async Task<Adress> GetByEmpId(Guid empId)
+        {
+            return await _context.Set<Adress>()
+                     .Where(T =>T.EmpId == empId)
+                     .FirstOrDefaultAsync();
+        }
+
     }
 }

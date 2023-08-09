@@ -26,10 +26,10 @@ namespace ECX.HR.Application.CQRS.DepositAutorization.Handler.Queries
         }
         public async Task<DepositAutorizationDto> Handle(GetDepositAutorizationDetailRequest request, CancellationToken cancellationToken)
         {
-            var depositAutorization =await _DepositAutorizationRepository.GetById(request.Id);
+            var depositAutorization =await _DepositAutorizationRepository.GetByEmpId(request.EmpId);
            
             if (depositAutorization == null)
-                throw new NotFoundException(nameof(depositAutorization), request.Id);
+                throw new NotFoundException(nameof(depositAutorization), request.EmpId);
 
             else
                 return _mapper.Map<DepositAutorizationDto>(depositAutorization);

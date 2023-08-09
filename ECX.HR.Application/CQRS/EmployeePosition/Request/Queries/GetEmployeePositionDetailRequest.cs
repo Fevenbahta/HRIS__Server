@@ -11,6 +11,7 @@ namespace ECX.HR.Application.CQRS.EmployeePosition.Request.Queries
 {
     public class GetEmployeePositionDetailRequest :IRequest<EmployeePositionDto>
     {
-        public Guid Id { get; set; }
+       // public Guid Id { get; set; }
+        public Guid EmpId { get; set; }
     }
 }

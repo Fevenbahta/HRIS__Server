@@ -10,5 +10,6 @@ namespace ECX.HR.Application.Contracts.Persistence
 {
     public interface ITrainingRepository : IGenericRepository<Trainings>
     {
+        Task<Trainings> GetByEmpId(Guid id);
     }
 }

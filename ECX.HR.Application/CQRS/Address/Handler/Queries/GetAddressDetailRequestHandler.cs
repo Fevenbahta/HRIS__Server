@@ -17,21 +17,25 @@ namespace ECX.HR.Application.CQRS.Addresss.Handler.Queries
     public class GetAddressDetailRequestHandler : IRequestHandler<GetAddressDetailRequest, AddressDto>
     {
         private IAdressRepository _AddressRepository;
+        private  IEmployeeRepository _employeeRepository;
         private IMapper _mapper;
-        public GetAddressDetailRequestHandler(IAdressRepository AddressRepository, IMapper mapper)
+        public GetAddressDetailRequestHandler(IAdressRepository AddressRepository,IEmployeeRepository EmployeeRepository ,IMapper mapper)
         {
-            _AddressRepository = AddressRepository;
+           _AddressRepository = AddressRepository;
+            _employeeRepository = EmployeeRepository;
             _mapper = mapper;
         }
         public async Task<AddressDto> Handle(GetAddressDetailRequest request, CancellationToken cancellationToken)
         {
-            var address =await _AddressRepository.GetById(request.Id);
-            
-            if (address == null)
-                throw new NotFoundException(nameof(address), request.Id);
+            var address =await _AddressRepository.GetByEmpId(request.EmpId);
+            //var addres = await _AddressRepository.GetById(request.Id);
            
-            else
-                return _mapper.Map<AddressDto>(address);
+            if (address == null)
+                throw new NotFoundException(nameof(address), request.EmpId);
+            
+           
+                
+            return _mapper.Map<AddressDto>(address);
         }
     }
 }

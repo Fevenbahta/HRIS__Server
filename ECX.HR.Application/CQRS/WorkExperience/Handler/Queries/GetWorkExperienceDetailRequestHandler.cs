@@ -26,10 +26,10 @@ namespace ECX.HR.Application.CQRS.WorkExperience.Handler.Queries
         }
         public async Task<WorkExperienceDto> Handle(GetWorkExperienceDetailRequest request, CancellationToken cancellationToken)
         {
-            var workExperience =await _WorkExperienceRepository.GetById(request.Id);
+            var workExperience =await _WorkExperienceRepository.GetByEmpId(request.EmpId);
             
             if (workExperience == null)
-                throw new NotFoundException(nameof(workExperience), request.Id);
+                throw new NotFoundException(nameof(workExperience), request.EmpId);
 
             else
                 return _mapper.Map<WorkExperienceDto>(workExperience);

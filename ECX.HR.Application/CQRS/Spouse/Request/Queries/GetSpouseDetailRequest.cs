@@ -12,5 +12,6 @@ namespace ECX.HR.Application.CQRS.Spouse.Request.Queries
     public class GetSpouseDetailRequest :IRequest<SpouseDto>
     {
         public Guid Id { get; set; }
+        public Guid EmpId { get; set; }
     }
 }

@@ -34,10 +34,10 @@ namespace ECXHR_Service.Controllers
         }
 
         // GET api/<WorkExperience﻿﻿Controller>/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<WorkExperience﻿﻿Dto>> Get(Guid id)
+        [HttpGet("{Empid}")]
+        public async Task<ActionResult<WorkExperience﻿﻿Dto>> Get(Guid empid)
         {
-            var WorkExperience﻿﻿ = await _mediator.Send(new GetWorkExperience﻿﻿DetailRequest { Id = id });
+            var WorkExperience﻿﻿ = await _mediator.Send(new GetWorkExperience﻿﻿DetailRequest { EmpId = empid });
             return Ok(WorkExperience﻿﻿);
         }
 

@@ -10,5 +10,6 @@ namespace ECX.HR.Application.Contracts.Persistence
 {
     public interface IWorkExperienceRepository : IGenericRepository<WorkExperiences>
     {
+        Task<WorkExperiences> GetByEmpId(Guid id);
     }
 }

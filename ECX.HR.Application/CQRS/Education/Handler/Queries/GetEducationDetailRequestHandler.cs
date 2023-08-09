@@ -26,10 +26,10 @@ namespace ECX.HR.Application.CQRS.Education.Handler.Queries
         }
         public async Task<EducationDto> Handle(GetEducationDetailRequest request, CancellationToken cancellationToken)
         {
-            var education =await _EducationRepository.GetById(request.Id);
+            var education =await _EducationRepository.GetByEmpId(request.EmpId);
            
             if (education == null)
-                throw new NotFoundException(nameof(education), request.Id);
+                throw new NotFoundException(nameof(education), request.EmpId);
 
             else
                 return _mapper.Map<EducationDto>(education);

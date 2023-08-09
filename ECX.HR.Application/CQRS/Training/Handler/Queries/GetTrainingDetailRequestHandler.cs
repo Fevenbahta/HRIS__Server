@@ -26,10 +26,10 @@ namespace ECX.HR.Application.CQRS.Training.Handler.Queries
         }
         public async Task<TrainingDto> Handle(GetTrainingDetailRequest request, CancellationToken cancellationToken)
         {
-            var training =await _TrainingRepository.GetById(request.Id);
+            var training =await _TrainingRepository.GetByEmpId(request.EmpId);
             
             if (training == null)
-                throw new NotFoundException(nameof(training), request.Id);
+                throw new NotFoundException(nameof(training), request.EmpId);
 
             else
                 return _mapper.Map<TrainingDto>(training);

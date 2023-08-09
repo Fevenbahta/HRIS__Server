@@ -1,5 +1,6 @@
 ﻿
 using ECX.HR.Application.Contracts.Persistent;
+using ECX.HR.Application.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -32,11 +33,9 @@ namespace ECX.HR.Persistence.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<bool> Exists(Guid id)
+        public Task<bool> Exists(Guid id)
         {
-            var entiry = await GetById(id);
-            Console.WriteLine(entiry);
-            return entiry != null;
+            throw new NotImplementedException();
         }
 
         public IEnumerable<T> Find(Expression<Func<T, bool>> expression)
@@ -48,6 +47,8 @@ namespace ECX.HR.Persistence.Repositories
         {
             return await _context.Set<T>().ToListAsync();
         }
+
+       
 
         public async Task<T> GetById(Guid id)
         {
@@ -61,5 +62,6 @@ namespace ECX.HR.Persistence.Repositories
 
             await _context.SaveChangesAsync();
         }
+      
     }
 }

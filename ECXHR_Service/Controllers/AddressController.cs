@@ -3,6 +3,7 @@ using ECX.HR.Application.CQRS.Addresss.Request.Command;
 using ECX.HR.Application.CQRS.Addresss.Request.Queries;
 using ECX.HR.Application.CQRS.Departments.Request.Command;
 using ECX.HR.Application.DTOs.Addresss;
+using ECX.HR.Application.DTOs.Employees;
 using ECX.HR.Application.Response;
 
 using MediatR;
@@ -36,13 +37,18 @@ namespace ECXHR_Service.Controllers
         }
 
         // GET api/<AddressController>/5
-        [HttpGet("{id}")]
+       /* [HttpGet("{id}")]
         public async Task<ActionResult<AddressDto>> Get(Guid id)
         {
             var address = await _mediator.Send(new GetAddressDetailRequest { Id = id });
             return Ok(address);
+        }*/
+        [HttpGet("{Empid}")]
+        public async Task<ActionResult<EmployeeDto>> GetByEmpId(Guid Empid)
+        {
+            var address = await _mediator.Send(new GetAddressDetailRequest { EmpId = Empid });
+            return Ok(address);
         }
-
         // POST api/<AddressController>
         [HttpPost]
         public async Task<ActionResult<BaseCommandResponse>> Post([FromBody] AddressDto address)

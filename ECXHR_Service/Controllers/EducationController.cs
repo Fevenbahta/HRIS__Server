@@ -34,10 +34,10 @@ namespace ECXHR_Service.Controllers
         }
 
         // GET api/<EducationController>/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<EducationDto>> Get(Guid id)
+        [HttpGet("{Empid}")]
+        public async Task<ActionResult<EducationDto>> Get(Guid Empid)
         {
-            var Education = await _mediator.Send(new GetEducationDetailRequest { Id = id });
+            var Education = await _mediator.Send(new GetEducationDetailRequest { EmpId = Empid });
             return Ok(Education);
         }
 

@@ -27,10 +27,10 @@ namespace ECX.HR.Application.CQRS.EmployeePosition.Handler.Queries
         }
         public async Task<EmployeePositionDto> Handle(GetEmployeePositionDetailRequest request, CancellationToken cancellationToken)
         {
-            var employeePosition =await _EmployeePositionRepository.GetById(request.Id);
+            var employeePosition =await _EmployeePositionRepository.GetByEmpId(request.EmpId);
            
             if (employeePosition == null)
-                throw new NotFoundException(nameof(employeePosition), request.Id);
+                throw new NotFoundException(nameof(employeePosition), request.EmpId);
 
             else
                 return _mapper.Map<EmployeePositionDto>(employeePosition);

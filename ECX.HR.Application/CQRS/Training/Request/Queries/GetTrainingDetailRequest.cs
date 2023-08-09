@@ -11,6 +11,6 @@ namespace ECX.HR.Application.CQRS.Training.Request.Queries
 {
     public class GetTrainingDetailRequest :IRequest<TrainingDto>
     {
-        public Guid Id { get; set; }
+        public Guid EmpId { get; set; }
     }
 }

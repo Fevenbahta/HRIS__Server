@@ -10,6 +10,6 @@ namespace ECX.HR.Application.CQRS.Education.Request.Queries
 {
     public class GetEducationDetailRequest :IRequest<EducationDto>
     {
-        public Guid Id { get; set; }
+        public Guid EmpId { get; set; }
     }
 }

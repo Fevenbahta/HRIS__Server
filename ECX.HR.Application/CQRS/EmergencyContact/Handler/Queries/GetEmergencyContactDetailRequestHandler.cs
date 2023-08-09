@@ -26,10 +26,10 @@ namespace ECX.HR.Application.CQRS.EmergencyContact.Handler.Queries
         }
         public async Task<EmergencyContactDto> Handle(GetEmergencyContactDetailRequest request, CancellationToken cancellationToken)
         {
-            var emergencyContact =await _EmergencyContactRepository.GetById(request.Id);
+            var emergencyContact =await _EmergencyContactRepository.GetByEmpId(request.EmpId);
           
             if (emergencyContact == null)
-                throw new NotFoundException(nameof(emergencyContact), request.Id);
+                throw new NotFoundException(nameof(emergencyContact), request.EmpId);
 
             else
                 return _mapper.Map<EmergencyContactDto>(emergencyContact);
