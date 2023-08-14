@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.CQRS.Spouse.Handler.Queries
 {
-    public class GetSpouseDetailRequestHandler : IRequestHandler<GetSpouseDetailRequest, SpouseDto>
+    public class GetSpouseDetailRequestHandler : IRequestHandler<GetSpouseDetailRequest, List<SpouseDto>>
     {
         private ISpouseRepository _SpouseRepository;
         private IMapper _mapper;
@@ -23,15 +23,15 @@ namespace ECX.HR.Application.CQRS.Spouse.Handler.Queries
             _SpouseRepository = SpouseRepository;
             _mapper = mapper;
         }
-        public async Task<SpouseDto> Handle(GetSpouseDetailRequest request, CancellationToken cancellationToken)
+        public async Task<List<SpouseDto>> Handle(GetSpouseDetailRequest request, CancellationToken cancellationToken)
         {
             var spouse =await _SpouseRepository.GetByEmpId(request.EmpId);
           
-            if (spouse == null)
+            if (spouse == null || !spouse.Any(we => we.Status == 0))
                 throw new NotFoundException(nameof(spouse), request.EmpId);
 
             else
-                return _mapper.Map<SpouseDto>(spouse);
+                return _mapper.Map<List<SpouseDto>>(spouse);
         }
     }
 }

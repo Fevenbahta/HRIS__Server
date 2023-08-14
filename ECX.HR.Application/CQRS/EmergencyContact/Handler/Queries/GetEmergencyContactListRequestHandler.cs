@@ -25,7 +25,8 @@ namespace ECX.HR.Application.CQRS.EmergencyContact.Handler.Queries
         public async Task<List<EmergencyContactDto>> Handle(GetEmergencyContactListRequest request, CancellationToken cancellationToken)
         {
             var EmergencyContact =await _EmergencyContactRepository.GetAll();
-            return _mapper.Map<List<EmergencyContactDto>>(EmergencyContact);
+            var activeEmergencyContact = EmergencyContact.Where(emergencyContact => emergencyContact.Status == 0).ToList();
+            return _mapper.Map<List<EmergencyContactDto>>(activeEmergencyContact);
         }
     }
 }

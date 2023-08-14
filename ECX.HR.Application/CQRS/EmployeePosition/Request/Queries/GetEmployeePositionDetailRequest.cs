@@ -13,5 +13,6 @@ namespace ECX.HR.Application.CQRS.EmployeePosition.Request.Queries
     {
        // public Guid Id { get; set; }
         public Guid EmpId { get; set; }
+        public int status { get; set; }
     }
 }

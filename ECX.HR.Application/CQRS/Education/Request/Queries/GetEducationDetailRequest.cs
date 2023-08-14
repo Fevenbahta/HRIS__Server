@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.CQRS.Education.Request.Queries
 {
-    public class GetEducationDetailRequest :IRequest<EducationDto>
+    public class GetEducationDetailRequest :IRequest<List<EducationDto>>
     {
         public Guid EmpId { get; set; }
     }

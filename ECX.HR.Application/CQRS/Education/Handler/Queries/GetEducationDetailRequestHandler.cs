@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.CQRS.Education.Handler.Queries
 {
-    public class GetEducationDetailRequestHandler : IRequestHandler<GetEducationDetailRequest, EducationDto>
+    public class GetEducationDetailRequestHandler : IRequestHandler<GetEducationDetailRequest, List<EducationDto>>
     {
         private IEducationRepository _EducationRepository;
         private IMapper _mapper;
@@ -24,15 +24,15 @@ namespace ECX.HR.Application.CQRS.Education.Handler.Queries
             _EducationRepository = EducationRepository;
             _mapper = mapper;
         }
-        public async Task<EducationDto> Handle(GetEducationDetailRequest request, CancellationToken cancellationToken)
+        public async Task<List<EducationDto>> Handle(GetEducationDetailRequest request, CancellationToken cancellationToken)
         {
             var education =await _EducationRepository.GetByEmpId(request.EmpId);
            
-            if (education == null)
+            if (education == null || !education.Any(we => we.Status == 0))
                 throw new NotFoundException(nameof(education), request.EmpId);
 
             else
-                return _mapper.Map<EducationDto>(education);
+                return _mapper.Map<List<EducationDto>>(education);
         }
     }
 }

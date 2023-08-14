@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.CQRS.WorkExperience.Handler.Queries
 {
-    public class GetWorkExperienceDetailRequestHandler : IRequestHandler<GetWorkExperienceDetailRequest, WorkExperienceDto>
+    public class GetWorkExperienceDetailRequestHandler : IRequestHandler<GetWorkExperienceDetailRequest, List<WorkExperienceDto>>
     {
         private IWorkExperienceRepository _WorkExperienceRepository;
         private IMapper _mapper;
@@ -24,15 +24,15 @@ namespace ECX.HR.Application.CQRS.WorkExperience.Handler.Queries
             _WorkExperienceRepository = WorkExperienceRepository;
             _mapper = mapper;
         }
-        public async Task<WorkExperienceDto> Handle(GetWorkExperienceDetailRequest request, CancellationToken cancellationToken)
+        public async Task<List<WorkExperienceDto>> Handle(GetWorkExperienceDetailRequest request, CancellationToken cancellationToken)
         {
             var workExperience =await _WorkExperienceRepository.GetByEmpId(request.EmpId);
             
-            if (workExperience == null)
+            if (workExperience == null || !workExperience.Any(we => we.Status == 0))
                 throw new NotFoundException(nameof(workExperience), request.EmpId);
 
             else
-                return _mapper.Map<WorkExperienceDto>(workExperience);
+                return _mapper.Map<List<WorkExperienceDto>>(workExperience);
         }
     }
 }

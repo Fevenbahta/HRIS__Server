@@ -25,7 +25,8 @@ namespace ECX.HR.Application.CQRS.WorkExperience.Handler.Command
         public async Task<Unit> Handle(DeleteWorkExperienceCommand request, CancellationToken cancellationToken)
         {
             var WorkExperience = await _WorkExperienceRepository.GetById(request.Id);
-            await _WorkExperienceRepository.Delete(WorkExperience);
+            WorkExperience.Status = 1;
+            await _WorkExperienceRepository.Update(WorkExperience);
             return Unit.Value;
         }
 
@@ -34,7 +35,8 @@ namespace ECX.HR.Application.CQRS.WorkExperience.Handler.Command
             var WorkExperience = await _WorkExperienceRepository.GetById(request.Id);
             if(WorkExperience == null) 
                 throw new NotFoundException(nameof(WorkExperience), request.Id);
-            await _WorkExperienceRepository.Delete(WorkExperience);
+            WorkExperience.Status = 1;
+            await _WorkExperienceRepository.Update(WorkExperience);
         }
     }
 }

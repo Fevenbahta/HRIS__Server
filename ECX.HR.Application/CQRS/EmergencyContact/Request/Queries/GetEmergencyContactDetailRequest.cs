@@ -9,9 +9,12 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.CQRS.EmergencyContact.Request.Queries
 {
-    public class GetEmergencyContactDetailRequest :IRequest<EmergencyContactDto>
+    public class GetEmergencyContactDetailRequest :IRequest<List<EmergencyContactDto>>
     {
         public Guid Id { get; set; }
         public Guid EmpId { get; set; }
+
+
+       
     }
 }

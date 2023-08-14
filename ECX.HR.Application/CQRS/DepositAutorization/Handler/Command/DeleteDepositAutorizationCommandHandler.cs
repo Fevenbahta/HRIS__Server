@@ -25,7 +25,8 @@ namespace ECX.HR.Application.CQRS.DepositAutorization.Handler.Command
         public async Task<Unit> Handle(DeleteDepositAutorizationCommand request, CancellationToken cancellationToken)
         {
             var DepositAutorization = await _DepositAutorizationRepository.GetById(request.Id);
-            await _DepositAutorizationRepository.Delete(DepositAutorization);
+            DepositAutorization.Status = 1;
+            await _DepositAutorizationRepository.Update(DepositAutorization);
             return Unit.Value;
         }
 
@@ -34,7 +35,8 @@ namespace ECX.HR.Application.CQRS.DepositAutorization.Handler.Command
             var DepositAutorization = await _DepositAutorizationRepository.GetById(request.Id);
             if(DepositAutorization == null) 
                 throw new NotFoundException(nameof(DepositAutorization), request.Id);
-            await _DepositAutorizationRepository.Delete(DepositAutorization);
+            DepositAutorization.Status = 1;
+            await _DepositAutorizationRepository.Update(DepositAutorization);
         }
     }
 }

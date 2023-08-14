@@ -25,7 +25,8 @@ namespace ECX.HR.Application.CQRS.Training.Handler.Command
         public async Task<Unit> Handle(DeleteTrainingCommand request, CancellationToken cancellationToken)
         {
             var Training = await _TrainingRepository.GetById(request.Id);
-            await _TrainingRepository.Delete(Training);
+            Training.Status = 1;
+            await _TrainingRepository.Update(Training);
             return Unit.Value;
         }
 
@@ -34,7 +35,8 @@ namespace ECX.HR.Application.CQRS.Training.Handler.Command
             var Training = await _TrainingRepository.GetById(request.Id);
             if(Training == null) 
                 throw new NotFoundException(nameof(Training), request.Id);
-            await _TrainingRepository.Delete(Training);
+            Training.Status = 1;
+            await _TrainingRepository.Update(Training);
         }
     }
 }

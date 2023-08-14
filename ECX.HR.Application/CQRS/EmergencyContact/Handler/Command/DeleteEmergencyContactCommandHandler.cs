@@ -25,7 +25,8 @@ namespace ECX.HR.Application.CQRS.EmergencyContact.Handler.Command
         public async Task<Unit> Handle(DeleteEmergencyContactCommand request, CancellationToken cancellationToken)
         {
             var EmergencyContact = await _EmergencyContactRepository.GetById(request.Id);
-            await _EmergencyContactRepository.Delete(EmergencyContact);
+            EmergencyContact.Status = 1;
+            await _EmergencyContactRepository.Update(EmergencyContact);
             return Unit.Value;
         }
 
@@ -34,7 +35,8 @@ namespace ECX.HR.Application.CQRS.EmergencyContact.Handler.Command
             var EmergencyContact = await _EmergencyContactRepository.GetById(request.Id);
             if(EmergencyContact == null) 
                 throw new NotFoundException(nameof(EmergencyContact), request.Id);
-            await _EmergencyContactRepository.Delete(EmergencyContact);
+            EmergencyContact.Status = 1;
+            await _EmergencyContactRepository.Update(EmergencyContact);
         }
     }
 }

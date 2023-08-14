@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.CQRS.Training.Handler.Queries
 {
-    public class GetTrainingDetailRequestHandler : IRequestHandler<GetTrainingDetailRequest, TrainingDto>
+    public class GetTrainingDetailRequestHandler : IRequestHandler<GetTrainingDetailRequest, List<TrainingDto>>
     {
         private ITrainingRepository _TrainingRepository;
         private IMapper _mapper;
@@ -24,15 +24,15 @@ namespace ECX.HR.Application.CQRS.Training.Handler.Queries
             _TrainingRepository = TrainingRepository;
             _mapper = mapper;
         }
-        public async Task<TrainingDto> Handle(GetTrainingDetailRequest request, CancellationToken cancellationToken)
+        public async Task<List<TrainingDto>> Handle(GetTrainingDetailRequest request, CancellationToken cancellationToken)
         {
             var training =await _TrainingRepository.GetByEmpId(request.EmpId);
             
-            if (training == null)
+            if (training == null || !training.Any(we => we.Status == 0))
                 throw new NotFoundException(nameof(training), request.EmpId);
 
             else
-                return _mapper.Map<TrainingDto>(training);
+                return _mapper.Map<List<TrainingDto>>(training);
         }
     }
 }

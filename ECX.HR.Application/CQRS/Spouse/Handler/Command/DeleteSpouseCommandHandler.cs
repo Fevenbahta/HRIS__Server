@@ -25,7 +25,8 @@ namespace ECX.HR.Application.CQRS.Spouse.Handler.Command
         public async Task<Unit> Handle(DeleteSpouseCommand request, CancellationToken cancellationToken)
         {
             var Spouse = await _SpouseRepository.GetById(request.Id);
-            await _SpouseRepository.Delete(Spouse);
+            Spouse.Status = 1;
+            await _SpouseRepository.Update(Spouse);
             return Unit.Value;
         }
 
@@ -34,7 +35,8 @@ namespace ECX.HR.Application.CQRS.Spouse.Handler.Command
             var Spouse = await _SpouseRepository.GetById(request.Id);
             if(Spouse == null) 
                 throw new NotFoundException(nameof(Spouse), request.Id);
-            await _SpouseRepository.Delete(Spouse);
+            Spouse.Status = 1;
+            await _SpouseRepository.Update(Spouse);
         }
     }
 }

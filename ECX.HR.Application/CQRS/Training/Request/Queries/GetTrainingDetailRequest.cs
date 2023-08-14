@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.CQRS.Training.Request.Queries
 {
-    public class GetTrainingDetailRequest :IRequest<TrainingDto>
+    public class GetTrainingDetailRequest :IRequest<List<TrainingDto>>
     {
         public Guid EmpId { get; set; }
+
     }
 }

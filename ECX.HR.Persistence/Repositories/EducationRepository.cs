@@ -19,11 +19,19 @@ namespace ECX.HR.Persistence.Repositories
             _context = context;
         }
 
-        public async Task<Educations> GetByEmpId(Guid empId)
+      /*  public async Task<List<Educations>> GetByEmpId(Guid empId)
         {
             return await _context.Set<Educations>()
          .Where(T => T.EmpId == empId)
          .FirstOrDefaultAsync();
+        }*/
+
+        public async Task<List<Educations>> GetByEmpId(Guid empId)
+        {
+            return await _context.Set<Educations>()
+                .Where(education => education.EmpId == empId)
+                .ToListAsync();
         }
+
     }
 }

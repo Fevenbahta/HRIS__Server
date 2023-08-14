@@ -24,12 +24,12 @@ namespace ECX.HR.Application.CQRS.Addresss.Handler.Queries
         }
         public async Task<List<AddressDto>> Handle(GetAddressListRequest request, CancellationToken cancellationToken)
         {
-            var address =await _AddressRepository.GetAll();
-            if (address != null)
-                return _mapper.Map<List<AddressDto>>(address);
-            else
-                return null;
-           
+            var addresses = await _AddressRepository.GetAll();
+
+            var activeAddresses = addresses.Where(address => address.Status == 0).ToList();
+
+            return _mapper.Map<List<AddressDto>>(activeAddresses);
         }
+
     }
 }

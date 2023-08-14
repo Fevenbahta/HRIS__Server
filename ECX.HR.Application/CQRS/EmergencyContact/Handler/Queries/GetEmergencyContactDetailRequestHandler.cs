@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.CQRS.EmergencyContact.Handler.Queries
 {
-    public class GetEmergencyContactDetailRequestHandler : IRequestHandler<GetEmergencyContactDetailRequest, EmergencyContactDto>
+    public class GetEmergencyContactDetailRequestHandler : IRequestHandler<GetEmergencyContactDetailRequest, List<EmergencyContactDto>>
     {
         private IEmergencyContactRepository _EmergencyContactRepository;
         private IMapper _mapper;
@@ -24,15 +24,15 @@ namespace ECX.HR.Application.CQRS.EmergencyContact.Handler.Queries
             _EmergencyContactRepository = EmergencyContactRepository;
             _mapper = mapper;
         }
-        public async Task<EmergencyContactDto> Handle(GetEmergencyContactDetailRequest request, CancellationToken cancellationToken)
+        public async Task<List<EmergencyContactDto>> Handle(GetEmergencyContactDetailRequest request, CancellationToken cancellationToken)
         {
             var emergencyContact =await _EmergencyContactRepository.GetByEmpId(request.EmpId);
           
-            if (emergencyContact == null)
+            if (emergencyContact == null || !emergencyContact.Any(we => we.Status == 0))
                 throw new NotFoundException(nameof(emergencyContact), request.EmpId);
 
             else
-                return _mapper.Map<EmergencyContactDto>(emergencyContact);
+                return _mapper.Map<List<EmergencyContactDto>>(emergencyContact);
         }
     }
 }

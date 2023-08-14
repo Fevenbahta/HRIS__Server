@@ -25,7 +25,8 @@ namespace ECX.HR.Application.CQRS.Training.Handler.Queries
         public async Task<List<TrainingDto>> Handle(GetTrainingListRequest request, CancellationToken cancellationToken)
         {
             var Training =await _TrainingRepository.GetAll();
-            return _mapper.Map<List<TrainingDto>>(Training);
+            var activeTraining = Training.Where(training => training.Status == 0).ToList();
+            return _mapper.Map<List<TrainingDto>>(activeTraining);
         }
     }
 }

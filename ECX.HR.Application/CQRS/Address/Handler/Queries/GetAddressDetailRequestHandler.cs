@@ -27,15 +27,13 @@ namespace ECX.HR.Application.CQRS.Addresss.Handler.Queries
         }
         public async Task<AddressDto> Handle(GetAddressDetailRequest request, CancellationToken cancellationToken)
         {
-            var address =await _AddressRepository.GetByEmpId(request.EmpId);
-            //var addres = await _AddressRepository.GetById(request.Id);
-           
-            if (address == null)
+            var address = await _AddressRepository.GetByEmpId(request.EmpId);
+
+            if (address == null || address.Status != 0)
                 throw new NotFoundException(nameof(address), request.EmpId);
-            
-           
-                
+
             return _mapper.Map<AddressDto>(address);
         }
+
     }
 }

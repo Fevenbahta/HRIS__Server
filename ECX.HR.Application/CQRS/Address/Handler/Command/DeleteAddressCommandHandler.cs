@@ -22,19 +22,34 @@ namespace ECX.HR.Application.CQRS.Addresss.Handler.Command
             _mapper = mapper;
         }
 
-        public async Task<Unit> Handle(DeleteAddressCommand request, CancellationToken cancellationToken)
+/*        public async Task<Unit> Handle(DeleteAddressCommand request, CancellationToken cancellationToken)
         {
             var address = await _AddressRepository.GetById(request.Id);
             await _AddressRepository.Delete(address);
             return Unit.Value;
-        }
+        }*/
 
+        public async Task<Unit> Handle(DeleteAddressCommand request, CancellationToken cancellationToken)
+        {
+            var address = await _AddressRepository.GetById(request.Id);
+
+            if (address == null)
+                throw new NotFoundException(nameof(address), request.Id);
+
+            // Assuming '1' represents the 'Deleted' status
+            address.Status = 1;
+
+            await _AddressRepository.Update(address); // Update the address with new status
+
+            return Unit.Value;
+        }
         async Task IRequestHandler<DeleteAddressCommand>.Handle(DeleteAddressCommand request, CancellationToken cancellationToken)
         {
             var address = await _AddressRepository.GetById(request.Id);
-            if(address == null) 
+            if (address == null)
                 throw new NotFoundException(nameof(address), request.Id);
-            await _AddressRepository.Delete(address);
+            address.Status = 1;
+            await _AddressRepository.Update(address);
         }
     }
 }

@@ -36,19 +36,12 @@ namespace ECXHR_Service.Controllers
             return Ok(address);
         }
 
-        // GET api/<AddressController>/5
-       /* [HttpGet("{id}")]
-        public async Task<ActionResult<AddressDto>> Get(Guid id)
-        {
-            var address = await _mediator.Send(new GetAddressDetailRequest { Id = id });
-            return Ok(address);
-        }*/
-        [HttpGet("{Empid}")]
+ /*       [HttpGet("{Empid}")]
         public async Task<ActionResult<EmployeeDto>> GetByEmpId(Guid Empid)
         {
             var address = await _mediator.Send(new GetAddressDetailRequest { EmpId = Empid });
             return Ok(address);
-        }
+        }*/
         // POST api/<AddressController>
         [HttpPost]
         public async Task<ActionResult<BaseCommandResponse>> Post([FromBody] AddressDto address)

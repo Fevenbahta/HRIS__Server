@@ -25,7 +25,8 @@ namespace ECX.HR.Application.CQRS.EmployeePosition.Handler.Command
         public async Task<Unit> Handle(DeleteEmployeePositionCommand request, CancellationToken cancellationToken)
         {
             var EmployeePosition = await _EmployeePositionRepository.GetById(request.Id);
-            await _EmployeePositionRepository.Delete(EmployeePosition);
+            EmployeePosition.Status = 1;
+            await _EmployeePositionRepository.Update(EmployeePosition);
             return Unit.Value;
         }
 
@@ -34,7 +35,8 @@ namespace ECX.HR.Application.CQRS.EmployeePosition.Handler.Command
             var EmployeePosition = await _EmployeePositionRepository.GetById(request.Id);
             if(EmployeePosition == null) 
                 throw new NotFoundException(nameof(EmployeePosition), request.Id);
-            await _EmployeePositionRepository.Delete(EmployeePosition);
+            EmployeePosition.Status = 1;
+            await _EmployeePositionRepository.Update(EmployeePosition);
         }
     }
 }

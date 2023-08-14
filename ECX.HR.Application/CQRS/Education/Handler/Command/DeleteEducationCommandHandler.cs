@@ -25,7 +25,8 @@ namespace ECX.HR.Application.CQRS.Education.Handler.Command
         public async Task<Unit> Handle(DeleteEducationCommand request, CancellationToken cancellationToken)
         {
             var Education = await _EducationRepository.GetById(request.Id);
-            await _EducationRepository.Delete(Education);
+            Education.Status = 1;
+            await _EducationRepository.Update(Education);
             return Unit.Value;
         }
 
@@ -34,7 +35,8 @@ namespace ECX.HR.Application.CQRS.Education.Handler.Command
             var Education = await _EducationRepository.GetById(request.Id);
             if(Education == null) 
                 throw new NotFoundException(nameof(Education), request.Id);
-            await _EducationRepository.Delete(Education);
+            Education.Status = 1;
+            await _EducationRepository.Update(Education);
         }
     }
 }
