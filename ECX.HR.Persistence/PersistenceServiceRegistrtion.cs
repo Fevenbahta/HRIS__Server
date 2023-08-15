@@ -40,6 +40,7 @@ namespace ECX.HR.Persistence
             services.AddScoped<ISupervisiorRepository, SupervisorRepository>();
             services.AddScoped<ITrainingRepository, TrainingRepository>();
             services.AddScoped<IWorkExperienceRepository, WorkExperienceRepository>();
+            services.AddScoped<IAssignSupervisorRepository, AssignSupervisorRepository > ();
 
 
             return services;

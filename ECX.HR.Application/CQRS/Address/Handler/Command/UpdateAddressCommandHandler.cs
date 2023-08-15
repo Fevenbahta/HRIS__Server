@@ -2,7 +2,7 @@
 using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Addresss.Request.Command;
-using ECX.HR.Application.DTOs.Addresss.Validator;
+using ECX.HR.Application.DTOs.Address.Validator;
 using ECX.HR.Application.Exceptions;
 
 using MediatR;
@@ -27,7 +27,7 @@ namespace ECX.HR.Application.CQRS.Addresss.Handler.Command
 
         public async Task<Unit> Handle(UpdateAddressCommand request, CancellationToken cancellationToken)
         {
-            var validator = new AdressDtoValidator();
+            var validator = new AddressDtoValidator();
             var validationResult = await validator.ValidateAsync(request.AddressDto);
             if (validationResult.IsValid == false)
                 throw new ValidationException(validationResult);

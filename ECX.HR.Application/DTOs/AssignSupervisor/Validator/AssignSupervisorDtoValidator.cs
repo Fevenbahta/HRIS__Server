@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
-using ECX.HR.Application.DTOs.Addresss;
+using ECX.HR.Application.DTOs.AssignSupervisor;
 
-namespace ECX.HR.Application.DTOs.Address.Validator
+namespace ECX.HR.Application.DTOs.AssignSupervisor.Validator
 {
-    public class AddressDtoValidator : AbstractValidator<AddressDto>
+    public class AssignSupervisorDtoValidator : AbstractValidator<AssignSupervisorDto>
     {
-        public AddressDtoValidator()
+        public AssignSupervisorDtoValidator()
         {
             //RuleFor(p => p.Region)
             //    .NotEmpty().WithMessage("{PropertyName} is requiered.")

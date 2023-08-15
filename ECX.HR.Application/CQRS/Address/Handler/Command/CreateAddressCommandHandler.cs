@@ -3,8 +3,9 @@ using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Addresss.Request.Command;
 using ECX.HR.Application.CQRS.Departments.Request.Command;
+using ECX.HR.Application.DTOs.Address.Validator;
 
-using ECX.HR.Application.DTOs.Addresss.Validator;
+
 using ECX.HR.Application.Exceptions;
 
 using ECX.HR.Application.Response;
@@ -32,7 +33,7 @@ namespace ECX.HR.Application.CQRS.Address.Handler.Command
         public async Task<BaseCommandResponse> Handle(CreateAddressCommand request, CancellationToken cancellationToken)
         {
             response = new BaseCommandResponse();
-            var validator =new AdressDtoValidator();
+            var validator =new AddressDtoValidator();
             var validationResult =await validator.ValidateAsync(request.AdressDetailDto);
             
             if(validationResult.IsValid == false)

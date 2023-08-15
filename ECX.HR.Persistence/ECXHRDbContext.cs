@@ -39,6 +39,7 @@ namespace ECX.HR.Persistence
             modelBuilder.Entity<Supervisors>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
             modelBuilder.Entity<Trainings>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
             modelBuilder.Entity<WorkExperiences>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
+            modelBuilder.Entity<AssignSupervisorss>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
             {
                 if (typeof(BaseDomainEntity).IsAssignableFrom(entityType.ClrType))
@@ -124,6 +125,7 @@ namespace ECX.HR.Persistence
             return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
         public DbSet<Adress> Adress { get; set; }
+        public DbSet<AssignSupervisorss> AssignSupervisor { get; set; }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Allowancee> Allowance { get; set; }
         public DbSet<Branches> Branch { get; set; }
