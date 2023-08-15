@@ -34,7 +34,8 @@ namespace ECX.HR.Application.CQRS.Level.Handler.Command
             var Level = await _LevelRepository.GetById(request.LevelId);
             if(Level == null) 
                 throw new NotFoundException(nameof(Level), request.LevelId);
-            await _LevelRepository.Delete(Level);
+            Level.Status = 1;
+            await _LevelRepository.Update(Level);
         }
     }
 }

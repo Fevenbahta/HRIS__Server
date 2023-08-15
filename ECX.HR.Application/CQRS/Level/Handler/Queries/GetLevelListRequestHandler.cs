@@ -24,7 +24,8 @@ namespace ECX.HR.Application.CQRS.Level.Handler.Queries
         public async Task<List<LevelDto>> Handle(GetLevelListRequest request, CancellationToken cancellationToken)
         {
             var Level =await _LevelRepository.GetAll();
-            return _mapper.Map<List<LevelDto>>(Level);
+            var activeLevel = Level.Where(level => level.Status == 0).ToList();
+            return _mapper.Map<List<LevelDto>>(activeLevel);
         }
     }
 }

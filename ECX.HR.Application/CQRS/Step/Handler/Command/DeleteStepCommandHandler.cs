@@ -32,9 +32,10 @@ namespace ECX.HR.Application.CQRS.Step.Handler.Command
         async Task IRequestHandler<DeleteStepCommand>.Handle(DeleteStepCommand request, CancellationToken cancellationToken)
         {
             var Step = await _StepRepository.GetById(request.Id);
-            if(Step == null) 
+            if (Step == null)
                 throw new NotFoundException(nameof(Step), request.Id);
-            await _StepRepository.Delete(Step);
+            Step.Status = 1;
+            await _StepRepository.Update(Step);
         }
     }
 }

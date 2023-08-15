@@ -34,7 +34,8 @@ namespace ECX.HR.Application.CQRS.Branch.Handler.Command
             var branch = await _BranchRepository.GetById(request.Id);
             if(branch == null) 
                 throw new NotFoundException(nameof(branch), request.Id);
-            await _BranchRepository.Delete(branch);
+            branch.Status = 1;
+            await _BranchRepository.Update(branch);
         }
     }
 }

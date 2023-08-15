@@ -25,7 +25,8 @@ namespace ECX.HR.Application.CQRS.Position.Handler.Queries
         public async Task<List<PositionDto>> Handle(GetPositionListRequest request, CancellationToken cancellationToken)
         {
             var Position =await _PositionRepository.GetAll();
-            return _mapper.Map<List<PositionDto>>(Position);
+            var activePosition = Position.Where(position => position.Status == 0).ToList();
+            return _mapper.Map<List<PositionDto>>(activePosition);
         }
     }
 }

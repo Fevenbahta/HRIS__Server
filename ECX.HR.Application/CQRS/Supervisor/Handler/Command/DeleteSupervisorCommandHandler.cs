@@ -34,7 +34,8 @@ namespace ECX.HR.Application.CQRS.Supervisor.Handler.Command
             var Supervisor = await _SupervisorRepository.GetById(request.Id);
             if(Supervisor == null) 
                 throw new NotFoundException(nameof(Supervisor), request.Id);
-            await _SupervisorRepository.Delete(Supervisor);
+            Supervisor.Status = 1;
+            await _SupervisorRepository.Update(Supervisor);
         }
     }
 }

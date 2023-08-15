@@ -22,12 +22,6 @@ namespace ECX.HR.Application.CQRS.Addresss.Handler.Command
             _mapper = mapper;
         }
 
-/*        public async Task<Unit> Handle(DeleteAddressCommand request, CancellationToken cancellationToken)
-        {
-            var address = await _AddressRepository.GetById(request.Id);
-            await _AddressRepository.Delete(address);
-            return Unit.Value;
-        }*/
 
         public async Task<Unit> Handle(DeleteAddressCommand request, CancellationToken cancellationToken)
         {

@@ -34,7 +34,8 @@ namespace ECX.HR.Application.CQRS.EducationLevel.Handler.Command
             var EducationLevel = await _EducationLevelRepository.GetById(request.Id);
             if(EducationLevel == null) 
                 throw new NotFoundException(nameof(EducationLevel), request.Id);
-            await _EducationLevelRepository.Delete(EducationLevel);
+            EducationLevel.Status = 1;
+            await _EducationLevelRepository.Update(EducationLevel);
         }
     }
 }

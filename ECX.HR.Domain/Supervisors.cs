@@ -16,9 +16,10 @@ namespace ECX.HR.Domain
         [Key]
         
         public Guid Id { get; set; }
-        [ForeignKey("Employees")]
-        public Guid? EmpId { get; set; }
-        [ForeignKey("Supervisors")]
+
+        [ForeignKey("Position")]
+        public Guid? PositionId { get; set; }
+      
         public string SupervisorLevel { get; set; }
         
         public int Status { get; set; }

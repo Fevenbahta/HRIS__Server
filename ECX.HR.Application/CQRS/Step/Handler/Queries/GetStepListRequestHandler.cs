@@ -25,7 +25,8 @@ namespace ECX.HR.Application.CQRS.Step.Handler.Queries
         public async Task<List<StepDto>> Handle(GetStepListRequest request, CancellationToken cancellationToken)
         {
             var Step =await _StepRepository.GetAll();
-            return _mapper.Map<List<StepDto>>(Step);
+            var activeStep = Step.Where(step => step.Status == 0).ToList();
+            return _mapper.Map<List<StepDto>>(activeStep);
         }
     }
 }

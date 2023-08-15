@@ -23,6 +23,11 @@ namespace ECX.HR.Domain
         public string Description { get; set; }
         public int Status { get; set; }
         public virtual Divisions Divisions { get; set; }
-
+        public string FirstSupervisor { get; set; }
+        public string SecondSupervisor { get; set; }
+        public string ThirdSupervisor { get; set; }
+        public string FourthSupervisor { get; set; }
+        public string FifthSupervisor { get; set; }
+       
     }
 }

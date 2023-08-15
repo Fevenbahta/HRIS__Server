@@ -33,8 +33,7 @@ namespace ECX.HR.Domain
         public string ImageData { get; set; }
         public bool crime { get; set; }
         public string CrimeDescription{ get; set; }
-        public string FirstSupervisor { get; set; }
-        public string SecondSupervisor { get; set; }
+   
         public int Status { get; set; }
 
         public ICollection<WorkExperiences> WorkExperiences { get; set; }

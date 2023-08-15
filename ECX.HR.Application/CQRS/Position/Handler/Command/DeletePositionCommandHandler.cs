@@ -34,7 +34,9 @@ namespace ECX.HR.Application.CQRS.Position.Handler.Command
             var Position = await _PositionRepository.GetById(request.PositionId);
             if(Position == null) 
                 throw new NotFoundException(nameof(Position), request.PositionId);
-            await _PositionRepository.Delete(Position);
+            Position.Status = 1;
+            await _PositionRepository.Update(Position);
+           
         }
     }
 }

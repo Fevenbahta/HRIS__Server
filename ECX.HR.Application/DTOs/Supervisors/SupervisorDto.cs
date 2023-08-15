@@ -13,7 +13,7 @@ namespace ECX.HR.Application.DTOs.Supervisors
     {
         public int PId { get; set; }
         public Guid Id { get; set; }
-        public Guid EmpId { get; set; }
+        public Guid PositionId { get; set; }
         public string SupervisorLevel { get; set; }
         public int Status { get; set; }
     }
