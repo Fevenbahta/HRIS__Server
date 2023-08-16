@@ -15,7 +15,6 @@ namespace ECX.HR.Domain
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PId { get; set; }
         [Key]
-        
         public Guid EmpId { get; set; }
         public string EcxId { get; set; }
         public string AdId { get; set; }

@@ -3,7 +3,7 @@ using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.CQRS.Employee.Request.Command;
 using ECX.HR.Application.DTOs.Employees.Validator;
 using ECX.HR.Application.Exceptions;
-
+using ECX.HR.Domain;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -25,13 +25,49 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
 
         public async Task<Unit> Handle(UpdateEmployeeCommand request, CancellationToken cancellationToken)
         {
+
             var validator = new EmployeeDtoValidators();
             var validationResult = await validator.ValidateAsync(request.EmployeeDto);
             if (validationResult.IsValid == false)
                 throw new ValidationException(validationResult);
-            var Employee = await _EmployeeRepository.GetById(request.EmployeeDto.EmpId);
-            _mapper.Map(request.EmployeeDto, Employee);
-            await _EmployeeRepository.Update(Employee);
+
+            var existingEmployee = await _EmployeeRepository.GetById(request.EmployeeDto.EmpId);
+
+            
+            var Updated_Employee = new Employees
+            {
+                EmpId = Guid.NewGuid(), 
+                EcxId = existingEmployee.EcxId,
+                AdId = existingEmployee.AdId,
+                FirstName = existingEmployee.FirstName,
+                MiddleName = existingEmployee.MiddleName,
+                LastName = existingEmployee.LastName,
+                JoinDate = existingEmployee.JoinDate,
+                sex = existingEmployee.sex,
+                DateOfBityh = existingEmployee.DateOfBityh,
+                PlaceOfBith = existingEmployee.PlaceOfBith,
+                MartialStatus = existingEmployee.MartialStatus,
+                salutation = existingEmployee.salutation,
+                Nationality = existingEmployee.Nationality,
+                PensionNo = existingEmployee.PensionNo,
+                ImageData = existingEmployee.ImageData,
+                crime = existingEmployee.crime,
+                CrimeDescription = existingEmployee.CrimeDescription,
+                Status = 1,
+                CreatedBy = existingEmployee.CreatedBy,
+                CreatedDate = existingEmployee.CreatedDate
+                };
+
+                
+                
+
+                _mapper.Map(request.EmployeeDto, existingEmployee);
+
+                
+                await _EmployeeRepository.Add(Updated_Employee); 
+                await _EmployeeRepository.Update(existingEmployee); 
+            
+
             return Unit.Value;
         }
     }
