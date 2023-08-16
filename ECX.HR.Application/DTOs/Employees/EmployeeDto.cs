@@ -30,8 +30,7 @@ namespace ECX.HR.Application.DTOs.Employees
         public string ImageData { get; set; }
         public bool crime { get; set; }
         public string CrimeDescription { get; set; }
-        public string FirstSupervisor { get; set; }
-        public string SecondSupervisor { get; set; }
+      
         public int Status { get; set; }
 
     }
