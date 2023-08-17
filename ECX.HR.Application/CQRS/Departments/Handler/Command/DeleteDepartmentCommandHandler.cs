@@ -25,7 +25,7 @@ namespace ECX.HR.Application.CQRS.Departments.Handler.Command
 
         public async Task<Unit> Handle(DeleteDepartmentCommand request, CancellationToken cancellationToken)
         {
-            var department = await _departmentRepository.GetById(request.departmentId);
+            var department = await _departmentRepository.GetById(request.DepartmentId);
             department.Status = 1;
             await _departmentRepository.Update(department);
             return Unit.Value;
@@ -33,9 +33,9 @@ namespace ECX.HR.Application.CQRS.Departments.Handler.Command
 
         async Task IRequestHandler<DeleteDepartmentCommand>.Handle(DeleteDepartmentCommand request, CancellationToken cancellationToken)
         {
-            var department = await _departmentRepository.GetById(request.departmentId);
+            var department = await _departmentRepository.GetById(request.DepartmentId);
             if (department == null)
-                throw new NotFoundException(nameof(department), request.departmentId);
+                throw new NotFoundException(nameof(department), request.DepartmentId);
             department.Status = 1;
             await _departmentRepository.Update(department);
         }
