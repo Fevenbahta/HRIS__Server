@@ -29,7 +29,7 @@ namespace ECX.HR.Application.CQRS.Division.Handler.Queries
         {
             var division =await _DivisionRepository.GetById(request.DivisionId);
             
-            if (division == null)
+            if (division == null || division.Status != 0)
                 throw new NotFoundException(nameof(division), request.DivisionId);
 
             else

@@ -28,7 +28,7 @@ namespace ECX.HR.Application.CQRS.Step.Handler.Queries
         {
             var step = await _StepRepository.GetById(request.Id);
 
-            if (step == null)
+            if (step == null || step.Status != 0)
                 throw new NotFoundException(nameof(step), request.Id);
 
             else

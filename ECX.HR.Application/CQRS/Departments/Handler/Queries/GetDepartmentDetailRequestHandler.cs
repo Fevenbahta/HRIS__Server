@@ -25,10 +25,10 @@ namespace ECX.HR.Application.CQRS.Departments.Handler.Queries
         }
         public async Task<DepartmentDto> Handle(GetDepartmentDetailRequest request, CancellationToken cancellationToken)
         {
-            var department =await _departmentRepository.GetById(request.Id);
+            var department =await _departmentRepository.GetById(request.DepartmentId);
             //return _mapper.Map<DepartmentDto>(department);
-            if (department == null)
-                throw new NotFoundException(nameof(department), request.Id);
+            if (department == null|| department.Status != 0)
+                throw new NotFoundException(nameof(department), request.DepartmentId);
 
             else
                 return _mapper.Map<DepartmentDto>(department);

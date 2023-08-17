@@ -27,7 +27,7 @@ namespace ECX.HR.Application.CQRS.Branch.Handler.Queries
         public async Task<BranchDto> Handle(GetBranchDetailRequest request, CancellationToken cancellationToken)
         {
             var branch =await _BranchRepository.GetById(request.Id);
-            if (branch == null)
+            if (branch == null || branch.Status != 0)
                 throw new NotFoundException(nameof(branch), request.Id);
 
             else

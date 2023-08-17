@@ -28,7 +28,7 @@ namespace ECX.HR.Application.CQRS.Level.Handler.Queries
         {
             var level =await _LevelRepository.GetById(request.LevelId);
            
-            if (level == null)
+            if (level == null || level.Status != 0)
                 throw new NotFoundException(nameof(level), request.LevelId);
 
             else

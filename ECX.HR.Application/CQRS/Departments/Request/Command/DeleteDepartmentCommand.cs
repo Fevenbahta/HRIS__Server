@@ -9,6 +9,6 @@ namespace ECX.HR.Application.CQRS.Departments.Request.Command
 {
     public class DeleteDepartmentCommand : IRequest
     {
-        public Guid departmentId { get; set; }
+        public Guid DepartmentId { get; set; }
     }
 }

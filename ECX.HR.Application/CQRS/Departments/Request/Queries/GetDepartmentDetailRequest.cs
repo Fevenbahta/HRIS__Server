@@ -10,6 +10,6 @@ namespace ECX.HR.Application.CQRS.Departments.Request.Queries
 {
     public class GetDepartmentDetailRequest :IRequest<DepartmentDto>
     {
-        public Guid Id { get; set; }
+        public Guid DepartmentId { get; set; }
     }
 }

@@ -28,7 +28,7 @@ namespace ECX.HR.Application.CQRS.Position.Handler.Queries
         {
             var position =await _PositionRepository.GetById(request.PositionId);
            
-            if (position == null)
+            if (position == null || position.Status != 0)
                 throw new NotFoundException(nameof(position), request.PositionId);
 
             else

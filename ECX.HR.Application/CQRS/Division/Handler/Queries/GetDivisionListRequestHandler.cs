@@ -25,7 +25,8 @@ namespace ECX.HR.Application.CQRS.Division.Handler.Queries
         public async Task<List<DivisionDto>> Handle(GetDivisionListRequest request, CancellationToken cancellationToken)
         {
             var Division =await _DivisionRepository.GetAll();
-            return _mapper.Map<List<DivisionDto>>(Division);
+            var activeDivision = Division.Where(division => division.Status == 0).ToList();
+            return _mapper.Map<List<DivisionDto>>(activeDivision);
         }
     }
 }

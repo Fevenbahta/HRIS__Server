@@ -28,7 +28,7 @@ namespace ECX.HR.Application.CQRS.Supervisor.Handler.Queries
         {
             var supervisor =await _SupervisorRepository.GetById(request.Id);
            
-            if (supervisor == null)
+            if (supervisor == null || supervisor.Status != 0)
                 throw new NotFoundException(nameof(supervisor), request.Id);
 
             else

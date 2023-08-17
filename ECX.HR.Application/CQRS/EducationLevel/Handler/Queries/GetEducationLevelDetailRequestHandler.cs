@@ -28,7 +28,7 @@ namespace ECX.HR.Application.CQRS.EducationLevel.Handler.Queries
         {
             var educationLevel =await _EducationLevelRepository.GetById(request.Id);
             
-            if (educationLevel == null)
+            if (educationLevel == null || educationLevel.Status != 0)
                 throw new NotFoundException(nameof(educationLevel), request.Id);
 
             else

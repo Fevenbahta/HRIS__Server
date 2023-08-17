@@ -24,7 +24,8 @@ namespace ECX.HR.Application.CQRS.Departments.Handler.Queries
         public async Task<List<DepartmentDto>> Handle(GetDepartmentListRequest request, CancellationToken cancellationToken)
         {
             var department =await _departmentRepository.GetAll();
-            return _mapper.Map<List<DepartmentDto>>(department);
+            var activeDepartment = department.Where(department => department.Status == 0).ToList();
+            return _mapper.Map<List<DepartmentDto>>(activeDepartment);
         }
     }
 }
