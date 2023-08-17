@@ -11,6 +11,8 @@ namespace ECX.HR.Application.Contracts.Persistent
     {
         Task<IEnumerable<T>> GetAll();
        Task<T> GetById(Guid id);
+       
+        //Task<T> GetByEcxId(string name);
         Task<T> Add(T entity);
         Task Update(T entity);
         Task Delete(T entity);

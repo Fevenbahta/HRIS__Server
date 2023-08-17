@@ -41,6 +41,13 @@ namespace ECXHR_Service.Controllers
             return Ok(Employee);
         }
 
+        [HttpGet("ecx/{EcxId}")]
+        public async Task<ActionResult<EmployeeDto>> GetEcxId(string EcxId)
+        {
+            var Employee = await _mediator.Send(new GetEmployeeHistoryRequest { EcxId = EcxId });
+            return Ok(Employee);
+        }
+
         // POST api/<EmployeeController>
         [HttpPost]
 

@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.Contracts.Persistence
 {
-    public interface IEmployeeRepository :IGenericRepository<Employees>
+    public interface IEmployeeRepository : IGenericRepository<Employees>
     {
-
+        Task<Employees> GetByEcxId(string id);
     }
 }

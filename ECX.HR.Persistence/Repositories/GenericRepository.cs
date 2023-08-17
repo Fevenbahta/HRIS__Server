@@ -1,6 +1,8 @@
 ﻿
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.Models;
+using ECX.HR.Domain;
+using ECX.HR.Persistence.Migrations;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -54,6 +56,7 @@ namespace ECX.HR.Persistence.Repositories
         {
             return await _context.Set<T>().FindAsync(id);
         }
+        
 
         public async Task Update(T entity)
         {
@@ -62,6 +65,6 @@ namespace ECX.HR.Persistence.Repositories
 
             await _context.SaveChangesAsync();
         }
-      
+        
     }
 }
