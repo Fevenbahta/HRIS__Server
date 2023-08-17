@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.CQRS.Employee.Handler.Queries
 {
-    public class GetEmployeeHistoryRequestHandler : IRequestHandler<GetEmployeeHistoryRequest, EmployeeDto>
+    public class GetEmployeeHistoryRequestHandler : IRequestHandler<GetEmployeeHistoryRequest, List<EmployeeDto>>
     {
         private IEmployeeRepository _EmployeeRepository;
         private IMapper _mapper;
@@ -25,15 +25,17 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Queries
             _EmployeeRepository = EmployeeRepository;
             _mapper = mapper;
         }
-        public async Task<EmployeeDto> Handle(GetEmployeeHistoryRequest request, CancellationToken cancellationToken)
+        public async Task<List<EmployeeDto>> Handle(GetEmployeeHistoryRequest request, CancellationToken cancellationToken)
+
         {
-            var employee =await _EmployeeRepository.GetByEcxId(request.EcxId);
+            string decodedEcxId = Uri.UnescapeDataString(request.EcxId);
+          var employee =await _EmployeeRepository.GetByEcxId(decodedEcxId);
            
-            if (employee == null || employee.Status != 0)
+            if (employee == null || !employee.Any(we => we.Status == 1))
                 throw new NotFoundException(nameof(employee), request.EcxId);
 
             else
-                return _mapper.Map<EmployeeDto>(employee);
+                return _mapper.Map<List<EmployeeDto>>(employee);
         }
 
       

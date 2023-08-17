@@ -17,17 +17,17 @@ namespace ECX.HR.Persistence.Repositories
         {
             _context = context;
         }
-        public async Task<Employees> GetByEcxId(string ecxId)
+        public async Task<List<Employees>> GetByEcxId(string ecxId)
         {
             return await _context.Set<Employees>()
                      .Where(T => T.EcxId == ecxId)
-                     .FirstOrDefaultAsync();
+                     .ToListAsync();
         }
         //public async Task<List<EmergencyContacts>> GetByEmpId(Guid empId)
         //{
         //    return await _context.Set<EmergencyContacts>()
         //             .Where(T => T.EmpId == empId)
-        //        .ToListAsync();
+        //       
         //}
 
     }

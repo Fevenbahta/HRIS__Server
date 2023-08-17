@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.CQRS.Employee.Request.Queries
 {
-    public class GetEmployeeHistoryRequest :IRequest<EmployeeDto>
+    public class GetEmployeeHistoryRequest :IRequest<List<EmployeeDto>>
     {
         public string EcxId { get; set; }
 

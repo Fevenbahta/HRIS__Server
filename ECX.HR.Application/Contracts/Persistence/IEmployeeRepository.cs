@@ -10,6 +10,6 @@ namespace ECX.HR.Application.Contracts.Persistence
 {
     public interface IEmployeeRepository : IGenericRepository<Employees>
     {
-        Task<Employees> GetByEcxId(string id);
+        Task<List<Employees>> GetByEcxId(string id);
     }
 }
