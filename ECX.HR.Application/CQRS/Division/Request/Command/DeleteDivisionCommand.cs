@@ -9,6 +9,6 @@ namespace ECX.HR.Application.CQRS.Division.Request.Command
 {
     public class DeleteDivisionCommand : IRequest
     {
-        public Guid Id { get; set; }
+        public Guid divisionId { get; set; }
     }
 }

@@ -58,7 +58,7 @@ namespace ECXHR_Service.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(Guid id)
         {
-            var command = new DeleteDepartmentCommand { Id= id };
+            var command = new DeleteDepartmentCommand { departmentId= id };
             await _mediator.Send(command);
             return NoContent();
         }

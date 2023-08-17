@@ -68,7 +68,7 @@ namespace ECXHR_Service.Controllers
 
         public async Task<ActionResult> Delete(Guid id)
         {
-            var command = new DeleteDivisionCommand { Id = id };
+            var command = new DeleteDivisionCommand { divisionId = id };
             await _mediator.Send(command);
             return NoContent();
         }

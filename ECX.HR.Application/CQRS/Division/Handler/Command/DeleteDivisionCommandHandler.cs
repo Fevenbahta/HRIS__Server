@@ -25,17 +25,19 @@ namespace ECX.HR.Application.CQRS.Division.Handler.Command
 
         public async Task<Unit> Handle(DeleteDivisionCommand request, CancellationToken cancellationToken)
         {
-            var Division = await _DivisionRepository.GetById(request.Id);
-            await _DivisionRepository.Delete(Division);
+            var Division = await _DivisionRepository.GetById(request.divisionId);
+            Division.Status = 1;
+            await _DivisionRepository.Update(Division);
             return Unit.Value;
         }
 
         async Task IRequestHandler<DeleteDivisionCommand>.Handle(DeleteDivisionCommand request, CancellationToken cancellationToken)
         {
-            var Division = await _DivisionRepository.GetById(request.Id);
-            if(Division == null) 
-                throw new NotFoundException(nameof(Division), request.Id);
-            await _DivisionRepository.Delete(Division);
+            var Division = await _DivisionRepository.GetById(request.divisionId);
+            if (Division == null)
+                throw new NotFoundException(nameof(Division), request.divisionId);
+            Division.Status = 1;
+            await _DivisionRepository.Update(Division);
         }
     }
 }

@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ECX.HR.Application.Contracts.Persistence;
+
 
 namespace ECX.HR.Application.CQRS.Departments.Handler.Command
 {
@@ -23,17 +25,19 @@ namespace ECX.HR.Application.CQRS.Departments.Handler.Command
 
         public async Task<Unit> Handle(DeleteDepartmentCommand request, CancellationToken cancellationToken)
         {
-            var department = await _departmentRepository.GetById(request.Id);
-            await _departmentRepository.Delete(department);
+            var department = await _departmentRepository.GetById(request.departmentId);
+            department.Status = 1;
+            await _departmentRepository.Update(department);
             return Unit.Value;
         }
 
         async Task IRequestHandler<DeleteDepartmentCommand>.Handle(DeleteDepartmentCommand request, CancellationToken cancellationToken)
         {
-            var department = await _departmentRepository.GetById(request.Id);
-            if(department == null) 
-                throw new NotFoundException(nameof(department), request.Id);
-            await _departmentRepository.Delete(department);
+            var department = await _departmentRepository.GetById(request.departmentId);
+            if (department == null)
+                throw new NotFoundException(nameof(department), request.departmentId);
+            department.Status = 1;
+            await _departmentRepository.Update(department);
         }
     }
 }
