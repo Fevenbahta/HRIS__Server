@@ -30,6 +30,7 @@ using ECX.HR.Application.CQRS.Addresss.Request.Queries;
 using ECX.HR.Application.CQRS.Employee.Request.Queries;
 using ECX.HR.Application.DTOs.Step;
 using ECX.HR.Application.DTOs.AssignSupervisor;
+using ECX.HR.Application.DTOs.LeaveBalance;
 
 namespace ECX.HR.Application.Profiles
 {
@@ -61,6 +62,7 @@ namespace ECX.HR.Application.Profiles
             CreateMap<Trainings, TrainingDto>().ReverseMap();
             CreateMap<WorkExperiences, WorkExperienceDto>().ReverseMap();
             CreateMap<AssignSupervisorss, AssignSupervisorDto>().ReverseMap();
+            CreateMap<LeaveBalances, LeaveBalanceDto>().ReverseMap();
         }
     }
 }
