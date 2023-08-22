@@ -10,5 +10,6 @@ namespace ECX.HR.Application.Contracts.Persistence
 {
     public interface ILeaveRequestRepository : IGenericRepository<LeaveRequests>
     {
+        Task<List<LeaveRequests>> GetByEmpId(Guid id);
     }
 }

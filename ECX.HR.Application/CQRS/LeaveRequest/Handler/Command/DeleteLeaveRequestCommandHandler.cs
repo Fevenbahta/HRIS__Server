@@ -44,6 +44,3 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
 
 }
 
-{
-}
-}

@@ -1,6 +1,7 @@
 ﻿using ECX.HR.Domain.Common;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -12,10 +13,11 @@ namespace ECX.HR.Domain
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PId { get; set; }
+        [Key]
         public Guid leaveTypeId { get; set; }   
 
         public string LeaveTypeName { get; set; }
-
+        public int Maximum { get; set; }
         public int Status { get; set; }    
     }
 }
