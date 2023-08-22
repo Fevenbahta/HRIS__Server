@@ -9,6 +9,6 @@ namespace ECX.HR.Application.CQRS.LeaveType.Request.Command
 {
     public class DeleteLeaveTypeCommand : IRequest
     {
-        public Guid leaveTypeid { get; set; }
+        public Guid leaveTypeId { get; set; }
     }
 }

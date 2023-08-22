@@ -29,7 +29,7 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
         {
             response = new BaseCommandResponse();
 
-            var leaveRequest = _mapper.Map<LeaveRequests>(request.leaveRequestDto);
+            var leaveRequest = _mapper.Map<LeaveRequests>(request.LeaveRequestDto);
             leaveRequest.leaveTypeId = Guid.NewGuid();
             var add = leaveRequest.leaveTypeId;
             var data = await _leaveRequestRepository.Add(leaveRequest);

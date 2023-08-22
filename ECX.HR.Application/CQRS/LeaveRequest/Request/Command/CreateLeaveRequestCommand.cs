@@ -11,6 +11,6 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Request.Command
 {
     public class CreateLeaveRequestCommand : IRequest<BaseCommandResponse>
     {
-        public LeaveRequestDto leaveRequestDto { get; set; }
+        public LeaveRequestDto LeaveRequestDto { get; set; }
     }
 }

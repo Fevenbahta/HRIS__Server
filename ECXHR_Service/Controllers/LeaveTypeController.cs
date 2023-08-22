@@ -1,83 +1,76 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿
+
+using ECX.HR.Application.CQRS.LeaveType.Request.Command;
+using ECX.HR.Application.CQRS.LeaveType.Request.Queries;
+using ECX.HR.Application.DTOs.Leave;
+
+using ECX.HR.Application.Response;
+
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
+
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ECXHR_Service.Controllers
 {
-    public class LeaveTypeController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class LeaveTypeController : ControllerBase
+
     {
-        // GET: LeaveTypeController
-        public ActionResult Index()
+        private readonly IMediator _mediator;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+
+        public LeaveTypeController(IMediator mediator, IHttpContextAccessor httpContextAccessor)
         {
-            return View();
+            _mediator = mediator;
+            this._httpContextAccessor = httpContextAccessor;
+        }
+        // GET: api/<AddressController>
+        [HttpGet]
+        public async Task<ActionResult<List<LeaveTypeDto>>> Get()
+        {
+            var LeaveType = await _mediator.Send(new GetLeaveTypeListRequest());
+            return Ok(LeaveType);
         }
 
-        // GET: LeaveTypeController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: LeaveTypeController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: LeaveTypeController/Create
+        /*       [HttpGet("{Empid}")]
+               public async Task<ActionResult<EmployeeDto>> GetByEmpId(Guid Empid)
+               {
+                   var address = await _mediator.Send(new GetAddressDetailRequest { EmpId = Empid });
+                   return Ok(address);
+               }*/
+        // POST api/<AddressController>
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult<BaseCommandResponse>> Post([FromBody] LeaveTypeDto LeaveType)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            var user = _httpContextAccessor.HttpContext.User;
+            var command = new CreateLeaveTypeCommand { LeaveTypeDto = LeaveType };
+            var response = await _mediator.Send(command);
+            return Ok(response);
         }
 
-        // GET: LeaveTypeController/Edit/5
-        public ActionResult Edit(int id)
+        // PUT api/<AddressController>/5
+        [HttpPut("{id}")]
+
+        public async Task<ActionResult> Put([FromBody] LeaveTypeDto LeaveType)
         {
-            return View();
+            var command = new UpdateLeaveTypeCommand { LeaveTypeDto = LeaveType };
+            //_context.Entry(existingEvent).Property(x => x.ReferenceNumber).IsModified = false;
+            await _mediator.Send(command);
+
+            return NoContent();
         }
 
-        // POST: LeaveTypeController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        [HttpDelete("{id}")]
 
-        // GET: LeaveTypeController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(Guid id)
         {
-            return View();
-        }
-
-        // POST: LeaveTypeController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            var command = new DeleteLeaveTypeCommand { leaveTypeId = id };
+            await _mediator.Send(command);
+            return NoContent();
         }
     }
 }

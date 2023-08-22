@@ -28,7 +28,7 @@ namespace ECX.HR.Application.CQRS.LeaveType.Handler.Command
 
         public async Task<Unit> Handle(DeleteLeaveTypeCommand request, CancellationToken cancellationToken)
         {
-            var leavetype = await _leaveTypeRepository.GetById(request.leaveTypeid);
+            var leavetype = await _leaveTypeRepository.GetById(request.leaveTypeId);
             await _leaveTypeRepository.Delete(leavetype);
             return Unit.Value;
         }
@@ -36,9 +36,9 @@ namespace ECX.HR.Application.CQRS.LeaveType.Handler.Command
 
         async Task IRequestHandler<DeleteLeaveTypeCommand>.Handle(DeleteLeaveTypeCommand request, CancellationToken cancellationToken)
         {
-            var leavetype = await _leaveTypeRepository.GetById(request.leaveTypeid);
+            var leavetype = await _leaveTypeRepository.GetById(request.leaveTypeId);
             if (leavetype == null)
-                throw new NotFoundException(nameof(leavetype), request.leaveTypeid);
+                throw new NotFoundException(nameof(leavetype), request.leaveTypeId);
             await _leaveTypeRepository.Delete(leavetype);
         }
     }

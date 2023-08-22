@@ -42,6 +42,8 @@ namespace ECX.HR.Persistence
             services.AddScoped<IWorkExperienceRepository, WorkExperienceRepository>();
             services.AddScoped<IAssignSupervisorRepository, AssignSupervisorRepository > ();
             services.AddScoped<ILeaveBalanceRepository,LeaveBalanceRepository>();
+            services.AddScoped<ILeaveTypeRepository, LeaveTypeRepository>();
+            services.AddScoped<ILeaveRequestRepository, LeaveRequestRepository>();
 
             return services;
         }

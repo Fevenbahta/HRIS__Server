@@ -10,6 +10,6 @@ namespace ECX.HR.Application.CQRS.LeaveType.Request.Command
 {
     public class UpdateLeaveTypeCommand : IRequest<Unit>
     {
-        public LeaveTypeDto leaveTypeDto { get; set; }
+        public LeaveTypeDto LeaveTypeDto { get; set; }
     }
 }

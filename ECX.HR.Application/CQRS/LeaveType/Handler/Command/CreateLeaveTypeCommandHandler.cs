@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.CQRS.LeaveType.Handler.Command
 {
-    public class CreateLeaveTypeCommandHandler : IRequestHandler<CreateLeaveTypeCommandv, BaseCommandResponse>
+    public class CreateLeaveTypeCommandHandler : IRequestHandler<CreateLeaveTypeCommand, BaseCommandResponse>
     {
         BaseCommandResponse response;
         private readonly ILeaveTypeRepository _leaveTypeRepository;
@@ -25,11 +25,11 @@ namespace ECX.HR.Application.CQRS.LeaveType.Handler.Command
             _leaveTypeRepository = leaveTypeRepository;
             _mapper = mapper;
         }
-        public async Task<BaseCommandResponse> Handle(CreateLeaveTypeCommandv request, CancellationToken cancellationToken)
+        public async Task<BaseCommandResponse> Handle(CreateLeaveTypeCommand request, CancellationToken cancellationToken)
         {
             response = new BaseCommandResponse();
 
-            var leaveType = _mapper.Map<LeaveTypes>(request.leaveTypeDto);
+            var leaveType = _mapper.Map<LeaveTypes>(request.LeaveTypeDto);
             leaveType.leaveTypeId = Guid.NewGuid();
            var add = leaveType.leaveTypeId;
             var data = await _leaveTypeRepository.Add(leaveType);

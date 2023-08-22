@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.CQRS.LeaveType.Request.Command
 {
-    public class CreateLeaveTypeCommandv : IRequest<BaseCommandResponse>
+    public class CreateLeaveTypeCommand : IRequest<BaseCommandResponse>
     {
-        public LeaveTypeDto leaveTypeDto { get; set; }
+        public LeaveTypeDto LeaveTypeDto { get; set; }
     }
 }

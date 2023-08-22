@@ -3,12 +3,10 @@ using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.CQRS.Addresss.Request.Command;
 using ECX.HR.Application.CQRS.LeaveType.Request.Command;
 using ECX.HR.Application.DTOs.Address.Validator;
+using ECX.HR.Application.DTOs.LeaveType.validator;
+using ECX.HR.Application.Exceptions;
 using MediatR;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ECX.HR.Application.CQRS.LeaveType.Handler.Command
 {
@@ -26,17 +24,17 @@ namespace ECX.HR.Application.CQRS.LeaveType.Handler.Command
     }
     public async Task<Unit> Handle(UpdateLeaveTypeCommand request, CancellationToken cancellationToken)
     {
-        /*  var validator = new ();
-            var validationResult = await validator.ValidateAsync(request.AddressDto);
-            if (validationResult.IsValid == false)
-                throw new ValidationException(validationResult);
-*/
-            request.leaveTypeDto.UpdatedDate = DateTime.Now;
-            var leaveType = await _leaveTypeRepository.GetById(request.leaveTypeDto.leaveTypeId);
+        var validator = new LeaveTypeeDtoValidator();
+        var validationResult = await validator.ValidateAsync(request.LeaveTypeDto);
+        if (validationResult.IsValid == false)
+            throw new ValidationException(validationResult);
+
+        request.LeaveTypeDto.UpdatedDate = DateTime.Now;
+            var leaveType = await _leaveTypeRepository.GetById(request.LeaveTypeDto.leaveTypeId);
 
 
 
-        _maapper.Map(request.leaveTypeDto, leaveType);
+        _maapper.Map(request.LeaveTypeDto, leaveType);
 
             await _leaveTypeRepository.Update(leaveType);
             return Unit.Value;
