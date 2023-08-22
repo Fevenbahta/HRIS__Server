@@ -40,6 +40,9 @@ namespace ECX.HR.Persistence
             modelBuilder.Entity<Trainings>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
             modelBuilder.Entity<WorkExperiences>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
             modelBuilder.Entity<AssignSupervisorss>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
+            modelBuilder.Entity<LeaveTypes>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
+            modelBuilder.Entity<LeaveRequests>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
+
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
             {
                 if (typeof(BaseDomainEntity).IsAssignableFrom(entityType.ClrType))
