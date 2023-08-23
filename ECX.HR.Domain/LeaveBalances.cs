@@ -19,7 +19,7 @@ namespace ECX.HR.Domain
       
         public Guid Id { get; set; }
         [ForeignKey("Employees")]
-        public Guid? EmpId { get; set; }
+        public Guid EmpId { get; set; }
       
         public Decimal AnnualDefaultBalance { get; set; }
         public Decimal AnnualRemainingBalance { get; set; }
@@ -43,7 +43,7 @@ namespace ECX.HR.Domain
         public DateTime EndDate { get; set; }
 
         public DateTime CurrentYear { get; set; }   
-        //public int IsExpired { get; set; }   
+        public int IsExpired { get; set; }   
      
         public int Status { get; set; }
         public virtual Employees Employees { get; set; }

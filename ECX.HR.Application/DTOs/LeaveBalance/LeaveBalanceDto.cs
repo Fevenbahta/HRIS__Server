@@ -14,7 +14,7 @@ namespace ECX.HR.Application.DTOs.LeaveBalance
     {
         public int PId { get; set; }
         public Guid Id { get; set; }
-        public Guid? EmpId { get; set; }
+        public Guid EmpId { get; set; }
         public Decimal AnnualDefaultBalance { get; set; }
         public Decimal AnnualRemainingBalance { get; set; }
         public Decimal SickDefaultBalance { get; set; }
