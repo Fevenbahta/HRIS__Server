@@ -19,7 +19,7 @@ namespace ECX.HR.Domain
       
         public Guid Id { get; set; }
         [ForeignKey("Employees")]
-        public Guid? EmpId { get; set; }
+        public Guid EmpId { get; set; }
       
         public Decimal AnnualDefaultBalance { get; set; }
         public Decimal AnnualRemainingBalance { get; set; }

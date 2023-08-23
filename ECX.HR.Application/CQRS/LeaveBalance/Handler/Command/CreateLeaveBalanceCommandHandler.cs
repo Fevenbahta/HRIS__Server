@@ -23,12 +23,14 @@ namespace ECX.HR.Application.CQRS.LeaveBalance.Handler.Command
     {
         BaseCommandResponse response;
         private ILeaveBalanceRepository _LeaveBalanceRepository;
+        private readonly IEmployeeRepository _employeeRepository;
         private readonly EmployeeDto _employeeDto;
         private IMapper _mapper;
-        public CreateLeaveBalanceCommandHandler(ILeaveBalanceRepository LeaveBalanceRepository,
+        public CreateLeaveBalanceCommandHandler(ILeaveBalanceRepository LeaveBalanceRepository,IEmployeeRepository employeeRepository,
              EmployeeDto employeeDto, IMapper mapper)
         {
             _LeaveBalanceRepository = LeaveBalanceRepository;
+            _employeeRepository = employeeRepository;
             _employeeDto = employeeDto;
             _mapper = mapper;
         }
@@ -48,23 +50,47 @@ namespace ECX.HR.Application.CQRS.LeaveBalance.Handler.Command
             var LeaveBalance = _mapper.Map<LeaveBalances>(request.LeaveBalanceDto);
             LeaveBalance.Id = Guid.NewGuid();
 
-            DateTime employmentStartDate = _employeeDto.JoinDate;
+            var emp = await _employeeRepository.GetById(LeaveBalance.EmpId);
+            DateTime employmentStartDate =emp.JoinDate;
+
+            int daysElapsed = 365;
+           
+           LeaveBalance.EndDate = employmentStartDate.AddDays(daysElapsed);
+
             int yearsOfWork = (DateTime.Now - employmentStartDate).Days / 365; 
             int maxLeaveDays = 30;
             int baseLeaveDays = 18;
             int additionalLeavePerYear = 1; 
            int totalLeaveDays = baseLeaveDays + Math.Min(yearsOfWork - 1, maxLeaveDays - baseLeaveDays) * additionalLeavePerYear;
-          
-            LeaveBalance.AnnualDefaultBalance= totalLeaveDays;
+            if (yearsOfWork >= 1)
+            {
+                LeaveBalance.AnnualDefaultBalance = baseLeaveDays + Math.Min(yearsOfWork - 1, maxLeaveDays - baseLeaveDays) * additionalLeavePerYear;
+            }
+            else
+            {
+                LeaveBalance.AnnualDefaultBalance = baseLeaveDays;
+            }
+           
+            
+            LeaveBalance.AnnualRemainingBalance = LeaveBalance.AnnualDefaultBalance;
             LeaveBalance.SickDefaultBalance = 180;
+            LeaveBalance.SickRemainingBalance=LeaveBalance.SickDefaultBalance;
             LeaveBalance.CompassinateDefaultBalance = 3;
+            LeaveBalance.CompassinateRemainingBalance = LeaveBalance.CompassinateDefaultBalance;
             LeaveBalance.LeaveWotPayDefaultBalance = 90;
+            LeaveBalance.LeaveWotPayRemainingBalance = LeaveBalance.LeaveWotPayDefaultBalance;
             LeaveBalance.EducationDefaultBalance = 5;
+            LeaveBalance.EducationRemainingBalance = LeaveBalance.EducationDefaultBalance;
             LeaveBalance.MarriageDefaultBalance = 3;
+            LeaveBalance.MarraiageRemainingBalance = LeaveBalance.MarriageDefaultBalance;
             LeaveBalance.MaternityDefaultBalance = 120;
+            LeaveBalance.MaternityRemainingBalance = LeaveBalance.MarriageDefaultBalance;
             LeaveBalance.PaternityDefaultBalance = 15;
+            LeaveBalance.PaternityRemainingBalance = LeaveBalance.PaternityDefaultBalance;
             LeaveBalance.CourtLeaveDefaultBalance = 0;
+            LeaveBalance.CourtLeaveRemainingBalance = LeaveBalance.CourtLeaveDefaultBalance;
         
+          
 
         var add = LeaveBalance.Id;
             var data =await _LeaveBalanceRepository.Add(LeaveBalance);
