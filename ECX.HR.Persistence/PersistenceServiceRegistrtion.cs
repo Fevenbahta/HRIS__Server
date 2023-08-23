@@ -1,11 +1,15 @@
 ﻿
 using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
+using ECX.HR.Application.CQRS.LeaveBalance.Handler.Command;
+using ECX.HR.Application.CQRS.LeaveBalance.Handler.Command.ECX.HR.Application.CQRS.LeaveBalance.Handler.Command;
 using ECX.HR.Application.DTOs.Employees;
 using ECX.HR.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,7 +50,10 @@ namespace ECX.HR.Persistence
             services.AddScoped<ILeaveTypeRepository, LeaveTypeRepository>();
             services.AddScoped<ILeaveRequestRepository, LeaveRequestRepository>();
             services.AddScoped<EmployeeDto>(); // This registers EmployeeDto for dependency injection
+            services.AddHostedService<DailyLeaveBalanceCheckService>();
+            services.AddScoped<ILeaveBalanceGenerator, LeaveBalanceGenerator>();
 
+       
 
             return services;
         }
