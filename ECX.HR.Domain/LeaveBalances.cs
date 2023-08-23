@@ -20,14 +20,30 @@ namespace ECX.HR.Domain
         public Guid Id { get; set; }
         [ForeignKey("Employees")]
         public Guid? EmpId { get; set; }
-        [ForeignKey("LeaveType")]
-        public Guid LeaveTypeId { get; set; }
-        public Decimal DefaultBalance { get; set; }
-        public Decimal RemainingBalance { get; set; }
+      
+        public Decimal AnnualDefaultBalance { get; set; }
+        public Decimal AnnualRemainingBalance { get; set; }
+        public Decimal SickDefaultBalance { get; set; }
+        public Decimal SickRemainingBalance { get; set; }
+        public Decimal MaternityDefaultBalance { get; set; }
+        public Decimal MaternityRemainingBalance { get; set; }
+        public Decimal PaternityDefaultBalance { get; set; }
+        public Decimal PaternityRemainingBalance { get; set; }
+        public Decimal CompassinateDefaultBalance { get; set; }
+        public Decimal CompassinateRemainingBalance { get; set; }
+        public Decimal EducationDefaultBalance { get; set; }
+        public Decimal EducationRemainingBalance { get; set; }
+        public Decimal MarriageDefaultBalance { get; set; }
+        public Decimal MarraiageRemainingBalance { get; set; }
+        public Decimal LeaveWotPayDefaultBalance { get; set; }
+        public Decimal LeaveWotPayRemainingBalance { get; set; }
+        public Decimal CourtLeaveDefaultBalance { get; set; }
+        public Decimal CourtLeaveRemainingBalance { get; set; }
         public DateTime StartDate { get; set; }  
         public DateTime EndDate { get; set; }
 
-        public int IsExpired { get; set; }   
+        public DateTime CurrentYear { get; set; }   
+        //public int IsExpired { get; set; }   
      
         public int Status { get; set; }
         public virtual Employees Employees { get; set; }
