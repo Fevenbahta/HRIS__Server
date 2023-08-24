@@ -1,48 +1,22 @@
-﻿using ECX.HR.Application.CQRS.LeaveBalance.Request.Command;
-using ECX.HR.Application.DTOs.LeaveBalance;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
-    using Microsoft.Extensions.Hosting;
-    using System;
-    using System.Threading;
-    using System.Threading.Tasks;
-
-    namespace ECX.HR.Application.CQRS.LeaveBalance.Handler.Command
+namespace MyApplication.BackgroundServices
+{
+    public class DailyFunctionService : BackgroundService
     {
-    using System;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using ECX.HR.Application.CQRS.LeaveBalance; // Import your namespace
-    using global::ECX.HR.Application.Contracts.Persistence;
-
-    namespace ECX.HR.Application.CQRS.LeaveBalance.Handler.Command
-    {
-        public class DailyLeaveBalanceCheckService : BackgroundService
+        protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            private readonly ILeaveBalanceGenerator _leaveBalanceGenerator;
-
-            public DailyLeaveBalanceCheckService(ILeaveBalanceGenerator leaveBalanceGenerator)
+            while (!stoppingToken.IsCancellationRequested)
             {
-                _leaveBalanceGenerator = leaveBalanceGenerator;
-            }
+                // Call your daily function here
+                Console.WriteLine("Daily function executed.");
 
-            protected override async Task ExecuteAsync(CancellationToken stoppingToken)
-            {
-                while (!stoppingToken.IsCancellationRequested)
-                {
-                    // Implement your logic to check and update leave balances here
-                    _leaveBalanceGenerator.Generate();
-
-                    // Wait for 24 hours before checking again
-                    await Task.Delay(TimeSpan.FromHours(0.016), stoppingToken);
-                }
+                // Wait for 24 hours before the next execution
+                await Task.Delay(TimeSpan.FromHours(0.016), stoppingToken);
             }
         }
     }
-
 }
-
-
