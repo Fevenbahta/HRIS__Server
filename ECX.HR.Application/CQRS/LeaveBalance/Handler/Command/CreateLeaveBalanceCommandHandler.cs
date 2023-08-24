@@ -123,79 +123,84 @@ namespace ECX.HR.Application.CQRS.LeaveBalance.Handler.Command
             return response;
         }
 
-        async void generate()
+       public async Task generate()
         {
-            var LeaveBalance = _mapper.Map<LeaveBalances>(_leaveBalanceDto);
-            var existingLeaveBalance = await _LeaveBalanceRepository.GetById(LeaveBalance.Id);
-            TimeSpan differences = existingLeaveBalance.EndDate.Subtract(existingLeaveBalance.StartDate);
+            var Employees = _mapper.Map<Employees>(_employeeDto);
+            var employees = await _employeeRepository.GetAll();
+            foreach (var employee in employees) {
+                var LeaveBalance = _mapper.Map<LeaveBalances>(_leaveBalanceDto);
+                var existingLeaveBalance = await _LeaveBalanceRepository.GetById(LeaveBalance.Id);
+                TimeSpan differences = existingLeaveBalance.EndDate.Subtract(existingLeaveBalance.StartDate);
 
-            DateTime employmentStartDate = existingLeaveBalance.EndDate.AddDays(1);
+                DateTime employmentStartDate = existingLeaveBalance.EndDate.AddDays(1);
 
-            int yearsOfWork = (DateTime.Now - employmentStartDate).Days / 365;
-            int maxLeaveDays = 30;
-            int baseLeaveDays = 18;
-            int additionalLeavePerYear = 1;
+                int yearsOfWork = (DateTime.Now - employmentStartDate).Days / 365;
+                int maxLeaveDays = 30;
+                int baseLeaveDays = 18;
+                int additionalLeavePerYear = 1;
 
-            DateTime currentDate = DateTime.Now;
+                DateTime currentDate = DateTime.Now;
 
-            int totalDaysInYear = DateTime.IsLeapYear(currentDate.Year) ? 366 : 365;
+                int totalDaysInYear = DateTime.IsLeapYear(currentDate.Year) ? 366 : 365;
 
-            TimeSpan timeWorked = currentDate - employmentStartDate;
+                TimeSpan timeWorked = currentDate - employmentStartDate;
 
-            int daysWorked = (int)timeWorked.TotalDays;
+                int daysWorked = (int)timeWorked.TotalDays;
 
-            int accruedLeave = (int)Math.Round(maxLeaveDays * (double)daysWorked / totalDaysInYear);
+                int accruedLeave = (int)Math.Round(maxLeaveDays * (double)daysWorked / totalDaysInYear);
 
-            int annualleave = Math.Min(accruedLeave, maxLeaveDays);
+                int annualleave = Math.Min(accruedLeave, maxLeaveDays);
 
-            TimeSpan timeWorkeds = currentDate - (existingLeaveBalance.EndDate.AddDays(1));
+                TimeSpan timeWorkeds = currentDate - (existingLeaveBalance.EndDate.AddDays(1));
 
-            int daysWorkeds = (int)timeWorkeds.TotalDays;
+                int daysWorkeds = (int)timeWorkeds.TotalDays;
 
-            int totalbaseLeaveDays = baseLeaveDays + Math.Min(yearsOfWork - 1, maxLeaveDays - baseLeaveDays) * additionalLeavePerYear;
-            int accruedLeaves = (int)Math.Round(totalbaseLeaveDays * (double)daysWorkeds / totalDaysInYear);
+                int totalbaseLeaveDays = baseLeaveDays + Math.Min(yearsOfWork - 1, maxLeaveDays - baseLeaveDays) * additionalLeavePerYear;
+                int accruedLeaves = (int)Math.Round(totalbaseLeaveDays * (double)daysWorkeds / totalDaysInYear);
 
-            int annualleaves = Math.Min(accruedLeaves, maxLeaveDays);
+                int annualleaves = Math.Min(accruedLeaves, maxLeaveDays);
 
 
-            ;
+                
 
-            int daysDifferences = differences.Days;
-            if (daysDifferences > 365 && existingLeaveBalance.Status == 0)
-            {
-                int days = 1;
-                var newLeaveBalance = new LeaveBalances
+                int daysDifferences = differences.Days;
+                if (daysDifferences > 365 && existingLeaveBalance.Status == 0)
                 {
-                    Id = Guid.NewGuid(),
-                    EmpId = existingLeaveBalance.EmpId,
-                    StartDate = existingLeaveBalance.EndDate.AddDays(days),
-                    EndDate = existingLeaveBalance.EndDate.AddDays(days).AddDays(365),
-                    AnnualDefaultBalance = existingLeaveBalance.AnnualRemainingBalance + annualleaves,
-                    AnnualRemainingBalance = existingLeaveBalance.AnnualRemainingBalance + annualleaves,
-                    SickDefaultBalance = 180,
-                    SickRemainingBalance = 180,
-                    CompassinateDefaultBalance = 3,
-                    CompassinateRemainingBalance = 3,
-                    LeaveWotPayDefaultBalance = 90,
-                    LeaveWotPayRemainingBalance = 90,
-                    EducationDefaultBalance = 5,
-                    EducationRemainingBalance = 5,
-                    MarriageDefaultBalance = 3,
-                    MarraiageRemainingBalance = 3,
-                    MaternityDefaultBalance = 120,
-                    MaternityRemainingBalance = 120,
-                    PaternityDefaultBalance = 15,
-                    PaternityRemainingBalance = 15,
-                    CourtLeaveDefaultBalance = 0,
-                    CourtLeaveRemainingBalance = 0,
+                    int days = 1;
+                    var newLeaveBalance = new LeaveBalances
+                    {
+                        Id = Guid.NewGuid(),
+                        EmpId = existingLeaveBalance.EmpId,
+                        StartDate = existingLeaveBalance.EndDate.AddDays(days),
+                        EndDate = existingLeaveBalance.EndDate.AddDays(days).AddDays(365),
+                        AnnualDefaultBalance = existingLeaveBalance.AnnualRemainingBalance + annualleaves,
+                        AnnualRemainingBalance = existingLeaveBalance.AnnualRemainingBalance + annualleaves,
+                        SickDefaultBalance = 180,
+                        SickRemainingBalance = 180,
+                        CompassinateDefaultBalance = 3,
+                        CompassinateRemainingBalance = 3,
+                        LeaveWotPayDefaultBalance = 90,
+                        LeaveWotPayRemainingBalance = 90,
+                        EducationDefaultBalance = 5,
+                        EducationRemainingBalance = 5,
+                        MarriageDefaultBalance = 3,
+                        MarraiageRemainingBalance = 3,
+                        MaternityDefaultBalance = 120,
+                        MaternityRemainingBalance = 120,
+                        PaternityDefaultBalance = 15,
+                        PaternityRemainingBalance = 15,
+                        CourtLeaveDefaultBalance = 0,
+                        CourtLeaveRemainingBalance = 0,
+                      
+                       
 
 
+                    };
+                    existingLeaveBalance.Status = 1;
+                    var data1 = await _LeaveBalanceRepository.Add(newLeaveBalance);
 
-                };
-                var data1 = await _LeaveBalanceRepository.Add(newLeaveBalance);
 
-
-            }
+                } }
 
         }
     } }
