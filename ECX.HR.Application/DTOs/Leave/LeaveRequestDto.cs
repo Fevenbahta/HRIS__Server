@@ -16,10 +16,10 @@ namespace ECX.HR.Application.DTOs.Leave
         public Guid leaveRequestId { get; set; }
 
        
-        public Guid? EmpId { get; set; }
+        public Guid EmpId { get; set; }
 
        
-        public Guid? leaveTypeId { get; set; }
+        public Guid leaveTypeId { get; set; }
 
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }

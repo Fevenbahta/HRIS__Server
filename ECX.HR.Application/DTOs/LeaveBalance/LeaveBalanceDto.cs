@@ -37,6 +37,7 @@ namespace ECX.HR.Application.DTOs.LeaveBalance
         public DateTime EndDate { get; set; }
 
         public DateTime CurrentYear { get; set; }
+        public int IsExpired { get; set; }
         public int Status { get; set; }
     }
 }

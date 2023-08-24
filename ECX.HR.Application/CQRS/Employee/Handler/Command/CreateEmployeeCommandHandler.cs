@@ -3,8 +3,10 @@ using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Employee.Request.Command;
 using ECX.HR.Application.CQRS.Employee.Request.Queries;
+using ECX.HR.Application.CQRS.LeaveBalance.Request.Command;
 using ECX.HR.Application.DTOs.Employees;
 using ECX.HR.Application.DTOs.Employees.Validator;
+using ECX.HR.Application.DTOs.LeaveBalance;
 using ECX.HR.Application.Exceptions;
 
 using ECX.HR.Application.Response;
@@ -24,10 +26,12 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
         BaseCommandResponse response;
         private IEmployeeRepository _EmployeeRepository;
         private IMapper _mapper;
-        public CreateEmployeeCommandHandler(IEmployeeRepository EmployeeRepository, IMapper mapper)
+        private IMediator _mediator;
+        public CreateEmployeeCommandHandler(IEmployeeRepository EmployeeRepository, IMediator mediator, IMapper mapper)
         {
             _EmployeeRepository = EmployeeRepository;
             _mapper = mapper;
+            _mediator = mediator;
             var _employeeLists = new List<Employees>();
     }
         public async Task<BaseCommandResponse> Handle(CreateEmployeeCommand request, CancellationToken cancellationToken)
@@ -60,8 +64,19 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
             response.Message = "Creation Successfull";
             response.Id = (Guid)emp;
 
-           
-           
+            var leaveBalanceDto = new LeaveBalanceDto
+            {
+                EmpId = Employee.EmpId, // Set the employee's ID
+                                                // ... Set other properties relevant to the leave balance
+            };
+
+            // Create a new instance of CreateLeaveBalanceCommand with the LeaveBalanceDto
+            var createLeaveBalanceCommand = new CreateLeaveBalanceCommand(leaveBalanceDto);
+
+            // Use the Mediator to send the CreateLeaveBalanceCommand to its handler
+            var leaveBalanceResponse = await _mediator.Send(createLeaveBalanceCommand);
+
+
 
             return response;
         }

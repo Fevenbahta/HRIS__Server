@@ -17,10 +17,10 @@ namespace ECX.HR.Domain
         public Guid leaveRequestId { get; set; }
 
         [ForeignKey("Employees")]
-        public Guid? EmpId { get; set; }
+        public Guid EmpId { get; set; }
 
         [ForeignKey("LeaveType")]
-        public Guid? leaveTypeId { get; set; }
+        public Guid leaveTypeId { get; set; }
 
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }

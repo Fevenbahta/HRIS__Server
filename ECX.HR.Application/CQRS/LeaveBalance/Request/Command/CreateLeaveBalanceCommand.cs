@@ -13,5 +13,15 @@ namespace ECX.HR.Application.CQRS.LeaveBalance.Request.Command
     public class CreateLeaveBalanceCommand : IRequest<BaseCommandResponse>
     {
         public LeaveBalanceDto LeaveBalanceDto { get; set; }
+
+        public CreateLeaveBalanceCommand(LeaveBalanceDto leaveBalanceDto)
+        {
+            LeaveBalanceDto = leaveBalanceDto;
+        }
+        public CreateLeaveBalanceCommand()
+        {
+            // Empty constructor
+        }
+
     }
 }
