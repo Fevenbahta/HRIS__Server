@@ -3,6 +3,7 @@ using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.DTOs.Employees;
 using ECX.HR.Persistence.Repositories;
+using Hangfire;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -47,6 +48,8 @@ namespace ECX.HR.Persistence
             services.AddScoped<ILeaveRequestRepository, LeaveRequestRepository>();
             services.AddScoped<EmployeeDto>(); // This registers EmployeeDto for dependency injection
 
+            
+           
 
             return services;
         }

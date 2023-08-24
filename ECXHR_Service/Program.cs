@@ -1,6 +1,7 @@
 using ECX.HR.Persistence;
 using ECX.HR.Infrastructure;
 using ECX.HR.Application;
+using Hangfire;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,3 +34,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+app.UseHangfireDashboard();
