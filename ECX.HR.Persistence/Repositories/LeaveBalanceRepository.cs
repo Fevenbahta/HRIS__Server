@@ -26,6 +26,15 @@ namespace ECX.HR.Persistence.Repositories
                      .Where(T =>T.EmpId == empId)
                    .ToListAsync();
         }
+        public async Task<IEnumerable<LeaveBalances>> GetExpiredLeaveBalances()
+        {
+            var currentDate = DateTime.Now;
+            var leaveBalances = await _context.LeaveBalance
+        .Where(leaveBalance => leaveBalance.EndDate < currentDate)
+        .ToListAsync();
+
+            return leaveBalances;
+        }
 
     }
 }

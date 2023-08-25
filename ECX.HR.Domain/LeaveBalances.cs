@@ -23,6 +23,9 @@ namespace ECX.HR.Domain
       
         public Decimal AnnualDefaultBalance { get; set; }
         public Decimal AnnualRemainingBalance { get; set; }
+
+        public Decimal PreviousYearAnnualBalance { get; set; }
+   
         public Decimal SickDefaultBalance { get; set; }
         public Decimal SickRemainingBalance { get; set; }
         public Decimal MaternityDefaultBalance { get; set; }

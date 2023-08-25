@@ -11,5 +11,7 @@ namespace ECX.HR.Application.Contracts.Persistence
     public interface ILeaveBalanceRepository  : IGenericRepository<LeaveBalances> 
     {
         Task<List<LeaveBalances>> GetByEmpId(Guid id);
+        Task<IEnumerable<LeaveBalances>> GetExpiredLeaveBalances();
+
     }
 }

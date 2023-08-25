@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
 using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.CQRS.LeaveBalance.Handler.Command;
-using ECX.HR.Application.DTOs.Employees;
+using ECX.HR.Application.CQRS.LeaveBalance.Request.Command;
 using ECX.HR.Application.DTOs.LeaveBalance;
+using ECX.HR.Application.Models;
 using ECX.HR.Domain;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -14,41 +15,106 @@ namespace MyApplication.BackgroundServices
 {
     public class DailyFunctionService : BackgroundService
     {
+        private readonly UpdateLeaveBalanceCommandHandler _updateLeaveBalanceCommandHandler;
+        private readonly ILeaveBalanceRepository _leaveBalanceRepository;
+        private readonly IServiceScopeFactory _serviceScopeFactory;
 
-        private ILeaveBalanceRepository _LeaveBalanceRepository;
-        private readonly LeaveBalanceDto _leaveBalanceDto;
-        private readonly IEmployeeRepository _employeeRepository;
-        private readonly EmployeeDto _employeeDto;
         private IMapper _mapper;
-        private readonly IServiceProvider _serviceProvider;
 
-        public DailyFunctionService(IServiceProvider serviceProvider)
+        public DailyFunctionService(
+
+            IServiceScopeFactory serviceScopeFactory
+           )
         {
-            _serviceProvider = serviceProvider;
+            _serviceScopeFactory = serviceScopeFactory;
+
         }
+
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            while (!stoppingToken.IsCancellationRequested)
+            using (var scope = _serviceScopeFactory.CreateScope())
             {
-                using (var scope = _serviceProvider.CreateScope())
+                while (!stoppingToken.IsCancellationRequested)
                 {
-                    // Retrieve the necessary services
-                    var LeaveBalanceRepository = scope.ServiceProvider.GetRequiredService<ILeaveBalanceRepository>();
-                    var leaveBalanceDto = scope.ServiceProvider.GetRequiredService<LeaveBalanceDto>();
-                    var employeeRepository = scope.ServiceProvider.GetRequiredService<IEmployeeRepository>();
-                    var employeeDto = scope.ServiceProvider.GetRequiredService<EmployeeDto>();
+
+                    var updateLeaveBalanceHandler = scope.ServiceProvider.GetRequiredService<UpdateLeaveBalanceCommandHandler>();
+                    var leaveBalanceRepository = scope.ServiceProvider.GetRequiredService<ILeaveBalanceRepository>();
                     var mapper = scope.ServiceProvider.GetRequiredService<IMapper>();
 
-                    // Create a new instance of CreateLeaveBalanceCommandHandler
-                    var leaveBalanceHandler = new CreateLeaveBalanceCommandHandler(LeaveBalanceRepository, leaveBalanceDto, employeeRepository, employeeDto, mapper);
+                    var expiredLeaveBalances = await leaveBalanceRepository.GetExpiredLeaveBalances();
 
-                    leaveBalanceHandler.generate(); // Call the generate method
-                    Console.WriteLine("workinggggggggg");
-                } // Dispose of scoped services at the end of the 'using' block
+                    foreach (var leaveBalance in expiredLeaveBalances)
+                    {
 
-                await Task.Delay(TimeSpan.FromHours(0.016), stoppingToken); // Delay for one day (24 hours)
+                        TimeSpan differences = leaveBalance.EndDate.Subtract(leaveBalance.StartDate);
+
+                        DateTime employmentStartDate = leaveBalance.EndDate.AddDays(1);
+
+                        int yearsOfWork = (DateTime.Now - employmentStartDate).Days / 365;
+                        int maxLeaveDays = 30;
+                        int baseLeaveDays = 18;
+                        int additionalLeavePerYear = 1;
+
+                        DateTime currentDate = DateTime.Now;
+
+                        int totalDaysInYear = DateTime.IsLeapYear(currentDate.Year) ? 366 : 365;
+
+                        TimeSpan timeWorkeds = currentDate - (leaveBalance.EndDate.AddDays(1));
+
+                        int daysWorkeds = (int)timeWorkeds.TotalDays;
+
+                        int totalbaseLeaveDays = baseLeaveDays + Math.Min(yearsOfWork - 1, maxLeaveDays - baseLeaveDays) * additionalLeavePerYear;
+                        int accruedLeaves = (int)Math.Round(totalbaseLeaveDays * (double)daysWorkeds / totalDaysInYear);
+
+                        int annualleaves = Math.Min(accruedLeaves, maxLeaveDays);
+                        int daysDifferences = differences.Days;
+                        int days = 1;
+
+                        var updatedDto = mapper.Map<LeaveBalanceDto>(leaveBalance);
+                        updatedDto.Status = 1;
+                        updatedDto.EmpId = leaveBalance.EmpId;
+                        updatedDto.StartDate = leaveBalance.EndDate.AddDays(days);
+                        updatedDto.EndDate = leaveBalance.EndDate.AddDays(days).AddDays(365);
+                        updatedDto.AnnualDefaultBalance = annualleaves;
+
+                        updatedDto.SickDefaultBalance = 180;
+                        updatedDto.SickRemainingBalance = 180;
+                        updatedDto.CompassinateDefaultBalance = 3;
+                        updatedDto.CompassinateRemainingBalance = 3;
+                        updatedDto.LeaveWotPayDefaultBalance = 90;
+                        updatedDto.LeaveWotPayRemainingBalance = 90;
+                        updatedDto.EducationDefaultBalance = 5;
+                        updatedDto.EducationRemainingBalance = 5;
+                        updatedDto.MarriageDefaultBalance = 3;
+                        updatedDto.MarraiageRemainingBalance = 3;
+                        updatedDto.MaternityDefaultBalance = 120;
+                        updatedDto.MaternityRemainingBalance = 120;
+                        updatedDto.PaternityDefaultBalance = 15;
+                        updatedDto.PaternityRemainingBalance = 15;
+                        updatedDto.CourtLeaveDefaultBalance = 0;
+                        updatedDto.CourtLeaveRemainingBalance = 0;
+                        updatedDto.PreviousYearAnnualBalance = leaveBalance.AnnualDefaultBalance;
+                        updatedDto.AnnualRemainingBalance = leaveBalance.AnnualDefaultBalance + annualleaves;
+
+
+
+
+                        var updateCommand = new UpdateLeaveBalanceCommand
+                        {
+                            LeaveBalanceDto = updatedDto
+                        };
+
+                        await updateLeaveBalanceHandler.Handle(updateCommand, stoppingToken);
+
+                        Console.WriteLine($"Updated leave balance with ID {leaveBalance.Id}");
+                    }
+                }
+
+                Console.WriteLine("Working...");
+
+                await Task.Delay(TimeSpan.FromHours(0.016), stoppingToken);
             }
-        }
 
+        }
     }
 }
