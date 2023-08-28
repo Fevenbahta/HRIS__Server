@@ -84,39 +84,49 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                                 if (leaveType.LeaveTypeName == "Annual" && leaveDuration <= annualRemainingBalance)
                                 {
                                     leaveBalance.AnnualRemainingBalance -= leaveDuration;
-                                    leaveDuration = 0;
+                                    if (leaveBalance.PreviousYearAnnualBalance > 0)
+                                    {
+
+                                        leaveBalance.PreviousYearAnnualBalance = Math.Max(0, leaveBalance.PreviousYearAnnualBalance - leaveDuration);
+                                    }
                                 }
-                                else if (leaveType.LeaveTypeName == "Medical" && leaveDuration <= sickRemainingBalance)
-                                {
-                                    leaveBalance.SickRemainingBalance -= leaveDuration;
-                                    leaveDuration = 0;
+                                leaveDuration = 0;
+                            }
+                            else if (leaveType.LeaveTypeName == "Medical" && leaveDuration <= sickRemainingBalance)
+                            {
+                                leaveBalance.SickRemainingBalance -= leaveDuration;
+                                leaveDuration = 0;
+                                if (leaveBalance.SickEndDate == null) { 
+                                leaveBalance.SickEndDate = leaveRequest.StartDate.AddDays(366);
+                            }
+
                                 }
                                 else if (leaveType.LeaveTypeName == "Marital" && leaveDuration <= maternityRemainingBalance)
                                 {
                                     leaveBalance.MaternityRemainingBalance -= leaveDuration;
                                     leaveDuration = 0;
                                 }
-                                else if (leaveType.LeaveTypeName == "Marital" && leaveDuration <= educationRemainingBalance)
+                                else if (leaveType.LeaveTypeName == "Education" && leaveDuration <= educationRemainingBalance)
                                 {
                                     leaveBalance.EducationRemainingBalance -= leaveDuration;
                                     leaveDuration = 0;
                                 }
-                                else if (leaveType.LeaveTypeName == "Marital" && leaveDuration <= marraiageRemainingBalance)
+                                else if (leaveType.LeaveTypeName == "Marraige" && leaveDuration <= marraiageRemainingBalance)
                                 {
                                     leaveBalance.MarraiageRemainingBalance -= leaveDuration;
                                     leaveDuration = 0;
                                 }
-                                else if (leaveType.LeaveTypeName == "Marital" && leaveDuration <= compassinateRemainingBalance)
+                                else if (leaveType.LeaveTypeName == "Compassinate" && leaveDuration <= compassinateRemainingBalance)
                                 {
                                     leaveBalance.CompassinateRemainingBalance -= leaveDuration;
                                     leaveDuration = 0;
                                 }
-                                else if (leaveType.LeaveTypeName == "Marital" && leaveDuration <= courtLeaveRemainingBalance)
+                                else if (leaveType.LeaveTypeName == "Court" && leaveDuration <= courtLeaveRemainingBalance)
                                 {
                                     leaveBalance.CourtLeaveRemainingBalance -= leaveDuration;
                                     leaveDuration = 0;
                                 }
-                                else if (leaveType.LeaveTypeName == "Marital" && leaveDuration <= leaveWotPayRemainingBalance)
+                                else if (leaveType.LeaveTypeName == "Leave With Out Pay" && leaveDuration <= leaveWotPayRemainingBalance)
                                 {
                                     leaveBalance.LeaveWotPayRemainingBalance -= leaveDuration;
                                     leaveDuration = 0;
@@ -135,11 +145,11 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
 
                     
                 }
-
+ return Unit.Value;
             }
-            return Unit.Value;
+           
         }
     }
-}
+
 
 

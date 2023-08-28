@@ -30,7 +30,7 @@ namespace ECX.HR.Application.CQRS.LeaveBalance.Handler.Command
         {
             BaseCommandResponse response = new BaseCommandResponse();
 
-            // Validate the leave balance DTO
+            // Validate the leave balance DTO 
             var validator = new LeaveBalanceDtoValidator();
             var validationResult = await validator.ValidateAsync(request.LeaveBalanceDto);
 
@@ -46,28 +46,32 @@ namespace ECX.HR.Application.CQRS.LeaveBalance.Handler.Command
             leaveBalance.Id = Guid.NewGuid();
 
             var employee = await _employeeRepository.GetById(leaveBalance.EmpId);
-   int daysElapsed = 365;
+
             DateTime employmentStartDate = employee.JoinDate;
             DateTime currentDate = DateTime.Now;
+            int daysElapsed = 365;
             var ed = employmentStartDate.AddDays(daysElapsed);
-         
+
             TimeSpan difference = ed.Subtract(employmentStartDate);
             int daysDifference = difference.Days;
 
-         
+
 
 
             int yearsOfWork = (currentDate - employmentStartDate).Days / 365;
             int maxLeaveDays = 30;
-            int baseLeaveDays = 18;
+            int baseLeaveDay = 18 + yearsOfWork;
+
+            int baseLeaveDays = Math.Min(baseLeaveDay, 30);
 
             int totalDaysInYear = DateTime.IsLeapYear(currentDate.Year) ? 366 : 365;
 
-            TimeSpan timeWorked = currentDate - employmentStartDate;
-            int daysWorked = (int)timeWorked.TotalDays;
-            int accruedLeave = (int)Math.Round(baseLeaveDays * (double)daysWorked / totalDaysInYear);
+            TimeSpan timeWorked = currentDate - employmentStartDate.AddYears(yearsOfWork); ;
+            int daysWorkedInYear = (int)timeWorked.TotalDays;
+            int accruedLeave = (int)Math.Round(baseLeaveDays * (double)daysWorkedInYear / totalDaysInYear);
 
             int annualLeave = Math.Min(accruedLeave, maxLeaveDays);
+
             leaveBalance.AnnualDefaultBalance = annualLeave;
             leaveBalance.AnnualRemainingBalance = leaveBalance.AnnualDefaultBalance;
             leaveBalance.SickDefaultBalance = 180;
@@ -86,45 +90,37 @@ namespace ECX.HR.Application.CQRS.LeaveBalance.Handler.Command
             leaveBalance.PaternityRemainingBalance = leaveBalance.PaternityDefaultBalance;
             leaveBalance.CourtLeaveDefaultBalance = 0;
             leaveBalance.CourtLeaveRemainingBalance = leaveBalance.CourtLeaveDefaultBalance;
-   
+            
 
-            // Calculate the previous year's balance
+
+            // Calculate the previous year's balance 
             int previousYear = currentDate.Year - 1;
             Decimal previousYearBalance = 0;
-            if (yearsOfWork >= 2)
-            {
-                // Get the previous year's annual balance from the entity
-                previousYearBalance = leaveBalance.PreviousYearAnnualBalance;
-
-                // Decrease the balance for employees with more than two years of service
-                if (yearsOfWork > 2)
-                {
-                         int leaveToExpire = yearsOfWork - 2;
-
-               
-                    previousYearBalance -= leaveToExpire;
-
-                    
-                    if (previousYearBalance < 0)
-                    {
-                        previousYearBalance = 0;
-                    }
-                }
-            }
-
             if (yearsOfWork >= 1)
             {
                 leaveBalance.StartDate = employmentStartDate.AddYears(yearsOfWork);
                 leaveBalance.EndDate = leaveBalance.StartDate.AddDays(360).AddDays(1);
+
+                // Get the previous year's annual balance from the entity 
+                previousYearBalance = leaveBalance.PreviousYearAnnualBalance;
+
+                previousYearBalance = baseLeaveDays - 1;
+
             }
             else
             {
                 leaveBalance.StartDate = employmentStartDate;
                 leaveBalance.EndDate = leaveBalance.StartDate.AddDays(360).AddDays(1);
             }
+            // if (previousYearBalance < 1) 
+            //     { 
+            //         previousYearBalance = 0; 
+            //     } 
+
+
             leaveBalance.AnnualRemainingBalance += previousYearBalance;
 
-             leaveBalance.PreviousYearAnnualBalance = previousYearBalance;
+            leaveBalance.PreviousYearAnnualBalance = previousYearBalance;
 
             await _leaveBalanceRepository.Add(leaveBalance);
 
