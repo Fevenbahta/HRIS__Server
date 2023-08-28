@@ -5,6 +5,7 @@ using ECX.HR.Application.CQRS.LeaveBalance.Request.Command;
 using ECX.HR.Application.DTOs.LeaveBalance;
 using ECX.HR.Application.Models;
 using ECX.HR.Domain;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -52,7 +53,7 @@ namespace MyApplication.BackgroundServices
 
                         int yearsOfWork = (DateTime.Now - employmentStartDate).Days / 365;
                         int maxLeaveDays = 30;
-                        int baseLeaveDays = 18;
+                        int baseLeaveDays = 18+ yearsOfWork;
                         int additionalLeavePerYear = 1;
 
                         DateTime currentDate = DateTime.Now;
@@ -71,30 +72,32 @@ namespace MyApplication.BackgroundServices
                         int days = 1;
 
                         var updatedDto = mapper.Map<LeaveBalanceDto>(leaveBalance);
-                        updatedDto.Status = 1;
+                   
                         updatedDto.EmpId = leaveBalance.EmpId;
                         updatedDto.StartDate = leaveBalance.EndDate.AddDays(days);
                         updatedDto.EndDate = leaveBalance.EndDate.AddDays(days).AddDays(365);
                         updatedDto.AnnualDefaultBalance = annualleaves;
 
-                        updatedDto.SickDefaultBalance = 180;
-                        updatedDto.SickRemainingBalance = 180;
-                        updatedDto.CompassinateDefaultBalance = 3;
-                        updatedDto.CompassinateRemainingBalance = 3;
+                     
+                        updatedDto.SickDefaultBalance = leaveBalance.SickDefaultBalance;
+                        updatedDto.SickRemainingBalance = leaveBalance.SickRemainingBalance;
+                    
+                        updatedDto.CompassinateDefaultBalance = leaveBalance.CompassinateDefaultBalance;
+                        updatedDto.CompassinateRemainingBalance = leaveBalance.CompassinateRemainingBalance;
                         updatedDto.LeaveWotPayDefaultBalance = 90;
                         updatedDto.LeaveWotPayRemainingBalance = 90;
-                        updatedDto.EducationDefaultBalance = 5;
+                        updatedDto.EducationDefaultBalance =5;
                         updatedDto.EducationRemainingBalance = 5;
-                        updatedDto.MarriageDefaultBalance = 3;
-                        updatedDto.MarraiageRemainingBalance = 3;
-                        updatedDto.MaternityDefaultBalance = 120;
-                        updatedDto.MaternityRemainingBalance = 120;
-                        updatedDto.PaternityDefaultBalance = 15;
-                        updatedDto.PaternityRemainingBalance = 15;
-                        updatedDto.CourtLeaveDefaultBalance = 0;
-                        updatedDto.CourtLeaveRemainingBalance = 0;
+                        updatedDto.MarriageDefaultBalance = leaveBalance.MarriageDefaultBalance;
+                        updatedDto.MarraiageRemainingBalance = leaveBalance.MarraiageRemainingBalance;
+                        updatedDto.MaternityDefaultBalance = leaveBalance.MaternityDefaultBalance;
+                        updatedDto.MaternityRemainingBalance = leaveBalance.MarraiageRemainingBalance;
+                        updatedDto.PaternityDefaultBalance = leaveBalance.PaternityDefaultBalance;
+                        updatedDto.PaternityRemainingBalance = leaveBalance.PaternityRemainingBalance;
+                        updatedDto.CourtLeaveDefaultBalance = leaveBalance.CourtLeaveDefaultBalance;
+                        updatedDto.CourtLeaveRemainingBalance = leaveBalance.CourtLeaveRemainingBalance;
                         updatedDto.PreviousYearAnnualBalance = leaveBalance.AnnualDefaultBalance;
-                        updatedDto.AnnualRemainingBalance = leaveBalance.AnnualDefaultBalance + annualleaves;
+                        updatedDto.AnnualRemainingBalance = leaveBalance.PreviousYearAnnualBalance + annualleaves;
 
 
 
@@ -108,6 +111,100 @@ namespace MyApplication.BackgroundServices
 
                         Console.WriteLine($"Updated leave balance with ID {leaveBalance.Id}");
                     }
+                    var leaveBalances = await leaveBalanceRepository.GetAll();
+                    foreach (var leaveBalance in leaveBalances)
+                    {
+
+                        var updatedDtos = mapper.Map<LeaveBalanceDto>(leaveBalance);
+
+
+
+
+                        DateTime employmentStartDate = leaveBalance.StartDate;
+                   
+                        int daysElapsed = 365;
+                        var ed = employmentStartDate.AddDays(daysElapsed);
+
+                        TimeSpan difference = ed.Subtract(employmentStartDate);
+                        int daysDifference = difference.Days;
+
+
+                        DateTime currentDate = DateTime.Now;
+
+                        int yearsOfWork = (currentDate - employmentStartDate).Days / 365;
+                        int maxLeaveDays = 30;
+                        int baseLeaveDay = 18 + yearsOfWork;
+
+                        int baseLeaveDays = Math.Min(baseLeaveDay, 30);
+
+                        int totalDaysInYear = DateTime.IsLeapYear(currentDate.Year) ? 366 : 365;
+
+                        TimeSpan timeWorked = currentDate - employmentStartDate.AddYears(yearsOfWork); ;
+                        int daysWorkedInYear = (int)timeWorked.TotalDays;
+                        int accruedLeave = (int)Math.Round(baseLeaveDays * (double)daysWorkedInYear / totalDaysInYear);
+
+                        int annualLeave = Math.Min(accruedLeave, maxLeaveDays);
+
+                        updatedDtos.AnnualDefaultBalance = annualLeave;
+                        updatedDtos.AnnualRemainingBalance = annualLeave + leaveBalance.PreviousYearAnnualBalance;
+
+
+
+
+
+
+                        if (leaveBalance.SickEndDate <= currentDate)
+                        {
+                            updatedDtos.SickEndDate = DateTime.MinValue; 
+
+                            updatedDtos.SickRemainingBalance = 180;
+                            updatedDtos.SickRemainingBalance = 180;
+                        }
+
+
+                        if (leaveBalance.CompassinateRemainingBalance == 0)
+                        {
+                            updatedDtos.CompassinateRemainingBalance = 3;
+                            updatedDtos.CompassinateDefaultBalance = 3;
+                        }
+
+                        if (leaveBalance.MarraiageRemainingBalance == 0)
+                        {
+                            updatedDtos.MarriageDefaultBalance = 3;
+                            updatedDtos.MarraiageRemainingBalance = 3;
+                        }
+                        if (leaveBalance.MaternityRemainingBalance == 0)
+                        {
+                            updatedDtos.MaternityDefaultBalance = 120;
+                            updatedDtos.MaternityRemainingBalance = 120;
+                        }
+                        if(leaveBalance.PaternityRemainingBalance == 0)
+                        {
+                            updatedDtos.PaternityRemainingBalance = 7;
+                            updatedDtos.PaternityRemainingBalance = 7;
+                        }
+
+
+                
+
+                        if (leaveBalance.CourtLeaveRemainingBalance == 0)
+                        {
+                            updatedDtos.CourtLeaveDefaultBalance = 0;
+                            updatedDtos.CourtLeaveRemainingBalance = 0;
+                        }
+
+
+
+                        var updateCommands = new UpdateLeaveBalanceCommand
+                        {
+                            LeaveBalanceDto = updatedDtos
+                        };
+
+                        await updateLeaveBalanceHandler.Handle(updateCommands, stoppingToken);
+
+                        Console.WriteLine($"Updated leave balancessss with ID {leaveBalance.Id}");
+                    }
+
                 }
 
                 Console.WriteLine("Working...");

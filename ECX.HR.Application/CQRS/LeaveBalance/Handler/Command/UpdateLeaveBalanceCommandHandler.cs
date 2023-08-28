@@ -3,6 +3,7 @@ using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 
 using ECX.HR.Application.CQRS.LeaveBalance.Request.Command;
+using ECX.HR.Application.DTOs.LeaveBalance;
 using ECX.HR.Application.DTOs.LeaveBalance.Validator;
 using ECX.HR.Application.Exceptions;
 
@@ -34,7 +35,11 @@ namespace ECX.HR.Application.CQRS.LeaveBalance.Handler.Command
                 throw new ValidationException(validationResult);
 
             request.LeaveBalanceDto.UpdatedDate = DateTime.Now;
-            var LeaveBalance = await _LeaveBalanceRepository.GetById(request.LeaveBalanceDto.Id);
+            request.LeaveBalanceDto.UpdatedDate = DateTime.Now;
+      
+         var leaveBalances = await _LeaveBalanceRepository.GetAll();
+var LeaveBalance = await _LeaveBalanceRepository.GetById(request.LeaveBalanceDto.Id);
+        
 
            
 

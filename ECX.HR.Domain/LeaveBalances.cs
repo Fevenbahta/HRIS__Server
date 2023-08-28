@@ -44,6 +44,7 @@ namespace ECX.HR.Domain
         public Decimal CourtLeaveRemainingBalance { get; set; }
         public DateTime StartDate { get; set; }  
         public DateTime EndDate { get; set; }
+        public DateTime SickEndDate { get; set; }
 
         public DateTime CurrentYear { get; set; }   
         public int IsExpired { get; set; }   
