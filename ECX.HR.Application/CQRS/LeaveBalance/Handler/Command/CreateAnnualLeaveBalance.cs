@@ -76,7 +76,7 @@ namespace ECX.HR.Application.CQRS.LeaveBalance.Handler.Command
             leaveAnnualBalance.AnnualRemainingBalance = leaveAnnualBalance.AnnualDefaultBalance;
             leaveAnnualBalance.PreviousYearAnnualBalance = 0;
             leaveAnnualBalance.PreviousTwoYear = 0;
-            leaveAnnualBalance.TotalRemaining = 0;
+            leaveAnnualBalance.TotalRemaining = annualLeave;
             leaveAnnualBalance.TotalRequest = 0;
 
 
@@ -90,19 +90,21 @@ namespace ECX.HR.Application.CQRS.LeaveBalance.Handler.Command
                 leaveAnnualBalance.EndDate = leaveAnnualBalance.StartDate.AddDays(360).AddDays(1);
                 leaveAnnualBalance.PreviousYearAnnualBalance= leaveAnnualBalance.AnnualRemainingBalance;
                 leaveAnnualBalance.PreviousTwoYear = 0;
+                leaveAnnualBalance.AnnualRemainingBalance = leaveAnnualBalance.PreviousYearAnnualBalance + leaveAnnualBalance.AnnualDefaultBalance;
+               
                 // Get the previous year's annual balance from the entity 
                 previousYearBalance = leaveAnnualBalance.AnnualRemainingBalance;
                
                // previousYearBalance = baseLeaveDays - 1;
 
             }
-            if(yearsOfWork > 1)
+           else if(yearsOfWork > 1)
             {
                 leaveAnnualBalance.StartDate = employmentStartDate.AddYears(yearsOfWork);
                 leaveAnnualBalance.EndDate = leaveAnnualBalance.StartDate.AddDays(360).AddDays(1);
                 leaveAnnualBalance.PreviousTwoYear = leaveAnnualBalance.PreviousYearAnnualBalance;
                 leaveAnnualBalance.PreviousYearAnnualBalance = leaveAnnualBalance.AnnualRemainingBalance;
-                 
+                leaveAnnualBalance.AnnualRemainingBalance = leaveAnnualBalance.PreviousYearAnnualBalance + leaveAnnualBalance.PreviousTwoYear;
 
 
             }

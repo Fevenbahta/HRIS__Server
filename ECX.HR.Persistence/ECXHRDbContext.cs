@@ -43,6 +43,8 @@ namespace ECX.HR.Persistence
             modelBuilder.Entity<AssignSupervisorss>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
             modelBuilder.Entity<LeaveTypes>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
             modelBuilder.Entity<LeaveRequests>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
+            modelBuilder.Entity<OtherLeaveBalances>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
+
 
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
             {
@@ -161,6 +163,7 @@ namespace ECX.HR.Persistence
         public DbSet<Supervisors> Supervisor { get; set; }
         public DbSet<Trainings> Training { get; set; }
         public DbSet<WorkExperiences> WorkExperiences { get; set; }
+        public DbSet<OtherLeaveBalances> OtherLeaveBalance { get; set; }
 
     }
 }

@@ -70,15 +70,15 @@ namespace MyApplication.BackgroundServices
                         int annualleaves = Math.Min(accruedLeaves, maxLeaveDays);
                         int daysDifferences = differences.Days;
                         int days = 1;
-
-                        var updatedDto = mapper.Map<AnnualLeaveBalanceDto>(leaveBalance);
+/*
+                        var updatedDto = mapper.Map<LeaveBalanceDto>(leaveBalance);
                    
                         updatedDto.EmpId = leaveBalance.EmpId;
                         updatedDto.StartDate = leaveBalance.EndDate.AddDays(days);
                         updatedDto.EndDate = leaveBalance.EndDate.AddDays(days).AddDays(365);
                         updatedDto.AnnualDefaultBalance = annualleaves;
 
-                     /*
+                     
                         updatedDto.SickDefaultBalance = leaveBalance.SickDefaultBalance;
                         updatedDto.SickRemainingBalance = leaveBalance.SickRemainingBalance;
                     
@@ -96,7 +96,7 @@ namespace MyApplication.BackgroundServices
                         updatedDto.PaternityRemainingBalance = leaveBalance.PaternityRemainingBalance;
                         updatedDto.CourtLeaveDefaultBalance = leaveBalance.CourtLeaveDefaultBalance;
                         updatedDto.CourtLeaveRemainingBalance = leaveBalance.CourtLeaveRemainingBalance;
-                        updatedDto.PreviousYearAnnualBalance = leaveBalance.AnnualDefaultBalance;*/
+                        updatedDto.PreviousYearAnnualBalance = leaveBalance.AnnualDefaultBalance;
                         updatedDto.AnnualRemainingBalance = leaveBalance.PreviousYearAnnualBalance + annualleaves;
 
 
@@ -115,7 +115,7 @@ namespace MyApplication.BackgroundServices
                     foreach (var leaveBalance in leaveBalances)
                     {
 
-                        var updatedDtos = mapper.Map<AnnualLeaveBalanceDto>(leaveBalance);
+                        var updatedDtos = mapper.Map<LeaveBalanceDto>(leaveBalance);
 
 
 
@@ -152,7 +152,7 @@ namespace MyApplication.BackgroundServices
 
 
 
-/*
+
                         if (leaveBalance.SickEndDate <= currentDate)
                         {
                             updatedDtos.SickEndDate = DateTime.MinValue; 
@@ -192,7 +192,7 @@ namespace MyApplication.BackgroundServices
                             updatedDtos.CourtLeaveDefaultBalance = 0;
                             updatedDtos.CourtLeaveRemainingBalance = 0;
                         }
-*/
+
 
 
                         var updateCommands = new UpdateLeaveBalanceCommand
@@ -205,7 +205,7 @@ namespace MyApplication.BackgroundServices
                         Console.WriteLine($"Updated leave balancessss with ID {leaveBalance.Id}");
                     }
 
-                }
+                }*/
 
                 Console.WriteLine("Working...");
 
