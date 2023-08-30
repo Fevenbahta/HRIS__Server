@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.CQRS.LeaveBalance.Request.Queries
 {
-    public class GetLeaveBalanceDetailRequest :IRequest<List<LeaveBalanceDto>>
+    public class GetLeaveBalanceDetailRequest :IRequest<List<AnnualLeaveBalanceDto>>
     {
       public Guid Id { get; set; }
         public Guid EmpId { get; set; }

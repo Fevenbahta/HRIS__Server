@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Persistence.Repositories
 {
-    public class LeaveBalanceRepository : GenericRepository<LeaveBalances>, ILeaveBalanceRepository
+    public class LeaveBalanceRepository : GenericRepository<AnnualLeaveBalances>, ILeaveBalanceRepository
     {
         private readonly ECXHRDbContext _context;
 
@@ -20,13 +20,13 @@ namespace ECX.HR.Persistence.Repositories
             _context = context;
         }
      
-        public async Task<List<LeaveBalances>> GetByEmpId(Guid empId)
+        public async Task<List<AnnualLeaveBalances>> GetByEmpId(Guid empId)
         {
-            return await _context.Set<LeaveBalances>()
+            return await _context.Set<AnnualLeaveBalances>()
                      .Where(T =>T.EmpId == empId)
                    .ToListAsync();
         }
-        public async Task<IEnumerable<LeaveBalances>> GetExpiredLeaveBalances()
+        public async Task<IEnumerable<AnnualLeaveBalances>> GetExpiredLeaveBalances()
         {
             var currentDate = DateTime.Now;
             var leaveBalances = await _context.LeaveBalance

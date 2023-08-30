@@ -64,14 +64,14 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
             response.Message = "Creation Successfull";
             response.Id = (Guid)emp;
 
-            var leaveBalanceDto = new LeaveBalanceDto
+            var leaveBalanceDto = new AnnualLeaveBalanceDto
             {
                 EmpId = Employee.EmpId, // Set the employee's ID
                                                 // ... Set other properties relevant to the leave balance
             };
 
             // Create a new instance of CreateLeaveBalanceCommand with the LeaveBalanceDto
-            var createLeaveBalanceCommand = new CreateLeaveBalanceCommand(leaveBalanceDto);
+            var createLeaveBalanceCommand = new CreateAnnualLeaveBalanceCommand(leaveBalanceDto);
 
             // Use the Mediator to send the CreateLeaveBalanceCommand to its handler
             var leaveBalanceResponse = await _mediator.Send(createLeaveBalanceCommand);

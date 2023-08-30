@@ -10,15 +10,15 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.CQRS.LeaveBalance.Request.Command
 {
-    public class CreateLeaveBalanceCommand : IRequest<BaseCommandResponse>
+    public class CreateAnnualLeaveBalanceCommand : IRequest<BaseCommandResponse>
     {
-        public LeaveBalanceDto LeaveBalanceDto { get; set; }
+        public AnnualLeaveBalanceDto LeaveBalanceDto { get; set; }
 
-        public CreateLeaveBalanceCommand(LeaveBalanceDto leaveBalanceDto)
+        public CreateAnnualLeaveBalanceCommand(AnnualLeaveBalanceDto leaveBalanceDto)
         {
             LeaveBalanceDto = leaveBalanceDto;
         }
-        public CreateLeaveBalanceCommand()
+        public CreateAnnualLeaveBalanceCommand()
         {
             // Empty constructor
         }

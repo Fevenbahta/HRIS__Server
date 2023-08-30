@@ -42,7 +42,7 @@ namespace ECX.HR.Domain
         public ICollection<EmergencyContacts> EmergencyContacts { get; set; }
 
         public ICollection<Spouses> Spouses { get; set; }
-        public ICollection<LeaveBalances> LeaveBalances { get; set; }
+        public ICollection<AnnualLeaveBalances> LeaveBalances { get; set; }
 
 
 

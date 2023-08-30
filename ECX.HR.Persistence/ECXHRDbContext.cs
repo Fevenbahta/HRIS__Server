@@ -31,7 +31,7 @@ namespace ECX.HR.Persistence
             modelBuilder.Entity<Employees>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
             modelBuilder.Entity<EmployeeStatuss>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
             modelBuilder.Entity<Levels>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
-            modelBuilder.Entity<LeaveBalances>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
+            modelBuilder.Entity<AnnualLeaveBalances>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
             modelBuilder.Entity<OrganizationalProfiles>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
             modelBuilder.Entity<Positions>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
             modelBuilder.Entity<SalaryTypes>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
@@ -149,7 +149,7 @@ namespace ECX.HR.Persistence
         public DbSet<EmployeePositions> EmployeePosition { get; set; }
         public DbSet<EmployeeStatuss> EmploeeStatus { get; set; }
         public DbSet<Levels> Level { get; set; }
-        public DbSet<LeaveBalances> LeaveBalance { get; set; }
+        public DbSet<AnnualLeaveBalances> LeaveBalance { get; set; }
         public DbSet<LeaveTypes> LeaveType { get; set; }
         public DbSet<LeaveRequests> LeaveRequest { get; set; }
         public DbSet<OrganizationalProfiles> OrganizationalProfile { get; set; }

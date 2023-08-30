@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.CQRS.LeaveBalance.Handler.Queries
 {
-    public class GetleaveBalanceDetailRequestHandler : IRequestHandler<GetLeaveBalanceDetailRequest, List<LeaveBalanceDto>>
+    public class GetleaveBalanceDetailRequestHandler : IRequestHandler<GetLeaveBalanceDetailRequest, List<AnnualLeaveBalanceDto>>
     {
         private ILeaveBalanceRepository _LeaveBalanceRepository;
      
@@ -25,14 +25,14 @@ namespace ECX.HR.Application.CQRS.LeaveBalance.Handler.Queries
         
             _mapper = mapper;
         }
-        public async Task<List<LeaveBalanceDto>> Handle(GetLeaveBalanceDetailRequest request, CancellationToken cancellationToken)
+        public async Task<List<AnnualLeaveBalanceDto>> Handle(GetLeaveBalanceDetailRequest request, CancellationToken cancellationToken)
         {
             var leaveBalance = await _LeaveBalanceRepository.GetByEmpId(request.EmpId);
 
             if (leaveBalance == null || !leaveBalance.Any(we => we.Status == 0))
                 throw new NotFoundException(nameof(LeaveBalance), request.EmpId);
 
-            return _mapper.Map<List<LeaveBalanceDto>>(leaveBalance);
+            return _mapper.Map<List<AnnualLeaveBalanceDto>>(leaveBalance);
         }
 
     }

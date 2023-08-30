@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.Contracts.Persistence
 {
-    public interface ILeaveBalanceRepository  : IGenericRepository<LeaveBalances> 
+    public interface ILeaveBalanceRepository  : IGenericRepository<AnnualLeaveBalances> 
     {
-        Task<List<LeaveBalances>> GetByEmpId(Guid id);
-        Task<IEnumerable<LeaveBalances>> GetExpiredLeaveBalances();
+        Task<List<AnnualLeaveBalances>> GetByEmpId(Guid id);
+        Task<IEnumerable<AnnualLeaveBalances>> GetExpiredLeaveBalances();
 
     }
 }

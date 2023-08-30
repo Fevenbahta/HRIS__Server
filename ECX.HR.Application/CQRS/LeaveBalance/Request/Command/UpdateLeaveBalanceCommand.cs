@@ -11,6 +11,6 @@ namespace ECX.HR.Application.CQRS.LeaveBalance.Request.Command
 {
     public class UpdateLeaveBalanceCommand :IRequest<Unit>
     {
-        public LeaveBalanceDto LeaveBalanceDto { get; set; }
+        public AnnualLeaveBalanceDto LeaveBalanceDto { get; set; }
     }
 }

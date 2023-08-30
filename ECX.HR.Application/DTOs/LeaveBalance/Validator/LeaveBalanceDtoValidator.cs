@@ -9,7 +9,7 @@ using ECX.HR.Application.DTOs.LeaveBalance;
 
 namespace ECX.HR.Application.DTOs.LeaveBalance.Validator
 {
-    public class LeaveBalanceDtoValidator : AbstractValidator<LeaveBalanceDto>
+    public class LeaveBalanceDtoValidator : AbstractValidator<AnnualLeaveBalanceDto>
     {
         public LeaveBalanceDtoValidator()
         {

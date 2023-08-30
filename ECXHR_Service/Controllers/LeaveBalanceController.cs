@@ -29,7 +29,7 @@ namespace ECXHR_Service.Controllers
         }
         // GET: api/<AddressController>
         [HttpGet]
-        public async Task<ActionResult<List<LeaveBalanceDto>>> Get()
+        public async Task<ActionResult<List<AnnualLeaveBalanceDto>>> Get()
         {
             var leaveBalance = await _mediator.Send(new GetLeaveBalanceListRequest());
             return Ok(leaveBalance);
@@ -43,10 +43,10 @@ namespace ECXHR_Service.Controllers
         }*/
         // POST api/<AddressController>
         [HttpPost]
-        public async Task<ActionResult<BaseCommandResponse>> Post([FromBody] LeaveBalanceDto leaveBalance)
+        public async Task<ActionResult<BaseCommandResponse>> Post([FromBody] AnnualLeaveBalanceDto leaveBalance)
         {
             var user = _httpContextAccessor.HttpContext.User;
-            var command = new CreateLeaveBalanceCommand { LeaveBalanceDto = leaveBalance };
+            var command = new CreateAnnualLeaveBalanceCommand { LeaveBalanceDto = leaveBalance };
             var response = await _mediator.Send(command);
             return Ok(response);
         }
@@ -54,7 +54,7 @@ namespace ECXHR_Service.Controllers
         // PUT api/<AddressController>/5
         [HttpPut("{id}")]
 
-        public async Task<ActionResult> Put([FromBody] LeaveBalanceDto leaveBalance)
+        public async Task<ActionResult> Put([FromBody] AnnualLeaveBalanceDto leaveBalance)
         {
             var command = new UpdateLeaveBalanceCommand { LeaveBalanceDto = leaveBalance };
             //_context.Entry(existingEvent).Property(x => x.ReferenceNumber).IsModified = false;
