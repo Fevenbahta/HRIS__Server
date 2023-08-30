@@ -28,6 +28,14 @@ namespace ECX.HR.Domain
         public string ApprovedBy { get; set; }
         public string LeaveStatus { get; set; }
 
+        public string Reason { get; set; }
+
+        public string File { get; set; }
+        public int WorkingDays { get; set; }
+
         public int Status { get; set; }
+        public DateTime SickStartDate { get; set; }
+        public DateTime SickEndDate { get; set; }
+
     }
 }

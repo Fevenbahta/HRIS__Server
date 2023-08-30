@@ -1,24 +1,27 @@
-﻿using ECX.HR.Application.DTOs.Common;
-using ECX.HR.Domain;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
+using ECX.HR.Domain.Common;
+using System.ComponentModel.DataAnnotations;
 
-namespace ECX.HR.Application.DTOs.LeaveBalance
+namespace ECX.HR.Domain
 {
-    public class LeaveBalanceDto : BaseDtos
+    public class OtherLeaveBalances :BaseDomainEntity
     {
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PId { get; set; }
+        
+        [Key]
+      
         public Guid Id { get; set; }
+        [ForeignKey("Employees")]
         public Guid EmpId { get; set; }
-        public Decimal AnnualDefaultBalance { get; set; }
-        public Decimal AnnualRemainingBalance { get; set; }
-        public Decimal PreviousYearAnnualBalance { get; set; }
-    
+      
+   
         public Decimal SickDefaultBalance { get; set; }
         public Decimal SickRemainingBalance { get; set; }
         public Decimal MaternityDefaultBalance { get; set; }
@@ -35,11 +38,16 @@ namespace ECX.HR.Application.DTOs.LeaveBalance
         public Decimal LeaveWotPayRemainingBalance { get; set; }
         public Decimal CourtLeaveDefaultBalance { get; set; }
         public Decimal CourtLeaveRemainingBalance { get; set; }
-        public DateTime StartDate { get; set; }
+        public Decimal AbortionLeaveDefaultBalance { get; set; }
+        public Decimal AbortionLeaveRemainingBalance { get; set; }
+        public DateTime StartDate { get; set; }  
         public DateTime EndDate { get; set; }
         public DateTime SickEndDate { get; set; }
-
-        public int IsExpired { get; set; }
+        public DateTime SickStartDate { get; set; }
+        public int IsExpired { get; set; }   
         public int Status { get; set; }
+        public virtual Employees Employees { get; set; }
+        public LeaveBalances LeaveBalance { get; set; }// Navigation property
+
     }
 }

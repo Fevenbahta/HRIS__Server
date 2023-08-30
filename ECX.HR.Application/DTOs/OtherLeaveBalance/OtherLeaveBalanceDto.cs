@@ -10,15 +10,11 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.DTOs.LeaveBalance
 {
-    public class LeaveBalanceDto : BaseDtos
+    public class OtherLeaveBalanceDto : BaseDtos
     {
         public int PId { get; set; }
         public Guid Id { get; set; }
         public Guid EmpId { get; set; }
-        public Decimal AnnualDefaultBalance { get; set; }
-        public Decimal AnnualRemainingBalance { get; set; }
-        public Decimal PreviousYearAnnualBalance { get; set; }
-    
         public Decimal SickDefaultBalance { get; set; }
         public Decimal SickRemainingBalance { get; set; }
         public Decimal MaternityDefaultBalance { get; set; }
@@ -35,11 +31,15 @@ namespace ECX.HR.Application.DTOs.LeaveBalance
         public Decimal LeaveWotPayRemainingBalance { get; set; }
         public Decimal CourtLeaveDefaultBalance { get; set; }
         public Decimal CourtLeaveRemainingBalance { get; set; }
+        public Decimal AbortionLeaveDefaultBalance { get; set; }
+        public Decimal AbortionLeaveRemainingBalance { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public DateTime SickEndDate { get; set; }
-
+        public DateTime SickStartDate { get; set; }
         public int IsExpired { get; set; }
-        public int Status { get; set; }
+        public LeaveBalanceDto LeaveBalance { get; set; }
+
+
     }
 }
