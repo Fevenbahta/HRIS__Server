@@ -1,4 +1,4 @@
-﻿/*using AutoMapper;
+﻿using AutoMapper;
 using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.CQRS.LeaveRequest.Request.Command;
 using ECX.HR.Application.CQRS.LeaveType.Request.Command;
@@ -85,7 +85,7 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                         leaveBalance.AnnualRemainingBalance = annualRemainingBalance;
                         if (leaveDuration > 0)
                         {
-                            var leaveType = leaveTypes.FirstOrDefault(lt => lt.leaveTypeId == request.LeaveRequestDto.leaveTypeId);
+                            //eaveType = leaveTypes.FirstOrDefault(lt => lt.leaveTypeId == request.LeaveRequestDto.leaveTypeId);
                             if (leaveType != null)
                             {
                                 if (leaveType.LeaveTypeName == "Annual" && leaveDuration <= annualRemainingBalance)
@@ -104,111 +104,121 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                                         leaveBalance.AnnualRemainingBalance -= leaveDuration;
                                     }
                                 }
-
                             }
-                            if (request.LeaveRequestDto.LeaveStatus == "Approved" && leaveType.LeaveTypeName != "Annual")
+
+                        }
+                    }
+                }
+            }
+            if (request.LeaveRequestDto.LeaveStatus == "Approved" && leaveType.LeaveTypeName != "Annual")
+            {
+
+                var leaveStartDate = request.LeaveRequestDto.StartDate;
+                var leaveEndDate = request.LeaveRequestDto.EndDate;
+                var leaveDuration = (int)(leaveEndDate - leaveStartDate).TotalDays + 1;
+                var employeeId = request.LeaveRequestDto.EmpId;
+                var otherLeaveBalances = await _otherLeaveBalanceRepository.GetByEmpId(employeeId);
+
+
+
+
+
+                foreach (var otherLeaveBalance in otherLeaveBalances.OrderBy(lb => lb.StartDate))
+                {
+                    if (otherLeaveBalance.IsExpired != 1)
+                    {
+
+                        var sickRemainingBalance = otherLeaveBalance.SickRemainingBalance;
+                        var paternityRemainingBalance = otherLeaveBalance.PaternityRemainingBalance;
+                        var maternityRemainingBalance = otherLeaveBalance.MaternityRemainingBalance;
+                        var marraiageRemainingBalance = otherLeaveBalance.MarraiageRemainingBalance;
+                        var educationRemainingBalance = otherLeaveBalance.EducationRemainingBalance;
+                        var compassinateRemainingBalance = otherLeaveBalance.CompassinateRemainingBalance;
+                        var courtLeaveRemainingBalance = otherLeaveBalance.CourtLeaveRemainingBalance;
+                        var leaveWotPayRemainingBalance = otherLeaveBalance.LeaveWotPayRemainingBalance;
+                        var abortionRemainingBalance = otherLeaveBalance.AbortionLeaveRemainingBalance;
+                        if (leaveDuration > 0)
+                        {
+
+                            if (leaveType != null)
                             {
-
-                                var leaveStartDate = request.LeaveRequestDto.StartDate;
-                                var leaveEndDate = request.LeaveRequestDto.EndDate;
-                                var leaveDuration = (int)(leaveEndDate - leaveStartDate).TotalDays + 1;
-                                var employeeId = request.LeaveRequestDto.EmpId;
-                                var otherLeaveBalances = await _otherLeaveBalanceRepository.GetByEmpId(employeeId);
-
-
-
-
-
-                                foreach (var otherLeaveBalance in otherLeaveBalances.OrderBy(lb => lb.StartDate))
+                                if (leaveType.LeaveTypeName == "Medical" && leaveDuration <= sickRemainingBalance)
                                 {
-                                    if (otherLeaveBalance.IsExpired != 1)
+                                    otherLeaveBalance.SickRemainingBalance -= leaveDuration;
+                                    leaveDuration = 0;
+                                    if (otherLeaveBalance.SickEndDate == DateTime.MinValue)
                                     {
+                                        otherLeaveBalance.SickEndDate = leaveRequest.StartDate.AddDays(366);
+                                        otherLeaveBalance.SickStartDate = leaveRequest.StartDate;
 
-                                        var sickRemainingBalance = otherLeaveBalance.SickRemainingBalance;
-                                        var paternityRemainingBalance = otherLeaveBalance.PaternityRemainingBalance;
-                                        var maternityRemainingBalance = otherLeaveBalance.MaternityRemainingBalance;
-                                        var marraiageRemainingBalance = otherLeaveBalance.MarraiageRemainingBalance;
-                                        var educationRemainingBalance = otherLeaveBalance.EducationRemainingBalance;
-                                        var compassinateRemainingBalance = otherLeaveBalance.CompassinateRemainingBalance;
-                                        var courtLeaveRemainingBalance = otherLeaveBalance.CourtLeaveRemainingBalance;
-                                        var leaveWotPayRemainingBalance = otherLeaveBalance.LeaveWotPayRemainingBalance;
-                                        var abortionRemainingBalance = otherLeaveBalance.AbortionLeaveRemainingBalance;
-                                        if (leaveDuration > 0)
-                                        {
-
-                                            if (leaveType != null)
-                                            {
-                                                if (leaveType.LeaveTypeName == "Medical" && leaveDuration <= sickRemainingBalance)
-                                                {
-                                                    otherLeaveBalance.SickRemainingBalance -= leaveDuration;
-                                                    leaveDuration = 0;
-                                                    if (otherLeaveBalance.SickEndDate == DateTime.MinValue)
-                                                    {
-                                                        otherLeaveBalance.SickEndDate = leaveRequest.StartDate.AddDays(366);
-                                                        otherLeaveBalance.SickStartDate = leaveRequest.StartDate;
-
-                                                    }
-
-                                                }
-                                                else if (leaveType.LeaveTypeName == "Abortion" && leaveDuration <= abortionRemainingBalance)
-                                                {
-                                                    otherLeaveBalance.AbortionLeaveRemainingBalance -= leaveDuration;
-                                                    leaveDuration = 0;
-                                                }
-                                                else if (leaveType.LeaveTypeName == "Marital" && leaveDuration <= maternityRemainingBalance)
-                                                {
-                                                    otherLeaveBalance.MaternityRemainingBalance -= leaveDuration;
-                                                    leaveDuration = 0;
-                                                }
-                                                else if (leaveType.LeaveTypeName == "Education" && leaveDuration <= educationRemainingBalance)
-                                                {
-                                                    otherLeaveBalance.EducationRemainingBalance -= leaveDuration;
-                                                    leaveDuration = 0;
-                                                }
-                                                else if (leaveType.LeaveTypeName == "Marraige" && leaveDuration <= marraiageRemainingBalance)
-                                                {
-                                                    otherLeaveBalance.MarraiageRemainingBalance -= leaveDuration;
-                                                    leaveDuration = 0;
-                                                }
-                                                else if (leaveType.LeaveTypeName == "Compassinate" && leaveDuration <= compassinateRemainingBalance)
-                                                {
-                                                    otherLeaveBalance.CompassinateRemainingBalance -= leaveDuration;
-                                                    leaveDuration = 0;
-                                                }
-                                                else if (leaveType.LeaveTypeName == "Court" && leaveDuration <= courtLeaveRemainingBalance)
-                                                {
-                                                    otherLeaveBalance.CourtLeaveRemainingBalance -= leaveDuration;
-                                                    leaveDuration = 0;
-                                                }
-                                                else if (leaveType.LeaveTypeName == "Leave With Out Pay" && leaveDuration <= leaveWotPayRemainingBalance)
-                                                {
-                                                    otherLeaveBalance.LeaveWotPayRemainingBalance -= leaveDuration;
-                                                    leaveDuration = 0;
-                                                }
-                                                request.LeaveRequestDto.SickEndDate = otherLeaveBalance.SickEndDate;
-                                                request.LeaveRequestDto.SickEndDate = otherLeaveBalance.SickStartDate;
-                                                await _leaveRequestRepository.Update(leaveRequest);
-                                                await _otherLeaveBalanceRepository.Update(otherLeaveBalance);
-                                            }
-                                            else
-                                            {
-
-                                                break;
-                                            }
-                                        }
                                     }
 
-                                    return Unit.Value;
                                 }
+                                else if (leaveType.LeaveTypeName == "Abortion" && leaveDuration <= abortionRemainingBalance)
+                                {
+                                    otherLeaveBalance.AbortionLeaveRemainingBalance -= leaveDuration;
+                                    leaveDuration = 0;
+                                }
+                                else if (leaveType.LeaveTypeName == "Marital" && leaveDuration <= maternityRemainingBalance)
+                                {
+                                    otherLeaveBalance.MaternityRemainingBalance -= leaveDuration;
+                                    leaveDuration = 0;
+                                }
+                                else if (leaveType.LeaveTypeName == "Education" && leaveDuration <= educationRemainingBalance)
+                                {
+                                    otherLeaveBalance.EducationRemainingBalance -= leaveDuration;
+                                    leaveDuration = 0;
+                                }
+                                else if (leaveType.LeaveTypeName == "Marraige" && leaveDuration <= marraiageRemainingBalance)
+                                {
+                                    otherLeaveBalance.MarraiageRemainingBalance -= leaveDuration;
+                                    leaveDuration = 0;
+                                }
+                                else if (leaveType.LeaveTypeName == "Compassinate" && leaveDuration <= compassinateRemainingBalance)
+                                {
+                                    otherLeaveBalance.CompassinateRemainingBalance -= leaveDuration;
+                                    leaveDuration = 0;
+                                }
+                                else if (leaveType.LeaveTypeName == "Court" && leaveDuration <= courtLeaveRemainingBalance)
+                                {
+                                    otherLeaveBalance.CourtLeaveRemainingBalance -= leaveDuration;
+                                    leaveDuration = 0;
+                                }
+                                else if (leaveType.LeaveTypeName == "Leave With Out Pay" && leaveDuration <= leaveWotPayRemainingBalance)
+                                {
+                                    otherLeaveBalance.LeaveWotPayRemainingBalance -= leaveDuration;
+                                    leaveDuration = 0;
+                                }
+                                request.LeaveRequestDto.SickEndDate = otherLeaveBalance.SickEndDate;
+                                request.LeaveRequestDto.SickEndDate = otherLeaveBalance.SickStartDate;
+                                await _leaveRequestRepository.Update(leaveRequest);
+                                await _otherLeaveBalanceRepository.Update(otherLeaveBalance);
+                            }
+                            else
+                            {
 
-                            } } } 
+                                break;
+                            }
+                        }
+                    }
 
-                        
-                 
-         
+                  
+                }
+
+            }
+            return Unit.Value;
+        }
+
+    }
+}
+                    
 
 
 
 
 
-*/
+
+
+
+
+
