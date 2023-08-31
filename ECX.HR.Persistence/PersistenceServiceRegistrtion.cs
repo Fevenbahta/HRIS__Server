@@ -55,7 +55,7 @@ namespace ECX.HR.Persistence
             services.AddScoped<EmployeeDto>(); // This registers EmployeeDto for dependency injection
             
     
-            services.AddScoped<LeaveBalanceDto>();
+          //  services.AddScoped<LeaveBalanceDto>();
 
             services.AddScoped<UpdateLeaveBalanceCommandHandler>();
 
