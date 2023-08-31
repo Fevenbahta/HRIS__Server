@@ -2,7 +2,7 @@
 using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Models;
 using ECX.HR.Domain;
-using ECX.HR.Persistence.Migrations;
+
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

@@ -47,7 +47,7 @@ namespace ECX.HR.Domain
         public int IsExpired { get; set; }   
         public int Status { get; set; }
         public virtual Employees Employees { get; set; }
-        public LeaveBalances LeaveBalance { get; set; }// Navigation property
+      public AnnualLeaveBalances AnnualLeaveBalance { get; set; }// Navigation property
 
     }
 }

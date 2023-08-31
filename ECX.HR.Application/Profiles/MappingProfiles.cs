@@ -64,6 +64,7 @@ namespace ECX.HR.Application.Profiles
             CreateMap<WorkExperiences, WorkExperienceDto>().ReverseMap();
             CreateMap<AssignSupervisorss, AssignSupervisorDto>().ReverseMap();
             CreateMap<AnnualLeaveBalances, AnnualLeaveBalanceDto>().ReverseMap();
+            CreateMap<OtherLeaveBalances, OtherLeaveBalanceDto>().ReverseMap();
             CreateMap<LeaveTypes, LeaveTypeDto>().ReverseMap();
             CreateMap<LeaveRequests, LeaveRequestDto>().ReverseMap();
         }

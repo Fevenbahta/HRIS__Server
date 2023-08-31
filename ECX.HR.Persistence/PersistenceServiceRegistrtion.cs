@@ -11,8 +11,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using MyApplication.BackgroundServices;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,16 +49,17 @@ namespace ECX.HR.Persistence
             services.AddScoped<IWorkExperienceRepository, WorkExperienceRepository>();
             services.AddScoped<IAssignSupervisorRepository, AssignSupervisorRepository > ();
             services.AddScoped<ILeaveBalanceRepository,LeaveBalanceRepository>();
+            services.AddScoped<IOtherLeaveBalanceRepository, OtherLeaveBalanceRepository>();
             services.AddScoped<ILeaveTypeRepository, LeaveTypeRepository>();
             services.AddScoped<ILeaveRequestRepository, LeaveRequestRepository>();
             services.AddScoped<EmployeeDto>(); // This registers EmployeeDto for dependency injection
             
     
-          //  services.AddScoped<LeaveBalanceDto>();
+            services.AddScoped<LeaveBalanceDto>();
 
             services.AddScoped<UpdateLeaveBalanceCommandHandler>();
 
-            services.AddHostedService<DailyFunctionService>();
+        
 
             // Inside ConfigureServices method in Startup.cs
             services.AddScoped<UpdateOtherLeaveBalanceCommandHandler>();

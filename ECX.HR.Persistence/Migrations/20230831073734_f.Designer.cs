@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECX.HR.Persistence.Migrations
 {
     [DbContext(typeof(ECXHRDbContext))]
-    [Migration("20230822114627_leavebalance")]
-    partial class leavebalance
+    [Migration("20230831073734_f")]
+    partial class f
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,7 +37,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 940, DateTimeKind.Utc).AddTicks(2958));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 274, DateTimeKind.Utc).AddTicks(2611));
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -81,7 +81,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 940, DateTimeKind.Utc).AddTicks(3372));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 274, DateTimeKind.Utc).AddTicks(3117));
 
                     b.HasKey("Id");
 
@@ -103,7 +103,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 940, DateTimeKind.Utc).AddTicks(3669));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 274, DateTimeKind.Utc).AddTicks(3436));
 
                     b.Property<int>("PId")
                         .ValueGeneratedOnAddOrUpdate()
@@ -132,11 +132,79 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 940, DateTimeKind.Utc).AddTicks(3939));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 274, DateTimeKind.Utc).AddTicks(4006));
 
                     b.HasKey("Id");
 
                     b.ToTable("Allowance");
+                });
+
+            modelBuilder.Entity("ECX.HR.Domain.AnnualLeaveBalances", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("AnnualDefaultBalance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("AnnualRemainingBalance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 274, DateTimeKind.Utc).AddTicks(4402));
+
+                    b.Property<Guid>("EmpId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IsExpired")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PId")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PId"));
+
+                    b.Property<decimal>("PreviousTwoYear")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("PreviousYearAnnualBalance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("TotalRemaining")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("TotalRequest")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 274, DateTimeKind.Utc).AddTicks(5094));
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmpId");
+
+                    b.ToTable("LeaveBalance");
                 });
 
             modelBuilder.Entity("ECX.HR.Domain.AssignSupervisorss", b =>
@@ -151,7 +219,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 940, DateTimeKind.Utc).AddTicks(4269));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 274, DateTimeKind.Utc).AddTicks(5502));
 
                     b.Property<string>("FifthSupervisor")
                         .HasColumnType("nvarchar(max)");
@@ -186,7 +254,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 940, DateTimeKind.Utc).AddTicks(4538));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 274, DateTimeKind.Utc).AddTicks(5908));
 
                     b.HasKey("Id");
 
@@ -205,7 +273,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 940, DateTimeKind.Utc).AddTicks(4810));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 274, DateTimeKind.Utc).AddTicks(6288));
 
                     b.Property<int>("PId")
                         .ValueGeneratedOnAddOrUpdate()
@@ -222,7 +290,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 940, DateTimeKind.Utc).AddTicks(5137));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 274, DateTimeKind.Utc).AddTicks(6583));
 
                     b.Property<string>("city")
                         .HasColumnType("nvarchar(max)");
@@ -247,7 +315,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 940, DateTimeKind.Utc).AddTicks(5417));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 274, DateTimeKind.Utc).AddTicks(6878));
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -267,7 +335,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 940, DateTimeKind.Utc).AddTicks(5699));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 274, DateTimeKind.Utc).AddTicks(7253));
 
                     b.HasKey("DepartmentId");
 
@@ -295,7 +363,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 940, DateTimeKind.Utc).AddTicks(6097));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 274, DateTimeKind.Utc).AddTicks(7558));
 
                     b.Property<Guid?>("EmpId")
                         .HasColumnType("uniqueidentifier");
@@ -318,7 +386,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 940, DateTimeKind.Utc).AddTicks(6371));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 274, DateTimeKind.Utc).AddTicks(7922));
 
                     b.HasKey("Id");
 
@@ -337,7 +405,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 940, DateTimeKind.Utc).AddTicks(6697));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 274, DateTimeKind.Utc).AddTicks(8227));
 
                     b.Property<Guid?>("DepartmentId")
                         .HasColumnType("uniqueidentifier");
@@ -360,7 +428,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 940, DateTimeKind.Utc).AddTicks(7037));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 274, DateTimeKind.Utc).AddTicks(8594));
 
                     b.HasKey("DivisionId");
 
@@ -381,7 +449,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 940, DateTimeKind.Utc).AddTicks(7372));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 274, DateTimeKind.Utc).AddTicks(9090));
 
                     b.Property<string>("EducationName")
                         .HasColumnType("nvarchar(max)");
@@ -401,7 +469,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 940, DateTimeKind.Utc).AddTicks(7704));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 274, DateTimeKind.Utc).AddTicks(9389));
 
                     b.HasKey("Id");
 
@@ -420,7 +488,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 940, DateTimeKind.Utc).AddTicks(7978));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 274, DateTimeKind.Utc).AddTicks(9685));
 
                     b.Property<string>("EductionName")
                         .HasColumnType("nvarchar(max)");
@@ -455,7 +523,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 940, DateTimeKind.Utc).AddTicks(8299));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 275, DateTimeKind.Utc).AddTicks(179));
 
                     b.HasKey("Id");
 
@@ -476,7 +544,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 940, DateTimeKind.Utc).AddTicks(8694));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 275, DateTimeKind.Utc).AddTicks(568));
 
                     b.Property<Guid?>("EmpId")
                         .HasColumnType("uniqueidentifier");
@@ -520,7 +588,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 940, DateTimeKind.Utc).AddTicks(9025));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 275, DateTimeKind.Utc).AddTicks(1055));
 
                     b.HasKey("Id");
 
@@ -544,7 +612,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 940, DateTimeKind.Utc).AddTicks(9416));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 275, DateTimeKind.Utc).AddTicks(1443));
 
                     b.Property<string>("DivisionId")
                         .HasColumnType("nvarchar(max)");
@@ -576,7 +644,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 940, DateTimeKind.Utc).AddTicks(9689));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 275, DateTimeKind.Utc).AddTicks(1748));
 
                     b.Property<string>("position")
                         .HasColumnType("nvarchar(max)");
@@ -598,7 +666,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 940, DateTimeKind.Utc).AddTicks(9959));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 275, DateTimeKind.Utc).AddTicks(2136));
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -618,7 +686,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 941, DateTimeKind.Utc).AddTicks(281));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 275, DateTimeKind.Utc).AddTicks(2477));
 
                     b.HasKey("Id");
 
@@ -640,7 +708,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 941, DateTimeKind.Utc).AddTicks(563));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 275, DateTimeKind.Utc).AddTicks(3104));
 
                     b.Property<string>("CrimeDescription")
                         .HasColumnType("nvarchar(max)");
@@ -693,7 +761,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 941, DateTimeKind.Utc).AddTicks(886));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 275, DateTimeKind.Utc).AddTicks(3423));
 
                     b.Property<bool>("crime")
                         .HasColumnType("bit");
@@ -707,110 +775,6 @@ namespace ECX.HR.Persistence.Migrations
                     b.HasKey("EmpId");
 
                     b.ToTable("Employee");
-                });
-
-            modelBuilder.Entity("ECX.HR.Domain.LeaveBalances", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<decimal>("AnnualDefaultBalance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("AnnualRemainingBalance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("CompassinateDefaultBalance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("CompassinateRemainingBalance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("CourtLeaveDefaultBalance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("CourtLeaveRemainingBalance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedDate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 941, DateTimeKind.Utc).AddTicks(1167));
-
-                    b.Property<DateTime>("CurrentYear")
-                        .HasColumnType("datetime2");
-
-                    b.Property<decimal>("EducationDefaultBalance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("EducationRemainingBalance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<Guid?>("EmpId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<decimal>("LeaveWotPayDefaultBalance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("LeaveWotPayRemainingBalance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("MarraiageRemainingBalance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("MarriageDefaultBalance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("MaternityDefaultBalance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("MaternityRemainingBalance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("PId")
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PId"));
-
-                    b.Property<decimal>("PaternityDefaultBalance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("PaternityRemainingBalance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("SickDefaultBalance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("SickRemainingBalance")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UpdatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedDate")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 941, DateTimeKind.Utc).AddTicks(1489));
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EmpId");
-
-                    b.ToTable("LeaveBalance");
                 });
 
             modelBuilder.Entity("ECX.HR.Domain.LeaveRequests", b =>
@@ -831,13 +795,16 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 941, DateTimeKind.Utc).AddTicks(1880));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 275, DateTimeKind.Utc).AddTicks(3721));
 
-                    b.Property<Guid?>("EmpId")
+                    b.Property<Guid>("EmpId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("File")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LeaveStatus")
                         .HasColumnType("nvarchar(max)");
@@ -847,6 +814,15 @@ namespace ECX.HR.Persistence.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PId"));
+
+                    b.Property<string>("Reason")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("SickEndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("SickStartDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
@@ -860,9 +836,12 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 941, DateTimeKind.Utc).AddTicks(2155));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 275, DateTimeKind.Utc).AddTicks(4092));
 
-                    b.Property<Guid?>("leaveTypeId")
+                    b.Property<int>("WorkingDays")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("leaveTypeId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("leaveRequestId");
@@ -882,7 +861,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 941, DateTimeKind.Utc).AddTicks(2424));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 275, DateTimeKind.Utc).AddTicks(4487));
 
                     b.Property<string>("LeaveTypeName")
                         .HasColumnType("nvarchar(max)");
@@ -905,7 +884,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 941, DateTimeKind.Utc).AddTicks(2783));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 275, DateTimeKind.Utc).AddTicks(4787));
 
                     b.HasKey("leaveTypeId");
 
@@ -924,7 +903,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 941, DateTimeKind.Utc).AddTicks(3057));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 275, DateTimeKind.Utc).AddTicks(5172));
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -947,7 +926,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 941, DateTimeKind.Utc).AddTicks(3370));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 275, DateTimeKind.Utc).AddTicks(5476));
 
                     b.HasKey("LevelId");
 
@@ -969,7 +948,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 941, DateTimeKind.Utc).AddTicks(3657));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 275, DateTimeKind.Utc).AddTicks(5786));
 
                     b.Property<string>("Fax")
                         .HasColumnType("nvarchar(max)");
@@ -1007,7 +986,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 941, DateTimeKind.Utc).AddTicks(3922));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 275, DateTimeKind.Utc).AddTicks(6171));
 
                     b.Property<int>("VatNumber")
                         .HasColumnType("int");
@@ -1023,6 +1002,121 @@ namespace ECX.HR.Persistence.Migrations
                     b.ToTable("OrganizationalProfile");
                 });
 
+            modelBuilder.Entity("ECX.HR.Domain.OtherLeaveBalances", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("AbortionLeaveDefaultBalance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("AbortionLeaveRemainingBalance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<Guid?>("AnnualLeaveBalanceId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("CompassinateDefaultBalance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("CompassinateRemainingBalance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("CourtLeaveDefaultBalance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("CourtLeaveRemainingBalance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 275, DateTimeKind.Utc).AddTicks(6476));
+
+                    b.Property<decimal>("EducationDefaultBalance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("EducationRemainingBalance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<Guid>("EmpId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IsExpired")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("LeaveWotPayDefaultBalance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("LeaveWotPayRemainingBalance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("MarraiageRemainingBalance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("MarriageDefaultBalance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("MaternityDefaultBalance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("MaternityRemainingBalance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("PId")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PId"));
+
+                    b.Property<decimal>("PaternityDefaultBalance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("PaternityRemainingBalance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("SickDefaultBalance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("SickEndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("SickRemainingBalance")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("SickStartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 275, DateTimeKind.Utc).AddTicks(6973));
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AnnualLeaveBalanceId");
+
+                    b.HasIndex("EmpId");
+
+                    b.ToTable("OtherLeaveBalance");
+                });
+
             modelBuilder.Entity("ECX.HR.Domain.Positions", b =>
                 {
                     b.Property<Guid>("PositionId")
@@ -1035,7 +1129,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 941, DateTimeKind.Utc).AddTicks(4304));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 275, DateTimeKind.Utc).AddTicks(7401));
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -1061,7 +1155,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 941, DateTimeKind.Utc).AddTicks(4637));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 275, DateTimeKind.Utc).AddTicks(7785));
 
                     b.HasKey("PositionId");
 
@@ -1082,7 +1176,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 941, DateTimeKind.Utc).AddTicks(4968));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 275, DateTimeKind.Utc).AddTicks(8257));
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -1102,7 +1196,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 941, DateTimeKind.Utc).AddTicks(5381));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 275, DateTimeKind.Utc).AddTicks(8573));
 
                     b.HasKey("Id");
 
@@ -1121,7 +1215,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 941, DateTimeKind.Utc).AddTicks(5681));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 275, DateTimeKind.Utc).AddTicks(8959));
 
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
@@ -1150,7 +1244,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 941, DateTimeKind.Utc).AddTicks(6270));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 275, DateTimeKind.Utc).AddTicks(9352));
 
                     b.HasKey("Id");
 
@@ -1171,7 +1265,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 941, DateTimeKind.Utc).AddTicks(6707));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 275, DateTimeKind.Utc).AddTicks(9743));
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -1200,7 +1294,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 941, DateTimeKind.Utc).AddTicks(7122));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 276, DateTimeKind.Utc).AddTicks(216));
 
                     b.HasKey("Id");
 
@@ -1221,7 +1315,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 941, DateTimeKind.Utc).AddTicks(7528));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 276, DateTimeKind.Utc).AddTicks(612));
 
                     b.Property<int>("PId")
                         .ValueGeneratedOnAddOrUpdate()
@@ -1244,7 +1338,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 941, DateTimeKind.Utc).AddTicks(7809));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 276, DateTimeKind.Utc).AddTicks(1032));
 
                     b.HasKey("Id");
 
@@ -1263,7 +1357,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 941, DateTimeKind.Utc).AddTicks(8218));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 276, DateTimeKind.Utc).AddTicks(1362));
 
                     b.Property<Guid?>("EmpId")
                         .HasColumnType("uniqueidentifier");
@@ -1292,7 +1386,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 941, DateTimeKind.Utc).AddTicks(8548));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 276, DateTimeKind.Utc).AddTicks(1739));
 
                     b.HasKey("Id");
 
@@ -1316,7 +1410,7 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 941, DateTimeKind.Utc).AddTicks(8884));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 276, DateTimeKind.Utc).AddTicks(2203));
 
                     b.Property<Guid>("EmpId")
                         .HasColumnType("uniqueidentifier");
@@ -1351,13 +1445,24 @@ namespace ECX.HR.Persistence.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 22, 11, 46, 26, 941, DateTimeKind.Utc).AddTicks(9265));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 7, 37, 34, 276, DateTimeKind.Utc).AddTicks(2648));
 
                     b.HasKey("Id");
 
                     b.HasIndex("EmpId");
 
                     b.ToTable("WorkExperiences");
+                });
+
+            modelBuilder.Entity("ECX.HR.Domain.AnnualLeaveBalances", b =>
+                {
+                    b.HasOne("ECX.HR.Domain.Employees", "Employees")
+                        .WithMany("LeaveBalances")
+                        .HasForeignKey("EmpId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employees");
                 });
 
             modelBuilder.Entity("ECX.HR.Domain.Divisions", b =>
@@ -1390,12 +1495,19 @@ namespace ECX.HR.Persistence.Migrations
                     b.Navigation("Employees");
                 });
 
-            modelBuilder.Entity("ECX.HR.Domain.LeaveBalances", b =>
+            modelBuilder.Entity("ECX.HR.Domain.OtherLeaveBalances", b =>
                 {
+                    b.HasOne("ECX.HR.Domain.AnnualLeaveBalances", "AnnualLeaveBalance")
+                        .WithMany()
+                        .HasForeignKey("AnnualLeaveBalanceId");
+
                     b.HasOne("ECX.HR.Domain.Employees", "Employees")
-                        .WithMany("LeaveBalances")
+                        .WithMany()
                         .HasForeignKey("EmpId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AnnualLeaveBalance");
 
                     b.Navigation("Employees");
                 });
