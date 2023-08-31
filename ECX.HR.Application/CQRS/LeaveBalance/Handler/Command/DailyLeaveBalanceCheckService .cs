@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿/*using AutoMapper;
 using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.CQRS.LeaveBalance.Handler.Command;
 using ECX.HR.Application.CQRS.LeaveBalance.Request.Command;
@@ -70,7 +70,7 @@ namespace MyApplication.BackgroundServices
                         int annualleaves = Math.Min(accruedLeaves, maxLeaveDays);
                         int daysDifferences = differences.Days;
                         int days = 1;
-/*
+*//*
                         var updatedDto = mapper.Map<LeaveBalanceDto>(leaveBalance);
                    
                         updatedDto.EmpId = leaveBalance.EmpId;
@@ -205,7 +205,7 @@ namespace MyApplication.BackgroundServices
                         Console.WriteLine($"Updated leave balancessss with ID {leaveBalance.Id}");
                     }
 
-                }*/
+                }*//*
 
                 Console.WriteLine("Working...");
 
@@ -215,3 +215,4 @@ namespace MyApplication.BackgroundServices
         }
     }
 }
+*/

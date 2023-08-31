@@ -4,6 +4,7 @@ using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.Employee.Request.Command;
 using ECX.HR.Application.CQRS.Employee.Request.Queries;
 using ECX.HR.Application.CQRS.LeaveBalance.Request.Command;
+using ECX.HR.Application.CQRS.OtherLeaveBalance.Request.Command;
 using ECX.HR.Application.DTOs.Employees;
 using ECX.HR.Application.DTOs.Employees.Validator;
 using ECX.HR.Application.DTOs.LeaveBalance;
@@ -69,13 +70,18 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
                 EmpId = Employee.EmpId, // Set the employee's ID
                                                 // ... Set other properties relevant to the leave balance
             };
-
+            var otherLeaveBalanceDto = new OtherLeaveBalanceDto
+            {
+                EmpId = Employee.EmpId, // Set the employee's ID
+                                        // ... Set other properties relevant to the leave balance
+            };
             // Create a new instance of CreateLeaveBalanceCommand with the LeaveBalanceDto
             var createLeaveBalanceCommand = new CreateAnnualLeaveBalanceCommand(leaveBalanceDto);
+            var createOtherLeaveBalanceCommand = new CreateOtherLeaveBalanceCommand(otherLeaveBalanceDto);
 
             // Use the Mediator to send the CreateLeaveBalanceCommand to its handler
             var leaveBalanceResponse = await _mediator.Send(createLeaveBalanceCommand);
-
+            var otherLeaveBalanceResponse = await _mediator.Send(createOtherLeaveBalanceCommand);
 
 
             return response;

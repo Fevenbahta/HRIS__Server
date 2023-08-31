@@ -18,13 +18,13 @@ namespace ECX.HR.Application.CQRS.OtherLeaveBalance.Handler.Queries
     public class GetOtherleaveBalanceDetailRequestHandler : IRequestHandler<GetOtherLeaveBalanceDetailRequest, List<OtherLeaveBalanceDto>>
     {
         private IOtherLeaveBalanceRepository _OtherLeaveBalanceRepository;
-        private readonly string _connectionString;
+  /*      private readonly string _connectionString;*/
 
         private IMapper _mapper;
-        public GetOtherleaveBalanceDetailRequestHandler(IOtherLeaveBalanceRepository OtherLeaveBalanceRepository, IMapper mapper, string connectionString)
+        public GetOtherleaveBalanceDetailRequestHandler(IOtherLeaveBalanceRepository OtherLeaveBalanceRepository, IMapper mapper )
         {
             _OtherLeaveBalanceRepository = OtherLeaveBalanceRepository;
-            _connectionString = connectionString;
+    /*        _connectionString = connectionString;*/
 
             _mapper = mapper;
         }
@@ -35,7 +35,7 @@ namespace ECX.HR.Application.CQRS.OtherLeaveBalance.Handler.Queries
             if (otherLeaveBalance == null || !otherLeaveBalance.Any(we => we.Status == 0))
                 throw new NotFoundException(nameof(otherLeaveBalance), request.EmpId);
 
-            using (var connection = new SqlConnection(_connectionString))
+          /*  using (var connection = new SqlConnection(_connectionString))
             {
                 await connection.OpenAsync(cancellationToken);
 
@@ -45,7 +45,7 @@ namespace ECX.HR.Application.CQRS.OtherLeaveBalance.Handler.Queries
                         l.*
                     FROM 
                         OtherLeaveBalances o
-                        JOIN LeaveBalances l ON o.EmpId = l.EmpId
+                        JOIN AnnualLeaveBalances l ON o.EmpId = l.EmpId
                     WHERE 
                         o.EmpId = @EmpId";
 
@@ -54,17 +54,17 @@ namespace ECX.HR.Application.CQRS.OtherLeaveBalance.Handler.Queries
                     EmpId = request.EmpId
                 };
 
-                var result = await connection.QueryAsync<OtherLeaveBalanceDto, LeaveBalanceDto, OtherLeaveBalanceDto>(
+                var result = await connection.QueryAsync<OtherLeaveBalanceDto, AnnualLeaveBalanceDto, OtherLeaveBalanceDto>(
                     query,
-                    (otherLeaveBalanceDto, leaveBalanceDto) =>
+                    (otherLeaveBalanceDto, annualLeaveBalanceDto) =>
                     {
-                        otherLeaveBalanceDto.LeaveBalance = leaveBalanceDto; // Assign the LeaveBalanceDto to the OtherLeaveBalanceDto
+                     *//*   otherLeaveBalanceDto.AnnualLeaveBalance = annualLeaveBalanceDto;*//*
                         return otherLeaveBalanceDto;
                     },
                     parameters,
                     splitOn: "EmpId");
 
-                /*
+                *//*
                                 return result.ToList();*/
 
                 return _mapper.Map<List<OtherLeaveBalanceDto>>(otherLeaveBalance);
@@ -73,4 +73,4 @@ namespace ECX.HR.Application.CQRS.OtherLeaveBalance.Handler.Queries
 
         }
     }
-}
+
