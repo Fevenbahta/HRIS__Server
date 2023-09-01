@@ -28,6 +28,8 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Queries
 
             var activeLeaveRequest = leaveRequest.Where(leaverequest => leaverequest.Status == 0).ToList();
 
+
+
             return _mapper.Map<List<LeaveRequestDto>>(activeLeaveRequest);
 
         }
