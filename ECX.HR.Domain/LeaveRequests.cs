@@ -1,4 +1,5 @@
 ﻿using ECX.HR.Domain.Common;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -29,7 +30,6 @@ namespace ECX.HR.Domain
         public string LeaveStatus { get; set; }
 
         public string Reason { get; set; }
-
         public string File { get; set; }
         public int WorkingDays { get; set; }
 

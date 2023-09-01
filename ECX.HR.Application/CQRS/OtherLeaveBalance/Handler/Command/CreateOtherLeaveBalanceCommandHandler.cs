@@ -70,7 +70,9 @@ namespace ECX.HR.Application.CQRS.OtherLeaveBalance.Handler.Command
 
        
            otherLeaveBalance.SickDefaultBalance = 180;
-           otherLeaveBalance.SickRemainingBalance =otherLeaveBalance.SickDefaultBalance;
+            otherLeaveBalance.SickStartDate = DateTime.MinValue;
+            otherLeaveBalance.SickStartDate = DateTime.MinValue;
+            otherLeaveBalance.SickRemainingBalance =otherLeaveBalance.SickDefaultBalance;
            otherLeaveBalance.CompassinateDefaultBalance = 3;
            otherLeaveBalance.CompassinateRemainingBalance =otherLeaveBalance.CompassinateDefaultBalance;
            otherLeaveBalance.LeaveWotPayDefaultBalance = 90;

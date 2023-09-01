@@ -47,6 +47,7 @@ namespace ECXHR_Service.Controllers
         public async Task<ActionResult<BaseCommandResponse>> Post([FromBody] LeaveRequestDto LeaveRequest)
         {
             var user = _httpContextAccessor.HttpContext.User;
+
             var command = new CreateLeaveRequestCommand { LeaveRequestDto = LeaveRequest };
             var response = await _mediator.Send(command);
             return Ok(response);

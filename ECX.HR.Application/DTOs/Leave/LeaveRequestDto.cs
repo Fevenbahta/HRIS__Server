@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace ECX.HR.Application.DTOs.Leave
 {
@@ -27,7 +28,6 @@ namespace ECX.HR.Application.DTOs.Leave
         public string ApprovedBy { get; set; }
         public string LeaveStatus { get; set; }
         public string Reason { get; set; }
-
         public string File { get; set; }
         public int WorkingDays { get; set; }
         public DateTime SickStartDate { get; set; }

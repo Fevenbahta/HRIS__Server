@@ -39,7 +39,7 @@ namespace ECX.HR.Application.DTOs.LeaveBalance
         public DateTime SickStartDate { get; set; }
         public int IsExpired { get; set; }
 
-        public AnnualLeaveBalances AnnualLeaveBalance { get; set; }// Navigation property
+     
 
     }
 }

@@ -21,20 +21,19 @@ namespace ECX.HR.Application.CQRS.OtherLeaveBalance.Handler.Queries
     {
         private IOtherLeaveBalanceRepository _otherLeaveBalanceRepository;
         private IMapper _mapper;
-        private readonly UpdateOtherLeaveBalanceCommandHandler _updateOtherLeaveBalanceCommandHandler;
+        private readonly ILeaveBalanceRepository _LeaveBalanceRepository;
 
         private readonly IServiceScopeFactory _serviceScopeFactory;
-        public GetOtherLeaveBalanceListRequestHandler(IOtherLeaveBalanceRepository OtherLeaveBalanceRepository, IMapper mapper, UpdateOtherLeaveBalanceCommandHandler updateOtherLeaveBalanceCommandHandler)
+        public GetOtherLeaveBalanceListRequestHandler(IOtherLeaveBalanceRepository OtherLeaveBalanceRepository, IMapper mapper, ILeaveBalanceRepository LeaveBalanceRepository)
         {
             _otherLeaveBalanceRepository = OtherLeaveBalanceRepository;
             _mapper = mapper;
-            _updateOtherLeaveBalanceCommandHandler = updateOtherLeaveBalanceCommandHandler;
+            _LeaveBalanceRepository = LeaveBalanceRepository;
         }
         public async Task<List<OtherLeaveBalanceDto>> Handle(GetOtherLeaveBalanceListRequest request, CancellationToken cancellationToken)
         {
             var OtherLeaveBalances = await _otherLeaveBalanceRepository.GetAll();
 
-            var activeOtherLeaveBalances = OtherLeaveBalances.Where(OtherLeaveBalance => OtherLeaveBalance.Status == 0).ToList();
 
 
 
@@ -50,37 +49,33 @@ namespace ECX.HR.Application.CQRS.OtherLeaveBalance.Handler.Queries
 
                 int days = 1;
 
-                var updatedDto = _mapper.Map<OtherLeaveBalanceDto>(otherLeaveBalance);
+                var newleaveBalance = _mapper.Map<OtherLeaveBalanceDto>(otherLeaveBalance);
 
-                updatedDto.EmpId = otherLeaveBalance.EmpId;
-                updatedDto.StartDate = otherLeaveBalance.EndDate.AddDays(days);
-                updatedDto.EndDate = otherLeaveBalance.EndDate.AddDays(days).AddDays(365);
+                newleaveBalance.EmpId = otherLeaveBalance.EmpId;
+                newleaveBalance.StartDate = otherLeaveBalance.EndDate.AddDays(days);
+                newleaveBalance.EndDate = otherLeaveBalance.EndDate.AddDays(days).AddDays(365);
 
-                updatedDto.SickDefaultBalance = otherLeaveBalance.SickDefaultBalance;
-                updatedDto.SickRemainingBalance = otherLeaveBalance.SickRemainingBalance;
-                updatedDto.CompassinateDefaultBalance = otherLeaveBalance.CompassinateDefaultBalance;
-                updatedDto.CompassinateRemainingBalance = otherLeaveBalance.CompassinateRemainingBalance;
-                updatedDto.LeaveWotPayDefaultBalance = 90;
-                updatedDto.LeaveWotPayRemainingBalance = 90;
-                updatedDto.EducationDefaultBalance = 5;
-                updatedDto.EducationRemainingBalance = 5;
-                updatedDto.MarriageDefaultBalance = otherLeaveBalance.MarriageDefaultBalance;
-                updatedDto.MarraiageRemainingBalance = otherLeaveBalance.MarraiageRemainingBalance;
-                updatedDto.MaternityDefaultBalance = otherLeaveBalance.MaternityDefaultBalance;
-                updatedDto.MaternityRemainingBalance = otherLeaveBalance.MarraiageRemainingBalance;
-                updatedDto.PaternityDefaultBalance = otherLeaveBalance.PaternityDefaultBalance;
-                updatedDto.PaternityRemainingBalance = otherLeaveBalance.PaternityRemainingBalance;
-                updatedDto.CourtLeaveDefaultBalance = otherLeaveBalance.CourtLeaveDefaultBalance;
-                updatedDto.CourtLeaveRemainingBalance = otherLeaveBalance.CourtLeaveRemainingBalance;
-                updatedDto.AbortionLeaveRemainingBalance = otherLeaveBalance.AbortionLeaveRemainingBalance;
-                updatedDto.AbortionLeaveDefaultBalance=otherLeaveBalance.AbortionLeaveDefaultBalance;
+                newleaveBalance.SickDefaultBalance = otherLeaveBalance.SickDefaultBalance;
+                newleaveBalance.SickRemainingBalance = otherLeaveBalance.SickRemainingBalance;
+                newleaveBalance.CompassinateDefaultBalance = otherLeaveBalance.CompassinateDefaultBalance;
+                newleaveBalance.CompassinateRemainingBalance = otherLeaveBalance.CompassinateRemainingBalance;
+                newleaveBalance.LeaveWotPayDefaultBalance = 90;
+                newleaveBalance.LeaveWotPayRemainingBalance = 90;
+                newleaveBalance.EducationDefaultBalance = 5;
+                newleaveBalance.EducationRemainingBalance = 5;
+                newleaveBalance.MarriageDefaultBalance = otherLeaveBalance.MarriageDefaultBalance;
+                newleaveBalance.MarraiageRemainingBalance = otherLeaveBalance.MarraiageRemainingBalance;
+                newleaveBalance.MaternityDefaultBalance = otherLeaveBalance.MaternityDefaultBalance;
+                newleaveBalance.MaternityRemainingBalance = otherLeaveBalance.MarraiageRemainingBalance;
+                newleaveBalance.PaternityDefaultBalance = otherLeaveBalance.PaternityDefaultBalance;
+                newleaveBalance.PaternityRemainingBalance = otherLeaveBalance.PaternityRemainingBalance;
+                newleaveBalance.CourtLeaveDefaultBalance = otherLeaveBalance.CourtLeaveDefaultBalance;
+                newleaveBalance.CourtLeaveRemainingBalance = otherLeaveBalance.CourtLeaveRemainingBalance;
+                newleaveBalance.AbortionLeaveRemainingBalance = otherLeaveBalance.AbortionLeaveRemainingBalance;
+                newleaveBalance.AbortionLeaveDefaultBalance=otherLeaveBalance.AbortionLeaveDefaultBalance;
 
-                var updateCommand = new UpdateOtherLeaveBalanceCommand
-                {
-                    OtherLeaveBalanceDto = updatedDto
-                };
 
-                await _updateOtherLeaveBalanceCommandHandler.Handle(updateCommand, cancellationToken);
+                await _LeaveBalanceRepository.Update(newleaveBalance);
 
                 Console.WriteLine($"Updated leave balance with ID {otherLeaveBalance.Id}");
             }
@@ -88,7 +83,7 @@ namespace ECX.HR.Application.CQRS.OtherLeaveBalance.Handler.Queries
             foreach (var otherLeaveBalance in OtherLeaveBalances)
             {
 
-                var updatedDtos = _mapper.Map<OtherLeaveBalanceDto>(otherLeaveBalance);
+                var newotherleavebalance = _mapper.Map<OtherLeaveBalanceDto>(otherLeaveBalance);
 
 
 
@@ -106,63 +101,56 @@ namespace ECX.HR.Application.CQRS.OtherLeaveBalance.Handler.Queries
 
                 if (otherLeaveBalance.SickEndDate <= currentDate)
                 {
-                    updatedDtos.SickEndDate = DateTime.MinValue;
-                    updatedDtos.SickStartDate = DateTime.MinValue;
+                    newotherleavebalance.SickEndDate = DateTime.MinValue;
+                    newotherleavebalance.SickStartDate = DateTime.MinValue;
 
-                    updatedDtos.SickRemainingBalance = 180;
-                    updatedDtos.SickRemainingBalance = 180;
+                    newotherleavebalance.SickRemainingBalance = 180;
+                    newotherleavebalance.SickRemainingBalance = 180;
                 }
 
 
                 if (otherLeaveBalance.CompassinateRemainingBalance == 0)
                 {
-                    updatedDtos.CompassinateRemainingBalance = 3;
-                    updatedDtos.CompassinateDefaultBalance = 3;
+                    newotherleavebalance.CompassinateRemainingBalance = 3;
+                    newotherleavebalance.CompassinateDefaultBalance = 3;
                 }
                 if (otherLeaveBalance.AbortionLeaveRemainingBalance== 0)
                 {
-                    updatedDtos.AbortionLeaveRemainingBalance = 30;
-                    updatedDtos.AbortionLeaveDefaultBalance = 30;
+                    newotherleavebalance.AbortionLeaveRemainingBalance = 30;
+                    newotherleavebalance.AbortionLeaveDefaultBalance = 30;
                 }
 
                 if (otherLeaveBalance.MarraiageRemainingBalance == 0)
                 {
-                    updatedDtos.MarriageDefaultBalance = 3;
-                    updatedDtos.MarraiageRemainingBalance = 3;
+                    newotherleavebalance.MarriageDefaultBalance = 3;
+                    newotherleavebalance.MarraiageRemainingBalance = 3;
                 }
                 if (otherLeaveBalance.MaternityRemainingBalance == 0)
                 {
-                    updatedDtos.MaternityDefaultBalance = 120;
-                    updatedDtos.MaternityRemainingBalance = 120;
+                    newotherleavebalance.MaternityDefaultBalance = 120;
+                    newotherleavebalance.MaternityRemainingBalance = 120;
                 }
                 if (otherLeaveBalance.PaternityRemainingBalance == 0)
                 {
-                    updatedDtos.PaternityRemainingBalance = 7;
-                    updatedDtos.PaternityRemainingBalance = 7;
+                    newotherleavebalance.PaternityRemainingBalance = 7;
+                    newotherleavebalance.PaternityRemainingBalance = 7;
                 }
 
 
                 if (otherLeaveBalance.CourtLeaveRemainingBalance == 0)
                 {
-                    updatedDtos.CourtLeaveDefaultBalance = 0;
-                    updatedDtos.CourtLeaveRemainingBalance = 0;
+                    newotherleavebalance.CourtLeaveDefaultBalance = 0;
+                    newotherleavebalance.CourtLeaveRemainingBalance = 0;
                 }
 
 
-
-                var updateCommand = new UpdateOtherLeaveBalanceCommand
-                {
-                    OtherLeaveBalanceDto = updatedDtos
-                };
-
-                await _updateOtherLeaveBalanceCommandHandler.Handle(updateCommand, cancellationToken);
-
-                Console.WriteLine($"Updated leave balance with ID {otherLeaveBalance.Id}");
+                await _LeaveBalanceRepository.Update(newotherleavebalance);
+                Console.WriteLine($"Updated leave balance with ID {newotherleavebalance.Id}");
             }
 
 
 
-
+     var activeOtherLeaveBalances = OtherLeaveBalances.Where(OtherLeaveBalance => OtherLeaveBalance.Status == 0).ToList();
 
             return _mapper.Map<List<OtherLeaveBalanceDto>>(activeOtherLeaveBalances);
         }
