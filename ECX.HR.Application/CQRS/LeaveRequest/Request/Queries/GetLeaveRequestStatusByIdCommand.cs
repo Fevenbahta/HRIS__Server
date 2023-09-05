@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.CQRS.LeaveRequest.Request.Queries
 {
-    public class GetLeaveRequestByIdCommand : IRequest<LeaveRequestDto>
+    public class GetLeaveRequestStatusByIdCommand : IRequest<List<LeaveRequestDto>>
     {
-        public Guid EmpId { get; set; }    
+
+        public string LeaveStatus { get; set; }
     }
 }

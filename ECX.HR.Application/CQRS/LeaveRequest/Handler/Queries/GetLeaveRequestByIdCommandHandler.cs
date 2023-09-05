@@ -24,10 +24,10 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Queries
         }
         public async Task<LeaveRequestDto> Handle(GetLeaveRequestByIdCommand request, CancellationToken cancellationToken)
         {
-            var leaverequest = await _leaveRequestRepository.GetById(request.leaverequestId);
+            var leaverequest = await _leaveRequestRepository.GetById(request.EmpId);
 
             if (leaverequest == null || leaverequest.Status != 0)
-                throw new NotFoundException(nameof(leaverequest), request.leaverequestId);
+                throw new NotFoundException(nameof(leaverequest), request.EmpId);
 
             else
                 return _mapper.Map<LeaveRequestDto>(leaverequest);

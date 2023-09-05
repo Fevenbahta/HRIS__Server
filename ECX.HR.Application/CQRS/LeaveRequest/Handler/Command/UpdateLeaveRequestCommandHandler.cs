@@ -76,11 +76,15 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                 int daysWorkedInYear = (int)timeWorked.TotalDays;
                 int accruedLeave = (int)Math.Round(baseLeaveDay * (double)daysWorkedInYear / totalDaysInYear);
 
-          
+
                 foreach (var leaveBalance in leaveBalances.OrderBy(lb => lb.StartDate))
                 {
 
-                    leaveBalance.TotalRequest += leaveDuration; leaveBalance.TotalRemaining = accruedLeave - leaveBalance.TotalRequest;
+                    leaveBalance.TotalRequest += leaveDuration;
+                    Decimal remainingLeave = leaveBalance.TotalRemaining - leaveBalance.TotalRequest;
+
+                    leaveBalance.TotalRemaining = Math.Max(0, remainingLeave);
+
                     if (leaveBalance.IsExpired != 1)
                     {
                         var annualRemainingBalance = (leaveBalance.PreviousTwoYear + leaveBalance.PreviousYearAnnualBalance + leaveBalance.AnnualDefaultBalance) - leaveDuration;
@@ -98,11 +102,11 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                                     }
                                     if (leaveBalance.PreviousTwoYear > 0 && leaveDuration > leaveBalance.PreviousTwoYear)
                                     {
-                                        var previousleave = leaveBalance.PreviousYearAnnualBalance + leaveBalance.PreviousTwoYear; 
+                                        var previousleave = leaveBalance.PreviousYearAnnualBalance + leaveBalance.PreviousTwoYear;
                                         previousleave -= leaveDuration;
                                         leaveBalance.PreviousYearAnnualBalance = previousleave;
                                     }
-                                    if(leaveBalance.PreviousYearAnnualBalance > leaveDuration)
+                                    if (leaveBalance.PreviousYearAnnualBalance > leaveDuration)
                                     {
                                         leaveBalance.PreviousYearAnnualBalance -= leaveDuration;
                                         leaveBalance.AnnualRemainingBalance -= leaveDuration;
@@ -115,16 +119,16 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                                     }
                                 }
                             }
-                           
+
                         }
                         await _leaveRequestRepository.Update(leaveRequest);
                         await _LeaveBalanceRepository.Update(leaveBalance);
                     }
-                   
+
                 }
-           
+
             }
-            if (request.LeaveRequestDto.LeaveStatus == "Approved" && leaveType.LeaveTypeName != "Annual")
+            else if (request.LeaveRequestDto.LeaveStatus == "Approved" && leaveType.LeaveTypeName != "Annual")
             {
 
                 var leaveStartDate = request.LeaveRequestDto.StartDate;

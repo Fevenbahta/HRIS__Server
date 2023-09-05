@@ -36,12 +36,19 @@ namespace ECXHR_Service.Controllers
             return Ok(LeaveRequest);
         }
 
-        /*       [HttpGet("{Empid}")]
-               public async Task<ActionResult<EmployeeDto>> GetByEmpId(Guid Empid)
-               {
-                   var address = await _mediator.Send(new GetAddressDetailRequest { EmpId = Empid });
-                   return Ok(address);
-               }*/
+
+        [HttpGet("{Empid}")]
+        public async Task<ActionResult<LeaveRequestDto>> GetByEmpId(Guid Empid)
+        {
+            var LeaveRequest = await _mediator.Send(new GetLeaveRequestByIdCommand { EmpId = Empid });
+            return Ok(LeaveRequest);
+        }
+        [HttpGet("status/{LeaveStatus}")]
+        public async Task<ActionResult<LeaveRequestDto>> GetByStatus(string LeaveStatus)
+        {
+            var LeaveRequest = await _mediator.Send(new GetLeaveRequestStatusByIdCommand { LeaveStatus = LeaveStatus });
+            return Ok(LeaveRequest);
+        }
         // POST api/<AddressController>
         [HttpPost]
         public async Task<ActionResult<BaseCommandResponse>> Post([FromBody] LeaveRequestDto LeaveRequest)
@@ -64,6 +71,9 @@ namespace ECXHR_Service.Controllers
 
             return NoContent();
         }
+        // PUT: api/LeaveRequest/UpdateStatus/5
+       
+
 
         [HttpDelete("{id}")]
 

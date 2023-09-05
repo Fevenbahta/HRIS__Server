@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,7 +31,7 @@ namespace ECX.HR.Domain
         public string LeaveStatus { get; set; }
 
         public string Reason { get; set; }
-        public string File { get; set; }
+        public string? File { get; set; }
         public int WorkingDays { get; set; }
 
         public int Status { get; set; }

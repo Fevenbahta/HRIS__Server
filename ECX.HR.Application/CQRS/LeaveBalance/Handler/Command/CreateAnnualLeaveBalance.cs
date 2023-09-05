@@ -58,7 +58,8 @@ namespace ECX.HR.Application.CQRS.LeaveBalance.Handler.Command
 
             int yearsOfWork = (currentDate - employmentStartDate).Days / 365;
             int maxLeaveDays = 30;
-            int baseLeaveDay = 18 + (yearsOfWork - 1);
+           int yow = Math.Max(0,yearsOfWork - 1);
+            int baseLeaveDay = 18 + (yow);
 
             int baseLeaveDays = Math.Min(baseLeaveDay, 30);
 
@@ -77,7 +78,7 @@ namespace ECX.HR.Application.CQRS.LeaveBalance.Handler.Command
                 leaveAnnualBalance.AnnualRemainingBalance = leaveAnnualBalance.AnnualDefaultBalance;
                 leaveAnnualBalance.PreviousYearAnnualBalance = 0;
                 leaveAnnualBalance.PreviousTwoYear = 0;
-                leaveAnnualBalance.TotalRemaining = annualLeave;
+    
                 leaveAnnualBalance.TotalRequest = 0;
 
             

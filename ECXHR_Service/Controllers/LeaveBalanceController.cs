@@ -35,12 +35,12 @@ namespace ECXHR_Service.Controllers
             return Ok(leaveBalance);
         }
 
- /*       [HttpGet("{Empid}")]
-        public async Task<ActionResult<EmployeeDto>> GetByEmpId(Guid Empid)
+        [HttpGet("{Empid}")]
+        public async Task<ActionResult<AnnualLeaveBalanceDto>> GetByEmpId(Guid Empid)
         {
-            var address = await _mediator.Send(new GetAddressDetailRequest { EmpId = Empid });
+            var address = await _mediator.Send(new GetLeaveBalanceDetailRequest { EmpId = Empid });
             return Ok(address);
-        }*/
+        }
         // POST api/<AddressController>
         [HttpPost]
         public async Task<ActionResult<BaseCommandResponse>> Post([FromBody] AnnualLeaveBalanceDto leaveBalance)

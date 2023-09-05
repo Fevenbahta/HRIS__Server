@@ -58,17 +58,56 @@ namespace ECX.HR.Application.CQRS.LeaveBalance.Handler.Queries
                 int days = 1;
 
                 var updatedDto = _mapper.Map<AnnualLeaveBalanceDto>(AleaveBalance);
-                var annualRemaining = AleaveBalance.PreviousYearAnnualBalance + AleaveBalance.PreviousTwoYear;
+                var annualRemaining = AleaveBalance.PreviousYearAnnualBalance + AleaveBalance.PreviousTwoYear + AleaveBalance.AnnualDefaultBalance;
                 AleaveBalance.EmpId = AleaveBalance.EmpId;
                 AleaveBalance.StartDate = AleaveBalance.EndDate.AddDays(days);
                 AleaveBalance.EndDate = AleaveBalance.EndDate.AddDays(days).AddDays(365);
-                AleaveBalance.AnnualDefaultBalance = annualleaves;
-                AleaveBalance.PreviousYearAnnualBalance = AleaveBalance.AnnualRemainingBalance;
                 AleaveBalance.PreviousTwoYear = AleaveBalance.PreviousYearAnnualBalance;
+                AleaveBalance.PreviousYearAnnualBalance = AleaveBalance.AnnualDefaultBalance;
+                AleaveBalance.AnnualDefaultBalance = annualleaves;
+
+
                 AleaveBalance.AnnualRemainingBalance = annualRemaining;
 
                 await _LeaveBalanceRepository.Update(AleaveBalance);
 
+            }
+        
+            var LeaveBalances = await _LeaveBalanceRepository.GetAll();
+
+
+            foreach (var LeaveBalance in LeaveBalances)
+            {
+                TimeSpan differences = LeaveBalance.EndDate.Subtract(LeaveBalance.StartDate);
+
+                DateTime employmentStartDate = LeaveBalance.EndDate.AddDays(1);
+
+                int yearsOfWork = (DateTime.Now - employmentStartDate).Days / 365;
+                int maxLeaveDays = 30;
+                int baseLeaveDays = 18 + yearsOfWork;
+                int additionalLeavePerYear = 1;
+
+                DateTime currentDate = DateTime.Now;
+
+                int totalDaysInYear = DateTime.IsLeapYear(currentDate.Year) ? 366 : 365;
+
+                TimeSpan timeWorkeds = currentDate - (LeaveBalance.EndDate.AddDays(1));
+
+                int daysWorkeds = (int)timeWorkeds.TotalDays;
+
+                int totalbaseLeaveDays = baseLeaveDays + Math.Min(yearsOfWork - 1, maxLeaveDays - baseLeaveDays) * additionalLeavePerYear;
+                int accruedLeaves = (int)Math.Round(totalbaseLeaveDays * (double)daysWorkeds / totalDaysInYear);
+
+                int annualleaves = Math.Min(accruedLeaves, maxLeaveDays);
+                int daysDifferences = differences.Days;
+                int days = 1;
+                LeaveBalance.AnnualDefaultBalance = annualleaves;
+                LeaveBalance.PreviousTwoYear -= LeaveBalance.AnnualDefaultBalance;
+                var annualRemaining = LeaveBalance.PreviousYearAnnualBalance + LeaveBalance.PreviousTwoYear + LeaveBalance.AnnualDefaultBalance;
+
+
+
+                LeaveBalance.AnnualRemainingBalance = annualRemaining;
             }
             return _mapper.Map<List<AnnualLeaveBalanceDto>>(activeLeaveBalances);
         }

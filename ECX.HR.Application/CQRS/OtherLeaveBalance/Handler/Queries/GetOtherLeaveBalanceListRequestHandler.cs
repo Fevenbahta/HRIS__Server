@@ -24,71 +24,113 @@ namespace ECX.HR.Application.CQRS.OtherLeaveBalance.Handler.Queries
         private readonly ILeaveBalanceRepository _LeaveBalanceRepository;
 
         private readonly IServiceScopeFactory _serviceScopeFactory;
-        public GetOtherLeaveBalanceListRequestHandler(IOtherLeaveBalanceRepository OtherLeaveBalanceRepository, IMapper mapper, ILeaveBalanceRepository LeaveBalanceRepository)
+        private readonly IEmployeeRepository _employeeRepository;
+        public GetOtherLeaveBalanceListRequestHandler(IOtherLeaveBalanceRepository OtherLeaveBalanceRepository, IMapper mapper, IEmployeeRepository employeeRepository, ILeaveBalanceRepository LeaveBalanceRepository)
         {
             _otherLeaveBalanceRepository = OtherLeaveBalanceRepository;
             _mapper = mapper;
             _LeaveBalanceRepository = LeaveBalanceRepository;
+            _employeeRepository = employeeRepository;
         }
         public async Task<List<OtherLeaveBalanceDto>> Handle(GetOtherLeaveBalanceListRequest request, CancellationToken cancellationToken)
         {
-            var OtherLeaveBalances = await _otherLeaveBalanceRepository.GetAll();
-
-
-
-
-
+        
             var expiredOtherLeaveBalances = await _otherLeaveBalanceRepository.GetExpiredOtherLeaveBalances();
-            foreach (var otherLeaveBalance in expiredOtherLeaveBalances)
+            var expiredLeaveBalances = await _LeaveBalanceRepository.GetExpiredLeaveBalances();
+            foreach (var AleaveBalance in expiredLeaveBalances)
             {
-                DateTime employmentStartDate = otherLeaveBalance.EndDate.AddDays(1);
+
+                TimeSpan differences = AleaveBalance.EndDate.Subtract(AleaveBalance.StartDate);
+
+                var employee = await _employeeRepository.GetById(AleaveBalance.EmpId);
+                DateTime employmentStartDate = employee.JoinDate;
+
+                int yearsOfWork = (DateTime.Now - employmentStartDate).Days / 365;
+                int maxLeaveDays = 30;
+                int baseLeaveDays = 18 + yearsOfWork;
+                int additionalLeavePerYear = 1;
 
                 DateTime currentDate = DateTime.Now;
 
                 int totalDaysInYear = DateTime.IsLeapYear(currentDate.Year) ? 366 : 365;
 
+                TimeSpan timeWorkeds = currentDate - (AleaveBalance.EndDate.AddDays(1));
+
+                int daysWorkeds = (int)timeWorkeds.TotalDays;
+
+                int totalbaseLeaveDays = baseLeaveDays + Math.Min(yearsOfWork - 1, maxLeaveDays - baseLeaveDays) * additionalLeavePerYear;
+                int accruedLeaves = (int)Math.Round(totalbaseLeaveDays * (double)daysWorkeds / totalDaysInYear);
+
+                int annualleaves = Math.Min(accruedLeaves, maxLeaveDays);
+                int daysDifferences = differences.Days;
                 int days = 1;
 
-                var newleaveBalance = _mapper.Map<OtherLeaveBalanceDto>(otherLeaveBalance);
+                var updatedDto = _mapper.Map<AnnualLeaveBalanceDto>(AleaveBalance);
+                var annualRemaining = AleaveBalance.PreviousYearAnnualBalance + AleaveBalance.PreviousTwoYear + AleaveBalance.AnnualDefaultBalance;
+                AleaveBalance.EmpId = AleaveBalance.EmpId;
+                AleaveBalance.StartDate = AleaveBalance.EndDate.AddDays(days);
+                AleaveBalance.EndDate = AleaveBalance.EndDate.AddDays(days).AddDays(365);
+                AleaveBalance.PreviousTwoYear = AleaveBalance.PreviousYearAnnualBalance; 
+                AleaveBalance.PreviousYearAnnualBalance = AleaveBalance.AnnualDefaultBalance;
+                AleaveBalance.AnnualDefaultBalance = annualleaves;
+          
+             
+                AleaveBalance.AnnualRemainingBalance = annualRemaining;
 
-                newleaveBalance.EmpId = otherLeaveBalance.EmpId;
-                newleaveBalance.StartDate = otherLeaveBalance.EndDate.AddDays(days);
-                newleaveBalance.EndDate = otherLeaveBalance.EndDate.AddDays(days).AddDays(365);
+                await _LeaveBalanceRepository.Update(AleaveBalance);
 
-                newleaveBalance.SickDefaultBalance = otherLeaveBalance.SickDefaultBalance;
-                newleaveBalance.SickRemainingBalance = otherLeaveBalance.SickRemainingBalance;
-                newleaveBalance.CompassinateDefaultBalance = otherLeaveBalance.CompassinateDefaultBalance;
-                newleaveBalance.CompassinateRemainingBalance = otherLeaveBalance.CompassinateRemainingBalance;
-                newleaveBalance.LeaveWotPayDefaultBalance = 90;
-                newleaveBalance.LeaveWotPayRemainingBalance = 90;
-                newleaveBalance.EducationDefaultBalance = 5;
-                newleaveBalance.EducationRemainingBalance = 5;
-                newleaveBalance.MarriageDefaultBalance = otherLeaveBalance.MarriageDefaultBalance;
-                newleaveBalance.MarraiageRemainingBalance = otherLeaveBalance.MarraiageRemainingBalance;
-                newleaveBalance.MaternityDefaultBalance = otherLeaveBalance.MaternityDefaultBalance;
-                newleaveBalance.MaternityRemainingBalance = otherLeaveBalance.MarraiageRemainingBalance;
-                newleaveBalance.PaternityDefaultBalance = otherLeaveBalance.PaternityDefaultBalance;
-                newleaveBalance.PaternityRemainingBalance = otherLeaveBalance.PaternityRemainingBalance;
-                newleaveBalance.CourtLeaveDefaultBalance = otherLeaveBalance.CourtLeaveDefaultBalance;
-                newleaveBalance.CourtLeaveRemainingBalance = otherLeaveBalance.CourtLeaveRemainingBalance;
-                newleaveBalance.AbortionLeaveRemainingBalance = otherLeaveBalance.AbortionLeaveRemainingBalance;
-                newleaveBalance.AbortionLeaveDefaultBalance=otherLeaveBalance.AbortionLeaveDefaultBalance;
-
-
-                await _LeaveBalanceRepository.Update(newleaveBalance);
-
-                Console.WriteLine($"Updated leave balance with ID {otherLeaveBalance.Id}");
             }
+            var OtherLeaveBalances = await _otherLeaveBalanceRepository.GetAll();
+            var LeaveBalances = await _LeaveBalanceRepository.GetAll();
 
-            foreach (var otherLeaveBalance in OtherLeaveBalances)
+
+            foreach (var LeaveBalance in LeaveBalances)
+            {
+                var employee = await _employeeRepository.GetById(LeaveBalance.EmpId);
+                DateTime employmentStartDate = employee.JoinDate;
+                DateTime currentDate = DateTime.Now;
+                int daysElapsed = 365;
+                var ed = employmentStartDate.AddDays(daysElapsed);
+
+                TimeSpan difference = ed.Subtract(employmentStartDate);
+                int daysDifference = difference.Days;
+
+
+
+
+                int yearsOfWork = (currentDate - employmentStartDate).Days / 365;
+                int maxLeaveDays = 30;
+                int baseLeaveDay = 18 + (yearsOfWork - 1);
+
+                int baseLeaveDays = Math.Min(baseLeaveDay, 30);
+
+                int totalDaysInYear = DateTime.IsLeapYear(currentDate.Year) ? 366 : 365;
+
+
+                TimeSpan timeWorked = currentDate - employmentStartDate.AddYears(yearsOfWork);
+
+
+                int daysWorkedInYear = (int)timeWorked.TotalDays;
+                int accruedLeave = (int)Math.Round(baseLeaveDays * (double)daysWorkedInYear / totalDaysInYear);
+
+                int annualLeave = Math.Min(accruedLeave, maxLeaveDays);
+
+                LeaveBalance.AnnualDefaultBalance = annualLeave;
+                decimal p2y = Math.Max(0, LeaveBalance.PreviousTwoYear - LeaveBalance.AnnualDefaultBalance);
+                LeaveBalance.PreviousTwoYear = p2y;
+                var annualRemaining = LeaveBalance.PreviousYearAnnualBalance + LeaveBalance.PreviousTwoYear + LeaveBalance.AnnualDefaultBalance;
+
+
+                LeaveBalance.AnnualRemainingBalance = annualRemaining;
+
+                await _LeaveBalanceRepository.Update(LeaveBalance);
+            }
+            foreach (var otherLeaveBalance in expiredOtherLeaveBalances)
             {
 
-                var newotherleavebalance = _mapper.Map<OtherLeaveBalanceDto>(otherLeaveBalance);
+                var updatedDto = _mapper.Map<OtherLeaveBalanceDto>(otherLeaveBalance);
 
-
-
-
-                DateTime employmentStartDate = otherLeaveBalance.StartDate;
+                DateTime employmentStartDate = otherLeaveBalance.EndDate;
 
                 int daysElapsed = 365;
                 var ed = employmentStartDate.AddDays(daysElapsed);
@@ -99,53 +141,73 @@ namespace ECX.HR.Application.CQRS.OtherLeaveBalance.Handler.Queries
 
                 int totalDaysInYear = DateTime.IsLeapYear(currentDate.Year) ? 366 : 365;
 
+                otherLeaveBalance.EndDate = ed;
+                otherLeaveBalance.StartDate = employmentStartDate;
+                otherLeaveBalance.LeaveWotPayDefaultBalance =90;
+                otherLeaveBalance.LeaveWotPayRemainingBalance =90;
+                otherLeaveBalance.EducationDefaultBalance =5;
+                otherLeaveBalance.EducationRemainingBalance =5;
+
+                await _otherLeaveBalanceRepository.Update(otherLeaveBalance);
+            }
+
+
+            foreach (var otherLeaveBalance in OtherLeaveBalances)
+            {
+
+
+
+                DateTime currentDate = DateTime.Now;
+
+
+
                 if (otherLeaveBalance.SickEndDate <= currentDate)
                 {
-                    newotherleavebalance.SickEndDate = DateTime.MinValue;
-                    newotherleavebalance.SickStartDate = DateTime.MinValue;
+                    otherLeaveBalance.SickEndDate = DateTime.MinValue;
+                    otherLeaveBalance.SickStartDate = DateTime.MinValue;
 
-                    newotherleavebalance.SickRemainingBalance = 180;
-                    newotherleavebalance.SickRemainingBalance = 180;
+                    otherLeaveBalance.SickRemainingBalance = 180;
+                    otherLeaveBalance.SickRemainingBalance = 180;
                 }
 
 
                 if (otherLeaveBalance.CompassinateRemainingBalance == 0)
                 {
-                    newotherleavebalance.CompassinateRemainingBalance = 3;
-                    newotherleavebalance.CompassinateDefaultBalance = 3;
+                    otherLeaveBalance.CompassinateRemainingBalance = 3;
+                    otherLeaveBalance.CompassinateDefaultBalance = 3;
                 }
                 if (otherLeaveBalance.AbortionLeaveRemainingBalance== 0)
                 {
-                    newotherleavebalance.AbortionLeaveRemainingBalance = 30;
-                    newotherleavebalance.AbortionLeaveDefaultBalance = 30;
+                    otherLeaveBalance.AbortionLeaveRemainingBalance = 30;
+                    otherLeaveBalance.AbortionLeaveDefaultBalance = 30;
                 }
 
                 if (otherLeaveBalance.MarraiageRemainingBalance == 0)
                 {
-                    newotherleavebalance.MarriageDefaultBalance = 3;
-                    newotherleavebalance.MarraiageRemainingBalance = 3;
+                    otherLeaveBalance.MarriageDefaultBalance = 3;
+                    otherLeaveBalance.MarraiageRemainingBalance = 3;
                 }
                 if (otherLeaveBalance.MaternityRemainingBalance == 0)
                 {
-                    newotherleavebalance.MaternityDefaultBalance = 120;
-                    newotherleavebalance.MaternityRemainingBalance = 120;
+                    otherLeaveBalance.MaternityDefaultBalance = 120;
+                    otherLeaveBalance.MaternityRemainingBalance = 120;
                 }
                 if (otherLeaveBalance.PaternityRemainingBalance == 0)
                 {
-                    newotherleavebalance.PaternityRemainingBalance = 7;
-                    newotherleavebalance.PaternityRemainingBalance = 7;
+                    otherLeaveBalance.PaternityRemainingBalance = 7;
+                    otherLeaveBalance.PaternityRemainingBalance = 7;
                 }
 
 
                 if (otherLeaveBalance.CourtLeaveRemainingBalance == 0)
                 {
-                    newotherleavebalance.CourtLeaveDefaultBalance = 0;
-                    newotherleavebalance.CourtLeaveRemainingBalance = 0;
+                    otherLeaveBalance.CourtLeaveDefaultBalance = 0;
+                    otherLeaveBalance.CourtLeaveRemainingBalance = 0;
                 }
 
 
-                await _LeaveBalanceRepository.Update(newotherleavebalance);
-                Console.WriteLine($"Updated leave balance with ID {newotherleavebalance.Id}");
+                await _otherLeaveBalanceRepository.Update(otherLeaveBalance);
+                Console.WriteLine($"Updated leave balance with ID {otherLeaveBalance.Id}");
             }
 
 
