@@ -55,18 +55,14 @@ namespace ECXHR_Service.Controllers
         public async Task<ActionResult<BaseCommandResponse>> Post([FromBody] LeaveRequestDto leaveRequestDto)
         {
             var user = _httpContextAccessor.HttpContext.User;
-            string base64String = leaveRequestDto.File;
-            // Convert the base64-encoded file data to a byte array
-            byte[] file = Convert.FromBase64String(base64String);
+
 
             var command = new CreateLeaveRequestCommand { LeaveRequestDto = leaveRequestDto };
-
-            var command = new CreateLeaveRequestCommand { LeaveRequestDto = LeaveRequest };
             var response = await _mediator.Send(command);
             return Ok(response);
         }
 
-    
+
         // PUT api/<AddressController>/5
         [HttpPut("{id}")]
 

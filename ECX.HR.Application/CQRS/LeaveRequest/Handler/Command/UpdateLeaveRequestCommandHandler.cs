@@ -162,7 +162,7 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
 
                             if (leaveType != null)
                             {
-                                if (leaveType.LeaveTypeName == "Medical" && leaveDuration <= sickRemainingBalance)
+                                if (leaveType.LeaveTypeName == "Sick" && leaveDuration <= sickRemainingBalance)
                                 {
                                     otherLeaveBalance.SickRemainingBalance -= leaveDuration;
                                     leaveDuration = 0;
@@ -189,7 +189,7 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                                     otherLeaveBalance.EducationRemainingBalance -= leaveDuration;
                                     leaveDuration = 0;
                                 }
-                                else if (leaveType.LeaveTypeName == "Marraige" && leaveDuration <= marraiageRemainingBalance)
+                                else if (leaveType.LeaveTypeName == "Marriage" && leaveDuration <= marraiageRemainingBalance)
                                 {
                                     otherLeaveBalance.MarraiageRemainingBalance -= leaveDuration;
                                     leaveDuration = 0;
