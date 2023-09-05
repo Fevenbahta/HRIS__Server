@@ -4,6 +4,7 @@ using ECX.HR.Application.CQRS.WorkExperience.Request.Command;
 using ECX.HR.Application.CQRS.WorkExperience.Request.Queries;
 using ECX.HR.Application.DTOs.WorkExperiences;
 using ECX.HR.Application.Response;
+using ECX.HR.Persistence;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -20,10 +21,13 @@ namespace ECXHR_Service.Controllers
     {
         private readonly IMediator _mediator;
         private readonly IHttpContextAccessor _httpContextAccessor;
+       
+
         public WorkExperience﻿﻿Controller(IMediator mediator, IHttpContextAccessor httpContextAccessor)
         {
             _mediator = mediator;
             this._httpContextAccessor = httpContextAccessor;
+            
         }
         // GET: api/<WorkExperience﻿﻿Controller>
         [HttpGet]
@@ -34,13 +38,7 @@ namespace ECXHR_Service.Controllers
         }
 
         // GET api/<WorkExperience﻿﻿Controller>/5
-        [HttpGet("{Empid}")]
-        public async Task<ActionResult<WorkExperience﻿﻿Dto>> Get(Guid empid)
-        {
-            var WorkExperience﻿﻿ = await _mediator.Send(new GetWorkExperience﻿﻿DetailRequest { EmpId = empid });
-            return Ok(WorkExperience﻿﻿);
-        }
-
+       
         // POST api/<WorkExperience﻿﻿Controller>
         [HttpPost]
 
@@ -62,6 +60,7 @@ namespace ECXHR_Service.Controllers
             await _mediator.Send(command);
             return NoContent();
         }
+ 
 
         [HttpDelete("{id}")]
 

@@ -58,7 +58,7 @@ namespace ECX.HR.Persistence
             services.AddScoped<AnnualLeaveBalanceDto>();
 
             services.AddScoped<UpdateLeaveBalanceCommandHandler>();
-
+            //services.AddScoped<EmployeeDataServices>();
         
 
             // Inside ConfigureServices method in Startup.cs
