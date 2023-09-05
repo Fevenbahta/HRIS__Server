@@ -1,5 +1,6 @@
 ﻿
 
+using ECX.HR.Application.CQRS.LeaveRequest.Handler.Command;
 using ECX.HR.Application.CQRS.LeaveRequest.Request.Command;
 using ECX.HR.Application.CQRS.LeaveRequest.Request.Queries;
 using ECX.HR.Application.DTOs.Leave;
@@ -44,14 +45,19 @@ namespace ECXHR_Service.Controllers
                }*/
         // POST api/<AddressController>
         [HttpPost]
-        public async Task<ActionResult<BaseCommandResponse>> Post([FromBody] LeaveRequestDto LeaveRequest)
+        public async Task<ActionResult<BaseCommandResponse>> Post([FromBody] LeaveRequestDto leaveRequestDto)
         {
             var user = _httpContextAccessor.HttpContext.User;
-            var command = new CreateLeaveRequestCommand { LeaveRequestDto = LeaveRequest };
+            string base64String = leaveRequestDto.File;
+            // Convert the base64-encoded file data to a byte array
+            byte[] file = Convert.FromBase64String(base64String);
+
+            var command = new CreateLeaveRequestCommand { LeaveRequestDto = leaveRequestDto };
             var response = await _mediator.Send(command);
             return Ok(response);
         }
 
+    
         // PUT api/<AddressController>/5
         [HttpPut("{id}")]
 
@@ -63,6 +69,29 @@ namespace ECXHR_Service.Controllers
 
             return NoContent();
         }
+
+        [HttpGet("{fileId}")]
+        public async Task<IActionResult> GetFile(Guid fileId)
+        {
+
+
+            var fileData = await _mediator.Send(new GetFileRequestCommand(fileId));
+
+            if (fileData == null)
+            {
+                return NotFound(); // File not found
+            }
+
+            // Determine the file's content type (e.g., application/pdf, image/jpeg, etc.)
+            string contentType = "application/pdf"; // Set a default content type
+            Response.Headers.Add("contentType", "application/pdf");
+            // You can set the content type based on the file's type or extension
+            // Example: if (fileExtension == ".pdf") contentType = "application/pdf";
+
+            // Return the file as a downloadable attachment
+            return File(fileData, contentType);
+        }
+
 
         [HttpDelete("{id}")]
 

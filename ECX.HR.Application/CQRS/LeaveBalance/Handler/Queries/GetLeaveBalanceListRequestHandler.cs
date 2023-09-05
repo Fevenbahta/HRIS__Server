@@ -58,7 +58,7 @@ namespace ECX.HR.Application.CQRS.LeaveBalance.Handler.Queries
                 int days = 1;
 
                 var updatedDto = _mapper.Map<AnnualLeaveBalanceDto>(AleaveBalance);
-                var annualRemaining = AleaveBalance.PreviousYearAnnualBalance + AleaveBalance.PreviousTwoYear;
+                var annualRemaining = AleaveBalance.PreviousYearAnnualBalance + AleaveBalance.PreviousTwoYear + annualleaves;
                 AleaveBalance.EmpId = AleaveBalance.EmpId;
                 AleaveBalance.StartDate = AleaveBalance.EndDate.AddDays(days);
                 AleaveBalance.EndDate = AleaveBalance.EndDate.AddDays(days).AddDays(365);

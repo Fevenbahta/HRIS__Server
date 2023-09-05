@@ -152,7 +152,7 @@ namespace ECX.HR.Persistence
         public DbSet<EmployeePositions> EmployeePosition { get; set; }
         public DbSet<EmployeeStatuss> EmploeeStatus { get; set; }
         public DbSet<Levels> Level { get; set; }
-        public DbSet<AnnualLeaveBalances> LeaveBalance { get; set; }
+        public DbSet<AnnualLeaveBalances> AnnualLeaveBalances { get; set; }
         public DbSet<LeaveTypes> LeaveType { get; set; }
         public DbSet<LeaveRequests> LeaveRequest { get; set; }
         public DbSet<OrganizationalProfiles> OrganizationalProfile { get; set; }

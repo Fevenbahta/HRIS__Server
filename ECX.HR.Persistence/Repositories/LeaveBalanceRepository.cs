@@ -29,7 +29,7 @@ namespace ECX.HR.Persistence.Repositories
         public async Task<IEnumerable<AnnualLeaveBalances>> GetExpiredLeaveBalances()
         {
             var currentDate = DateTime.Now;
-            var leaveBalances = await _context.LeaveBalance
+            var leaveBalances = await _context.AnnualLeaveBalances
         .Where(leaveBalance => leaveBalance.EndDate < currentDate)
         .ToListAsync();
 

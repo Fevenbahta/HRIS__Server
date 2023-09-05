@@ -3,14 +3,14 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
+
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ECX.HR.Persistence
 {
-    public  class EmployeeDataServices
+/*    public  class EmployeeDataServices
     {
         private readonly ECXHRDbContext _dbContext;
 
@@ -20,7 +20,7 @@ namespace ECX.HR.Persistence
         }
         public List<WorkExperiences> GetEmployeeWorkExperiences(Guid employeeId)
         {
-            var parameter = new SqlParameter("@EmployeeId", SqlDbType.UniqueIdentifier)
+            var parameter = new Microsoft.Data.SqlClient.SqlParameter("@EmployeeId", SqlDbType.UniqueIdentifier)
             {
                 Value = employeeId
             };
@@ -31,6 +31,19 @@ namespace ECX.HR.Persistence
 
             return workExperiences;
         }
+        public List<AnnualLeaveBalances> GetLeaveBalanceByEmp(Guid employeeId)
+        {
+            var parameter = new Microsoft.Data.SqlClient.SqlParameter("@EmployeeId", SqlDbType.UniqueIdentifier)
+            {
+                Value = employeeId
+            };
 
-    }
+            var leaveBalances = _dbContext.AnnualLeaveBalances
+                .FromSqlRaw("EXEC GetEmployeeData @EmployeeId", parameter)
+                .ToList();
+
+            return leaveBalances;
+        }
+
+    }*/
 }

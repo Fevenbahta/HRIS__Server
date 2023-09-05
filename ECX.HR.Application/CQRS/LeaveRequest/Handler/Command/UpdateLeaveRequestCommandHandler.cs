@@ -67,8 +67,10 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                 var leaveBalances = await _LeaveBalanceRepository.GetByEmpId(employeeId);
 
                 var employee = await _employeeRepository.GetById(employeeId);
-                DateTime employmentStartDate = employee.JoinDate; DateTime currentDate = DateTime.Now;
-                int daysElapsed = 365; int yearsOfWork = (currentDate - employmentStartDate).Days / 365;
+                DateTime employmentStartDate = employee.JoinDate;
+                DateTime currentDate = DateTime.Now;
+                int daysElapsed = 365;
+                int yearsOfWork = (currentDate - employmentStartDate).Days / 365;
                 int baseLeaveDay = 18 + (yearsOfWork - 1);
 
                 int totalDaysInYear = DateTime.IsLeapYear(currentDate.Year) ? 366 : 365;
@@ -80,7 +82,8 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                 foreach (var leaveBalance in leaveBalances.OrderBy(lb => lb.StartDate))
                 {
 
-                    leaveBalance.TotalRequest += leaveDuration; leaveBalance.TotalRemaining = accruedLeave - leaveBalance.TotalRequest;
+                    leaveBalance.TotalRequest += leaveDuration; 
+                    leaveBalance.TotalRemaining = accruedLeave - leaveBalance.TotalRequest;
                     if (leaveBalance.IsExpired != 1)
                     {
                         var annualRemainingBalance = (leaveBalance.PreviousTwoYear + leaveBalance.PreviousYearAnnualBalance + leaveBalance.AnnualDefaultBalance) - leaveDuration;
