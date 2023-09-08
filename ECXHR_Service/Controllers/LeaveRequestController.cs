@@ -38,7 +38,7 @@ namespace ECXHR_Service.Controllers
         }
 
 
-        [HttpGet("{Empid}")]
+        [HttpGet("empId/{Empid}")]
         public async Task<ActionResult<LeaveRequestDto>> GetByEmpId(Guid Empid)
         {
             var LeaveRequest = await _mediator.Send(new GetLeaveRequestByIdCommand { EmpId = Empid });
