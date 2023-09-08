@@ -81,11 +81,18 @@ namespace ECX.HR.Application.CQRS.OtherLeaveBalance.Handler.Command
            otherLeaveBalance.EducationRemainingBalance =otherLeaveBalance.EducationDefaultBalance;
            otherLeaveBalance.MarriageDefaultBalance = 3;
            otherLeaveBalance.MarraiageRemainingBalance =otherLeaveBalance.MarriageDefaultBalance;
+            if(emp.sex== "Female") { 
            otherLeaveBalance.MaternityDefaultBalance = 120;
-           otherLeaveBalance.MaternityRemainingBalance =otherLeaveBalance.MarriageDefaultBalance;
-           otherLeaveBalance.PaternityDefaultBalance = 15;
+           otherLeaveBalance.MaternityRemainingBalance =otherLeaveBalance.MaternityDefaultBalance;
+                otherLeaveBalance.AbortionLeaveDefaultBalance = 30;
+                otherLeaveBalance.AbortionLeaveRemainingBalance = otherLeaveBalance.AbortionLeaveDefaultBalance;
+            }
+
+            else {         otherLeaveBalance.PaternityDefaultBalance = 15;
            otherLeaveBalance.PaternityRemainingBalance =otherLeaveBalance.PaternityDefaultBalance;
-           otherLeaveBalance.CourtLeaveDefaultBalance = 0;
+            }
+   
+           otherLeaveBalance.CourtLeaveDefaultBalance = 30;
            otherLeaveBalance.CourtLeaveRemainingBalance =otherLeaveBalance.CourtLeaveDefaultBalance;
            otherLeaveBalance.StartDate = employmentStartDate;  
             otherLeaveBalance.EndDate = employmentStartDate.AddDays(daysElapsed);
