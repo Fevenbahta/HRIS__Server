@@ -32,6 +32,9 @@ using ECX.HR.Application.DTOs.Step;
 using ECX.HR.Application.DTOs.AssignSupervisor;
 using ECX.HR.Application.DTOs.LeaveBalance;
 using ECX.HR.Application.DTOs.Leave;
+using ECX.HR.Application.DTOs.PromotionVacancy;
+using ECX.HR.Application.DTOs.Promotion;
+using ECX.HR.Application.DTOs.PromotionRelation;
 
 namespace ECX.HR.Application.Profiles
 {
@@ -67,6 +70,9 @@ namespace ECX.HR.Application.Profiles
             CreateMap<OtherLeaveBalances, OtherLeaveBalanceDto>().ReverseMap();
             CreateMap<LeaveTypes, LeaveTypeDto>().ReverseMap();
             CreateMap<LeaveRequests, LeaveRequestDto>().ReverseMap();
+            CreateMap<PromotionVacancys, PromotionVacancyDto>().ReverseMap();
+            CreateMap<Promotions, PromotionDto>().ReverseMap();
+            CreateMap<PromotionRelations, PromotionRelationDto>().ReverseMap();
         }
     }
 }

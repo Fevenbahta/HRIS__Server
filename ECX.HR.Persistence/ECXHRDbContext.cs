@@ -45,6 +45,8 @@ namespace ECX.HR.Persistence
             modelBuilder.Entity<LeaveTypes>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
             modelBuilder.Entity<LeaveRequests>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
             modelBuilder.Entity<OtherLeaveBalances>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
+            modelBuilder.Entity<PromotionVacancys>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
+            modelBuilder.Entity<PromotionRelations>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
 
 
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
@@ -91,6 +93,12 @@ namespace ECX.HR.Persistence
             .WithOne(ex => ex.Employees)
             .HasForeignKey(e => e.EmpId)
               .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Employees>()
+     .HasMany(e => e.Promotions)
+     .WithOne(ex => ex.Employees)
+     .HasForeignKey(e => e.EmpId)
+       .OnDelete(DeleteBehavior.Cascade);
 
 
             modelBuilder.Entity<Employees>()
@@ -165,6 +173,8 @@ namespace ECX.HR.Persistence
         public DbSet<Trainings> Training { get; set; }
         public DbSet<WorkExperiences> WorkExperiences { get; set; }
         public DbSet<OtherLeaveBalances> OtherLeaveBalance { get; set; }
-
+        public DbSet<PromotionVacancys> PromotionVacancys { get; set; }
+        public DbSet<Promotions> Promotions { get; set; }
+        public DbSet<PromotionRelations> PromotionRelations { get; set; }
     }
 }

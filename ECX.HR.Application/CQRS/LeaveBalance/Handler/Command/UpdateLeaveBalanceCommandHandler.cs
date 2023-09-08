@@ -37,7 +37,7 @@ namespace ECX.HR.Application.CQRS.LeaveBalance.Handler.Command
             request.LeaveBalanceDto.UpdatedDate = DateTime.Now;
             request.LeaveBalanceDto.UpdatedDate = DateTime.Now;
       
-         var leaveBalances = await _LeaveBalanceRepository.GetAll();
+         
 var LeaveBalance = await _LeaveBalanceRepository.GetById(request.LeaveBalanceDto.Id);
         
 

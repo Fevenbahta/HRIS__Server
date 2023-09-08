@@ -52,6 +52,9 @@ namespace ECX.HR.Persistence
             services.AddScoped<IOtherLeaveBalanceRepository, OtherLeaveBalanceRepository>();
             services.AddScoped<ILeaveTypeRepository, LeaveTypeRepository>();
             services.AddScoped<ILeaveRequestRepository, LeaveRequestRepository>();
+            services.AddScoped<IPromotionRepository, PromotionRepository>();
+            services.AddScoped<IPromotionRelationRepository, PromotionRelationRepository>();
+
             services.AddScoped<EmployeeDto>(); // This registers EmployeeDto for dependency injection
             
     
@@ -64,6 +67,7 @@ namespace ECX.HR.Persistence
             // Inside ConfigureServices method in Startup.cs
             services.AddScoped<UpdateOtherLeaveBalanceCommandHandler>();
 
+            services.AddScoped<IPromotionVacancyRepository, PromotionVacancyRepository>();
 
             return services;
         }

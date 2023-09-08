@@ -127,7 +127,7 @@ namespace ECX.HR.Application.CQRS.OtherLeaveBalance.Handler.Queries
             }
             foreach (var otherLeaveBalance in expiredOtherLeaveBalances)
             {
-
+               
                 var updatedDto = _mapper.Map<OtherLeaveBalanceDto>(otherLeaveBalance);
 
                 DateTime employmentStartDate = otherLeaveBalance.EndDate;
@@ -154,7 +154,7 @@ namespace ECX.HR.Application.CQRS.OtherLeaveBalance.Handler.Queries
 
             foreach (var otherLeaveBalance in OtherLeaveBalances)
             {
-
+                var employee = await _employeeRepository.GetById(otherLeaveBalance.EmpId);
 
 
                 DateTime currentDate = DateTime.Now;
@@ -176,7 +176,7 @@ namespace ECX.HR.Application.CQRS.OtherLeaveBalance.Handler.Queries
                     otherLeaveBalance.CompassinateRemainingBalance = 3;
                     otherLeaveBalance.CompassinateDefaultBalance = 3;
                 }
-                if (otherLeaveBalance.AbortionLeaveRemainingBalance== 0)
+                if (otherLeaveBalance.AbortionLeaveRemainingBalance== 0 && employee.sex == "Female")
                 {
                     otherLeaveBalance.AbortionLeaveRemainingBalance = 30;
                     otherLeaveBalance.AbortionLeaveDefaultBalance = 30;
@@ -187,12 +187,12 @@ namespace ECX.HR.Application.CQRS.OtherLeaveBalance.Handler.Queries
                     otherLeaveBalance.MarriageDefaultBalance = 3;
                     otherLeaveBalance.MarraiageRemainingBalance = 3;
                 }
-                if (otherLeaveBalance.MaternityRemainingBalance == 0)
+                if (otherLeaveBalance.MaternityRemainingBalance == 0 && employee.sex=="Female")
                 {
                     otherLeaveBalance.MaternityDefaultBalance = 120;
                     otherLeaveBalance.MaternityRemainingBalance = 120;
                 }
-                if (otherLeaveBalance.PaternityRemainingBalance == 0)
+                if (otherLeaveBalance.PaternityRemainingBalance == 0 && employee.sex == "Male")
                 {
                     otherLeaveBalance.PaternityRemainingBalance = 7;
                     otherLeaveBalance.PaternityRemainingBalance = 7;
@@ -201,8 +201,8 @@ namespace ECX.HR.Application.CQRS.OtherLeaveBalance.Handler.Queries
 
                 if (otherLeaveBalance.CourtLeaveRemainingBalance == 0)
                 {
-                    otherLeaveBalance.CourtLeaveDefaultBalance = 0;
-                    otherLeaveBalance.CourtLeaveRemainingBalance = 0;
+                    otherLeaveBalance.CourtLeaveDefaultBalance = 30;
+                    otherLeaveBalance.CourtLeaveRemainingBalance = 30;
                 }
 
 

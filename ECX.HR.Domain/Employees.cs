@@ -44,8 +44,7 @@ namespace ECX.HR.Domain
         public ICollection<Spouses> Spouses { get; set; }
         public ICollection<AnnualLeaveBalances> LeaveBalances { get; set; }
 
-
-
+        public ICollection<Promotions> Promotions { get; set; }
 
 
 
