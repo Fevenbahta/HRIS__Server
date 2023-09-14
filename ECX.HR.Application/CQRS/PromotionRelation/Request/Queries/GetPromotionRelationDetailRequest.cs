@@ -13,6 +13,6 @@ namespace ECX.HR.Application.CQRS.PromotionRelation.Request.Queries
 {
     public class GetPromotionRelationDetailRequest :IRequest<PromotionRelationDto>
     {
-        public Guid Id { get; set; }
+        public Guid empId { get; set; }
     }
 }

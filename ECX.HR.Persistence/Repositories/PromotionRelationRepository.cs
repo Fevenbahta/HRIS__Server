@@ -17,6 +17,13 @@ namespace ECX.HR.Persistence.Repositories
         {
            _context = context;
         }
+        public async Task<List<PromotionRelations>> GetByEmpId(Guid empId)
+        {
+            return await _context.Set<PromotionRelations>()
+                     .Where(T => T.EmpId == empId)
+                   .ToListAsync();
+        }
+
         public async Task<List<PromotionRelations>> GetByStatus(string status)
         {
             return await _context.Set<PromotionRelations>()

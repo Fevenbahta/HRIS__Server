@@ -25,10 +25,10 @@ namespace ECX.HR.Application.CQRS.PromotionVacancy.Handler.Queries
         }
         public async Task<PromotionRelationDto> Handle(GetPromotionRelationDetailRequest request, CancellationToken cancellationToken)
         {
-            var PromotionVacancy =await _PromotionVacancyRepository.GetById(request.Id);
-           
-            if (PromotionVacancy == null || PromotionVacancy.Status != 0)
-                throw new NotFoundException(nameof(PromotionVacancy), request.Id);
+            var PromotionVacancy =await _PromotionVacancyRepository.GetByEmpId(request.empId);
+
+            if (PromotionVacancy == null || !PromotionVacancy.Any(we => we.Status == 0))
+                throw new NotFoundException(nameof(PromotionVacancy), request.empId);
 
             else
                 return _mapper.Map<PromotionRelationDto>(PromotionVacancy);
