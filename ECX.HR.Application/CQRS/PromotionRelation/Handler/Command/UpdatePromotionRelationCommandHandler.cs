@@ -36,7 +36,7 @@ namespace ECX.HR.Application.CQRS.PromotionRelation.Handler.Command
             var PromotionRelation = await _PromotionRelationRepository.GetById(request.PromotionRelationDto.Id);
             _mapper.Map(request.PromotionRelationDto, PromotionRelation);
 
-            await _PromotionRelationRepository.Update(PromotionRelation);
+           
 
             var promotions = await _PromotionRelationRepository.GetAll();
 
@@ -44,9 +44,10 @@ namespace ECX.HR.Application.CQRS.PromotionRelation.Handler.Command
 
             foreach (var promotion in promotions.OrderBy(lb => lb.VacancyId))
             {
-                if (promotion.PromotionStatus != "promoted" && promotion.VacancyId == request.PromotionRelationDto.VacancyId)
+                if (promotion.PromotionStatus != "Promoted" && promotion.VacancyId == request.PromotionRelationDto.VacancyId)
                 {
                     promotion.Status = 1;
+ await _PromotionRelationRepository.Update(promotion);
                 }
 
             }
@@ -55,11 +56,12 @@ namespace ECX.HR.Application.CQRS.PromotionRelation.Handler.Command
                 if (vacancy.VacancyId == request.PromotionRelationDto.VacancyId)
                 {
                     vacancy.Status = 1;
+                    await promotionVacancy.Update(vacancy);
                 }
 
             }
 
-
+           
 
 
             return Unit.Value;

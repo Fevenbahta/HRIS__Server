@@ -52,7 +52,7 @@ namespace ECXHR_Service.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<PromotionRelationDto>> Get(Guid id)
         {
-            var PromotionRelation = await _mediator.Send(new GetPromotionRelationDetailRequest { Id = id });
+            var PromotionRelation = await _mediator.Send(new GetPromotionRelationDetailRequest { empId = id });
             return Ok(PromotionRelation);
         }
 
