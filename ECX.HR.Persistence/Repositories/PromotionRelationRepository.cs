@@ -1,5 +1,6 @@
 ﻿using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Domain;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,12 @@ namespace ECX.HR.Persistence.Repositories
         public PromotionRelationRepository(ECXHRDbContext context) : base(context)
         {
            _context = context;
+        }
+        public async Task<List<PromotionRelations>> GetByStatus(string status)
+        {
+            return await _context.Set<PromotionRelations>()
+                     .Where(T => T.PromotionStatus == status)
+                   .ToListAsync();
         }
     }
 }

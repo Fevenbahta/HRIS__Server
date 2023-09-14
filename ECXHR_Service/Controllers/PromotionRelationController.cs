@@ -13,6 +13,8 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
+using ECX.HR.Application.CQRS.LeaveRequest.Request.Queries;
+using ECX.HR.Application.DTOs.Leave;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -30,6 +32,14 @@ namespace ECXHR_Service.Controllers
             _mediator = mediator;
             this._httpContextAccessor = httpContextAccessor;
         }
+
+        [HttpGet("status/{PromotionStatus}")]
+        public async Task<ActionResult<PromotionRelationDto>> GetByStatus(string PromotionStatus)
+        {
+            var PromotionRelation = await _mediator.Send(new GetPromotionRelationStatusByIdCommand { PromotionStatus = PromotionStatus });
+            return Ok(PromotionRelation);
+        }
+
         // GET: api/<PromotionRelationController>
         [HttpGet]
         public async Task<ActionResult<List<PromotionRelationDto>>> Get()
