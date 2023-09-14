@@ -10,6 +10,6 @@ namespace ECX.HR.Application.Contracts.Persistence
 {
     public interface IPromotionRelationRepository : IGenericRepository<PromotionRelations>
     {
- 
+        Task<List<PromotionRelations>> GetByStatus(string PromotionStatus);
     }
 }

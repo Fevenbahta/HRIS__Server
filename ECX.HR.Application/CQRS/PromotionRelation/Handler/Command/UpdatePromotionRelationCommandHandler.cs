@@ -16,10 +16,12 @@ namespace ECX.HR.Application.CQRS.PromotionRelation.Handler.Command
     public class UpdatePromotionRelationCommandHandler : IRequestHandler<UpdatePromotionRelationCommand, Unit>
     {
         private IPromotionRelationRepository _PromotionRelationRepository;
+        private readonly IPromotionVacancyRepository promotionVacancy;
         private IMapper _mapper;
-        public UpdatePromotionRelationCommandHandler(IPromotionRelationRepository PromotionRelationRepository, IMapper mapper)
+        public UpdatePromotionRelationCommandHandler(IPromotionRelationRepository PromotionRelationRepository,IPromotionVacancyRepository PromotionVacancy, IMapper mapper)
         {
             _PromotionRelationRepository = PromotionRelationRepository;
+            promotionVacancy = PromotionVacancy;
             _mapper = mapper;
         }
 
@@ -27,11 +29,39 @@ namespace ECX.HR.Application.CQRS.PromotionRelation.Handler.Command
         {
             var validator = new PromotionRelationDtoValidator();
             var validationResult = await validator.ValidateAsync(request.PromotionRelationDto);
+
+
             if (validationResult.IsValid == false)
                 throw new ValidationException(validationResult);
             var PromotionRelation = await _PromotionRelationRepository.GetById(request.PromotionRelationDto.Id);
             _mapper.Map(request.PromotionRelationDto, PromotionRelation);
+
             await _PromotionRelationRepository.Update(PromotionRelation);
+
+            var promotions = await _PromotionRelationRepository.GetAll();
+
+            var vacancys =await promotionVacancy.GetAll();
+
+            foreach (var promotion in promotions.OrderBy(lb => lb.VacancyId))
+            {
+                if (promotion.PromotionStatus != "promoted" && promotion.VacancyId == request.PromotionRelationDto.VacancyId)
+                {
+                    promotion.Status = 1;
+                }
+
+            }
+            foreach (var vacancy in vacancys.OrderBy(lb => lb.VacancyId))
+            {
+                if (vacancy.VacancyId == request.PromotionRelationDto.VacancyId)
+                {
+                    vacancy.Status = 1;
+                }
+
+            }
+
+
+
+
             return Unit.Value;
         }
     }
