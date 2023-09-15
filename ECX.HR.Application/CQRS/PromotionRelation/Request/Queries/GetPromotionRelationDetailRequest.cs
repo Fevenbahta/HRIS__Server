@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.CQRS.PromotionRelation.Request.Queries
 {
-    public class GetPromotionRelationDetailRequest :IRequest<PromotionRelationDto>
+    public class GetPromotionRelationDetailRequest :IRequest<List<PromotionRelationDto>>
     {
         public Guid empId { get; set; }
     }

@@ -8,10 +8,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.Contracts.Persistence
 {
-    public interface IEmployeeRepository : IGenericRepository<Employees>
+    public interface IActingAssigmentRepository : IGenericRepository<ActingAssigments>
     {
-        Task<List<Employees>> GetByEcxId(string id);
-
-        Task<List<Employees>> GetEmployeeDataAsync(Guid employeeid);
     }
 }

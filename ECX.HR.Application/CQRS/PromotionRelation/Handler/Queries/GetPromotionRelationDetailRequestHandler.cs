@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.CQRS.PromotionVacancy.Handler.Queries
 {
-    public class GetPromotionRelationDetailRequestHandler : IRequestHandler<GetPromotionRelationDetailRequest, PromotionRelationDto>
+    public class GetPromotionRelationDetailRequestHandler : IRequestHandler<GetPromotionRelationDetailRequest, List<PromotionRelationDto>>
     {
         private IPromotionRelationRepository _PromotionVacancyRepository;
         private IMapper _mapper;
@@ -23,7 +23,7 @@ namespace ECX.HR.Application.CQRS.PromotionVacancy.Handler.Queries
             _PromotionVacancyRepository = PromotionVacancyRepository;
             _mapper = mapper;
         }
-        public async Task<PromotionRelationDto> Handle(GetPromotionRelationDetailRequest request, CancellationToken cancellationToken)
+        public async Task<List<PromotionRelationDto>> Handle(GetPromotionRelationDetailRequest request, CancellationToken cancellationToken)
         {
             var PromotionVacancy =await _PromotionVacancyRepository.GetByEmpId(request.empId);
 
@@ -31,7 +31,10 @@ namespace ECX.HR.Application.CQRS.PromotionVacancy.Handler.Queries
                 throw new NotFoundException(nameof(PromotionVacancy), request.empId);
 
             else
-                return _mapper.Map<PromotionRelationDto>(PromotionVacancy);
+                return _mapper.Map<List<PromotionRelationDto>>(PromotionVacancy);
+          
         }
+
+       
     }
 }

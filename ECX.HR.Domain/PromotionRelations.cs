@@ -27,5 +27,6 @@ namespace ECX.HR.Domain
         public int Status { get; set; }
 
 
+
     }
 }

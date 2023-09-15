@@ -47,6 +47,7 @@ namespace ECX.HR.Persistence
             modelBuilder.Entity<OtherLeaveBalances>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
             modelBuilder.Entity<PromotionVacancys>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
             modelBuilder.Entity<PromotionRelations>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
+            modelBuilder.Entity<ActingAssigments>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
 
 
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
@@ -176,5 +177,6 @@ namespace ECX.HR.Persistence
         public DbSet<PromotionVacancys> PromotionVacancys { get; set; }
         public DbSet<Promotions> Promotions { get; set; }
         public DbSet<PromotionRelations> PromotionRelations { get; set; }
+        public DbSet<ActingAssigments> ActingAssiment { get; set; }
     }
 }
