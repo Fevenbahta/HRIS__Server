@@ -12,5 +12,6 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Request.Queries
     {
 
         public string LeaveStatus { get; set; }
+        public string Supervisor { get; set; }
     }
 }

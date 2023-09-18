@@ -65,24 +65,27 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                 var leaveWorkingDays = leaveRequest.WorkingDays;
                 
                 var totalDuration = (int)(leaveEndDate - leaveStartDate).TotalDays + 1;
-                int holidaysAndWeekends = 0;
+                /*          int holidaysAndWeekends = 0;
 
-                for (DateTime date = leaveStartDate; date <= leaveEndDate; date = date.AddDays(1))
-                {
-                    // Check if the current date is a weekend (Saturday or Sunday)
-                    if (date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday)
-                    {
-                        holidaysAndWeekends++;
-                    }
-                   
-                }
+                          for (DateTime date = leaveStartDate; date <= leaveEndDate; date = date.AddDays(1))
+                          {
 
+                              if (date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday)
+                              {
+                                  holidaysAndWeekends++;
+                              }
 
-                var leaveDuration = totalDuration - holidaysAndWeekends;
+                          }*/
 
 
+                /*  var leaveDuration = totalDuration - holidaysAndWeekends;*/
 
-                var employeeId = request.LeaveRequestDto.EmpId;
+
+                var leaveDuration = leaveRequest.WorkingDays;
+
+
+
+               var employeeId = request.LeaveRequestDto.EmpId;
                 var otherLeaveBalances = await _otherLeaveBalanceRepository.GetByEmpId(employeeId);
                 var leaveBalances = await _LeaveBalanceRepository.GetByEmpId(employeeId);
 
@@ -186,7 +189,7 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                         var sickRemainingBalance = otherLeaveBalance.SickRemainingBalance;
                         var paternityRemainingBalance = otherLeaveBalance.PaternityRemainingBalance;
                         var maternityRemainingBalance = otherLeaveBalance.MaternityRemainingBalance;
-                        var marraiageRemainingBalance = otherLeaveBalance.MarraiageRemainingBalance;
+                        var marraiageRemainingBalance = otherLeaveBalance.MarriageRemainingBalance;
                         var educationRemainingBalance = otherLeaveBalance.EducationRemainingBalance;
                         var compassinateRemainingBalance = otherLeaveBalance.CompassinateRemainingBalance;
                         var courtLeaveRemainingBalance = otherLeaveBalance.CourtLeaveRemainingBalance;
@@ -209,17 +212,17 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                                     }
 
                                 }
-                                else if (leaveType.LeaveTypeName == "Abortion" && leaveDuration <= abortionRemainingBalance && employee.sex == "Female")
+                                else if (leaveType.LeaveTypeName == "Abortion" && leaveDuration <= abortionRemainingBalance && employee.sex == "female")
                                 {
                                     otherLeaveBalance.AbortionLeaveRemainingBalance -= leaveDuration;
                                     leaveDuration = 0;
                                 }
-                                else if (leaveType.LeaveTypeName == "Maternal" && leaveDuration <= maternityRemainingBalance && employee.sex=="Female")
+                                else if (leaveType.LeaveTypeName == "Maternal" && leaveDuration <= maternityRemainingBalance && employee.sex=="female")
                                 {
                                     otherLeaveBalance.MaternityRemainingBalance -= leaveDuration;
                                     leaveDuration = 0;
                                 }
-                                else if (leaveType.LeaveTypeName == "Paternal" && leaveDuration <= paternityRemainingBalance && employee.sex == "Male")
+                                else if (leaveType.LeaveTypeName == "Paternal" && leaveDuration <= paternityRemainingBalance && employee.sex == "male")
                                 {
                                     otherLeaveBalance.PaternityRemainingBalance -= leaveDuration;
                                     leaveDuration = 0;
@@ -231,7 +234,7 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                                 }
                                 else if (leaveType.LeaveTypeName == "Marriage" && leaveDuration <= marraiageRemainingBalance)
                                 {
-                                    otherLeaveBalance.MarraiageRemainingBalance -= leaveDuration;
+                                    otherLeaveBalance.MarriageRemainingBalance -= leaveDuration;
                                     leaveDuration = 0;
                                 }
                                 else if (leaveType.LeaveTypeName == "Compassinate" && leaveDuration <= compassinateRemainingBalance)

@@ -8,11 +8,8 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.Contracts.Persistence
 {
-    public interface ILeaveRequestRepository : IGenericRepository<LeaveRequests>
+    public interface ITerminationRepository : IGenericRepository<Terminations>
     {
-        Task<List<LeaveRequests>> GetByEmpId(Guid id);
-        Task<List<LeaveRequests>> GetByStatus(string leaveStatus, string supervisor);
-        
-
+        Task<List<Terminations>> GetByEmpId(Guid id);
     }
 }

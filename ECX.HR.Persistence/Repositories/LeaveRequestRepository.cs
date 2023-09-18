@@ -23,10 +23,10 @@ namespace ECX.HR.Persistence.Repositories
                      .Where(T => T.EmpId == empId)
                    .ToListAsync();
         }
-        public async Task<List<LeaveRequests>> GetByStatus(string status)
+        public async Task<List<LeaveRequests>> GetByStatus(string status, string supervisor)
         {
             return await _context.Set<LeaveRequests>()
-                     .Where(T => T.LeaveStatus == status)
+                     .Where(T => T.LeaveStatus == status && T.Supervisor == supervisor)
                    .ToListAsync();
         }
     }

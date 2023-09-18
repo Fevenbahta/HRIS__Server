@@ -12,26 +12,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECX.HR.Application.CQRS.PromotionVacancy.Handler.Queries
+namespace ECX.HR.Application.CQRS.PromotionRelation.Handler.Queries
 {
-    public class GetPromotionRelationDetailRequestHandler : IRequestHandler<GetPromotionRelationDetailRequest, PromotionRelationDto>
+    public class GetPromotionRelationDetailRequestHandler : IRequestHandler<GetPromotionRelationDetailRequest, List<PromotionRelationDto>>
     {
-        private IPromotionRelationRepository _PromotionVacancyRepository;
+        private IPromotionRelationRepository _PromotionRelationRepository;
         private IMapper _mapper;
-        public GetPromotionRelationDetailRequestHandler(IPromotionRelationRepository PromotionVacancyRepository, IMapper mapper)
+        public GetPromotionRelationDetailRequestHandler(IPromotionRelationRepository PromotionRelationRepository, IMapper mapper)
         {
-            _PromotionVacancyRepository = PromotionVacancyRepository;
+            _PromotionRelationRepository = PromotionRelationRepository;
             _mapper = mapper;
         }
-        public async Task<PromotionRelationDto> Handle(GetPromotionRelationDetailRequest request, CancellationToken cancellationToken)
+        public async Task<List<PromotionRelationDto>> Handle(GetPromotionRelationDetailRequest request, CancellationToken cancellationToken)
         {
-            var PromotionVacancy =await _PromotionVacancyRepository.GetByEmpId(request.empId);
+            var PromotionRelation =await _PromotionRelationRepository.GetByEmpId(request.empId);
 
-            if (PromotionVacancy == null || !PromotionVacancy.Any(we => we.Status == 0))
-                throw new NotFoundException(nameof(PromotionVacancy), request.empId);
+            if (PromotionRelation == null || !PromotionRelation.Any(we => we.Status == 0))
+                throw new NotFoundException(nameof(PromotionRelation), request.empId);
 
             else
-                return _mapper.Map<PromotionRelationDto>(PromotionVacancy);
+                return _mapper.Map<List<PromotionRelationDto>>(PromotionRelation);
         }
     }
 }

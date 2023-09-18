@@ -31,6 +31,7 @@ namespace ECX.HR.Domain
         public string LeaveStatus { get; set; }
 
         public string Reason { get; set; }
+        public string Supervisor { get; set; }
 
         public string? File { get; set; }
       //  public byte[] FileData { get; set; }

@@ -26,7 +26,7 @@ namespace ECX.HR.Application.DTOs.LeaveBalance
         public Decimal EducationDefaultBalance { get; set; }
         public Decimal EducationRemainingBalance { get; set; }
         public Decimal MarriageDefaultBalance { get; set; }
-        public Decimal MarraiageRemainingBalance { get; set; }
+        public Decimal MarriageRemainingBalance { get; set; }
         public Decimal LeaveWotPayDefaultBalance { get; set; }
         public Decimal LeaveWotPayRemainingBalance { get; set; }
         public Decimal CourtLeaveDefaultBalance { get; set; }
