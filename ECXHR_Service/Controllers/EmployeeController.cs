@@ -95,7 +95,7 @@ namespace ECXHR_Service.Controllers
             catch (Exception ex)
             {
                 // Handle exceptions appropriately
-                return null;
+                return StatusCode(500, ex.Message);
             }
         }
         // POST api/<EmployeeController>
