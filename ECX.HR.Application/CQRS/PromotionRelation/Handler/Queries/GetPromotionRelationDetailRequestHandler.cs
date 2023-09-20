@@ -33,5 +33,7 @@ namespace ECX.HR.Application.CQRS.PromotionRelation.Handler.Queries
             else
                 return _mapper.Map<List<PromotionRelationDto>>(PromotionRelation);
         }
+
+       
     }
 }

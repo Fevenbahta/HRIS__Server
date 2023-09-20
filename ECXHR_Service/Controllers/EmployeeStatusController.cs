@@ -31,7 +31,7 @@ namespace ECXHR_Service.Controllers
         [HttpGet]
         public async Task<ActionResult<List<EmployeeStatusDto>>> Get()
         {
-            var EmployeeStatus = await _mediator.Send(new GetEmployeeStatusRequest());
+            var EmployeeStatus = await _mediator.Send(new GetEmployeeStatusListRequest());
             return Ok(EmployeeStatus);
         }
 

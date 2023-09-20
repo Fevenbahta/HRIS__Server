@@ -38,6 +38,7 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
             leaveRequest.leaveRequestId = Guid.NewGuid();
             var add = leaveRequest.leaveRequestId;
             var data = await _leaveRequestRepository.Add(leaveRequest);
+            
             response.Success = true;
             response.Message = "Creation Successfull";
             response.Id = (Guid)add;

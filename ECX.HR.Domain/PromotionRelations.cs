@@ -28,5 +28,6 @@ namespace ECX.HR.Domain
         public virtual Employees Employees { get; set; }
 
 
+
     }
 }

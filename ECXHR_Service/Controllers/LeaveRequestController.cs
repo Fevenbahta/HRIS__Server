@@ -50,6 +50,13 @@ namespace ECXHR_Service.Controllers
             var LeaveRequest = await _mediator.Send(new GetLeaveRequestStatusByIdCommand { LeaveStatus = LeaveStatus , Supervisor = Supervisor }) ;
             return Ok(LeaveRequest);
         }
+        [HttpGet("status/{LeaveStatus}")]
+        public async Task<ActionResult<LeaveRequestDto>> GetAllByStatus(string LeaveStatus)
+        {
+            var LeaveRequest = await _mediator.Send(new GetLeaveRequestAllStatusCommand { LeaveStatus = LeaveStatus });
+            return Ok(LeaveRequest);
+        }
+        // 
         // POST api/<AddressController>
         [HttpPost]
         public async Task<ActionResult<BaseCommandResponse>> Post([FromBody] LeaveRequestDto leaveRequestDto)
