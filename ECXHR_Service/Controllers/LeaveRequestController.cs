@@ -1,8 +1,18 @@
 ﻿
 
+using ECX.HR.Application.CQRS.Addresss.Request.Queries;
+using ECX.HR.Application.CQRS.Education.Request.Queries;
+using ECX.HR.Application.CQRS.EmergencyContact.Request.Queries;
+using ECX.HR.Application.CQRS.Employee.Request.Queries;
+using ECX.HR.Application.CQRS.EmployeePosition.Request.Queries;
+using ECX.HR.Application.CQRS.LeaveBalance.Request.Queries;
 using ECX.HR.Application.CQRS.LeaveRequest.Handler.Command;
 using ECX.HR.Application.CQRS.LeaveRequest.Request.Command;
 using ECX.HR.Application.CQRS.LeaveRequest.Request.Queries;
+using ECX.HR.Application.CQRS.OtherLeaveBalance.Request.Queries;
+using ECX.HR.Application.CQRS.Training.Request.Queries;
+using ECX.HR.Application.CQRS.WorkExperience.Request.Queries;
+using ECX.HR.Application.DTOs.Employees;
 using ECX.HR.Application.DTOs.Leave;
 
 using ECX.HR.Application.Response;
@@ -99,7 +109,41 @@ namespace ECXHR_Service.Controllers
             // Return the file as a downloadable attachment
             return File(fileData, contentType);
         }
+        [HttpGet("GetLeaveData/{id}")]
+        public async Task<ActionResult<CombinedLeaveDataDto>> GetLeaveData(Guid id)
+        {
+            try
+            {
+                // Fetch data from different tables
+                var employee = await _mediator.Send(new GetEmployeeDetailRequest { EmpId = id });
+               
+                var leaveRequest = await _mediator.Send(new GetLeaveRequestByIdCommand { EmpId = id });
+                var annualLeaveBalance = await _mediator.Send(new GetLeaveBalanceDetailRequest { EmpId = id });
+                var otherLeaveBalance = await _mediator.Send(new GetOtherLeaveBalanceDetailRequest { EmpId = id });
+              
+                // Create a CombinedEmployeeDataDto and populate it
+                var combinedData = new CombinedLeaveDataDto
+                {
+                    Employee = employee,
+                    LeaveRequests=leaveRequest,
+                    AnnualLeaveBalances=annualLeaveBalance,
+                    OtherLeaveBalances=otherLeaveBalance
+                    // Add other data properties as needed
+                };
 
+                if (combinedData.Employee == null)
+                {
+                    return NotFound(); // Employee not found
+                }
+
+                return Ok(combinedData);
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions appropriately
+                return StatusCode(500, ex.Message);
+            }
+        }
 
         [HttpDelete("{id}")]
 

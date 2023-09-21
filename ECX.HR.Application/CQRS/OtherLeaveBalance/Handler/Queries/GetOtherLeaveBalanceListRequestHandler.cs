@@ -182,10 +182,10 @@ namespace ECX.HR.Application.CQRS.OtherLeaveBalance.Handler.Queries
                     otherLeaveBalance.AbortionLeaveDefaultBalance = 30;
                 }
 
-                if (otherLeaveBalance.MarraiageRemainingBalance == 0)
+                if (otherLeaveBalance.MarriageRemainingBalance == 0)
                 {
                     otherLeaveBalance.MarriageDefaultBalance = 3;
-                    otherLeaveBalance.MarraiageRemainingBalance = 3;
+                    otherLeaveBalance.MarriageRemainingBalance = 3;
                 }
                 if (otherLeaveBalance.MaternityRemainingBalance == 0 && employee.sex=="Female")
                 {

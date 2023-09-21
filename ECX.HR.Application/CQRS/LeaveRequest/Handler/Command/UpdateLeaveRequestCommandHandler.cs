@@ -186,7 +186,7 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                         var sickRemainingBalance = otherLeaveBalance.SickRemainingBalance;
                         var paternityRemainingBalance = otherLeaveBalance.PaternityRemainingBalance;
                         var maternityRemainingBalance = otherLeaveBalance.MaternityRemainingBalance;
-                        var marraiageRemainingBalance = otherLeaveBalance.MarraiageRemainingBalance;
+                        var marraiageRemainingBalance = otherLeaveBalance.MarriageRemainingBalance;
                         var educationRemainingBalance = otherLeaveBalance.EducationRemainingBalance;
                         var compassinateRemainingBalance = otherLeaveBalance.CompassinateRemainingBalance;
                         var courtLeaveRemainingBalance = otherLeaveBalance.CourtLeaveRemainingBalance;
@@ -231,7 +231,7 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                                 }
                                 else if (leaveType.LeaveTypeName == "Marriage" && leaveDuration <= marraiageRemainingBalance)
                                 {
-                                    otherLeaveBalance.MarraiageRemainingBalance -= leaveDuration;
+                                    otherLeaveBalance.MarriageRemainingBalance -= leaveDuration;
                                     leaveDuration = 0;
                                 }
                                 else if (leaveType.LeaveTypeName == "Compassinate" && leaveDuration <= compassinateRemainingBalance)
