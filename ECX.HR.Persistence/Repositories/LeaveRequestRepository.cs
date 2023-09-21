@@ -29,7 +29,7 @@ namespace ECX.HR.Persistence.Repositories
         public async Task<List<LeaveRequests>> GetByStatus(string status, string supervisor)
         {
             return await _context.Set<LeaveRequests>()
-                     .Where(T => T.LeaveStatus == status && T.Supervisor == supervisor)
+                     .Where(T => T.LeaveStatus == status && T.Supervisor == supervisor && T.StartDate.Year >= currentDate.Year - 1)
                    .ToListAsync();
         }
         public async Task<List<LeaveRequests>> GetAllByStatus(string status)
