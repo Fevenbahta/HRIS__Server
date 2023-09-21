@@ -81,7 +81,7 @@ namespace ECX.HR.Application.CQRS.OtherLeaveBalance.Handler.Command
            otherLeaveBalance.EducationRemainingBalance =otherLeaveBalance.EducationDefaultBalance;
            otherLeaveBalance.MarriageDefaultBalance = 3;
            otherLeaveBalance.MarriageRemainingBalance =otherLeaveBalance.MarriageDefaultBalance;
-            if(emp.sex== "Female") { 
+            if(emp.sex== "female") { 
            otherLeaveBalance.MaternityDefaultBalance = 120;
            otherLeaveBalance.MaternityRemainingBalance =otherLeaveBalance.MaternityDefaultBalance;
                 otherLeaveBalance.AbortionLeaveDefaultBalance = 30;

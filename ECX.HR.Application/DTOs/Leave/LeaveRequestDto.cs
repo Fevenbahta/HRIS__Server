@@ -32,9 +32,10 @@ namespace ECX.HR.Application.DTOs.Leave
 
       public string? File { get; set; }
        // public byte[] FileData { get; set; }
-        public int WorkingDays { get; set; }
+        public decimal WorkingDays { get; set; }
         public DateTime SickStartDate { get; set; }
         public DateTime SickEndDate { get; set; }
+        public string Supervisor { get; set; }
 
         public int Status { get; set; }
     }

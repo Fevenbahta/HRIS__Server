@@ -36,6 +36,8 @@ using ECX.HR.Application.DTOs.PromotionVacancy;
 using ECX.HR.Application.DTOs.Promotion;
 using ECX.HR.Application.DTOs.PromotionRelation;
 using ECX.HR.Application.DTOs.ActingAssigment;
+using ECX.HR.Application.DTOs.Termination;
+using ECX.HR.Application.DTOs.Holiday;
 
 namespace ECX.HR.Application.Profiles
 {
@@ -75,6 +77,8 @@ namespace ECX.HR.Application.Profiles
             CreateMap<Promotions, PromotionDto>().ReverseMap();
             CreateMap<PromotionRelations, PromotionRelationDto>().ReverseMap();
             CreateMap<ActingAssigments, ActingAssigmentDto>().ReverseMap();
+            CreateMap<Terminations, TerminationDto>().ReverseMap();
+            CreateMap<Holidays, HolidayDto>().ReverseMap();
 
         }
     }

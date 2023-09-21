@@ -24,14 +24,14 @@ namespace ECX.HR.Application.DTOs.Employees
         public AddressDto Addresses { get; set; }
         public List<EmergencyContactDto> EmergencyContacts { get; set; }
 
-        public List<SpouseDto> Spouse { get; set; }
-        public EmployeePositionDto EmployeePostion { get; set; }
-        public List<EducationDto> Education { get; set; }
-        public List<TrainingDto> Training { get; set; }
-        public List<LeaveRequestDto> LeaveRequest { get; set; }
-        public AnnualLeaveBalanceDto AnnualLeaveBalance { get; set; }
-        public OtherLeaveBalanceDto OtherLeaveBalanceDtos { get; set; }
-        public List<WorkExperienceDto> WorkExperienceDtos { get; set; }
+        public List<SpouseDto> Spouses { get; set; }
+        public EmployeePositionDto EmployeePostions { get; set; }
+        public List<EducationDto> Educations { get; set; }
+        public List<TrainingDto> Trainings { get; set; }
+        public List<LeaveRequestDto> LeaveRequests { get; set; }
+        public List<AnnualLeaveBalanceDto> AnnualLeaveBalances { get; set; }
+        public List<OtherLeaveBalanceDto> OtherLeaveBalances { get; set; }
+        public List<WorkExperienceDto> WorkExperiences { get; set; }
 
     }
 }

@@ -48,7 +48,7 @@ namespace ECX.HR.Persistence
             modelBuilder.Entity<PromotionVacancys>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
             modelBuilder.Entity<PromotionRelations>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
             modelBuilder.Entity<ActingAssigments>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
-
+            modelBuilder.Entity<Holidays>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
 
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
             {
@@ -108,6 +108,18 @@ namespace ECX.HR.Persistence
             .HasForeignKey(e => e.EmpId)
               .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<Employees>()
+        .HasMany(e => e.Terminations)
+        .WithOne(ex => ex.Employees)
+        .HasForeignKey(e => e.EmpId)
+          .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Employees>()
+        .HasMany(e => e.PromotionRelations)
+        .WithOne(ex => ex.Employees)
+        .HasForeignKey(e => e.EmpId)
+          .OnDelete(DeleteBehavior.Cascade);
+
             modelBuilder.Entity<Department>()
             .HasMany(e => e.Divisions)
             .WithOne(ex => ex.Departments)
@@ -147,6 +159,8 @@ namespace ECX.HR.Persistence
             }
             return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
+        public DbSet<Terminations> Terminations { get; set; }
+
         public DbSet<Adress> Adress { get; set; }
         public DbSet<AssignSupervisorss> AssignSupervisor { get; set; }
         public DbSet<Department> Departments { get; set; }
@@ -178,5 +192,7 @@ namespace ECX.HR.Persistence
         public DbSet<Promotions> Promotions { get; set; }
         public DbSet<PromotionRelations> PromotionRelations { get; set; }
         public DbSet<ActingAssigments> ActingAssiment { get; set; }
+        public DbSet<Holidays> Holidays { get; set; }
+
     }
 }

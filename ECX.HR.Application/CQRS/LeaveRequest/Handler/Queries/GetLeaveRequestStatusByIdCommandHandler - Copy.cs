@@ -25,7 +25,7 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Queries
         public async Task<List<LeaveRequestDto>> Handle(GetLeaveRequestStatusByIdCommand request, CancellationToken cancellationToken)
         {
             // Retrieve leave requests with the specified leave status and where status is not 1 (assuming status is an int field)
-            var leaveRequests = await _leaveRequestRepository.GetByStatus(request.LeaveStatus);
+            var leaveRequests = await _leaveRequestRepository.GetByStatus(request.LeaveStatus,request.Supervisor);
 
             // Filter leave requests with status not equal to 1
             var filteredLeaveRequests = leaveRequests.FindAll(lr => lr.Status != 1);

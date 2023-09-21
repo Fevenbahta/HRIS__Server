@@ -18,16 +18,18 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
     public class UpdateLeaveRequestCommandHandler : IRequestHandler<UpdateLeaveRequestCommand, Unit>
     {
         private readonly ILeaveRequestRepository _leaveRequestRepository;
+        private readonly IHolidayRepository _holidayRepository;
         private readonly IOtherLeaveBalanceRepository _otherLeaveBalanceRepository;
         private readonly ILeaveBalanceRepository _LeaveBalanceRepository;
         private readonly ILeaveTypeRepository _leaveTypeRepository;
         private readonly IMapper _maapper;
         private readonly IEmployeeRepository _employeeRepository;
 
-        public UpdateLeaveRequestCommandHandler(ILeaveRequestRepository leaveRequestRepository, ILeaveTypeRepository leaveTypeRepository, IOtherLeaveBalanceRepository otherLeaveBalanceRepository, IMapper maapper, IEmployeeRepository employeeRepository, ILeaveBalanceRepository leaveBalanceRepository)
+        public UpdateLeaveRequestCommandHandler(ILeaveRequestRepository leaveRequestRepository,IHolidayRepository holidayRepository ,ILeaveTypeRepository leaveTypeRepository, IOtherLeaveBalanceRepository otherLeaveBalanceRepository, IMapper maapper, IEmployeeRepository employeeRepository, ILeaveBalanceRepository leaveBalanceRepository)
         {
 
             _leaveRequestRepository = leaveRequestRepository;
+            _holidayRepository = holidayRepository;
             _otherLeaveBalanceRepository = otherLeaveBalanceRepository;
             _LeaveBalanceRepository = leaveBalanceRepository;
             _leaveTypeRepository = leaveTypeRepository;
@@ -54,33 +56,43 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
 
 
 
-
-
-
             if (request.LeaveRequestDto.LeaveStatus == "Approved" && leaveType.LeaveTypeName == "Annual")
             {
-
                 var leaveStartDate = leaveRequest.StartDate;
                 var leaveEndDate = leaveRequest.EndDate;
-                var leaveWorkingDays = leaveRequest.WorkingDays;
-                
-                var totalDuration = (int)(leaveEndDate - leaveStartDate).TotalDays + 1;
-                int holidaysAndWeekends = 0;
 
+                var totalDuration = (decimal)(leaveEndDate - leaveStartDate).TotalDays + 1;
+
+          
+                decimal holidaysAndWeekends = 0;
+
+             
+                var holidays = await _holidayRepository.GetHolidaysFromTable(leaveStartDate, leaveEndDate);
+
+               
                 for (DateTime date = leaveStartDate; date <= leaveEndDate; date = date.AddDays(1))
                 {
-                    // Check if the current date is a weekend (Saturday or Sunday)
+                    
                     if (date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday)
                     {
                         holidaysAndWeekends++;
                     }
-                   
+                    else
+                    {
+                          if (holidays.Any(holiday => holiday.Date.Date == date.Date))
+                        {
+                            holidaysAndWeekends++;
+                        }
+                    }
                 }
 
+                 var leaveDuration = totalDuration - holidaysAndWeekends;
 
-                var leaveDuration = totalDuration - holidaysAndWeekends;
 
-
+                if (leaveDuration > leaveRequest.WorkingDays)
+                {
+                    leaveDuration = leaveRequest.WorkingDays;
+                }
 
                 var employeeId = request.LeaveRequestDto.EmpId;
                 var otherLeaveBalances = await _otherLeaveBalanceRepository.GetByEmpId(employeeId);
@@ -143,6 +155,8 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                             }
 
                         }
+                        request.LeaveRequestDto.ApprovedBy = request.LeaveRequestDto.Supervisor;
+                        request.LeaveRequestDto.ApproveDate = currentDate;
                         await _leaveRequestRepository.Update(leaveRequest);
                         await _LeaveBalanceRepository.Update(leaveBalance);
                     }
@@ -152,25 +166,39 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
             }
             else if (request.LeaveRequestDto.LeaveStatus == "Approved" && leaveType.LeaveTypeName != "Annual")
             {
+                var leaveStartDate = leaveRequest.StartDate;
+                var leaveEndDate = leaveRequest.EndDate;
 
-                var leaveStartDate = request.LeaveRequestDto.StartDate;
-                var leaveEndDate = request.LeaveRequestDto.EndDate;
-                var totalDuration = (int)(leaveEndDate - leaveStartDate).TotalDays + 1;
-                int holidaysAndWeekends = 0;
+                var totalDuration = (decimal)(leaveEndDate - leaveStartDate).TotalDays + 1;
 
-              
+
+                decimal holidaysAndWeekends = 0;
+
+
+                var holidays = await _holidayRepository.GetHolidaysFromTable(leaveStartDate, leaveEndDate);
+
 
                 for (DateTime date = leaveStartDate; date <= leaveEndDate; date = date.AddDays(1))
                 {
-                    // Check if the current date is a weekend (Saturday or Sunday)
+
                     if (date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday)
                     {
                         holidaysAndWeekends++;
                     }
-
+                    else
+                    {
+                        if (holidays.Any(holiday => holiday.Date.Date == date.Date))
+                        {
+                            holidaysAndWeekends++;
+                        }
+                    }
                 }
 
                 var leaveDuration = totalDuration - holidaysAndWeekends;
+                if (leaveDuration > leaveRequest.WorkingDays)
+                {
+                    leaveDuration = leaveRequest.WorkingDays;
+                }
                 var employeeId = request.LeaveRequestDto.EmpId;
                 var otherLeaveBalances = await _otherLeaveBalanceRepository.GetByEmpId(employeeId);
                 var employee = await _employeeRepository.GetById(employeeId);
@@ -194,6 +222,7 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                         var abortionRemainingBalance = otherLeaveBalance.AbortionLeaveRemainingBalance;
                         if (leaveDuration > 0)
                         {
+                            DateTime currentDate = DateTime.Now;
 
                             if (leaveType != null)
                             {
@@ -209,17 +238,17 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                                     }
 
                                 }
-                                else if (leaveType.LeaveTypeName == "Abortion" && leaveDuration <= abortionRemainingBalance && employee.sex == "Female")
+                                else if (leaveType.LeaveTypeName == "Abortion" && leaveDuration <= abortionRemainingBalance && employee.sex == "female")
                                 {
                                     otherLeaveBalance.AbortionLeaveRemainingBalance -= leaveDuration;
                                     leaveDuration = 0;
                                 }
-                                else if (leaveType.LeaveTypeName == "Maternal" && leaveDuration <= maternityRemainingBalance && employee.sex=="Female")
+                                else if (leaveType.LeaveTypeName == "Maternal" && leaveDuration <= maternityRemainingBalance && employee.sex=="female")
                                 {
                                     otherLeaveBalance.MaternityRemainingBalance -= leaveDuration;
                                     leaveDuration = 0;
                                 }
-                                else if (leaveType.LeaveTypeName == "Paternal" && leaveDuration <= paternityRemainingBalance && employee.sex == "Male")
+                                else if (leaveType.LeaveTypeName == "Paternal" && leaveDuration <= paternityRemainingBalance && employee.sex == "male")
                                 {
                                     otherLeaveBalance.PaternityRemainingBalance -= leaveDuration;
                                     leaveDuration = 0;
@@ -251,7 +280,9 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                                 }
                                 request.LeaveRequestDto.SickEndDate = otherLeaveBalance.SickEndDate;
                                 request.LeaveRequestDto.SickEndDate = otherLeaveBalance.SickStartDate;
-                               await _otherLeaveBalanceRepository.Update(otherLeaveBalance);
+                                request.LeaveRequestDto.ApprovedBy = request.LeaveRequestDto.Supervisor;
+                                request.LeaveRequestDto.ApproveDate = currentDate;
+                                await _otherLeaveBalanceRepository.Update(otherLeaveBalance);
                             }
                             else
                             {

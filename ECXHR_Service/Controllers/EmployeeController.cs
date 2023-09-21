@@ -8,6 +8,7 @@ using ECX.HR.Application.CQRS.EmployeePosition.Request.Queries;
 using ECX.HR.Application.CQRS.LeaveBalance.Request.Queries;
 using ECX.HR.Application.CQRS.LeaveRequest.Request.Queries;
 using ECX.HR.Application.CQRS.OtherLeaveBalance.Request.Queries;
+using ECX.HR.Application.CQRS.Spouse.Request.Queries;
 using ECX.HR.Application.CQRS.Training.Request.Queries;
 using ECX.HR.Application.CQRS.WorkExperience.Request.Queries;
 using ECX.HR.Application.DTOs.Employees;
@@ -66,28 +67,44 @@ namespace ECXHR_Service.Controllers
                 var employee = await _mediator.Send(new GetEmployeeDetailRequest { EmpId = id });
                 var addresses = await _mediator.Send(new GetAddressDetailRequest { EmpId = id });
                 var emergencyContacts = await _mediator.Send(new GetEmergencyContactDetailRequest { EmpId = id });
-                var employeePostion = await _mediator.Send(new GetEmployeePositionDetailRequest { EmpId = id });
-                var education = await _mediator.Send(new GetEducationDetailRequest { EmpId = id }); ;
-                var training = await _mediator.Send(new GetTrainingDetailRequest { EmpId = id });
-                var leaveRequest = await _mediator.Send(new GetLeaveRequestByIdCommand { EmpId = id });
-                var annualLeaveBalance = await _mediator.Send(new GetLeaveBalanceDetailRequest { EmpId = id });
-                var otherLeaveBalance = await _mediator.Send(new GetOtherLeaveBalanceDetailRequest { EmpId = id });
-                var workExperience = await _mediator.Send(new GetWorkExperienceDetailRequest { EmpId = id });
+                var employeePostions = await _mediator.Send(new GetEmployeePositionDetailRequest { EmpId = id });
+                var educations = await _mediator.Send(new GetEducationDetailRequest { EmpId = id }); ;
+                var trainings = await _mediator.Send(new GetTrainingDetailRequest { EmpId = id });
+                var leaveRequests = await _mediator.Send(new GetLeaveRequestByIdCommand { EmpId = id });
+                var annualLeaveBalances = await _mediator.Send(new GetLeaveBalanceDetailRequest { EmpId = id });
+                var otherLeaveBalances = await _mediator.Send(new GetOtherLeaveBalanceDetailRequest { EmpId = id });
+                var workExperiences = await _mediator.Send(new GetWorkExperienceDetailRequest { EmpId = id });
+                var spouses = await _mediator.Send(new GetSpouseDetailRequest { EmpId = id });
                 // Create a CombinedEmployeeDataDto and populate it
                 var combinedData = new CombinedEmployeeDataDto
                 {
                     Employee = employee,
                     Addresses = addresses,
                     EmergencyContacts = emergencyContacts,
-                    EmployeePostion = employeePostion,
-                    Education= education,
-                    Training= training
+                    EmployeePostions = employeePostions,
+                    Educations= educations,
+                    Trainings= trainings,
+                    LeaveRequests=leaveRequests,
+                    AnnualLeaveBalances= annualLeaveBalances,
+                    OtherLeaveBalances=otherLeaveBalances,
+                    WorkExperiences=workExperiences  ,
+                    Spouses= spouses,
                     // Add other data properties as needed
                 };
 
-                if (combinedData.Employee == null)
+                if (combinedData.Employee == null ||
+            combinedData.Addresses == null ||
+            combinedData.EmergencyContacts == null ||
+           /* combinedData.EmployeePostions == null ||*/
+            combinedData.Educations == null ||
+            combinedData.Trainings == null ||
+            combinedData.LeaveRequests == null ||
+            combinedData.AnnualLeaveBalances == null ||
+            combinedData.OtherLeaveBalances == null ||
+            combinedData.WorkExperiences == null||
+               combinedData.Spouses == null)
                 {
-                    return NotFound(); // Employee not found
+                    return NotFound(); // Data not found for one or more properties
                 }
 
                 return Ok(combinedData);

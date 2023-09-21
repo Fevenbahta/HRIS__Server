@@ -19,16 +19,26 @@ namespace ECX.HR.Persistence.Repositories
         {
             _context = context;
         }
+
+        DateTime currentDate = DateTime.Now;
         public async Task<List<LeaveRequests>> GetByEmpId(Guid empId)
         {
+            DateTime currentDate = DateTime.Now;
             return await _context.Set<LeaveRequests>()
-                     .Where(T => T.EmpId == empId)
+                     .Where(T => T.EmpId == empId && T.StartDate.Year >= currentDate.Year-2)
                    .ToListAsync();
         }
-        public async Task<List<LeaveRequests>> GetByStatus(string status)
+        public async Task<List<LeaveRequests>> GetByStatus(string status, string supervisor)
         {
             return await _context.Set<LeaveRequests>()
-                     .Where(T => T.LeaveStatus == status)
+                     .Where(T => T.LeaveStatus == status && T.Supervisor == supervisor && T.StartDate.Year >= currentDate.Year - 1)
+                   .ToListAsync();
+        }
+        public async Task<List<LeaveRequests>> GetAllByStatus(string status)
+        {
+            DateTime currentDate = DateTime.Now;
+            return await _context.Set<LeaveRequests>()
+                     .Where(T => T.LeaveStatus == status && T.StartDate.Year >= currentDate.Year - 2)
                    .ToListAsync();
         }
 
