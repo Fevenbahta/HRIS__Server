@@ -35,7 +35,7 @@ namespace ECX.HR.Application.CQRS.LeaveBalance.Handler.Command
                 throw new ValidationException(validationResult);
 
             request.LeaveBalanceDto.UpdatedDate = DateTime.Now;
-            request.LeaveBalanceDto.UpdatedDate = DateTime.Now;
+          
             request.LeaveBalanceDto.AnnualRemainingBalance += request.LeaveBalanceDto.UnusedDays
                 ;
 
