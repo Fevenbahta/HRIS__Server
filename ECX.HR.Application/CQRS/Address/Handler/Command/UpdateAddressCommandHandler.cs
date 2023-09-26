@@ -37,9 +37,9 @@ namespace ECX.HR.Application.CQRS.Addresss.Handler.Command
 
            
 
-            _mapper.Map(request.AddressDto, address);
+           var add= _mapper.Map(request.AddressDto, address);
 
-            await _AddressRepository.Update(address);
+            await _AddressRepository.Update(add);
             return Unit.Value;
         }
     }

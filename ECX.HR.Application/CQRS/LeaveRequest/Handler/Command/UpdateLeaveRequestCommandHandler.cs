@@ -122,7 +122,7 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                     if (leaveBalance.IsExpired != 1)
                     {
                         var annualRemainingBalance = (leaveBalance.PreviousTwoYear + leaveBalance.PreviousYearAnnualBalance + leaveBalance.AnnualDefaultBalance) - leaveDuration;
-                        leaveBalance.AnnualRemainingBalance = annualRemainingBalance;
+                       // leaveBalance.AnnualRemainingBalance = annualRemainingBalance;
                         if (leaveDuration > 0)
                         {
                             //eaveType = leaveTypes.FirstOrDefault(lt => lt.leaveTypeId == request.LeaveRequestDto.leaveTypeId);
@@ -133,22 +133,30 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                                     if (leaveBalance.PreviousTwoYear > 0 && leaveDuration < leaveBalance.PreviousTwoYear)
                                     {
                                         leaveBalance.PreviousTwoYear = Math.Max(0, leaveBalance.PreviousTwoYear - leaveDuration);
+                                        var remaining = leaveBalance.AnnualRemainingBalance - leaveDuration;
+                                        leaveBalance.AnnualRemainingBalance = remaining;
                                     }
                                     if (leaveBalance.PreviousTwoYear > 0 && leaveDuration > leaveBalance.PreviousTwoYear)
                                     {
                                         var previousleave = leaveBalance.PreviousYearAnnualBalance + leaveBalance.PreviousTwoYear;
                                         previousleave -= leaveDuration;
                                         leaveBalance.PreviousYearAnnualBalance = previousleave;
+                                        leaveBalance.PreviousTwoYear = 0;
+                                        var remaining = leaveBalance.AnnualRemainingBalance - leaveDuration;
+                                        leaveBalance.AnnualRemainingBalance = remaining;
                                     }
-                                    if (leaveBalance.PreviousYearAnnualBalance > leaveDuration)
+                                    if (leaveBalance.PreviousTwoYear == 0  && leaveBalance.PreviousYearAnnualBalance > leaveDuration)
                                     {
                                         leaveBalance.PreviousYearAnnualBalance -= leaveDuration;
                                         leaveBalance.AnnualRemainingBalance -= leaveDuration;
                                     }
                                     if (leaveDuration > leaveBalance.PreviousYearAnnualBalance)
+
                                     {
-                                        var remaining = leaveBalance.AnnualRemainingBalance - leaveDuration;
-                                        leaveBalance.AnnualRemainingBalance = remaining;
+                                        var previousleave = leaveBalance.PreviousYearAnnualBalance + leaveBalance.AnnualRemainingBalance;
+                                        previousleave -= leaveDuration;
+                                       
+                                        leaveBalance.AnnualRemainingBalance = previousleave;
                                         leaveBalance.PreviousYearAnnualBalance = 0;
                                     }
                                 }
