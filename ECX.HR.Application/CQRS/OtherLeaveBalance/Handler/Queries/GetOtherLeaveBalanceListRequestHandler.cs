@@ -116,8 +116,7 @@ namespace ECX.HR.Application.CQRS.OtherLeaveBalance.Handler.Queries
                 int annualLeave = Math.Min(accruedLeave, maxLeaveDays);
 
                 LeaveBalance.AnnualDefaultBalance = annualLeave;
-                decimal p2y = Math.Max(0, LeaveBalance.PreviousTwoYear - LeaveBalance.AnnualDefaultBalance);
-                LeaveBalance.PreviousTwoYear = p2y;
+               
                 var annualRemaining = LeaveBalance.PreviousYearAnnualBalance + LeaveBalance.PreviousTwoYear + LeaveBalance.AnnualDefaultBalance;
               
 
