@@ -35,17 +35,17 @@ namespace ECX.HR.Application.CQRS.LeaveBalance.Handler.Command
                 throw new ValidationException(validationResult);
 
             request.LeaveBalanceDto.UpdatedDate = DateTime.Now;
-            request.LeaveBalanceDto.UpdatedDate = DateTime.Now;
-      
-         
-var LeaveBalance = await _LeaveBalanceRepository.GetById(request.LeaveBalanceDto.Id);
-        
+          
+            request.LeaveBalanceDto.AnnualRemainingBalance += request.LeaveBalanceDto.UnusedDays
+                ;
 
-           
 
-            _mapper.Map(request.LeaveBalanceDto, LeaveBalance);
+         var LeaveBalance = await _LeaveBalanceRepository.GetById(request.LeaveBalanceDto.Id);
 
-            await _LeaveBalanceRepository.Update(LeaveBalance);
+            LeaveBalance.UnusedDays += request.LeaveBalanceDto.UnusedDays;
+           var leave= _mapper.Map(request.LeaveBalanceDto, LeaveBalance);
+
+            await _LeaveBalanceRepository.Update(leave);
             return Unit.Value;
         }
     }

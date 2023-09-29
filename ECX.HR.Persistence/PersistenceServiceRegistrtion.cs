@@ -3,6 +3,9 @@ using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.LeaveBalance.Handler.Command;
 using ECX.HR.Application.CQRS.LeaveBalance.Request.Command;
+using ECX.HR.Application.CQRS.LeaveRequest.Handler.Command;
+using ECX.HR.Application.CQRS.LeaveRequest.Request.Command;
+using ECX.HR.Application.CQRS.Level.Request.Command;
 using ECX.HR.Application.CQRS.OtherLeaveBalance.Handler.Command;
 using ECX.HR.Application.DTOs.Employees;
 using ECX.HR.Application.DTOs.LeaveBalance;
@@ -71,6 +74,7 @@ namespace ECX.HR.Persistence
 
             // Inside ConfigureServices method in Startup.cs
             services.AddScoped<UpdateOtherLeaveBalanceCommandHandler>();
+
 
             services.AddScoped<IPromotionVacancyRepository, PromotionVacancyRepository>();
 

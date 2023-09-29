@@ -24,7 +24,7 @@ namespace ECX.HR.Application.DTOs.LeaveBalance
         public Decimal AnnualRemainingBalance { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-
+        public int UnusedDays { get; set; }
         public int IsExpired { get; set; }
         public int Status { get; set; }
 }

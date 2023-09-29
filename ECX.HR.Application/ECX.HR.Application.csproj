@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="CQRS\LeaveRequest\Request\Command\UpdateLeaveRequestByHrRequestCommand.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Dapper.Extensions.NetCore" Version="4.2.4" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.5.2" />

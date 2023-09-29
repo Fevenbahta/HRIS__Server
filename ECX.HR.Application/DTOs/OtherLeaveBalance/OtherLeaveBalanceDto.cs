@@ -37,6 +37,7 @@ namespace ECX.HR.Application.DTOs.LeaveBalance
         public DateTime EndDate { get; set; }
         public DateTime SickEndDate { get; set; }
         public DateTime SickStartDate { get; set; }
+        public int UnusedDays { get; set; }
         public int IsExpired { get; set; }
 
      
