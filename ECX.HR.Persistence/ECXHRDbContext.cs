@@ -49,6 +49,7 @@ namespace ECX.HR.Persistence
             modelBuilder.Entity<PromotionRelations>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
             modelBuilder.Entity<ActingAssigments>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
             modelBuilder.Entity<Holidays>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
+            modelBuilder.Entity<Files>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
 
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
             {
@@ -193,6 +194,7 @@ namespace ECX.HR.Persistence
         public DbSet<PromotionRelations> PromotionRelations { get; set; }
         public DbSet<ActingAssigments> ActingAssiment { get; set; }
         public DbSet<Holidays> Holidays { get; set; }
+        public DbSet<Files> File { get; set; }
 
     }
 }

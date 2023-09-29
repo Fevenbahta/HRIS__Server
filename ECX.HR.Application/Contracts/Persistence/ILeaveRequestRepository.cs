@@ -10,7 +10,7 @@ namespace ECX.HR.Application.Contracts.Persistence
 {
     public interface ILeaveRequestRepository : IGenericRepository<LeaveRequests>
     {
-        Task<List<LeaveRequests>> GetByEmpId(Guid id);
+        Task<List<LeaveRequests>> GetByEmpId(Guid empId);
         Task<List<LeaveRequests>> GetByStatus(string leaveStatus, string supervisor);
         Task<List<LeaveRequests>> GetAllByStatus(string leaveStatus);
 

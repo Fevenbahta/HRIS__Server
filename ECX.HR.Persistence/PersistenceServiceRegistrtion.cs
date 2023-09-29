@@ -58,7 +58,7 @@ namespace ECX.HR.Persistence
             services.AddScoped<ITerminationRepository, TerminationRepository>();
 
             services.AddScoped<IHolidayRepository, HolidayRepository>();
-
+            services.AddScoped<IFileRepository, FileRepository>();
 
             services.AddScoped<EmployeeDto>(); // This registers EmployeeDto for dependency injection
             

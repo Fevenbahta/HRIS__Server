@@ -27,7 +27,7 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Queries
         {
             var leaverequest = await _leaveRequestRepository.GetByEmpId(request.EmpId);
 
-            if (leaverequest == null || !leaverequest.Any(we => we.Status == 0))
+            if (leaverequest == null || leaverequest.Any(we => we.Status != 0))
                 throw new NotFoundException(nameof(leaverequest), request.EmpId);
 
             else

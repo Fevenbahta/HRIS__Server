@@ -67,8 +67,10 @@ namespace ECX.HR.Application.CQRS.OtherLeaveBalance.Handler.Command
           
             int yearsOfWork = (currentDate - employmentStartDate).Days / 365;
 
+            otherLeaveBalance.CreatedBy = emp.FirstName;
+            otherLeaveBalance.UpdatedBy = emp.FirstName;
 
-       
+
            otherLeaveBalance.SickDefaultBalance = 180;
             otherLeaveBalance.SickStartDate = DateTime.MinValue;
             otherLeaveBalance.SickStartDate = DateTime.MinValue;

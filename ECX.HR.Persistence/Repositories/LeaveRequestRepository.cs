@@ -21,11 +21,13 @@ namespace ECX.HR.Persistence.Repositories
         }
 
         DateTime currentDate = DateTime.Now;
+
+
         public async Task<List<LeaveRequests>> GetByEmpId(Guid empId)
         {
             DateTime currentDate = DateTime.Now;
             return await _context.Set<LeaveRequests>()
-                     .Where(T => T.EmpId == empId && T.StartDate.Year >= currentDate.Year-2)
+                .Where(T => T.EmpId == empId )
                    .ToListAsync();
         }
         public async Task<List<LeaveRequests>> GetByStatus(string status, string supervisor)

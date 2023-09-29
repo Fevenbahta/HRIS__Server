@@ -73,8 +73,11 @@ namespace ECX.HR.Application.CQRS.LeaveBalance.Handler.Command
             int accruedLeave = (int)Math.Round(baseLeaveDays * (double)daysWorkedInYear / totalDaysInYear);
 
             int annualLeave = Math.Min(accruedLeave, maxLeaveDays);
-        
-                leaveAnnualBalance.AnnualDefaultBalance = annualLeave;
+
+            leaveAnnualBalance.CreatedBy = employee.FirstName;
+            leaveAnnualBalance.UpdatedBy = employee.FirstName;
+
+            leaveAnnualBalance.AnnualDefaultBalance = annualLeave;
                 leaveAnnualBalance.AnnualRemainingBalance = leaveAnnualBalance.AnnualDefaultBalance;
                 leaveAnnualBalance.PreviousYearAnnualBalance = 0;
                 leaveAnnualBalance.PreviousTwoYear = 0;

@@ -10,7 +10,7 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Request.Command
     public class GetFileRequestCommand : IRequest<byte[]>
     {
         public Guid LeaveRequestId { get; }
-        public byte[] file {  get; }    
+        //public byte[] file {  get; }    
         public GetFileRequestCommand(Guid fileId)
         {
             LeaveRequestId = fileId;
