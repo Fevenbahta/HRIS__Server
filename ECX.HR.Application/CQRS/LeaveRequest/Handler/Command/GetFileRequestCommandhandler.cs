@@ -33,7 +33,7 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                     string base64String = fileEntity.File;  
                     byte[] fileData = Convert.FromBase64String(base64String);
                     // Retrieve the file data (byte array) from the database entity
-                    string uniqueFileName = Guid.NewGuid().ToString() + ".pdf";
+                   // string uniqueFileName = Guid.NewGuid().ToString() + ".pdf";
 
              
                     return fileData;
