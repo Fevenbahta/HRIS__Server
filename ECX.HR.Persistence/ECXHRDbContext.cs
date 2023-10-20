@@ -193,6 +193,7 @@ namespace ECX.HR.Persistence
         public DbSet<PromotionRelations> PromotionRelations { get; set; }
         public DbSet<ActingAssigments> ActingAssiment { get; set; }
         public DbSet<Holidays> Holidays { get; set; }
+        public DbSet<Attendances> Attendances { get; set; }
 
     }
 }

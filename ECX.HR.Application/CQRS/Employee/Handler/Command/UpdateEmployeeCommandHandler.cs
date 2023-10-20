@@ -55,7 +55,8 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
                 CrimeDescription = existingEmployee.CrimeDescription,
                 Status = 1,
                 CreatedBy = existingEmployee.CreatedBy,
-                CreatedDate = existingEmployee.CreatedDate
+                CreatedDate = existingEmployee.CreatedDate,
+                AttendanceId = existingEmployee.AttendanceId,   
                 };
 
                 

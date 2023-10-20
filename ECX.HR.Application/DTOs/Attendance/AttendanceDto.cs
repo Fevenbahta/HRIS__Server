@@ -1,4 +1,4 @@
-﻿using ECX.HR.Domain.Common;
+﻿using ECX.HR.Application.DTOs.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -7,15 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECX.HR.Domain
+namespace ECX.HR.Application.CQRS.Attendance
 {
-    public class Attendances : BaseDomainEntity
+    public class AttendanceDto : BaseDtos
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Key]
+
+
         public int PId { get; set; }
         public string AttendanceId { get; set; }
-        [ForeignKey("Employees")]
+   
         public Guid? EmpId { get; set; }
 
         public DateTime? date { get; set; }
@@ -38,6 +38,5 @@ namespace ECX.HR.Domain
         public string? AttendanceStatus { get; set; }
         public Decimal? AbsentDays { get; set; }
         public string? LeaveType { get; set; }
-
     }
 }

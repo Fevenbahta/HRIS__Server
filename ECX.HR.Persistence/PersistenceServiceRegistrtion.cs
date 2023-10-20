@@ -58,6 +58,7 @@ namespace ECX.HR.Persistence
             services.AddScoped<IPromotionRepository, PromotionRepository>();
             services.AddScoped<IPromotionRelationRepository, PromotionRelationRepository>();
             services.AddScoped<IActingAssigmentRepository, ActingAssigmentRepository>();
+            services.AddScoped<IAttendanceRepository, AttendanceRepository>();
             services.AddScoped<ITerminationRepository, TerminationRepository>();
 
             services.AddScoped<IHolidayRepository, HolidayRepository>();

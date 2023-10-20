@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.DTOs.AssignSupervisor
 {
-    public class AssignSupervisorDto : BaseDtos
+    public class AssignSupervisorDto: BaseDtos
     {
 
 
