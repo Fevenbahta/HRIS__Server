@@ -96,9 +96,10 @@ namespace ECX.HR.Application.CQRS.LeaveBalance.Handler.Command
 
                  baseLeaveDay = 18 + (yearsOfWork - 1);
 
+
                  baseLeaveDays = Math.Min(baseLeaveDay, 30);
                 leaveAnnualBalance.StartDate = employmentStartDate.AddYears(yearsOfWork);
-                leaveAnnualBalance.EndDate = leaveAnnualBalance.StartDate.AddDays(360).AddDays(1);
+                leaveAnnualBalance.EndDate = leaveAnnualBalance.StartDate.AddDays(365).AddDays(1);
                 leaveAnnualBalance.PreviousYearAnnualBalance = baseLeaveDays - 1;
                 leaveAnnualBalance.PreviousTwoYear = 0;
                 leaveAnnualBalance.AnnualRemainingBalance = leaveAnnualBalance.PreviousYearAnnualBalance + leaveAnnualBalance.AnnualDefaultBalance;
@@ -111,12 +112,21 @@ namespace ECX.HR.Application.CQRS.LeaveBalance.Handler.Command
             else if (yearsOfWork >=2)
             {
                 leaveAnnualBalance.PreviousTwoYear = baseLeaveDays - 2;
+                if (yearsOfWork > 12)
+                {
+                    leaveAnnualBalance.PreviousTwoYear = baseLeaveDays;
+                }
+
                 decimal p2y = Math.Max(0, leaveAnnualBalance.PreviousTwoYear - leaveAnnualBalance.AnnualDefaultBalance);
                 leaveAnnualBalance.PreviousTwoYear = p2y;
                 leaveAnnualBalance.StartDate = employmentStartDate.AddYears(yearsOfWork);
-                leaveAnnualBalance.EndDate = leaveAnnualBalance.StartDate.AddDays(360).AddDays(1);
+                leaveAnnualBalance.EndDate = leaveAnnualBalance.StartDate.AddDays(365).AddDays(1);
                
                 leaveAnnualBalance.PreviousYearAnnualBalance = baseLeaveDays - 1;
+                if(yearsOfWork > 12)
+                {
+                    leaveAnnualBalance.PreviousYearAnnualBalance = baseLeaveDays;
+                }
                 leaveAnnualBalance.AnnualRemainingBalance = leaveAnnualBalance.PreviousYearAnnualBalance + leaveAnnualBalance.PreviousTwoYear + leaveAnnualBalance.AnnualDefaultBalance;
 
 
@@ -124,7 +134,7 @@ namespace ECX.HR.Application.CQRS.LeaveBalance.Handler.Command
             else
             {
                 leaveAnnualBalance.StartDate = employmentStartDate;
-                leaveAnnualBalance.EndDate = leaveAnnualBalance.StartDate.AddDays(360).AddDays(1);
+                leaveAnnualBalance.EndDate = leaveAnnualBalance.StartDate.AddDays(365).AddDays(1);
             }
 
             await _leaveBalanceRepository.Add(leaveAnnualBalance);
