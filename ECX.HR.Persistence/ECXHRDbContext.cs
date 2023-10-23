@@ -49,8 +49,7 @@ namespace ECX.HR.Persistence
             modelBuilder.Entity<PromotionRelations>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
             modelBuilder.Entity<ActingAssigments>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
             modelBuilder.Entity<Holidays>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
-            modelBuilder.Entity<Files>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
-
+      
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
             {
                 if (typeof(BaseDomainEntity).IsAssignableFrom(entityType.ClrType))

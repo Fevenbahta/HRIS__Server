@@ -18,9 +18,7 @@ namespace ECX.HR.Domain
         [Key]
     
         public Guid leaveRequestId { get; set; }
-        public Guid departmentId { get; set; }
-
-        public Guid employeePositionId { get; set; }
+    
 
         [ForeignKey("Employees")]
         public Guid EmpId { get; set; }
@@ -45,6 +43,9 @@ namespace ECX.HR.Domain
         public int Status { get; set; }
         public DateTime SickStartDate { get; set; }
         public DateTime SickEndDate { get; set; }
+        public Guid departmentId { get; set; }
+
+        public Guid employeePositionId { get; set; }
 
     }
 }

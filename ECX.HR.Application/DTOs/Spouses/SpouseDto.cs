@@ -20,5 +20,8 @@ namespace ECX.HR.Application.DTOs.Spouses
         public string Relationship { get; set; }
         public int Status { get; set; }
 
+
+      
+
     }
 }

@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ECX.HR.Application.CQRS.LeaveRequest.Handler.Command;
+using ECX.HR.Application.DTOs.LeaveBalance;
 
 namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
 {
@@ -56,7 +57,7 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
 
 
 
-            if (request.LeaveRequestDto.LeaveStatus == "Approved" && leaveType.LeaveTypeName == "Annual")
+            if (request.LeaveRequestDto.LeaveStatus == "Admin-Approved" && leaveType.LeaveTypeName == "Annual")
             {
                 var leaveStartDate = leaveRequest.StartDate;
                 var leaveEndDate = leaveRequest.EndDate;
@@ -86,10 +87,11 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                     }
                 }
 
-                 var leaveDuration = totalDuration - holidaysAndWeekends;
+                 Decimal leaveDuration = totalDuration - holidaysAndWeekends;
 
+                Double Diff = Convert.ToDouble(leaveDuration - leaveRequest.WorkingDays);
 
-                if (leaveDuration > leaveRequest.WorkingDays)
+                if (Diff < 0.5)
                 {
                     leaveDuration = leaveRequest.WorkingDays;
                 }
@@ -163,8 +165,8 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                             }
 
                         }
-                        request.LeaveRequestDto.ApprovedBy = request.LeaveRequestDto.Supervisor;
-                        request.LeaveRequestDto.ApproveDate = currentDate;
+                        leaveRequest.ApprovedBy = request.LeaveRequestDto.Supervisor;
+                        leaveRequest.ApproveDate = currentDate;
                         await _leaveRequestRepository.Update(leaveRequest);
                         await _LeaveBalanceRepository.Update(leaveBalance);
                     }
@@ -286,11 +288,12 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                                     otherLeaveBalance.LeaveWotPayRemainingBalance -= leaveDuration;
                                     leaveDuration = 0;
                                 }
-                                request.LeaveRequestDto.SickEndDate = otherLeaveBalance.SickEndDate;
-                                request.LeaveRequestDto.SickEndDate = otherLeaveBalance.SickStartDate;
-                                request.LeaveRequestDto.ApprovedBy = request.LeaveRequestDto.Supervisor;
-                                request.LeaveRequestDto.ApproveDate = currentDate;
+                                otherLeaveBalance.SickEndDate = otherLeaveBalance.SickEndDate;
+                                otherLeaveBalance.SickEndDate = otherLeaveBalance.SickStartDate;
+                                leaveRequest.ApprovedBy = request.LeaveRequestDto.Supervisor;
+                             leaveRequest.ApproveDate = currentDate;
                                 await _otherLeaveBalanceRepository.Update(otherLeaveBalance);
+                                await _leaveRequestRepository.Update(leaveRequest);
                             }
                             else
                             {
