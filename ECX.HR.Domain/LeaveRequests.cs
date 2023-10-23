@@ -16,7 +16,11 @@ namespace ECX.HR.Domain
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int PId { get; set; }
         [Key]
+    
         public Guid leaveRequestId { get; set; }
+        public Guid departmentId { get; set; }
+
+        public Guid employeePositionId { get; set; }
 
         [ForeignKey("Employees")]
         public Guid EmpId { get; set; }
@@ -33,7 +37,7 @@ namespace ECX.HR.Domain
         public string Reason { get; set; }
         public string Supervisor { get; set; }
 
-        public string? File
+        public string? File 
         { get; set; }
       //  public byte[] FileData { get; set; }
         public Decimal WorkingDays { get; set; }

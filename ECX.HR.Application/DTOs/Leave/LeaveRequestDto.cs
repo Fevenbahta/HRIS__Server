@@ -16,8 +16,9 @@ namespace ECX.HR.Application.DTOs.Leave
         public int PId { get; set; }
       
         public Guid leaveRequestId { get; set; }
+        public Guid employeePositionId { get; set; }
+        public Guid departmentId { get; set; }
 
-       
         public Guid EmpId { get; set; }
 
        

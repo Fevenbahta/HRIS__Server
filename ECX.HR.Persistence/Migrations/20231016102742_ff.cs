@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ECX.HR.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class n : Migration
+    public partial class ff : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,1295 +16,1335 @@ namespace ECX.HR.Persistence.Migrations
                 table: "WorkExperiences",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 398, DateTimeKind.Utc).AddTicks(471),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 239, DateTimeKind.Utc).AddTicks(2596),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(7697));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(9497));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "WorkExperiences",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 398, DateTimeKind.Utc).AddTicks(71),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 239, DateTimeKind.Utc).AddTicks(2169),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(7304));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(9107));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Training",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(9622),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 239, DateTimeKind.Utc).AddTicks(1811),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(6888));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(8731));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Training",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(9255),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 239, DateTimeKind.Utc).AddTicks(1447),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(6332));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(8347));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Terminations",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(8802),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 239, DateTimeKind.Utc).AddTicks(992),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(5935));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(7973));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Terminations",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(8431),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 239, DateTimeKind.Utc).AddTicks(635),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(5478));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(7584));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Supervisor",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(7906),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 239, DateTimeKind.Utc).AddTicks(268),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(5174));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(7274));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Supervisor",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(7512),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(9974),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(4866));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(6970));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Step",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(7137),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(9609),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(4395));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(6584));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Step",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(6760),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(9158),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(4000));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(6222));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Spouse",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(6327),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(8799),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(3526));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(5850));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Spouse",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(5959),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(8336),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(3144));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(5465));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "SalaryType",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(5574),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(8046),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(2817));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(5158));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "SalaryType",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(5272),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(7751),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(2429));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(4820));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "PromotionVacancys",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(4136),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(6581),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(1166));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(3729));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "PromotionVacancys",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(3711),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(6289),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(848));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(3424));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Promotions",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(4893),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(7299),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(2039));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(4405));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Promotions",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(4453),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(6947),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(1561));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(4047));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "PromotionRelations",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(3348),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(5928),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(281));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(3037));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "PromotionRelations",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(2978),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(5504),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(9891));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(2673));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "OtherLeaveBalance",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(1672),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(4331),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(8389));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(1512));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "OtherLeaveBalance",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(1276),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(3935),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(7854));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(1097));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "OrganizationalProfile",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(962),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(3540),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(7534));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(796));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "OrganizationalProfile",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(587),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(3251),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(7204));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(497));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Level",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(276),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(2947),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(6791));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(177));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Level",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(9855),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(2599),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(6470));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(9880));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "LeaveType",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(9553),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(2302),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(6061));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(9572));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "LeaveType",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(9252),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(1950),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(5758));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(9255));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "LeaveRequest",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(8859),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(1661),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(5422));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(8953));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "LeaveRequest",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(8558),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(1370),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(5020));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(8635));
+
+            migrationBuilder.AddColumn<Guid>(
+                name: "departmentId",
+                table: "LeaveRequest",
+                type: "uniqueidentifier",
+                nullable: false,
+                defaultValue: new Guid("00000000-0000-0000-0000-000000000000"));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Job",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(2529),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(5145),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(9422));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(2298));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Job",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(2157),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(4710),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(8841));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(1911));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Holidays",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(8024),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(1010),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(4696));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(8333));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Holidays",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(7620),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(730),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(4382));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(8041));
 
-            migrationBuilder.AddColumn<DateTime>(
-                name: "date",
-                table: "Holidays",
+            migrationBuilder.AlterColumn<DateTime>(
+                name: "UpdatedDate",
+                table: "File",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(434),
+                oldClrType: typeof(DateTime),
+                oldType: "datetime2",
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(7718));
+
+            migrationBuilder.AlterColumn<DateTime>(
+                name: "CreatedDate",
+                table: "File",
+                type: "datetime2",
+                nullable: false,
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(74),
+                oldClrType: typeof(DateTime),
+                oldType: "datetime2",
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(7423));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "EmployeePosition",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(5942),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(8461),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(2568));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(5876));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "EmployeePosition",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(5634),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(8165),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(2161));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(5569));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Employee",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(7325),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(9784),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(3974));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(7120));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Employee",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(7011),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(9483),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(3648));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(6801));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "EmploeeStatus",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(6632),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(9122),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(3298));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(6493));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "EmploeeStatus",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(6334),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(8827),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(2904));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(6196));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "EmergencyContact",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(5247),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(7802),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(1751));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(5173));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "EmergencyContact",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(4799),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(7373),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(1326));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(4778));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Education",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(4427),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(7011),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(787));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(4372));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Education",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(4038),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(6543),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(365));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(4007));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "EduactionLevel",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(3643),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(6256),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(9693));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(3722));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "EduactionLevel",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(3330),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(5957),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(9319));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(3419));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Division",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(2871),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(5523),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(8903));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(3060));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Division",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(2507),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(5174),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(8408));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(2711));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "DepositAutorizations",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(2196),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(4878),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(8086));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(2409));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "DepositAutorizations",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(1823),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(4531),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(7759));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(2129));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Departments",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(1512),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(4230),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(7363));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(1832));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Departments",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(1198),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(3879),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(7051));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(1537));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Branch",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(835),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(3590),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(6646));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(1253));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Branch",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(524),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(3295),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(6331));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(957));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "AssignSupervisor",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(135),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(2926),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(6002));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(672));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "AssignSupervisor",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 395, DateTimeKind.Utc).AddTicks(9814),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(2627),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(5595));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(379));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "AnnualLeaveBalances",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 395, DateTimeKind.Utc).AddTicks(9431),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(2264),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(5182));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 811, DateTimeKind.Utc).AddTicks(9999));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "AnnualLeaveBalances",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 395, DateTimeKind.Utc).AddTicks(8981),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(1843),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(4748));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 811, DateTimeKind.Utc).AddTicks(9639));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Allowance",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 395, DateTimeKind.Utc).AddTicks(8679),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(1547),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(4287));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 811, DateTimeKind.Utc).AddTicks(9352));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Allowance",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 395, DateTimeKind.Utc).AddTicks(8269),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(1185),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(3964));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 811, DateTimeKind.Utc).AddTicks(9054));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Adress",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 395, DateTimeKind.Utc).AddTicks(7780),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(888),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(3517));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 811, DateTimeKind.Utc).AddTicks(8764));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Adress",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 395, DateTimeKind.Utc).AddTicks(7462),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(590),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(3159));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 811, DateTimeKind.Utc).AddTicks(8453));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "ActingAssiment",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 395, DateTimeKind.Utc).AddTicks(7061),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(206),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(2801));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 811, DateTimeKind.Utc).AddTicks(8149));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "ActingAssiment",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 395, DateTimeKind.Utc).AddTicks(6667),
+                defaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 236, DateTimeKind.Utc).AddTicks(9819),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(2229));
+                oldDefaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 811, DateTimeKind.Utc).AddTicks(7746));
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "date",
-                table: "Holidays");
+                name: "departmentId",
+                table: "LeaveRequest");
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "WorkExperiences",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(7697),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(9497),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 398, DateTimeKind.Utc).AddTicks(471));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 239, DateTimeKind.Utc).AddTicks(2596));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "WorkExperiences",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(7304),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(9107),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 398, DateTimeKind.Utc).AddTicks(71));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 239, DateTimeKind.Utc).AddTicks(2169));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Training",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(6888),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(8731),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(9622));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 239, DateTimeKind.Utc).AddTicks(1811));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Training",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(6332),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(8347),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(9255));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 239, DateTimeKind.Utc).AddTicks(1447));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Terminations",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(5935),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(7973),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(8802));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 239, DateTimeKind.Utc).AddTicks(992));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Terminations",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(5478),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(7584),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(8431));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 239, DateTimeKind.Utc).AddTicks(635));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Supervisor",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(5174),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(7274),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(7906));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 239, DateTimeKind.Utc).AddTicks(268));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Supervisor",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(4866),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(6970),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(7512));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(9974));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Step",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(4395),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(6584),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(7137));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(9609));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Step",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(4000),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(6222),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(6760));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(9158));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Spouse",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(3526),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(5850),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(6327));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(8799));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Spouse",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(3144),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(5465),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(5959));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(8336));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "SalaryType",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(2817),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(5158),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(5574));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(8046));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "SalaryType",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(2429),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(4820),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(5272));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(7751));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "PromotionVacancys",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(1166),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(3729),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(4136));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(6581));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "PromotionVacancys",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(848),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(3424),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(3711));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(6289));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Promotions",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(2039),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(4405),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(4893));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(7299));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Promotions",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(1561),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(4047),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(4453));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(6947));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "PromotionRelations",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 651, DateTimeKind.Utc).AddTicks(281),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(3037),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(3348));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(5928));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "PromotionRelations",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(9891),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(2673),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(2978));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(5504));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "OtherLeaveBalance",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(8389),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(1512),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(1672));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(4331));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "OtherLeaveBalance",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(7854),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(1097),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(1276));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(3935));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "OrganizationalProfile",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(7534),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(796),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(962));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(3540));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "OrganizationalProfile",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(7204),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(497),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(587));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(3251));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Level",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(6791),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(177),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(276));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(2947));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Level",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(6470),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(9880),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(9855));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(2599));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "LeaveType",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(6061),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(9572),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(9553));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(2302));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "LeaveType",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(5758),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(9255),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(9252));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(1950));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "LeaveRequest",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(5422),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(8953),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(8859));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(1661));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "LeaveRequest",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(5020),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(8635),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(8558));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(1370));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Job",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(9422),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(2298),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(2529));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(5145));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Job",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(8841),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 813, DateTimeKind.Utc).AddTicks(1911),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 397, DateTimeKind.Utc).AddTicks(2157));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(4710));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Holidays",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(4696),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(8333),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(8024));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(1010));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Holidays",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(4382),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(8041),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(7620));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(730));
+
+            migrationBuilder.AlterColumn<DateTime>(
+                name: "UpdatedDate",
+                table: "File",
+                type: "datetime2",
+                nullable: false,
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(7718),
+                oldClrType: typeof(DateTime),
+                oldType: "datetime2",
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(434));
+
+            migrationBuilder.AlterColumn<DateTime>(
+                name: "CreatedDate",
+                table: "File",
+                type: "datetime2",
+                nullable: false,
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(7423),
+                oldClrType: typeof(DateTime),
+                oldType: "datetime2",
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 238, DateTimeKind.Utc).AddTicks(74));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "EmployeePosition",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(2568),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(5876),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(5942));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(8461));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "EmployeePosition",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(2161),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(5569),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(5634));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(8165));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Employee",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(3974),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(7120),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(7325));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(9784));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Employee",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(3648),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(6801),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(7011));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(9483));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "EmploeeStatus",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(3298),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(6493),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(6632));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(9122));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "EmploeeStatus",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(2904),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(6196),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(6334));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(8827));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "EmergencyContact",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(1751),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(5173),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(5247));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(7802));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "EmergencyContact",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(1326),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(4778),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(4799));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(7373));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Education",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(787),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(4372),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(4427));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(7011));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Education",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 650, DateTimeKind.Utc).AddTicks(365),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(4007),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(4038));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(6543));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "EduactionLevel",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(9693),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(3722),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(3643));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(6256));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "EduactionLevel",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(9319),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(3419),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(3330));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(5957));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Division",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(8903),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(3060),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(2871));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(5523));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Division",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(8408),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(2711),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(2507));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(5174));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "DepositAutorizations",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(8086),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(2409),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(2196));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(4878));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "DepositAutorizations",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(7759),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(2129),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(1823));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(4531));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Departments",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(7363),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(1832),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(1512));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(4230));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Departments",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(7051),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(1537),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(1198));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(3879));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Branch",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(6646),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(1253),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(835));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(3590));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Branch",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(6331),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(957),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(524));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(3295));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "AssignSupervisor",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(6002),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(672),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 396, DateTimeKind.Utc).AddTicks(135));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(2926));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "AssignSupervisor",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(5595),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 812, DateTimeKind.Utc).AddTicks(379),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 395, DateTimeKind.Utc).AddTicks(9814));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(2627));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "AnnualLeaveBalances",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(5182),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 811, DateTimeKind.Utc).AddTicks(9999),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 395, DateTimeKind.Utc).AddTicks(9431));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(2264));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "AnnualLeaveBalances",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(4748),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 811, DateTimeKind.Utc).AddTicks(9639),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 395, DateTimeKind.Utc).AddTicks(8981));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(1843));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Allowance",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(4287),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 811, DateTimeKind.Utc).AddTicks(9352),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 395, DateTimeKind.Utc).AddTicks(8679));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(1547));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Allowance",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(3964),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 811, DateTimeKind.Utc).AddTicks(9054),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 395, DateTimeKind.Utc).AddTicks(8269));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(1185));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "Adress",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(3517),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 811, DateTimeKind.Utc).AddTicks(8764),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 395, DateTimeKind.Utc).AddTicks(7780));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(888));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "Adress",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(3159),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 811, DateTimeKind.Utc).AddTicks(8453),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 395, DateTimeKind.Utc).AddTicks(7462));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(590));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "UpdatedDate",
                 table: "ActingAssiment",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(2801),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 811, DateTimeKind.Utc).AddTicks(8149),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 395, DateTimeKind.Utc).AddTicks(7061));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 237, DateTimeKind.Utc).AddTicks(206));
 
             migrationBuilder.AlterColumn<DateTime>(
                 name: "CreatedDate",
                 table: "ActingAssiment",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 9, 20, 7, 43, 57, 649, DateTimeKind.Utc).AddTicks(2229),
+                defaultValue: new DateTime(2023, 10, 13, 12, 20, 51, 811, DateTimeKind.Utc).AddTicks(7746),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 9, 20, 7, 50, 53, 395, DateTimeKind.Utc).AddTicks(6667));
+                oldDefaultValue: new DateTime(2023, 10, 16, 10, 27, 41, 236, DateTimeKind.Utc).AddTicks(9819));
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Domain;
-using ECX.HR.Persistence.Migrations;
+
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
