@@ -92,20 +92,7 @@ namespace ECXHR_Service.Controllers
                     // Add other data properties as needed
                 };
 
-                if (combinedData.Employee == null ||
-            combinedData.Addresses == null ||
-            combinedData.EmergencyContacts == null ||
-           /* combinedData.EmployeePostions == null ||*/
-            combinedData.Educations == null ||
-            combinedData.Trainings == null ||
-            combinedData.LeaveRequests == null ||
-            combinedData.AnnualLeaveBalances == null ||
-            combinedData.OtherLeaveBalances == null ||
-            combinedData.WorkExperiences == null||
-               combinedData.Spouses == null)
-                {
-                    return NotFound(); // Data not found for one or more properties
-                }
+               
 
                 return Ok(combinedData);
             }

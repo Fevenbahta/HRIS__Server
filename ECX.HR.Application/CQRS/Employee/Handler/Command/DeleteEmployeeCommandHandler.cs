@@ -23,7 +23,9 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
         private IDepositAutorizationRepository _DepositAutorizationRepository;
         private IEmployeePositionRepository _EmployeePositionRepository;
         private ITrainingRepository _TrainingRepository;
-
+        private readonly ILeaveRequestRepository leaveRequestRepository;
+        private ILeaveRequestRepository _LeaveRequestRepository;
+        private ILeaveBalanceRepository _LeaveBalanceRepository;
         private IMapper _mapper;
         public DeleteEmployeeCommandHandler(IEmployeeRepository EmployeeRepository, 
             IAdressRepository AddressRepository,
@@ -34,6 +36,9 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
             IDepositAutorizationRepository DepositAutorizationRepository,
             IEmployeePositionRepository EmployeePositionRepository,
             ITrainingRepository TrainingRepository,
+                  ILeaveRequestRepository LeaveRequestRepository,
+                          ILeaveBalanceRepository LeaveBalanceRepository,
+
 
             IMapper mapper)
         {
@@ -46,7 +51,8 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
             _DepositAutorizationRepository = DepositAutorizationRepository;
             _EmployeePositionRepository = EmployeePositionRepository;
             _TrainingRepository = TrainingRepository;
-
+            _LeaveRequestRepository = LeaveRequestRepository;
+            _LeaveBalanceRepository = LeaveBalanceRepository;
             _mapper = mapper;
         }
 
@@ -71,7 +77,23 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
                 await _EmergencyContactRepository.Update(emergencyContact);
             }
 
-       
+
+
+            var LeaveRequest = await _LeaveRequestRepository.GetByEmpId(request.EmpId);
+            foreach (var leaveRequest in LeaveRequest)
+            {
+                leaveRequest.Status = 1;
+                await _LeaveRequestRepository.Update(leaveRequest);
+            }
+
+
+            var LeaveBalance = await _LeaveBalanceRepository.GetByEmpId(request.EmpId);
+            foreach (var leaveBalance in LeaveBalance)
+            {
+                leaveBalance.Status = 1;
+                await _LeaveBalanceRepository.Update(leaveBalance);
+            }
+
 
 
             var Spouse = await _SpouseRepository.GetByEmpId(request.EmpId);
