@@ -21,7 +21,8 @@ namespace ECX.HR.Application.DTOs.Education
         public string FieldOfStudy { get; set; }
         public string EductionName { get; set; }
         public int Status { get; set; }
-
+        public string? File
+        { get; set; }
 
     }
 }

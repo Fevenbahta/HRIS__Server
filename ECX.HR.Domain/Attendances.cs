@@ -37,6 +37,8 @@ namespace ECX.HR.Domain
         public int? Status { get; set; }
         public string? AttendanceStatus { get; set; }
         public Decimal? AbsentDays { get; set; }
+        public Decimal? TotalLE { get; set; }
+
         public string? LeaveType { get; set; }
 
     }

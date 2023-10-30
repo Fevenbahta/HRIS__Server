@@ -19,6 +19,7 @@ namespace ECX.HR.Application.DTOs.Promotion
         public Guid VacancyId { get; set; }
 
         public Guid PositionId { get; set; }
+        public Guid BranchId { get; set; }
 
         public Guid LevelId { get; set; }
 

@@ -21,5 +21,8 @@ namespace ECX.HR.Application.DTOs.WorkExperiences
         public string ReasonTermination { get; set; }
         public int Status { get; set; }
 
+        public string? File
+        { get; set; }
+
     }
 }

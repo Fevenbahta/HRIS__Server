@@ -1,5 +1,6 @@
 ﻿
 
+using ECX.HR.Application.CQRS.LeaveRequest.Request.Command;
 using ECX.HR.Application.CQRS.WorkExperience.Request.Command;
 using ECX.HR.Application.CQRS.WorkExperience.Request.Queries;
 using ECX.HR.Application.DTOs.WorkExperiences;
@@ -60,7 +61,27 @@ namespace ECXHR_Service.Controllers
             await _mediator.Send(command);
             return NoContent();
         }
- 
+        [HttpGet("{fileId}")]
+        public async Task<IActionResult> GetFile(Guid fileId)
+        {
+
+
+            var fileData = await _mediator.Send(new GetWorkExperienceFileCommand(fileId));
+
+            if (fileData == null)
+            {
+                return NotFound(); // File not found
+            }
+
+            // Determine the file's content type (e.g., application/pdf, image/jpeg, etc.)
+            string contentType = "application/pdf"; // Set a default content type
+            Response.Headers.Add("contentType", "application/pdf");
+            // You can set the content type based on the file's type or extension
+            // Example: if (fileExtension == ".pdf") contentType = "application/pdf";
+
+            // Return the file as a downloadable attachment
+            return File(fileData, contentType);
+        }
 
         [HttpDelete("{id}")]
 

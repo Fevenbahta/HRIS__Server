@@ -19,5 +19,8 @@ namespace ECX.HR.Application.DTOs.Trainings
         public DateTime From { get; set; }
         public DateTime To { get; set; }
         public int Status { get; set; }
+
+        public string? File
+        { get; set; }
     }
 }

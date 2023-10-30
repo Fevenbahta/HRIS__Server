@@ -33,6 +33,7 @@ namespace ECX.HR.Application.DTOs.LeaveBalance
         public Decimal CourtLeaveRemainingBalance { get; set; }
         public Decimal AbortionLeaveDefaultBalance { get; set; }
         public Decimal AbortionLeaveRemainingBalance { get; set; }
+        public Decimal OtherLeaveRemainingBalance { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public DateTime SickEndDate { get; set; }

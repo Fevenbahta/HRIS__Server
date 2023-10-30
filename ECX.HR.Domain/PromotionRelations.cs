@@ -24,7 +24,9 @@ namespace ECX.HR.Domain
      
         public DateTime ApprovedDate { get; set; }
         public String PromotionStatus { get; set; }
+        public String File { get; set; }
         public int Status { get; set; }
+
         public virtual Employees Employees { get; set; }
 
 

@@ -230,6 +230,7 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                         var courtLeaveRemainingBalance = otherLeaveBalance.CourtLeaveRemainingBalance;
                         var leaveWotPayRemainingBalance = otherLeaveBalance.LeaveWotPayRemainingBalance;
                         var abortionRemainingBalance = otherLeaveBalance.AbortionLeaveRemainingBalance;
+                        var otherRemainingBalance = otherLeaveBalance.OtherLeaveRemainingBalance;
                         if (leaveDuration > 0)
                         {
                             DateTime currentDate = DateTime.Now;
@@ -286,6 +287,11 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                                 else if (leaveType.LeaveTypeName == "Leave With Out Pay" && leaveDuration <= leaveWotPayRemainingBalance)
                                 {
                                     otherLeaveBalance.LeaveWotPayRemainingBalance -= leaveDuration;
+                                    leaveDuration = 0;
+                                }
+                                else if (leaveType.LeaveTypeName == "OtherLeave" )
+                                {
+                                    otherLeaveBalance.OtherLeaveRemainingBalance = 0;
                                     leaveDuration = 0;
                                 }
                                 otherLeaveBalance.SickEndDate = otherLeaveBalance.SickEndDate;

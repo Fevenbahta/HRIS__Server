@@ -20,6 +20,7 @@ namespace ECX.HR.Application.DTOs.PromotionRelation
         public Guid EmpId { get; set; }
 
         public DateTime ApprovedDate { get; set; }
+        public String File { get; set; }
         public String PromotionStatus { get; set; }
         public int Status { get; set; }
 

@@ -36,6 +36,7 @@ namespace ECX.HR.Application.CQRS.Attendance
         public TimeSpan? Early { get; set; }
         public int? Status { get; set; }
         public string? AttendanceStatus { get; set; }
+        public Decimal? TotalLE { get; set; }
         public Decimal? AbsentDays { get; set; }
         public string? LeaveType { get; set; }
     }

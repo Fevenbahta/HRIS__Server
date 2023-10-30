@@ -1,8 +1,5 @@
 ﻿
 
-using ECX.HR.Application.CQRS.Addresss.Request.Queries;
-using ECX.HR.Application.CQRS.Education.Request.Queries;
-using ECX.HR.Application.CQRS.EmergencyContact.Request.Queries;
 using ECX.HR.Application.CQRS.Employee.Request.Queries;
 using ECX.HR.Application.CQRS.EmployeePosition.Request.Queries;
 using ECX.HR.Application.CQRS.LeaveBalance.Request.Queries;
@@ -10,9 +7,6 @@ using ECX.HR.Application.CQRS.LeaveRequest.Handler.Command;
 using ECX.HR.Application.CQRS.LeaveRequest.Request.Command;
 using ECX.HR.Application.CQRS.LeaveRequest.Request.Queries;
 using ECX.HR.Application.CQRS.OtherLeaveBalance.Request.Queries;
-using ECX.HR.Application.CQRS.Training.Request.Queries;
-using ECX.HR.Application.CQRS.WorkExperience.Request.Queries;
-using ECX.HR.Application.DTOs.Employees;
 using ECX.HR.Application.DTOs.Leave;
 
 using ECX.HR.Application.Response;
