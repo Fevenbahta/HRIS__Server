@@ -237,9 +237,9 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
 
                             if (leaveType != null)
                             {
-                                if (leaveType.LeaveTypeName == "Sick" && leaveDuration <= sickRemainingBalance)
+                                if (leaveType.LeaveTypeName == "Sick" && totalDuration <= sickRemainingBalance)
                                 {
-                                    otherLeaveBalance.SickRemainingBalance -= leaveDuration;
+                                    otherLeaveBalance.SickRemainingBalance -= totalDuration;
                                     leaveDuration = 0;
                                     if (otherLeaveBalance.SickEndDate == DateTime.MinValue)
                                     {
