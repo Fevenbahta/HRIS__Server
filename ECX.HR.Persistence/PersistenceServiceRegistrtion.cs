@@ -9,7 +9,9 @@ using ECX.HR.Application.CQRS.Level.Request.Command;
 using ECX.HR.Application.CQRS.OtherLeaveBalance.Handler.Command;
 using ECX.HR.Application.DTOs.Employees;
 using ECX.HR.Application.DTOs.LeaveBalance;
+using ECX.HR.Application.Response;
 using ECX.HR.Persistence.Repositories;
+using ECXHR_Service.Controllers;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -62,11 +64,15 @@ namespace ECX.HR.Persistence
             services.AddScoped<ITerminationRepository, TerminationRepository>();
 
             services.AddScoped<IHolidayRepository, HolidayRepository>();
-           
-
+            services.AddScoped<ICheckInOutRepository, CheckInOutRepository>();
+            services.AddScoped<IUserInfoRepository, UserInfoRepository>();
+            services.AddScoped<IUserOfNumRepository, UserOfNumRepository>();
+            services.AddScoped<INumRunRepository, NumOfRunRepository>();
+            services.AddScoped<INumOfRunDelRepository, NumRunDelRepository>();
+            services.AddScoped<ISchClassRepository, SchRepository>();
             services.AddScoped<EmployeeDto>(); // This registers EmployeeDto for dependency injection
-            
-    
+         
+
             services.AddScoped<AnnualLeaveBalanceDto>();
 
             services.AddScoped<UpdateLeaveBalanceCommandHandler>();
@@ -75,7 +81,7 @@ namespace ECX.HR.Persistence
 
             // Inside ConfigureServices method in Startup.cs
             services.AddScoped<UpdateOtherLeaveBalanceCommandHandler>();
-
+      
 
             services.AddScoped<IPromotionVacancyRepository, PromotionVacancyRepository>();
 

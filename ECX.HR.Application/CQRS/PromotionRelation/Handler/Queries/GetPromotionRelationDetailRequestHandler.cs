@@ -27,7 +27,7 @@ namespace ECX.HR.Application.CQRS.PromotionRelation.Handler.Queries
         {
             var PromotionRelation =await _PromotionRelationRepository.GetByEmpId(request.empId);
 
-            if (PromotionRelation == null || !PromotionRelation.Any(we => we.Status == 0))
+            if (PromotionRelation == null || PromotionRelation.Any(we => we.Status != 0))
                 throw new NotFoundException(nameof(PromotionRelation), request.empId);
 
             else

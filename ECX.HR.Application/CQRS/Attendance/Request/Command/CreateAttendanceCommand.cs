@@ -1,4 +1,5 @@
-﻿using ECX.HR.Application.DTOs.Levels;
+﻿using ECX.HR.Application.CQRS.Attendance;
+using ECX.HR.Application.DTOs.Levels;
 using ECX.HR.Application.Response;
 using MediatR;
 using System;
@@ -13,4 +14,6 @@ namespace ECX.HR.Application.CQRS.Attendance.Request.Command
     {
         public AttendanceDto AttendanceDto { get; set; }
     }
+
+
 }

@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using ECX.HR.Application.CQRS.LeaveRequest.Request.Queries;
 using ECX.HR.Application.DTOs.Leave;
+using ECX.HR.Application.CQRS.LeaveRequest.Request.Command;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -40,6 +41,8 @@ namespace ECXHR_Service.Controllers
             return Ok(PromotionRelation);
         }
 
+
+
         // GET: api/<PromotionRelationController>
         [HttpGet]
         public async Task<ActionResult<List<PromotionRelationDto>>> Get()
@@ -47,6 +50,29 @@ namespace ECXHR_Service.Controllers
             var PromotionRelation = await _mediator.Send(new GetPromotionRelationListRequest());
             return Ok(PromotionRelation);
         }
+        [HttpGet("file/{VacancyId}/{Empid}")]
+        public async Task<IActionResult> GetFilePromotionFile(Guid VacancyId, Guid Empid)
+        {
+
+
+            var fileData = await _mediator.Send(new GetFilePromotionCommand(VacancyId, Empid));
+
+            if (fileData == null)
+            {
+                return NotFound(); // File not found
+            }
+
+            // Determine the file's content type (e.g., application/pdf, image/jpeg, etc.)
+            string contentType = "application/pdf"; // Set a default content type
+            Response.Headers.Add("contentType", "application/pdf");
+            // You can set the content type based on the file's type or extension
+            // Example: if (fileExtension == ".pdf") contentType = "application/pdf";
+
+            // Return the file as a downloadable attachment
+            return File(fileData, contentType);
+        }
+
+
 
         // GET api/<PromotionRelationController>/5
         [HttpGet("{id}")]

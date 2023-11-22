@@ -42,26 +42,28 @@ namespace ECX.HR.Application.CQRS.PromotionRelation.Handler.Command
 
             var vacancys =await promotionVacancy.GetAll();
 
-            foreach (var promotion in promotions.OrderBy(lb => lb.VacancyId))
-            {
-                if (promotion.PromotionStatus != "Promoted" && promotion.VacancyId == request.PromotionRelationDto.VacancyId)
-                {
-                    promotion.Status = 1;
- await _PromotionRelationRepository.Update(promotion);
-                }
+                   foreach (var promotion in promotions.OrderBy(lb => lb.VacancyId))
+                   {
+                       if (promotion.PromotionStatus != "Promoted" && promotion.VacancyId == request.PromotionRelationDto.VacancyId &&
+                            request.PromotionRelationDto.PromotionStatus== "Promoted")
+                       {
+                           promotion.PromotionStatus = "Rejected";
+        await _PromotionRelationRepository.Update(promotion);
+                       }
 
-            }
-            foreach (var vacancy in vacancys.OrderBy(lb => lb.VacancyId))
-            {
-                if (vacancy.VacancyId == request.PromotionRelationDto.VacancyId)
-                {
-                    vacancy.Status = 1;
-                    await promotionVacancy.Update(vacancy);
-                }
+                   }
+                     foreach (var vacancy in vacancys.OrderBy(lb => lb.VacancyId))
+                     {
+                         if (vacancy.VacancyId == request.PromotionRelationDto.VacancyId && request.PromotionRelationDto.PromotionStatus == "Promoted")
+                         {
+                             vacancy.Status = 1;
+                             await promotionVacancy.Update(vacancy);
+                         }
 
-            }
+                     }
+       
 
-           
+            await _PromotionRelationRepository.Update(PromotionRelation);
 
 
             return Unit.Value;

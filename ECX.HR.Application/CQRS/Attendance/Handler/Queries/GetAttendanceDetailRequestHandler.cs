@@ -25,10 +25,10 @@ namespace ECX.HR.Application.CQRS.Attendance.Handler.Queries
         }
         public async Task<AttendanceDto> Handle(GetAttendanceDetailRequest request, CancellationToken cancellationToken)
         {
-            var Attendance =await _AttendanceRepository.GetById(request.AttendanceId);
+            var Attendance =await _AttendanceRepository.GetById(request.Id);
            
             if (Attendance == null || Attendance.Status != 0)
-                throw new NotFoundException(nameof(Attendance), request.AttendanceId);
+                throw new NotFoundException(nameof(Attendance), request.Id);
 
             else
                 return _mapper.Map<AttendanceDto>(Attendance);

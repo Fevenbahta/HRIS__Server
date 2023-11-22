@@ -16,7 +16,11 @@ namespace ECX.HR.Application.DTOs.PromotionVacancy
         public Guid PositionId { get; set; }
         public Guid VacancyId { get; set; }
         public Guid LevelId { get; set; }
+        public Guid BranchId { get; set; }
         public string Requirement { get; set; }
+        public string Availability { get; set; }
+        public string Purpose { get; set; }
+        public string Responsibility { get; set; }
         public string Title { get; set; }
         public DateTime ReleaseDate { get; set; }
         public DateTime Deadline { get; set; }

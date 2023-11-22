@@ -24,6 +24,16 @@ namespace ECX.HR.Persistence.Repositories
                    .ToListAsync();
         }
 
+        public async Task<PromotionRelations> GetByPosEmp(Guid vacancyId, Guid empId)
+        {
+            return await _context.Set<PromotionRelations>()
+                      .Where(T => T.VacancyId == vacancyId && T.EmpId == empId )
+                    .FirstOrDefaultAsync();
+
+            // await _context.Set<T>().FindAsync(id);
+        }
+   
+
         public async Task<List<PromotionRelations>> GetByStatus(string status)
         {
             return await _context.Set<PromotionRelations>()

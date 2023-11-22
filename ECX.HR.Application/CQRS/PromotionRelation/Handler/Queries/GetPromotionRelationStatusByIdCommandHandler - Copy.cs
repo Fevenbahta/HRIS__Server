@@ -31,7 +31,7 @@ namespace ECX.HR.Application.CQRS.PromotionRelation.Handler.Queries
             var PromotionRelations = await _PromotionRelationRepository.GetByStatus(request.PromotionStatus);
 
             // Filter leave requests with status not equal to 1
-            var filteredPromotions = PromotionRelations.FindAll(lr => lr.Status != 1);
+            var filteredPromotions = PromotionRelations.FindAll(lr => lr.Status == 0);
 
             // If there are no matching leave requests, throw a NotFoundException
             if (filteredPromotions.Count == 0)

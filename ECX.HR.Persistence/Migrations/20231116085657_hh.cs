@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ECX.HR.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class colghll00mm : Migration
+    public partial class hh : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -30,9 +30,9 @@ namespace ECX.HR.Persistence.Migrations
                     ThirdSupervisorStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 684, DateTimeKind.Utc).AddTicks(5799)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 950, DateTimeKind.Utc).AddTicks(4887)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 684, DateTimeKind.Utc).AddTicks(6181))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 950, DateTimeKind.Utc).AddTicks(5402))
                 },
                 constraints: table =>
                 {
@@ -57,9 +57,9 @@ namespace ECX.HR.Persistence.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 684, DateTimeKind.Utc).AddTicks(6482)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 950, DateTimeKind.Utc).AddTicks(5768)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 684, DateTimeKind.Utc).AddTicks(6837))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 950, DateTimeKind.Utc).AddTicks(6120))
                 },
                 constraints: table =>
                 {
@@ -80,9 +80,9 @@ namespace ECX.HR.Persistence.Migrations
                     RatePercent = table.Column<double>(type: "float", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 684, DateTimeKind.Utc).AddTicks(7141)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 950, DateTimeKind.Utc).AddTicks(6540)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 684, DateTimeKind.Utc).AddTicks(7432))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 950, DateTimeKind.Utc).AddTicks(6893))
                 },
                 constraints: table =>
                 {
@@ -104,9 +104,9 @@ namespace ECX.HR.Persistence.Migrations
                     FifthSupervisor = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 684, DateTimeKind.Utc).AddTicks(8624)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 950, DateTimeKind.Utc).AddTicks(8175)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 684, DateTimeKind.Utc).AddTicks(8928))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 950, DateTimeKind.Utc).AddTicks(8597))
                 },
                 constraints: table =>
                 {
@@ -117,33 +117,35 @@ namespace ECX.HR.Persistence.Migrations
                 name: "Attendances",
                 columns: table => new
                 {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     PId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AttendanceId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AttendanceId = table.Column<int>(type: "int", nullable: true),
                     EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     TimeTable = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    OnDuty = table.Column<TimeSpan>(type: "time", nullable: true),
-                    OffDuty = table.Column<TimeSpan>(type: "time", nullable: true),
-                    ClockIn = table.Column<TimeSpan>(type: "time", nullable: true),
-                    ClockOut = table.Column<TimeSpan>(type: "time", nullable: true),
+                    OnDuty = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    OffDuty = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ClockIn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ClockOut = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Department = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Normall = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     RealTime = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    Late = table.Column<TimeSpan>(type: "time", nullable: true),
-                    Early = table.Column<TimeSpan>(type: "time", nullable: true),
+                    Late = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Early = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: true),
                     AttendanceStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AbsentDays = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    TotalLE = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LeaveType = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 684, DateTimeKind.Utc).AddTicks(9324)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 950, DateTimeKind.Utc).AddTicks(8961)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 684, DateTimeKind.Utc).AddTicks(9770))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 950, DateTimeKind.Utc).AddTicks(9305))
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Attendances", x => x.PId);
+                    table.PrimaryKey("PK_Attendances", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -157,13 +159,31 @@ namespace ECX.HR.Persistence.Migrations
                     city = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(69)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 950, DateTimeKind.Utc).AddTicks(9760)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(355))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 951, DateTimeKind.Utc).AddTicks(112))
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Branch", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CheckInOuts",
+                columns: table => new
+                {
+                    USERID = table.Column<int>(type: "int", nullable: false),
+                    CHECKTIME = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CHECKTYPE = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    VERIFYCODE = table.Column<int>(type: "int", nullable: true),
+                    SENSORID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Memoinfo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    WorkCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    sn = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserExtFmt = table.Column<short>(type: "smallint", nullable: false)
+                },
+                constraints: table =>
+                {
                 });
 
             migrationBuilder.CreateTable(
@@ -176,9 +196,9 @@ namespace ECX.HR.Persistence.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(714)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 951, DateTimeKind.Utc).AddTicks(535)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(1004))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 951, DateTimeKind.Utc).AddTicks(962))
                 },
                 constraints: table =>
                 {
@@ -199,9 +219,9 @@ namespace ECX.HR.Persistence.Migrations
                     TinNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(1295)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 951, DateTimeKind.Utc).AddTicks(1365)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(1648))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 951, DateTimeKind.Utc).AddTicks(1791))
                 },
                 constraints: table =>
                 {
@@ -218,9 +238,9 @@ namespace ECX.HR.Persistence.Migrations
                     EducationName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(2881)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 951, DateTimeKind.Utc).AddTicks(3069)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(3261))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 951, DateTimeKind.Utc).AddTicks(3426))
                 },
                 constraints: table =>
                 {
@@ -237,9 +257,9 @@ namespace ECX.HR.Persistence.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(6106)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 951, DateTimeKind.Utc).AddTicks(6421)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(6478))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 951, DateTimeKind.Utc).AddTicks(6780))
                 },
                 constraints: table =>
                 {
@@ -272,9 +292,9 @@ namespace ECX.HR.Persistence.Migrations
                     Status = table.Column<int>(type: "int", nullable: false),
                     AttendanceId = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(6833)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 951, DateTimeKind.Utc).AddTicks(7231)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(7130))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 951, DateTimeKind.Utc).AddTicks(7587))
                 },
                 constraints: table =>
                 {
@@ -297,9 +317,9 @@ namespace ECX.HR.Persistence.Migrations
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(5345)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 951, DateTimeKind.Utc).AddTicks(5652)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(5713))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 951, DateTimeKind.Utc).AddTicks(6059))
                 },
                 constraints: table =>
                 {
@@ -318,9 +338,9 @@ namespace ECX.HR.Persistence.Migrations
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(7475)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 951, DateTimeKind.Utc).AddTicks(7936)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(7769))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 951, DateTimeKind.Utc).AddTicks(8374))
                 },
                 constraints: table =>
                 {
@@ -351,9 +371,9 @@ namespace ECX.HR.Persistence.Migrations
                     departmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     employeePositionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(8158)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 951, DateTimeKind.Utc).AddTicks(8733)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(8521))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 951, DateTimeKind.Utc).AddTicks(9076))
                 },
                 constraints: table =>
                 {
@@ -371,9 +391,9 @@ namespace ECX.HR.Persistence.Migrations
                     Maximum = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(8907)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 951, DateTimeKind.Utc).AddTicks(9549)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(9193))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 951, DateTimeKind.Utc).AddTicks(9895))
                 },
                 constraints: table =>
                 {
@@ -391,13 +411,46 @@ namespace ECX.HR.Persistence.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(9560)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 952, DateTimeKind.Utc).AddTicks(308)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(9848))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 952, DateTimeKind.Utc).AddTicks(660))
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Level", x => x.LevelId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "NumOfRun",
+                columns: table => new
+                {
+                    STARTDATE = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    NUM_RUNID = table.Column<int>(type: "int", nullable: false),
+                    OLDID = table.Column<int>(type: "int", nullable: false),
+                    NAME = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ENDDATE = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CYLE = table.Column<short>(type: "smallint", nullable: false),
+                    UNITS = table.Column<short>(type: "smallint", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_NumOfRun", x => x.STARTDATE);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "NumRunDels",
+                columns: table => new
+                {
+                    NUM_RUNID = table.Column<short>(type: "smallint", nullable: false),
+                    STARTTIME = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ENDTIME = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    SDAYS = table.Column<short>(type: "smallint", nullable: false),
+                    EDAYS = table.Column<short>(type: "smallint", nullable: false),
+                    SCHCLASSID = table.Column<int>(type: "int", nullable: false),
+                    OverTime = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
                 });
 
             migrationBuilder.CreateTable(
@@ -420,9 +473,9 @@ namespace ECX.HR.Persistence.Migrations
                     TinNumber = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 686, DateTimeKind.Utc).AddTicks(144)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 952, DateTimeKind.Utc).AddTicks(1031)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 686, DateTimeKind.Utc).AddTicks(523))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 952, DateTimeKind.Utc).AddTicks(1997))
                 },
                 constraints: table =>
                 {
@@ -438,15 +491,19 @@ namespace ECX.HR.Persistence.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PositionId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     LevelId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    BranchId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Requirement = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Availability = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Purpose = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Responsibility = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ReleaseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Deadline = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 686, DateTimeKind.Utc).AddTicks(3564)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 952, DateTimeKind.Utc).AddTicks(6710)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 686, DateTimeKind.Utc).AddTicks(3872))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 952, DateTimeKind.Utc).AddTicks(7104))
                 },
                 constraints: table =>
                 {
@@ -463,13 +520,42 @@ namespace ECX.HR.Persistence.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 686, DateTimeKind.Utc).AddTicks(5012)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 952, DateTimeKind.Utc).AddTicks(9064)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 686, DateTimeKind.Utc).AddTicks(5382))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 952, DateTimeKind.Utc).AddTicks(9639))
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_SalaryType", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "schClasses",
+                columns: table => new
+                {
+                    schClassid = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    schName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StartTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    LateMinutes = table.Column<int>(type: "int", nullable: false),
+                    EarlyMinutes = table.Column<int>(type: "int", nullable: false),
+                    CheckIn = table.Column<int>(type: "int", nullable: false),
+                    CheckOut = table.Column<int>(type: "int", nullable: false),
+                    Color = table.Column<int>(type: "int", nullable: false),
+                    AutoBind = table.Column<short>(type: "smallint", nullable: false),
+                    CheckInTime1 = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CheckInTime2 = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CheckOutTime1 = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CheckOutTime2 = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    WorkDay = table.Column<double>(type: "float", nullable: false),
+                    SensorID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    WorkMins = table.Column<double>(type: "float", nullable: false),
+                    upsize_ts = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_schClasses", x => x.schClassid);
                 });
 
             migrationBuilder.CreateTable(
@@ -483,13 +569,90 @@ namespace ECX.HR.Persistence.Migrations
                     SupervisorLevel = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 686, DateTimeKind.Utc).AddTicks(7328)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 953, DateTimeKind.Utc).AddTicks(1843)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 686, DateTimeKind.Utc).AddTicks(7641))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 953, DateTimeKind.Utc).AddTicks(2212))
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Supervisor", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "userInformation",
+                columns: table => new
+                {
+                    USERID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Badgenumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SSN = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Gender = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TITLE = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PAGER = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BIRTHDAY = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    HIREDDAY = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    street = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CITY = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    STATE = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ZIP = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OPHONE = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FPHONE = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    VERIFICATIONMETHOD = table.Column<short>(type: "smallint", nullable: true),
+                    DEFAULTDEPTID = table.Column<short>(type: "smallint", nullable: true),
+                    SECURITYFLAGS = table.Column<short>(type: "smallint", nullable: true),
+                    ATT = table.Column<short>(type: "smallint", nullable: true),
+                    INLATE = table.Column<short>(type: "smallint", nullable: true),
+                    OUTEARLY = table.Column<short>(type: "smallint", nullable: true),
+                    OVERTIME = table.Column<short>(type: "smallint", nullable: true),
+                    SEP = table.Column<short>(type: "smallint", nullable: true),
+                    HOLIDAY = table.Column<short>(type: "smallint", nullable: true),
+                    MINZU = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PASSWORD = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LUNCHDURATION = table.Column<short>(type: "smallint", nullable: true),
+                    PHOTO = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    mverifypass = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Notes = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    privilege = table.Column<int>(type: "int", nullable: true),
+                    InheritDeptSch = table.Column<short>(type: "smallint", nullable: true),
+                    InheritDeptSchClass = table.Column<short>(type: "smallint", nullable: true),
+                    AutoSchPlan = table.Column<short>(type: "smallint", nullable: true),
+                    MinAutoSchInterval = table.Column<int>(type: "int", nullable: true),
+                    RegisterOT = table.Column<short>(type: "smallint", nullable: true),
+                    InheritDeptRule = table.Column<short>(type: "smallint", nullable: true),
+                    EMPRIVILEGE = table.Column<short>(type: "smallint", nullable: true),
+                    CardNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FaceGroup = table.Column<int>(type: "int", nullable: true),
+                    AccGroup = table.Column<int>(type: "int", nullable: true),
+                    UseAccGroupTZ = table.Column<int>(type: "int", nullable: true),
+                    VerifyCode = table.Column<int>(type: "int", nullable: true),
+                    Expires = table.Column<int>(type: "int", nullable: true),
+                    ValidCount = table.Column<int>(type: "int", nullable: true),
+                    ValidTimeBegin = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ValidTimeEnd = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    TimeZone1 = table.Column<int>(type: "int", nullable: true),
+                    TimeZone2 = table.Column<int>(type: "int", nullable: true),
+                    TimeZone3 = table.Column<int>(type: "int", nullable: true),
+                    upsize_ts = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_userInformation", x => x.USERID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UserOfNums",
+                columns: table => new
+                {
+                    USERID = table.Column<int>(type: "int", nullable: false),
+                    NUM_OF_RUN_ID = table.Column<int>(type: "int", nullable: false),
+                    STARTDATE = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ENDDATE = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ISNOTOF_RUN = table.Column<int>(type: "int", nullable: false),
+                    ORDER_RUN = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
                 });
 
             migrationBuilder.CreateTable(
@@ -503,9 +666,9 @@ namespace ECX.HR.Persistence.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(1945)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 951, DateTimeKind.Utc).AddTicks(2146)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(2482))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 951, DateTimeKind.Utc).AddTicks(2568))
                 },
                 constraints: table =>
                 {
@@ -538,9 +701,9 @@ namespace ECX.HR.Persistence.Migrations
                     IsExpired = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 684, DateTimeKind.Utc).AddTicks(7790)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 950, DateTimeKind.Utc).AddTicks(7302)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 684, DateTimeKind.Utc).AddTicks(8183))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 950, DateTimeKind.Utc).AddTicks(7744))
                 },
                 constraints: table =>
                 {
@@ -567,10 +730,11 @@ namespace ECX.HR.Persistence.Migrations
                     FieldOfStudy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EductionName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
+                    File = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(3708)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 951, DateTimeKind.Utc).AddTicks(3838)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(4167))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 951, DateTimeKind.Utc).AddTicks(4278))
                 },
                 constraints: table =>
                 {
@@ -601,9 +765,9 @@ namespace ECX.HR.Persistence.Migrations
                     Relationship = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(4595)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 951, DateTimeKind.Utc).AddTicks(4715)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 685, DateTimeKind.Utc).AddTicks(4973))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 951, DateTimeKind.Utc).AddTicks(5215))
                 },
                 constraints: table =>
                 {
@@ -627,11 +791,13 @@ namespace ECX.HR.Persistence.Migrations
                     EmpId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ApprovedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PromotionStatus = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    File = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Evaluation = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 686, DateTimeKind.Utc).AddTicks(2754)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 952, DateTimeKind.Utc).AddTicks(5655)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 686, DateTimeKind.Utc).AddTicks(3125))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 952, DateTimeKind.Utc).AddTicks(6102))
                 },
                 constraints: table =>
                 {
@@ -658,9 +824,9 @@ namespace ECX.HR.Persistence.Migrations
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 686, DateTimeKind.Utc).AddTicks(4184)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 952, DateTimeKind.Utc).AddTicks(7473)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 686, DateTimeKind.Utc).AddTicks(4628))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 952, DateTimeKind.Utc).AddTicks(8038))
                 },
                 constraints: table =>
                 {
@@ -686,9 +852,9 @@ namespace ECX.HR.Persistence.Migrations
                     Relationship = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 686, DateTimeKind.Utc).AddTicks(5693)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 953, DateTimeKind.Utc).AddTicks(47)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 686, DateTimeKind.Utc).AddTicks(6063))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 953, DateTimeKind.Utc).AddTicks(485))
                 },
                 constraints: table =>
                 {
@@ -718,9 +884,9 @@ namespace ECX.HR.Persistence.Migrations
                     Supervisor = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 686, DateTimeKind.Utc).AddTicks(7947)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 953, DateTimeKind.Utc).AddTicks(2568)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 686, DateTimeKind.Utc).AddTicks(8442))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 953, DateTimeKind.Utc).AddTicks(3018))
                 },
                 constraints: table =>
                 {
@@ -745,10 +911,11 @@ namespace ECX.HR.Persistence.Migrations
                     From = table.Column<DateTime>(type: "datetime2", nullable: false),
                     To = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
+                    File = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 686, DateTimeKind.Utc).AddTicks(8829)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 953, DateTimeKind.Utc).AddTicks(3454)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 686, DateTimeKind.Utc).AddTicks(9197))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 953, DateTimeKind.Utc).AddTicks(3887))
                 },
                 constraints: table =>
                 {
@@ -776,10 +943,11 @@ namespace ECX.HR.Persistence.Migrations
                     Salary = table.Column<double>(type: "float", nullable: false),
                     ReasonTermination = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
+                    File = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 686, DateTimeKind.Utc).AddTicks(9649)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 953, DateTimeKind.Utc).AddTicks(4354)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 687, DateTimeKind.Utc).AddTicks(18))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 953, DateTimeKind.Utc).AddTicks(4787))
                 },
                 constraints: table =>
                 {
@@ -805,9 +973,9 @@ namespace ECX.HR.Persistence.Migrations
                     LevelId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 686, DateTimeKind.Utc).AddTicks(6510)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 953, DateTimeKind.Utc).AddTicks(938)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 686, DateTimeKind.Utc).AddTicks(6887))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 953, DateTimeKind.Utc).AddTicks(1398))
                 },
                 constraints: table =>
                 {
@@ -832,9 +1000,9 @@ namespace ECX.HR.Persistence.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Status = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 686, DateTimeKind.Utc).AddTicks(1862)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 952, DateTimeKind.Utc).AddTicks(3929)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 686, DateTimeKind.Utc).AddTicks(2225))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 952, DateTimeKind.Utc).AddTicks(5114))
                 },
                 constraints: table =>
                 {
@@ -873,6 +1041,7 @@ namespace ECX.HR.Persistence.Migrations
                     CourtLeaveRemainingBalance = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     AbortionLeaveDefaultBalance = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     AbortionLeaveRemainingBalance = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    OtherLeaveRemainingBalance = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     SickEndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -882,9 +1051,9 @@ namespace ECX.HR.Persistence.Migrations
                     UnusedDays = table.Column<int>(type: "int", nullable: false),
                     AnnualLeaveBalanceId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 686, DateTimeKind.Utc).AddTicks(911)),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 952, DateTimeKind.Utc).AddTicks(2655)),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 10, 23, 10, 5, 47, 686, DateTimeKind.Utc).AddTicks(1451))
+                    UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 11, 16, 8, 56, 56, 952, DateTimeKind.Utc).AddTicks(3136))
                 },
                 constraints: table =>
                 {
@@ -995,6 +1164,9 @@ namespace ECX.HR.Persistence.Migrations
                 name: "Branch");
 
             migrationBuilder.DropTable(
+                name: "CheckInOuts");
+
+            migrationBuilder.DropTable(
                 name: "DepositAutorizations");
 
             migrationBuilder.DropTable(
@@ -1025,6 +1197,12 @@ namespace ECX.HR.Persistence.Migrations
                 name: "LeaveType");
 
             migrationBuilder.DropTable(
+                name: "NumOfRun");
+
+            migrationBuilder.DropTable(
+                name: "NumRunDels");
+
+            migrationBuilder.DropTable(
                 name: "OrganizationalProfile");
 
             migrationBuilder.DropTable(
@@ -1043,6 +1221,9 @@ namespace ECX.HR.Persistence.Migrations
                 name: "SalaryType");
 
             migrationBuilder.DropTable(
+                name: "schClasses");
+
+            migrationBuilder.DropTable(
                 name: "Spouse");
 
             migrationBuilder.DropTable(
@@ -1056,6 +1237,12 @@ namespace ECX.HR.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "Training");
+
+            migrationBuilder.DropTable(
+                name: "userInformation");
+
+            migrationBuilder.DropTable(
+                name: "UserOfNums");
 
             migrationBuilder.DropTable(
                 name: "WorkExperiences");

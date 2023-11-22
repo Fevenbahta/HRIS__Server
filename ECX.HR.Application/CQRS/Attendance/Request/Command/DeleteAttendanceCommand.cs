@@ -9,6 +9,6 @@ namespace ECX.HR.Application.CQRS.Attendance.Request.Command
 {
     public class DeleteAttendanceCommand : IRequest
     {
-        public string AttendanceId { get; set; }
+        public Guid Id { get; set; }
     }
 }

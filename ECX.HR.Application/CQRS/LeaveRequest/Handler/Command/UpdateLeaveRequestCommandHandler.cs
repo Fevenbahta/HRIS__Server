@@ -174,7 +174,7 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Command
                 }
 
             }
-            else if (request.LeaveRequestDto.LeaveStatus == "First-Approved" && leaveType.LeaveTypeName != "Annual")
+            else if (request.LeaveRequestDto.LeaveStatus == "Admin-Approved" && leaveType.LeaveTypeName != "Annual")
             {
                 var leaveStartDate = leaveRequest.StartDate;
                 var leaveEndDate = leaveRequest.EndDate;

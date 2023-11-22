@@ -10,6 +10,6 @@ namespace ECX.HR.Application.CQRS.Attendance.Request.Queries
 {
     public class GetAttendanceDetailRequest :IRequest<AttendanceDto>
     {
-        public string  AttendanceId { get; set; }
+        public Guid  Id { get; set; }
     }
 }

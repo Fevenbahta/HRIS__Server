@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace ECX.HR.Application.Contracts.Persistence
 {
-    public interface IAttendanceRepository : IGenericRepository<Attendances>
+    public interface INumRunRepository : IGenericRepository<NumOfRun>
     {
-        Task<List<CheckInOut>> GetByDate();
-
+        Task<List<NumOfRun>> GetNumOfRun();
 
     }
 }

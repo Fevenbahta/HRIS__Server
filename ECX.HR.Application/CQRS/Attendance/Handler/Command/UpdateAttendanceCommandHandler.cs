@@ -31,7 +31,12 @@ namespace ECX.HR.Application.CQRS.Attendance.Handler.Command
             var validationResult = await validator.ValidateAsync(request.AttendanceDto);
             if (validationResult.IsValid == false)
                 throw new ValidationException(validationResult);
-            var Attendance = await _AttendanceRepository.GetById(request.AttendanceDto.AttendanceId);
+            
+            var Attendance = await _AttendanceRepository.GetById(request.AttendanceDto.Id);
+
+
+
+
             _mapper.Map(request.AttendanceDto, Attendance);
             await _AttendanceRepository.Update(Attendance);
             return Unit.Value;

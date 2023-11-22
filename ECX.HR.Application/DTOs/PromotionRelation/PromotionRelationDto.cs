@@ -21,6 +21,7 @@ namespace ECX.HR.Application.DTOs.PromotionRelation
 
         public DateTime ApprovedDate { get; set; }
         public String File { get; set; }
+        public String Evaluation { get; set; }
         public String PromotionStatus { get; set; }
         public int Status { get; set; }
 

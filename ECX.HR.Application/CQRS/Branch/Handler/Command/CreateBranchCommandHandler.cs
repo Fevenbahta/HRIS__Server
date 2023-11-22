@@ -49,6 +49,7 @@ namespace ECX.HR.Application.CQRS.Branch.Handler.Command
             response.Message = "Creation Successfull";
             response.Id = (Guid)bra;
             return response;
+
         }
     }
 }

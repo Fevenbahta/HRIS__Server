@@ -21,6 +21,5 @@ namespace ECX.HR.Infrastructure
             return services;
         }
 
-        
-    }
-}
+
+    }}

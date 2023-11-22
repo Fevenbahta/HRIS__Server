@@ -24,17 +24,18 @@ namespace ECX.HR.Application.CQRS.Attendance.Handler.Command
 
         public async Task<Unit> Handle(DeleteAttendanceCommand request, CancellationToken cancellationToken)
         {
-            var Attendance = await _AttendanceRepository.GetById(request.AttendanceId);
+            var Attendance = await _AttendanceRepository.GetById(request.Id);
             await _AttendanceRepository.Delete(Attendance);
             return Unit.Value;
         }
 
         async Task IRequestHandler<DeleteAttendanceCommand>.Handle(DeleteAttendanceCommand request, CancellationToken cancellationToken)
         {
-            var Attendance = await _AttendanceRepository.GetById(request.AttendanceId);
+            var Attendance = await _AttendanceRepository.GetById(request.Id);
             if(Attendance == null) 
-                throw new NotFoundException(nameof(Attendance), request.AttendanceId);
+                throw new NotFoundException(nameof(Attendance), request.Id);
             Attendance.Status = 1;
+            
             await _AttendanceRepository.Update(Attendance);
         }
     }

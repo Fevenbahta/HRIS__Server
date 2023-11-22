@@ -28,7 +28,7 @@ namespace ECX.HR.Application.CQRS.PromotionVacancy.Handler.Queries
         {
             var PromotionVacancy =await _PromotionVacancyRepository.GetById(request.VacancyId);
            
-            if (PromotionVacancy == null || PromotionVacancy.Status != 0)
+            if (PromotionVacancy == null || PromotionVacancy.Status == 0)
                 throw new NotFoundException(nameof(PromotionVacancy), request.VacancyId);
 
             else

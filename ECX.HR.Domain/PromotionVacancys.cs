@@ -19,8 +19,12 @@ namespace ECX.HR.Domain
         public Guid PositionId { get; set; }
         [ForeignKey("Levels")]
         public Guid LevelId { get; set; }
-
+        [ForeignKey("Branch")]
+        public Guid BranchId { get; set; }
         public string Requirement { get; set; }
+        public string Availability { get; set; }
+        public string Purpose { get; set; }
+        public string Responsibility { get; set; }
         public string Title { get; set; }
         public DateTime ReleaseDate { get; set; }
         public DateTime Deadline { get; set; }
