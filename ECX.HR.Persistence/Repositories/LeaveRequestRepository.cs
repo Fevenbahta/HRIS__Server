@@ -40,7 +40,7 @@ namespace ECX.HR.Persistence.Repositories
         {
             DateTime currentDate = DateTime.Now;
             return await _context.Set<LeaveRequests>()
-                     .Where(T => T.LeaveStatus == status && T.StartDate.Year >= currentDate.Year - 2)
+                     .Where(T => T.LeaveStatus == status && T.StartDate.Year >= currentDate.Year - 1)
                    .ToListAsync();
         }
 

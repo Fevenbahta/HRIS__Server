@@ -38,7 +38,12 @@ namespace ECXHR_Service.Controllers
         public async Task<ActionResult<List<LeaveRequestDto>>> Get()
         {
             var LeaveRequest = await _mediator.Send(new GetLeaveRequestListCommand());
-            return Ok(LeaveRequest);
+            var LeaveRequestWoFile = LeaveRequest.Select(l =>
+            {
+                l.File = null;
+                return l;
+            });
+            return Ok(LeaveRequestWoFile);
         }
 
 
@@ -46,19 +51,34 @@ namespace ECXHR_Service.Controllers
         public async Task<ActionResult<LeaveRequestDto>> GetByEmpId(Guid Empid)
         {
             var LeaveRequest = await _mediator.Send(new GetLeaveRequestByIdCommand { EmpId = Empid });
-            return Ok(LeaveRequest);
+            var LeaveRequestWoFile = LeaveRequest.Select(l =>
+            {
+                l.File = null;
+                return l;
+            });
+            return Ok(LeaveRequestWoFile);
         }
         [HttpGet("status/{LeaveStatus}/{Supervisor}")]
         public async Task<ActionResult<LeaveRequestDto>> GetByStatus(string LeaveStatus, string Supervisor)
         {
             var LeaveRequest = await _mediator.Send(new GetLeaveRequestStatusByIdCommand { LeaveStatus = LeaveStatus , Supervisor = Supervisor }) ;
-            return Ok(LeaveRequest);
+            var LeaveRequestWoFile = LeaveRequest.Select(l =>
+            {
+                l.File = null;
+                return l;
+            });
+            return Ok(LeaveRequestWoFile);
         }
         [HttpGet("status/{LeaveStatus}")]
         public async Task<ActionResult<LeaveRequestDto>> GetAllByStatus(string LeaveStatus)
         {
             var LeaveRequest = await _mediator.Send(new GetLeaveRequestAllStatusCommand { LeaveStatus = LeaveStatus });
-            return Ok(LeaveRequest);
+            var LeaveRequestWoFile = LeaveRequest.Select(l =>
+            {
+                l.File = null;
+                return l;
+            });
+            return Ok(LeaveRequestWoFile);
         }
         // 
         // POST api/<AddressController>
