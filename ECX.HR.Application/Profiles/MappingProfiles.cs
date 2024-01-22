@@ -12,7 +12,7 @@ using ECX.HR.Application.DTOs.EmployeePositions;
 using ECX.HR.Application.DTOs.Employees;
 using ECX.HR.Application.DTOs.OrganizationalProfiles;
 using ECX.HR.Application.DTOs.Levels;
-using ECX.HR.Application.DTOs.OrganizationalProfiles;
+using ECX.HR.Application.DTOs.Medical Balances;
 using ECX.HR.Application.DTOs.Positions;
 using ECX.HR.Application.DTOs.Salaries;
 using ECX.HR.Application.DTOs.Spouses;
