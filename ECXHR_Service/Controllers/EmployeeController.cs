@@ -65,7 +65,7 @@ namespace ECXHR_Service.Controllers
             {
                 // Fetch data from different tables
                 var employee = await _mediator.Send(new GetEmployeeDetailRequest { EmpId = id });
-                var addresses = await _mediator.Send(new GetAddressDetailRequest { EmpId = id });
+                var  addresses  = await _mediator.Send(new GetAddressDetailRequest { EmpId = id });
                 var emergencyContacts = await _mediator.Send(new GetEmergencyContactDetailRequest { EmpId = id });
                 var employeePostions = await _mediator.Send(new GetEmployeePositionDetailRequest { EmpId = id });
                 var educations = await _mediator.Send(new GetEducationDetailRequest { EmpId = id }); ;
@@ -78,16 +78,16 @@ namespace ECXHR_Service.Controllers
                 // Create a CombinedEmployeeDataDto and populate it
                 var combinedData = new CombinedEmployeeDataDto
                 {
-                    Employee = employee,
+                    Employee = employee ,
                     Addresses = addresses,
-                    EmergencyContacts = emergencyContacts,
+                    EmergencyContacts = emergencyContacts ,
                     EmployeePostions = employeePostions,
                     Educations= educations,
                     Trainings= trainings,
                     LeaveRequests=leaveRequests,
                     AnnualLeaveBalances= annualLeaveBalances,
-                    OtherLeaveBalances=otherLeaveBalances,
-                    WorkExperiences=workExperiences  ,
+                    OtherLeaveBalances=otherLeaveBalances != null ? otherLeaveBalances : null,
+                    WorkExperiences=workExperiences,
                     Spouses= spouses,
                     // Add other data properties as needed
                 };

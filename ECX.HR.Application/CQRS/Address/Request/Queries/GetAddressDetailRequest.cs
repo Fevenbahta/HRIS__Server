@@ -12,7 +12,7 @@ namespace ECX.HR.Application.CQRS.Addresss.Request.Queries
     public class GetAddressDetailRequest :IRequest<AddressDto>
     {
       public Guid Id { get; set; }
-        public Guid EmpId { get; set; }
+        public Guid ? EmpId { get; set; }
         public int status { get; set; }
     }
 }

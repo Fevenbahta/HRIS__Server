@@ -23,14 +23,14 @@ namespace ECX.HR.Persistence.Repositories
         public async Task<List<AnnualLeaveBalances>> GetByEmpId(Guid empId)
         {
             return await _context.Set<AnnualLeaveBalances>()
-                     .Where(T =>T.EmpId == empId)
+                     .Where(T =>T.EmpId == empId && T.Status == 0)
                    .ToListAsync();
         }
         public async Task<IEnumerable<AnnualLeaveBalances>> GetExpiredLeaveBalances()
         {
             var currentDate = DateTime.Now;
             var leaveBalances = await _context.AnnualLeaveBalances
-        .Where(leaveBalance => leaveBalance.EndDate < currentDate)
+        .Where(leaveBalance => leaveBalance.EndDate < currentDate && leaveBalance.Status == 0)
         .ToListAsync();
 
             return leaveBalances;

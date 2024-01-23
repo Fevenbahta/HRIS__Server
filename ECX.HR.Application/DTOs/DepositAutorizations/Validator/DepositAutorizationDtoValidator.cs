@@ -12,7 +12,7 @@ namespace ECX.HR.Application.DTOs.DepositAutorizations.Validator
     {
         public DepositAutorizationDtoValidator()
         {
-            RuleFor(p => p.Bank)
+            RuleFor(p => p.BankId)
                 .NotEmpty().WithMessage("{PropertyName} is requiered.")
                 .NotNull();
             RuleFor(p => p.TinNumber)

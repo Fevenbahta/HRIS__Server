@@ -40,6 +40,8 @@ namespace ECX.HR.Application.CQRS.Holiday.Handler.Command
            
             var Holiday = _mapper.Map<Holidays>(request.HolidayDto);
             Holiday.Id = Guid.NewGuid();
+            Holiday.Date = request.HolidayDto.Date.AddDays(1);
+          
             var data =await _HolidayRepository.Add(Holiday);
             response.Success = true;
             response.Message = "Creation Successfull";

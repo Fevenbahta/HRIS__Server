@@ -1,6 +1,7 @@
 ﻿using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Domain;
 using ECXHR_Service.Controllers;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +12,17 @@ namespace ECX.HR.Persistence.Repositories
 {
     public class UserOfNumRepository : GenericRepository<UserOfNum>, IUserOfNumRepository
     {
-        private readonly ECXHRDbContext _context;
+        private readonly ECXHRDbContextAttendance _contextAttenda;
 
-        public UserOfNumRepository(ECXHRDbContext context) : base(context)
+        public UserOfNumRepository(ECXHRDbContextAttendance contextAttenda) : base()
         {
-            _context = context;
+            _contextAttenda = contextAttenda;
         }
+
         public async Task<List<UserOfNum>> GetUserOfNum(int USERID)
         {
-            return await _context.GetUserOfNumFromSourceDatabase(USERID);
+            return await _contextAttenda.Set<UserOfNum>()
+              .ToListAsync();
 
         }
     }

@@ -18,6 +18,7 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
     {
         private IEmployeeRepository _EmployeeRepository;
         private IMapper _mapper;
+ 
         public UpdateAttendanceEmployeeCommandHandler(IEmployeeRepository EmployeeRepository, IMapper mapper)
         {
             _EmployeeRepository = EmployeeRepository;
@@ -36,7 +37,6 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
             await _EmployeeRepository.Update(Employee);
             return Unit.Value;
 
-            return Unit.Value;
         }
     }
 }

@@ -33,10 +33,10 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
 
             var existingEmployee = await _EmployeeRepository.GetById(request.EmployeeDto.EmpId);
 
-            
+
             var Updated_Employee = new Employees
             {
-                EmpId = Guid.NewGuid(), 
+                EmpId = Guid.NewGuid(),
                 EcxId = existingEmployee.EcxId,
                 AdId = existingEmployee.AdId,
                 FirstName = existingEmployee.FirstName,
@@ -55,19 +55,14 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
                 CrimeDescription = existingEmployee.CrimeDescription,
                 Status = 1,
                 CreatedBy = existingEmployee.CreatedBy,
-                CreatedDate = existingEmployee.CreatedDate,
-                AttendanceId = existingEmployee.AttendanceId,   
-                };
+                CreatedDate = existingEmployee.CreatedDate
+            };
 
-                
-                
+              await _EmployeeRepository.Add(Updated_Employee);
 
-                _mapper.Map(request.EmployeeDto, existingEmployee);
+            _mapper.Map(request.EmployeeDto, existingEmployee);
+            await _EmployeeRepository.Update(existingEmployee);
 
-                
-                await _EmployeeRepository.Add(Updated_Employee); 
-                await _EmployeeRepository.Update(existingEmployee); 
-            
 
             return Unit.Value;
         }

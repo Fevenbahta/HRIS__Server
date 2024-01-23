@@ -19,7 +19,9 @@ namespace ECX.HR.Domain
         public Guid Id { get; set; }
         [ForeignKey("Employees")]
         public Guid? EmpId { get; set; }
-        public string Bank { get; set; }
+        [ForeignKey("Bank")]
+
+        public Guid BankId { get; set; }
         public string BankBranch { get; set;}
         public long BankAccount { get; set; }
         public string TinNumber { get; set; }

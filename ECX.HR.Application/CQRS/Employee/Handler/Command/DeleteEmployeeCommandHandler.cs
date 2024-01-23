@@ -26,6 +26,8 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
         private readonly ILeaveRequestRepository leaveRequestRepository;
         private ILeaveRequestRepository _LeaveRequestRepository;
         private ILeaveBalanceRepository _LeaveBalanceRepository;
+        private readonly IMedicalBalanceRepository _medicalBalanceRepository;
+        private readonly IOtherLeaveBalanceRepository _otherLeaveBalanceRepository;
         private IMapper _mapper;
         public DeleteEmployeeCommandHandler(IEmployeeRepository EmployeeRepository, 
             IAdressRepository AddressRepository,
@@ -38,6 +40,8 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
             ITrainingRepository TrainingRepository,
                   ILeaveRequestRepository LeaveRequestRepository,
                           ILeaveBalanceRepository LeaveBalanceRepository,
+                          IMedicalBalanceRepository MedicalBalanceRepository,
+                          IOtherLeaveBalanceRepository  OtherLeaveBalanceRepository,
 
 
             IMapper mapper)
@@ -53,6 +57,8 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
             _TrainingRepository = TrainingRepository;
             _LeaveRequestRepository = LeaveRequestRepository;
             _LeaveBalanceRepository = LeaveBalanceRepository;
+            _medicalBalanceRepository = MedicalBalanceRepository;
+            _otherLeaveBalanceRepository = OtherLeaveBalanceRepository;
             _mapper = mapper;
         }
 
@@ -77,22 +83,6 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
                 await _EmergencyContactRepository.Update(emergencyContact);
             }
 
-
-
-            var LeaveRequest = await _LeaveRequestRepository.GetByEmpId(request.EmpId);
-            foreach (var leaveRequest in LeaveRequest)
-            {
-                leaveRequest.Status = 1;
-                await _LeaveRequestRepository.Update(leaveRequest);
-            }
-
-
-            var LeaveBalance = await _LeaveBalanceRepository.GetByEmpId(request.EmpId);
-            foreach (var leaveBalance in LeaveBalance)
-            {
-                leaveBalance.Status = 1;
-                await _LeaveBalanceRepository.Update(leaveBalance);
-            }
 
 
 
@@ -145,74 +135,118 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
 
             var address = await _AddressRepository.GetByEmpId(request.EmpId);
 
-            if (address == null)
-                throw new NotFoundException(nameof(address), request.EmpId);
+            if (address != null)
+            {
             address.Status = 1;
 
             await _AddressRepository.Update(address);
+            }
+        
+
 
 
             var EmergencyContact = await _EmergencyContactRepository.GetByEmpId(request.EmpId);
-            if (EmergencyContact == null)
-                throw new NotFoundException(nameof(EmergencyContact), request.EmpId);
-            foreach (var emergencyContact in EmergencyContact)
+            if (EmergencyContact != null)
             {
-                emergencyContact.Status = 1;
-                await _EmergencyContactRepository.Update(emergencyContact);
+                foreach (var emergencyContact in EmergencyContact)
+                {
+                    emergencyContact.Status = 1;
+                    await _EmergencyContactRepository.Update(emergencyContact);
+                }
+
             }
-
-
 
             var Spouse = await _SpouseRepository.GetByEmpId(request.EmpId);
-            if (Spouse == null)
-                throw new NotFoundException(nameof(Spouse), request.EmpId);
-            foreach (var spouse in Spouse)
+            if (Spouse != null)
             {
-                spouse.Status = 1;
-                await _SpouseRepository.Update(spouse);
+                foreach (var spouse in Spouse)
+                {
+                    spouse.Status = 1;
+                    await _SpouseRepository.Update(spouse);
+                }
             }
-
             var Education = await _EducationRepository.GetByEmpId(request.EmpId);
-            if (Education == null)
-                throw new NotFoundException(nameof(Education), request.EmpId);
-            foreach (var education in Education)
+            if (Education != null)
             {
-                education.Status = 1;
-                await _EducationRepository.Update(education);
+                foreach (var education in Education)
+                {
+                    education.Status = 1;
+                    await _EducationRepository.Update(education);
+                }
             }
 
             var WorkExperience = await _WorkExperienceRepository.GetByEmpId(request.EmpId);
-            if (WorkExperience == null)
-                throw new NotFoundException(nameof(WorkExperience), request.EmpId);
-            foreach (var workExperience in WorkExperience)
+            if (WorkExperience != null)
             {
-                workExperience.Status = 1;
-                await _WorkExperienceRepository.Update(workExperience);
+                foreach (var workExperience in WorkExperience)
+                {
+                    workExperience.Status = 1;
+                    await _WorkExperienceRepository.Update(workExperience);
+                }
             }
 
             var DepositAutorization = await _DepositAutorizationRepository.GetByEmpId(request.EmpId);
-            if (DepositAutorization == null)
-                throw new NotFoundException(nameof(DepositAutorization), request.EmpId);
-            DepositAutorization.Status = 1;
-            await _DepositAutorizationRepository.Update(DepositAutorization);
-
-            var EmployeePosition = await _EmployeePositionRepository.GetByEmpId(request.EmpId);
-            if (EmployeePosition == null)
-                throw new NotFoundException(nameof(EmployeePosition), request.EmpId);
-            EmployeePosition.Status = 1;
-            await _EmployeePositionRepository.Update(EmployeePosition);
-
-            var Training = await _TrainingRepository.GetByEmpId(request.EmpId);
-            if (Training == null)
-                throw new NotFoundException(nameof(Training), request.EmpId);
-
-            foreach (var training in Training)
+            if (DepositAutorization != null)
             {
-                training.Status = 1;
-                await _TrainingRepository.Update(training);
-
-              
+                DepositAutorization.Status = 1;
+                await _DepositAutorizationRepository.Update(DepositAutorization);
             }
+            var EmployeePosition = await _EmployeePositionRepository.GetByEmpId(request.EmpId);
+            if (EmployeePosition != null)
+            {
+                EmployeePosition.Status = 1;
+                await _EmployeePositionRepository.Update(EmployeePosition);
+            }
+            var Training = await _TrainingRepository.GetByEmpId(request.EmpId);
+            if (Training != null)
+            {
+                foreach (var training in Training)
+                {
+                    training.Status = 1;
+                    await _TrainingRepository.Update(training);
+
+                }
+            }
+
+            var LeaveRequest = await _LeaveRequestRepository.GetByEmpId(request.EmpId);
+            if (LeaveRequest != null)
+            {
+                foreach (var leaveRequest in LeaveRequest)
+                {
+                    leaveRequest.Status = 1;
+                    await _LeaveRequestRepository.Update(leaveRequest);
+                }
+            }
+
+            var LeaveBalance = await _LeaveBalanceRepository.GetByEmpId(request.EmpId);
+            if (LeaveBalance != null)
+            {
+                foreach (var leaveBalance in LeaveBalance)
+                {
+                    leaveBalance.Status = 1;
+                    await _LeaveBalanceRepository.Update(leaveBalance);
+                }
+            }
+            var MedicalBalance = await _medicalBalanceRepository.GetByEmpId(request.EmpId);
+            if (MedicalBalance != null)
+            {
+                foreach (var medicalBalance in MedicalBalance)
+                {
+                    medicalBalance.Status = 1;
+                    await _medicalBalanceRepository.Update(medicalBalance);
+                }
+            }
+
+            var OtherLeaveBalance = await _otherLeaveBalanceRepository.GetByEmpId(request.EmpId);
+            if (OtherLeaveBalance != null)
+            {
+                foreach (var otherLeaveBalance in OtherLeaveBalance)
+                {
+                    otherLeaveBalance.Status = 1;
+                    await _otherLeaveBalanceRepository.Update(otherLeaveBalance);
+                }
+            }
+
 
 
 

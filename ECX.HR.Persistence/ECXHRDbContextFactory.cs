@@ -18,6 +18,22 @@ namespace ECX.HR.Persistence
                 builder.UseSqlServer(connectionString);
                 return new ECXHRDbContext(builder.Options);
             }
+           
+        }
+        public class ECXHRDbContextAttendanceFactory
+            : IDesignTimeDbContextFactory<ECXHRDbContextAttendance>
+        {
+            public ECXHRDbContextAttendance CreateDbContext(string[] args)
+            {
+              
+                    IConfigurationRoot configuration = new ConfigurationBuilder()
+                        .SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json").Build();
+                    var builder = new DbContextOptionsBuilder<ECXHRDbContextAttendance>();
+                    var connectionString = configuration.GetConnectionString("attendanceConnectionString");
+                    builder.UseSqlServer(connectionString);
+                    return new ECXHRDbContextAttendance(builder.Options);
+                
+            }
         }
 
     }

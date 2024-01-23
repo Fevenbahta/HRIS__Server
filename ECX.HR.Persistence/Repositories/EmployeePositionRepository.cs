@@ -22,7 +22,7 @@ namespace ECX.HR.Persistence.Repositories
         public async Task<EmployeePositions> GetByEmpId(Guid empId)
         {
             return await _context.Set<EmployeePositions>()
-                     .Where(T => T.EmpId == empId)
+                     .Where(T => T.EmpId == empId && T.Status == 0)
                      .FirstOrDefaultAsync();
         }
     }

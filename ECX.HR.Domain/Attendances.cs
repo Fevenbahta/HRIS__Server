@@ -40,7 +40,7 @@ namespace ECX.HR.Domain
         public DateTime? Early { get; set; }
         public int? Status { get; set; }
         public string? AttendanceStatus { get; set; }
-        public Decimal? AbsentDays { get; set; }
+        public double? AbsentDays { get; set; }
         public DateTime? TotalLE { get; set; }
 
         public string? LeaveType { get; set; }

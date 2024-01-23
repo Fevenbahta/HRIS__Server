@@ -2,7 +2,7 @@
 using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
 using ECX.HR.Application.CQRS.PromotionVacancy.Request.Queries;
-using ECX.HR.Application.DTOs.OrganizationalProfiles;
+
 using ECX.HR.Application.DTOs.PromotionVacancy;
 using ECX.HR.Application.Exceptions;
 using ECX.HR.Domain;

@@ -14,10 +14,10 @@ namespace ECX.HR.Application.DTOs.EmployeePositions
         public int PId { get; set; }
         public Guid Id { get; set; }
         public Guid EmpId { get; set; }
-        public string DivisionId { get; set; }
-        public string StepId { get; set; }
-        public string BranchId { get; set; }
-        public string position { get; set; }
+        public Guid DivisionId { get; set; }
+        public Guid StepId { get; set; }
+        public Guid BranchId { get; set; }
+        public Guid position { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int Status { get; set; }

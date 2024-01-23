@@ -45,6 +45,7 @@ namespace ECX.HR.Application.CQRS.LeaveBalance.Handler.Command
 
             var employee = await _employeeRepository.GetById(leaveAnnualBalance.EmpId);
 
+
             DateTime employmentStartDate = employee.JoinDate;
             DateTime currentDate = DateTime.Now;
             int daysElapsed = 365;

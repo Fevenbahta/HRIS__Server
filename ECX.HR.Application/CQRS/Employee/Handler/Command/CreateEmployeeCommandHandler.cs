@@ -1,13 +1,19 @@
 ﻿using AutoMapper;
 using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
+using ECX.HR.Application.CQRS.Deduction.Request.Command;
 using ECX.HR.Application.CQRS.Employee.Request.Command;
 using ECX.HR.Application.CQRS.Employee.Request.Queries;
 using ECX.HR.Application.CQRS.LeaveBalance.Request.Command;
+using ECX.HR.Application.CQRS.MedicalBalance.Request.Command;
 using ECX.HR.Application.CQRS.OtherLeaveBalance.Request.Command;
+using ECX.HR.Application.CQRS.OverTime.Request.Command;
+using ECX.HR.Application.DTOs.Deduction;
 using ECX.HR.Application.DTOs.Employees;
 using ECX.HR.Application.DTOs.Employees.Validator;
 using ECX.HR.Application.DTOs.LeaveBalance;
+using ECX.HR.Application.DTOs.MedicalBalance;
+using ECX.HR.Application.DTOs.OverTime;
 using ECX.HR.Application.Exceptions;
 
 using ECX.HR.Application.Response;
@@ -75,13 +81,28 @@ namespace ECX.HR.Application.CQRS.Employee.Handler.Command
                 EmpId = Employee.EmpId, // Set the employee's ID
                                         // ... Set other properties relevant to the leave balance
             };
+
+            var medicalBalanceDto = new MedicalBalanceDto
+            {
+                EmpId = Employee.EmpId, // Set the employee's ID
+                                        // ... Set other properties relevant to the leave balance
+            };
+
+            var overtimeDto = new OverTimeDto
+            {
+                EmpId = Employee.EmpId, };
+
             // Create a new instance of CreateLeaveBalanceCommand with the LeaveBalanceDto
             var createLeaveBalanceCommand = new CreateAnnualLeaveBalanceCommand(leaveBalanceDto);
             var createOtherLeaveBalanceCommand = new CreateOtherLeaveBalanceCommand(otherLeaveBalanceDto);
+            var createMedicalBalanceCommand = new CreateMedicalBalanceCommand(medicalBalanceDto);
+           var createOverTimeCommand = new CreateOverTimeCommand(overtimeDto);
 
             // Use the Mediator to send the CreateLeaveBalanceCommand to its handler
-            var leaveBalanceResponse = await _mediator.Send(createLeaveBalanceCommand);
+            var leaveBalanceResponse1 = await _mediator.Send(createLeaveBalanceCommand);
             var otherLeaveBalanceResponse = await _mediator.Send(createOtherLeaveBalanceCommand);
+            var medicalBalanceResponse = await _mediator.Send(createMedicalBalanceCommand);
+           var overtimeresponse = await _mediator.Send(createOverTimeCommand);
 
 
             return response;

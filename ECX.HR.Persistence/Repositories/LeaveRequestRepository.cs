@@ -26,22 +26,42 @@ namespace ECX.HR.Persistence.Repositories
         public async Task<List<LeaveRequests>> GetByEmpId(Guid empId)
         {
             DateTime currentDate = DateTime.Now;
-            return await _context.Set<LeaveRequests>()
-                .Where(T => T.EmpId == empId )
+            var leaverequest= await _context.Set<LeaveRequests>()
+                .Where(T => T.EmpId == empId && T.Status == 0)
                    .ToListAsync();
+            var LeaveRequestWoFile = leaverequest.Select(l =>
+            {
+                l.File = null;
+                return l;
+            });
+            return LeaveRequestWoFile.ToList();
         }
         public async Task<List<LeaveRequests>> GetByStatus(string status, string supervisor)
         {
-            return await _context.Set<LeaveRequests>()
-                     .Where(T => T.LeaveStatus == status && T.Supervisor == supervisor && T.StartDate.Year >= currentDate.Year - 1)
+
+           
+            var  leaverequest= await _context.Set<LeaveRequests>()
+                     .Where(T => T.LeaveStatus == status && T.Supervisor == supervisor && T.StartDate.Year >= currentDate.Year - 1 && T.Status == 0)
                    .ToListAsync();
+            var LeaveRequestWoFile = leaverequest.Select(l =>
+            {
+                l.File = null;
+                return l;
+            });
+            return LeaveRequestWoFile.ToList();
         }
         public async Task<List<LeaveRequests>> GetAllByStatus(string status)
         {
             DateTime currentDate = DateTime.Now;
-            return await _context.Set<LeaveRequests>()
-                     .Where(T => T.LeaveStatus == status && T.StartDate.Year >= currentDate.Year - 1)
+            var leaverequest= await _context.Set<LeaveRequests>()
+                     .Where(T => T.LeaveStatus == status && T.StartDate.Year >= currentDate.Year - 1 && T.Status == 0)
                    .ToListAsync();
+            var LeaveRequestWoFile = leaverequest.Select(l =>
+            {
+                l.File = null;
+                return l;
+            });
+            return LeaveRequestWoFile.ToList();
         }
 
 
@@ -67,6 +87,32 @@ namespace ECX.HR.Persistence.Repositories
                 // Handle exceptions appropriately
                 throw ex;
             }
+        }
+
+        public async Task<List<LeaveRequests>> GetAllLeave()
+        {
+             var leav= await _context.Set<LeaveRequests>().ToListAsync();
+            var LeaveRequestWoFile = leav.Select(l =>
+            {
+              
+                l.File = null;
+                return l;
+            });
+            return LeaveRequestWoFile.ToList();
+        }
+
+        public async Task<List<LeaveRequests>> GetByEmpIdStatusDate(Guid empId, string leaveStatus, DateTime date)
+        {
+
+            var leaverequest = await _context.Set<LeaveRequests>()
+                     .Where(T => T.LeaveStatus == leaveStatus && T.EmpId == empId && (T.StartDate <= date && date <=T.EndDate) && T.Status == 0)
+                   .ToListAsync();
+            var LeaveRequestWoFile = leaverequest.Select(l =>
+            {
+                l.File = null;
+                return l;
+            });
+            return LeaveRequestWoFile.ToList();
         }
     }
 }

@@ -24,7 +24,7 @@ namespace ECX.HR.Application.CQRS.LeaveRequest.Handler.Queries
         }
         public async Task<List<LeaveRequestDto>> Handle(GetLeaveRequestListCommand request, CancellationToken cancellationToken)
         {
-            var leaveRequest = await _leaveRequestepository.GetAll();
+            var leaveRequest = await _leaveRequestepository.GetAllLeave();
 
             var activeLeaveRequest = leaveRequest.Where(leaverequest => leaverequest.Status == 0).ToList();
 

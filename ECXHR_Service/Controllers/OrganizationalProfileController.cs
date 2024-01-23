@@ -2,6 +2,7 @@
 using ECX.HR.Application.CQRS.OrganizationalProfile.Request.Command;
 using ECX.HR.Application.CQRS.OrganizationalProfile.Request.Queries;
 using ECX.HR.Application.DTOs.OrganizationalProfile;
+using ECX.HR.Application.DTOs.OrganizationalProfile;
 using ECX.HR.Application.DTOs.OrganizationalProfiles;
 using ECX.HR.Application.Response;
 
@@ -46,10 +47,10 @@ namespace ECXHR_Service.Controllers
         // POST api/<OrganizationalProfileController>
         [HttpPost]
 
-        public async Task<ActionResult<BaseCommandResponse>> Post([FromBody] OrganizationalProfileDto OrganizationalProfile)
+        public async Task<ActionResult<BaseCommandResponse>> Post([FromBody]OrganizationalProfileDto  OrganizationalProfile)
         {
             var user = _httpContextAccessor.HttpContext.User;
-            var command = new CreateOrganizationalProfileCommand { OrganizationalProfileDto = OrganizationalProfile };
+            var command = new CreateOrganizationalProfileCommand {OrganizationalProfileDto =OrganizationalProfile };
             var response = await _mediator.Send(command);
             return Ok(response);
         }
@@ -58,9 +59,9 @@ namespace ECXHR_Service.Controllers
         [HttpPut("{id}")]
 
 
-        public async Task<ActionResult> Put([FromBody] OrganizationalProfileDto OrganizationalProfile)
+        public async Task<ActionResult> Put([FromBody]OrganizationalProfileDto OrganizationalProfile)
         {
-            var command = new UpdateOrganizationalProfileCommand { OrganizationalProfileDto = OrganizationalProfile };
+            var command = new UpdateOrganizationalProfileCommand {OrganizationalProfileDto =OrganizationalProfile };
             await _mediator.Send(command);
             return NoContent();
         }

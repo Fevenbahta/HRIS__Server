@@ -1,9 +1,12 @@
 ﻿
 using ECX.HR.Application.CQRS.Addresss.Request.Command;
 using ECX.HR.Application.CQRS.Addresss.Request.Queries;
+using ECX.HR.Application.CQRS.ContractEmployee.Request.Command;
+using ECX.HR.Application.CQRS.ContractEmployee.Request.Queries;
 using ECX.HR.Application.CQRS.Departments.Request.Command;
 using ECX.HR.Application.DTOs.Addresss;
 using ECX.HR.Application.DTOs.Employees;
+using ECX.HR.Application.DTOs.PayrollContract;
 using ECX.HR.Application.Response;
 
 using MediatR;
@@ -36,12 +39,12 @@ namespace ECXHR_Service.Controllers
             return Ok(address);
         }
 
- /*       [HttpGet("{Empid}")]
-        public async Task<ActionResult<EmployeeDto>> GetByEmpId(Guid Empid)
-        {
-            var address = await _mediator.Send(new GetAddressDetailRequest { EmpId = Empid });
-            return Ok(address);
-        }*/
+        /*       [HttpGet("{Empid}")]
+               public async Task<ActionResult<EmployeeDto>> GetByEmpId(Guid Empid)
+               {
+                   var address = await _mediator.Send(new GetAddressDetailRequest { EmpId = Empid });
+                   return Ok(address);
+               }*/
         // POST api/<AddressController>
         [HttpPost]
         public async Task<ActionResult<BaseCommandResponse>> Post([FromBody] AddressDto address)
@@ -60,7 +63,7 @@ namespace ECXHR_Service.Controllers
             var command = new UpdateAddressCommand { AddressDto = address };
             //_context.Entry(existingEvent).Property(x => x.ReferenceNumber).IsModified = false;
             await _mediator.Send(command);
-            
+
             return NoContent();
         }
 

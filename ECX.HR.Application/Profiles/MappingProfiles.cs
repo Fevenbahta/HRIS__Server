@@ -12,7 +12,7 @@ using ECX.HR.Application.DTOs.EmployeePositions;
 using ECX.HR.Application.DTOs.Employees;
 using ECX.HR.Application.DTOs.OrganizationalProfiles;
 using ECX.HR.Application.DTOs.Levels;
-using ECX.HR.Application.DTOs.Medical Balances;
+using ECX.HR.Application.DTOs.OrganizationalProfiles;
 using ECX.HR.Application.DTOs.Positions;
 using ECX.HR.Application.DTOs.Salaries;
 using ECX.HR.Application.DTOs.Spouses;
@@ -39,6 +39,19 @@ using ECX.HR.Application.DTOs.ActingAssigment;
 using ECX.HR.Application.DTOs.Termination;
 using ECX.HR.Application.DTOs.Holiday;
 using ECX.HR.Application.CQRS.Attendance;
+using ECX.HR.Application.DTOs.MedicalBalance;
+using ECX.HR.Application.DTOs.MedicalFunds;
+using ECX.HR.Application.DTOs.Payroll;
+using ECX.HR.Application.DTOs.AllowanceType;
+using ECX.HR.Application.DTOs.Deduction;
+using ECX.HR.Application.DTOs.DeductionType;
+using ECX.HR.Application.DTOs.Tax;
+using ECX.HR.Application.DTOs.Bank;
+using ECX.HR.Application.DTOs.OverTime;
+using ECX.HR.Application.DTOs.TempPayroll;
+using ECX.HR.Application.DTOs.PayrollContract;
+using ECX.HR.Application.DTOs.Outsource;
+using ECX.HR.Application.DTOs.Schedule;
 
 namespace ECX.HR.Application.Profiles
 {
@@ -47,8 +60,9 @@ namespace ECX.HR.Application.Profiles
         public MappingProfiles()
         {
             CreateMap<Adress, AddressDto>().ReverseMap();
-           
-            CreateMap<Allowancee, AllowanceDto>().ReverseMap();
+            CreateMap<OutSources, OutsourceDto>().ReverseMap();
+
+            CreateMap<Allowances, AllowanceDto>().ReverseMap();
             CreateMap<Branches, BranchDto>().ReverseMap();
             CreateMap<Department, DepartmentDto>().ReverseMap();
             CreateMap<DepositAutorizations, DepositAutorizationDto>().ReverseMap();
@@ -81,7 +95,25 @@ namespace ECX.HR.Application.Profiles
             CreateMap<Terminations, TerminationDto>().ReverseMap();
             CreateMap<Holidays, HolidayDto>().ReverseMap();
             CreateMap<Attendances, AttendanceDto>().ReverseMap();
+            CreateMap<MedicalBalances, MedicalBalanceDto>().ReverseMap();
+            CreateMap<MedicalFunds, MedicalFundDto>().ReverseMap();
+            CreateMap<TempPayrolls, TempPayRollDto>().ReverseMap();
+             CreateMap<Payrolls, PayRollDto>().ReverseMap();
+            CreateMap<AllowanceTypes, AllowanceTypeDto>().ReverseMap();
+            CreateMap<Deductions, DeductionDto>().ReverseMap();
+            CreateMap<DeductionTypes, DeductionTypeDto>().ReverseMap();
+            CreateMap<Taxs, TaxDto>().ReverseMap();
+            CreateMap<Banks, BankDto>().ReverseMap();
+            CreateMap<OverTimes, OverTimeDto>().ReverseMap();
+            CreateMap<PayrollContracts, PayrollContractDto>().ReverseMap();
+            CreateMap<ContractEmployees, ContractRegistrationDto>().ReverseMap();
 
+            CreateMap<NumOfRun, NumOfRunDto>().ReverseMap();
+            CreateMap<USERINFO, UserInformationDto>().ReverseMap();
+            CreateMap<NumRunDel, NumOfRunDto>().ReverseMap();
+            CreateMap<CheckInOut, ChechInOutDto>().ReverseMap();
+            CreateMap<UserOfNum, UserOfNumDto>().ReverseMap();
+            CreateMap<SchClass, SchClassDto>().ReverseMap();
         }
     }
 }

@@ -16,7 +16,7 @@ namespace ECX.HR.Application.DTOs.Step
         public int PId { get; set; }
         public Guid Id { get; set; }
         public string Description { get; set; }
-        public decimal Salary { get; set; }
+        public double Salary { get; set; }
         public Guid SalaryTypeId { get; set; }
         public Guid LevelId { get; set; }
         public int Status { get; set; }

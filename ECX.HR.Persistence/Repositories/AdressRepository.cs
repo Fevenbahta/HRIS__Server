@@ -20,10 +20,10 @@ namespace ECX.HR.Persistence.Repositories
             _context = context;
         }
      
-        public async Task<Adress> GetByEmpId(Guid empId)
+        public async Task<Adress> GetByEmpId(Guid? empId)
         {
             return await _context.Set<Adress>()
-                     .Where(T =>T.EmpId == empId)
+                     .Where(T =>T.EmpId == empId && T.Status == 0)
                      .FirstOrDefaultAsync();
         }
 

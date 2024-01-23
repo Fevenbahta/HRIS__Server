@@ -37,7 +37,7 @@ namespace ECX.HR.Application.CQRS.Allowances.Handler.Command
                 response.Errors= validationResult.Errors.Select(x => x.ErrorMessage).ToList();
             }
            
-            var Allowance = _mapper.Map<Allowancee>(request.AllowanceDto);
+            var Allowance = _mapper.Map<Domain.Allowances>(request.AllowanceDto);
             Allowance.Id = Guid.NewGuid();
             var allowance = Allowance.Id;
             var data =await _AllowanceRepository.Add(Allowance);

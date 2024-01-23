@@ -17,6 +17,10 @@ namespace ECX.HR.Persistence.Repositories
     {
         private readonly ECXHRDbContext _context;
 
+        public GenericRepository()
+        {
+        }
+
         public GenericRepository(ECXHRDbContext context)
         {
             _context = context;

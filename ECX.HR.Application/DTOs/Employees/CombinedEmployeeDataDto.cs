@@ -21,17 +21,17 @@ namespace ECX.HR.Application.DTOs.Employees
     public class CombinedEmployeeDataDto
     {
         public EmployeeDto Employee { get; set; }
-        public AddressDto Addresses { get; set; }
-        public List<EmergencyContactDto> EmergencyContacts { get; set; }
+        public AddressDto ? Addresses { get; set; }
+        public List<EmergencyContactDto> ? EmergencyContacts { get; set; }
 
-        public List<SpouseDto> Spouses { get; set; }
-        public EmployeePositionDto EmployeePostions { get; set; }
-        public List<EducationDto> Educations { get; set; }
-        public List<TrainingDto> Trainings { get; set; }
-        public List<LeaveRequestDto> LeaveRequests { get; set; }
-        public List<AnnualLeaveBalanceDto> AnnualLeaveBalances { get; set; }
-        public List<OtherLeaveBalanceDto> OtherLeaveBalances { get; set; }
-        public List<WorkExperienceDto> WorkExperiences { get; set; }
+        public List<SpouseDto> ? Spouses { get; set; }
+        public EmployeePositionDto ? EmployeePostions { get; set; }
+        public List<EducationDto> ? Educations { get; set; }
+        public List<TrainingDto> ? Trainings { get; set; }
+        public List<LeaveRequestDto>? LeaveRequests { get; set; }
+        public List<AnnualLeaveBalanceDto> ? AnnualLeaveBalances { get; set; }
+        public List<OtherLeaveBalanceDto>?  OtherLeaveBalances { get; set; }
+        public List<WorkExperienceDto>? WorkExperiences { get; set; }
 
     }
 }

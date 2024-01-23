@@ -11,13 +11,16 @@ namespace ECX.HR.Application.DTOs.Allowances.cs
 {
     public class AllowanceDto : BaseDtos
     {
-        public int PId { get; set; }
+
+
         public Guid Id { get; set; }
-        public string AllowanceType { get; set; }
-        public string Position { get; set; }
-        public string Step { get; set; }
-        public bool Rate { get; set; }
+        public Guid AllowanceType { get; set; }
+        public Guid Position { get; set; }
+        public Guid Grade { get; set; }
+        public Guid Step { get; set; }
+        public double Amount { get; set; }
         public double RatePercent { get; set; }
+        public int Rate { get; set; }
         public int Status { get; set; }
     }
 }

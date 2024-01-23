@@ -39,7 +39,7 @@ namespace ECX.HR.Application.CQRS.Attendance
         public string? AttendanceStatus { get; set; }
         public DateTime? TotalLE { get; set; }
 
-        public Decimal? AbsentDays { get; set; }
+        public double? AbsentDays { get; set; }
         public string? LeaveType { get; set; }
     }
 }

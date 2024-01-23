@@ -62,12 +62,8 @@ namespace ECXHR_Service.Controllers
         public async Task<ActionResult<LeaveRequestDto>> GetByStatus(string LeaveStatus, string Supervisor)
         {
             var LeaveRequest = await _mediator.Send(new GetLeaveRequestStatusByIdCommand { LeaveStatus = LeaveStatus , Supervisor = Supervisor }) ;
-            var LeaveRequestWoFile = LeaveRequest.Select(l =>
-            {
-                l.File = null;
-                return l;
-            });
-            return Ok(LeaveRequestWoFile);
+     
+            return Ok(LeaveRequest);
         }
         [HttpGet("status/{LeaveStatus}")]
         public async Task<ActionResult<LeaveRequestDto>> GetAllByStatus(string LeaveStatus)

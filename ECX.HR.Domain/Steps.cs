@@ -17,7 +17,7 @@ namespace ECX.HR.Domain
         
         public Guid Id { get; set; }
         public string Description { get; set; }
-        public decimal Salary { get; set; }
+        public double Salary { get; set; }
         [ForeignKey("SalaryTypes")]
         public Guid? SalaryTypeId { get; set; }
         [ForeignKey("Levels")]

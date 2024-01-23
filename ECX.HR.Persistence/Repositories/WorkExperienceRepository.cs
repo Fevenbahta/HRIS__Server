@@ -22,7 +22,7 @@ namespace ECX.HR.Persistence.Repositories
         public async Task<List<WorkExperiences>> GetByEmpId(Guid empId)
         {
             return await _context.Set<WorkExperiences>()
-                .Where(T => T.EmpId == empId)
+                .Where(T => T.EmpId == empId && T.Status == 0)
              .ToListAsync();
         }
     }

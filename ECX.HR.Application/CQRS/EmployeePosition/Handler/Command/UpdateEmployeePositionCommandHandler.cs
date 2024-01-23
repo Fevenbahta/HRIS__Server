@@ -31,6 +31,7 @@ namespace ECX.HR.Application.CQRS.EmployeePosition.Handler.Command
             var validationResult = await validator.ValidateAsync(request.EmployeePositionDto);
             if (validationResult.IsValid == false)
                 throw new ValidationException(validationResult);
+
             var EmployeePosition = await _EmployeePositionRepository.GetById(request.EmployeePositionDto.Id);
             _mapper.Map(request.EmployeePositionDto, EmployeePosition);
             await _EmployeePositionRepository.Update(EmployeePosition);

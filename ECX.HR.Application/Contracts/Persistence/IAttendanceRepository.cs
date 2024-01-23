@@ -11,7 +11,7 @@ namespace ECX.HR.Application.Contracts.Persistence
     public interface IAttendanceRepository : IGenericRepository<Attendances>
     {
         Task<List<CheckInOut>> GetByDate();
-
+        Task<List<Attendances>> GetByEmpId(Guid EmpId);
 
     }
 }

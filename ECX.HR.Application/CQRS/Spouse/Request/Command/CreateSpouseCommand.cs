@@ -1,4 +1,5 @@
 ﻿
+using ECX.HR.Application.DTOs.MedicalBalance;
 using ECX.HR.Application.DTOs.Spouses;
 using ECX.HR.Application.Response;
 using MediatR;
@@ -13,5 +14,6 @@ namespace ECX.HR.Application.CQRS.Spouse.Request.Command
     public class CreateSpouseCommand : IRequest<BaseCommandResponse>
     {
         public SpouseDto SpouseDto { get; set; }
+        public MedicalBalanceDto MedicalDto { get; set; }
     }
 }

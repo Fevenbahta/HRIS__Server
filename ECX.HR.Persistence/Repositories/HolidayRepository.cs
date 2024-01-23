@@ -23,7 +23,7 @@ namespace ECX.HR.Persistence.Repositories
             {
                 // Assuming you have a DbSet for holidays named "Holidays" in your DbContext
                 var holidays = await _context.Holidays
-                    .Where(holiday => holiday.Date >= startDate && holiday.Date <= endDate)
+                    .Where(holiday => holiday.Date >= startDate && holiday.Date <= endDate && holiday.Status == 0)
                     .ToListAsync();
 
                 return holidays;

@@ -29,10 +29,10 @@ namespace ECX.HR.Application.CQRS.EmployeePosition.Handler.Queries
         {
             var employeePosition =await _EmployeePositionRepository.GetByEmpId(request.EmpId);
            
-            if (employeePosition == null || employeePosition.Status != 0)
+        /*    if (employeePosition == null || employeePosition.Status != 0)
                 throw new NotFoundException(nameof(employeePosition), request.EmpId);
 
-            else
+            else*/
                 return _mapper.Map<EmployeePositionDto>(employeePosition);
         }
     }

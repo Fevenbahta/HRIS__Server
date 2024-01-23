@@ -62,6 +62,14 @@ namespace ECXHR_Service.Controllers
             var att = await _mediator.Send(new GetAttendanceListRequest());
             return Ok(att);
         }
+        [HttpGet("UserInfo")]
+
+        public async Task<ActionResult<List<NumOfRunDto>>> GetNUMOFRUN()
+        {
+            //var schClassData = _context.GetTable1DataFromSourceDatabase();
+            var att = await _mediator.Send(new getuser());
+            return Ok(att);
+        }
         // GET: api/<LevelController>
         [HttpGet("user")]
        

@@ -1,4 +1,4 @@
-﻿using ECX.HR.Application.DTOs.OrganizationalProfiles;
+﻿
 using FluentValidation;
 using System;
 using System.Collections.Generic;

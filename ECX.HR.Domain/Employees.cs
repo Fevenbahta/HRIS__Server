@@ -34,6 +34,10 @@ namespace ECX.HR.Domain
         public string CrimeDescription{ get; set; }
    
         public int Status { get; set; }
+
+
+
+
         public string ? AttendanceId { get; set; } 
 
         public ICollection<WorkExperiences> WorkExperiences { get; set; }

@@ -1,11 +1,8 @@
 ﻿
 using ECX.HR.Application.Contracts.Persistence;
 using ECX.HR.Application.Contracts.Persistent;
+using ECX.HR.Application.ContractS.Persistence;
 using ECX.HR.Application.CQRS.LeaveBalance.Handler.Command;
-using ECX.HR.Application.CQRS.LeaveBalance.Request.Command;
-using ECX.HR.Application.CQRS.LeaveRequest.Handler.Command;
-using ECX.HR.Application.CQRS.LeaveRequest.Request.Command;
-using ECX.HR.Application.CQRS.Level.Request.Command;
 using ECX.HR.Application.CQRS.OtherLeaveBalance.Handler.Command;
 using ECX.HR.Application.DTOs.Employees;
 using ECX.HR.Application.DTOs.LeaveBalance;
@@ -13,6 +10,7 @@ using ECX.HR.Application.Response;
 using ECX.HR.Persistence.Repositories;
 using ECXHR_Service.Controllers;
 using MediatR;
+using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,6 +28,9 @@ namespace ECX.HR.Persistence
         public static IServiceCollection ConfigurePersistenceService(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<ECXHRDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("staggingConnectionString")));
+            services.AddDbContext<ECXHRDbContextAttendance>(options => options.UseSqlServer(configuration.GetConnectionString("attendanceConnectionString")));
+
+
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IAdressRepository, AdressRepository>();
             services.AddScoped<IAllwoanceRepository, AllowanceRepository>();
@@ -59,7 +60,7 @@ namespace ECX.HR.Persistence
             services.AddScoped<ILeaveRequestRepository, LeaveRequestRepository>();
             services.AddScoped<IPromotionRepository, PromotionRepository>();
             services.AddScoped<IPromotionRelationRepository, PromotionRelationRepository>();
-            services.AddScoped<IActingAssigmentRepository, ActingAssigmentRepository>();
+            services.AddScoped<IMedicalFundRepository, MedicalFundRepository>();
             services.AddScoped<IAttendanceRepository, AttendanceRepository>();
             services.AddScoped<ITerminationRepository, TerminationRepository>();
 
@@ -70,6 +71,21 @@ namespace ECX.HR.Persistence
             services.AddScoped<INumRunRepository, NumOfRunRepository>();
             services.AddScoped<INumOfRunDelRepository, NumRunDelRepository>();
             services.AddScoped<ISchClassRepository, SchRepository>();
+            services.AddScoped<IMedicalBalanceRepository, MedicalBalanceRepository>();
+            services.AddScoped<IMedicalFundRepository, MedicalFundRepository>();
+            services.AddScoped<ITempPayrollRepository, TempPayRollRepository>();
+            services.AddScoped<IPayrollRepository, PayRollRepository>();
+            services.AddScoped<IAllowanceTypeRepository, AllowanceTypeRepository>();
+            services.AddScoped<IDeductionRepository, DeductionRepository>();
+            services.AddScoped<IDeductionTypeRepository, DeductionTypeRepository>();
+            services.AddScoped<ITaxRepository, TaxRepository>();
+            services.AddScoped<IBankRepository, BankRepository>();
+            services.AddScoped<IOverTimeRepository, OverTimeRepository>();
+            services.AddScoped<IPayrollContractRepository, PayrollContractRepository>();
+            services.AddScoped<IContractEmployeesRegstration, ContractEmployeeRepository>();
+            services.AddScoped<IAttRepository, AttRepository>();
+            services.AddScoped<IOutsourceRepository, OutsourceRepository>();
+
             services.AddScoped<EmployeeDto>(); // This registers EmployeeDto for dependency injection
          
 

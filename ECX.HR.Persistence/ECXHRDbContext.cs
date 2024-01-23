@@ -14,12 +14,13 @@ namespace ECX.HR.Persistence
 {
     public class ECXHRDbContext : DbContext
     {
-        private readonly DbContextOptions<ECXHRDbContext> _context;
+        public readonly DbContextOptions<ECXHRDbContext> _context;
 
         public ECXHRDbContext(DbContextOptions<ECXHRDbContext> options) : base(options)
         {
             _context = options;
         }
+
 
         public async Task<List<SchClass>> GetTable1DataFromSourceDatabase()
         {
@@ -37,7 +38,7 @@ namespace ECX.HR.Persistence
             DateTime end = CheckOut.Value.Date;
 
             var result = this.Set<CheckInOut>().FromSqlInterpolated($"EXEC GetCheckInOut  @USERID={user}, @STARTIN={start}, @ENDOUT={end}").ToList();
-            return  result ;
+            return result;
         }
         public async Task<List<USERINFO>> GetUserInfoDataFromSourceDatabase()
         {
@@ -62,11 +63,22 @@ namespace ECX.HR.Persistence
             return result;
         }
 
+        /*      using (var context = new ECXHRDbContext(_context))
+       {
+           context.DeductionTypes.AddRange(FixedDeductioType14, FixedDeductioType13, FixedDeductioType12, FixedDeductioType11, FixedDeductioType10, FixedDeductioType9,
+               FixedDeductioType8, FixedDeductioType7, FixedDeductioType6, FixedDeductioType5, FixedDeductioType4, FixedDeductioType3, FixedDeductioType2, FixedDeductioType1);
+           context.SaveChanges();
+       }*/
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
+
+
         {
+ 
+
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ECXHRDbContext).Assembly);
             modelBuilder.Entity<Adress>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
-            modelBuilder.Entity<Allowancee>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
+            modelBuilder.Entity<Allowances>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
             modelBuilder.Entity<Branches>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
             modelBuilder.Entity<Department>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
             modelBuilder.Entity<DepositAutorizations>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
@@ -95,6 +107,22 @@ namespace ECX.HR.Persistence
             modelBuilder.Entity<PromotionRelations>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
             modelBuilder.Entity<ActingAssigments>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
             modelBuilder.Entity<Holidays>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
+            modelBuilder.Entity<MedicalFunds>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
+
+            modelBuilder.Entity<MedicalBalances>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
+            modelBuilder.Entity<TempPayrolls>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
+            modelBuilder.Entity<Payrolls>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
+
+            modelBuilder.Entity<AllowanceTypes>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
+            modelBuilder.Entity<Deductions>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
+            modelBuilder.Entity<DeductionTypes>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
+            modelBuilder.Entity<Taxs>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
+            modelBuilder.Entity<Banks>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
+            modelBuilder.Entity<OverTimes>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
+            modelBuilder.Entity<PayrollContracts>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
+            modelBuilder.Entity<ContractEmployees>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
+
+            modelBuilder.Entity<OutSources>().Property(c => c.PId).UseIdentityColumn().ValueGeneratedOnAddOrUpdate();
 
             foreach (var entityType in modelBuilder.Model.GetEntityTypes())
             {
@@ -206,7 +234,10 @@ namespace ECX.HR.Persistence
 
 
 
+
         }
+
+
         public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
         {
             foreach (var entity in ChangeTracker.Entries<BaseDomainEntity>())
@@ -220,18 +251,19 @@ namespace ECX.HR.Persistence
             return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
 
+
         public DbSet<NumOfRun> NumOfRun { get; set; }
         public DbSet<NumRunDel> NumRunDels { get; set; }
         public DbSet<UserOfNum> UserOfNums { get; set; }
-        public DbSet<Terminations> Terminations { get; set; }
+
         public DbSet<SchClass> schClasses { get; set; }
         public DbSet<USERINFO> userInformation { get; set; }
         public DbSet<CheckInOut> CheckInOuts { get; set; }
-
+        public DbSet<Terminations> Terminations { get; set; }
         public DbSet<Adress> Adress { get; set; }
         public DbSet<AssignSupervisorss> AssignSupervisor { get; set; }
         public DbSet<Department> Departments { get; set; }
-        public DbSet<Allowancee> Allowance { get; set; }
+        public DbSet<Allowances> Allowance { get; set; }
         public DbSet<Branches> Branch { get; set; }
         public DbSet<DepositAutorizations> DepositAutorizations { get; set; }
         public DbSet<Divisions> Division { get; set; }
@@ -245,9 +277,8 @@ namespace ECX.HR.Persistence
         public DbSet<AnnualLeaveBalances> AnnualLeaveBalances { get; set; }
         public DbSet<LeaveTypes> LeaveType { get; set; }
         public DbSet<LeaveRequests> LeaveRequest { get; set; }
-        public DbSet<OrganizationalProfiles> OrganizationalProfile { get; set; }
+        public DbSet<MedicalBalances> MedicalBalance { get; set; }
         public DbSet<Positions> Job { get; set; }
-
         public DbSet<SalaryTypes> SalaryType { get; set; }
         public DbSet<Spouses> Spouse { get; set; }
         public DbSet<Steps> Step { get; set; }
@@ -261,7 +292,23 @@ namespace ECX.HR.Persistence
         public DbSet<ActingAssigments> ActingAssiment { get; set; }
         public DbSet<Holidays> Holidays { get; set; }
         public DbSet<Attendances> Attendances { get; set; }
+        public DbSet<MedicalFunds> MedicalFunds { get; set; }
+        public DbSet<MedicalBalances> MedicalBalances { get; set; }
+        public DbSet<TempPayrolls> TempPayrolls { get; set; }
+        public DbSet<Payrolls> Payrolls { get; set; }
+        public DbSet<AllowanceTypes> AllowanceTypes { get; set; }
+        public DbSet<Deductions> Deductions { get; set; }
+        public DbSet<DeductionTypes> DeductionTypes { get; set; }
+        public DbSet<Taxs> Taxs { get; set; }
+        public DbSet<Banks> Banks { get; set; }
+        public DbSet<OverTimes> OverTimes { get; set; }
+        public DbSet<PayrollContracts> PayrollContracts { get; set; }
+        public DbSet<ContractEmployees> ContractEmployees { get; set; }
+
+        public DbSet<OutSources> OutSources { get; set; }
 
     }
+
+
 
 }

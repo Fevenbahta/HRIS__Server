@@ -29,7 +29,7 @@ namespace ECX.HR.Persistence.Repositories
         public async Task<List<Educations>> GetByEmpId(Guid empId)
         {
             return await _context.Set<Educations>()
-                .Where(education => education.EmpId == empId)
+                .Where(education => education.EmpId == empId && education.Status == 0)
                 .ToListAsync();
         }
 
