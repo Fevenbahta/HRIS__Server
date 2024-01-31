@@ -45,11 +45,11 @@ namespace ECX.HR.Persistence.Repositories
             DateTime? nearstdate  ;
                 if (alldates.Length==0)
             {
-                nearstdate = DateTime.Parse("2023-11-16 08:34:04.0000000");
+                nearstdate = DateTime.Parse("2024-01-16 08:34:04.0000000");
             }
             else {
 
-                nearstdate = alldates.OrderByDescending(d => d).FirstOrDefault(d => d < targetdate );
+                nearstdate = alldates.OrderByDescending(d => d).FirstOrDefault(d => d < targetdate ).Value.AddDays(1);
                 
                      
                 }

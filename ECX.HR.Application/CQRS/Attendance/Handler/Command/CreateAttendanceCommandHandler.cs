@@ -87,11 +87,16 @@ namespace ECX.HR.Application.CQRS.Attendance.Handler.Command
                     DateTime? clockIn = null;
                     DateTime? clockOut = null;
 
-                    int userid = 0;
+                    int userid = 0;  
+                    var schClassData = await _attRepository.GetTable1DataFromSourceDatabase();
+                    var NumofRunData = await _attRepository.GetNumOfRunDataFromSourceDatabase();
+                    var NumofRunDelData = await _attRepository.GetNumRunDelDataFromSourceDatabase();
                     foreach (var use in userInfoData)
                     {
-                      
 
+                /*        var use = userInfoData.Find(t => t.USERID == 262);*/
+                      /*  if (use.USERID == 262){
+                       */ 
                             request.AttendanceDto.date = null;
                             var ff = await _attRepository.GetCheckInOutFromSourceDatabase(use.USERID, CHECKIN, CHECKOUT);
 
@@ -100,9 +105,7 @@ namespace ECX.HR.Application.CQRS.Attendance.Handler.Command
                             var userOfNum = await _attRepository.GetUserOfNumFromSourceDatabase(use.USERID);
 
 
-                            var schClassData = await _attRepository.GetTable1DataFromSourceDatabase();
-                            var NumofRunData = await _attRepository.GetNumOfRunDataFromSourceDatabase();
-                            var NumofRunDelData = await _attRepository.GetNumRunDelDataFromSourceDatabase();
+                         
 
                             var rowcount = userInfoData.Count;
 
@@ -135,17 +138,17 @@ namespace ECX.HR.Application.CQRS.Attendance.Handler.Command
 
                                 if (checkInOutData != null && checkInOutData.Count != 0)
                                 {
-                                              int perschedul=0;
+                                    int perschedul = 0;
                                     // var userSchedules = schClassData.Where(s => s.schClassid == numOfDelData.SCHCLASSID);
                                     foreach (var num in numOfDelData)
                                     {
                                         var scheduleData = schClassData.Where(x => x.schClassid == num.SCHCLASSID).ToList();
 
-                                        
+
 
                                         foreach (var schedule in scheduleData)
                                         {
-                                         
+
                                             if (perschedul != schedule.schClassid)
                                             {
 
@@ -164,14 +167,16 @@ namespace ECX.HR.Application.CQRS.Attendance.Handler.Command
 
                                                 var comp = (charray.Where(x => x.Value.Date == che.CHECKTIME.Value.Date));
                                                 if (ch == null || !comp.Any())
-                                                {
+                                                { 
+                                                
+                                             
 
 
                                                     if (ch == null || (che.CHECKTIME.Value.Date != ch.Value.Date))
                                                     {
                                                         clockIn = null;
                                                         clockOut = null;
-                                                        userid = use.USERID;
+                                                          userid = use.USERID;
 
                                                     }
                                                     var check = checkClassData.Where(x => x.CHECKTIME.Value.Date == che.CHECKTIME.Value.Date).ToList();
@@ -206,18 +211,19 @@ namespace ECX.HR.Application.CQRS.Attendance.Handler.Command
                                                                 clockOut = chck.CHECKTIME;
                                                             }
 
-                                                            request.AttendanceDto.AttendanceId = che.USERID;
+                                                        request.AttendanceDto.AttendanceId = che.USERID;
 
 
-                                                            //attendancesList.Add(attendance);
+                                                        //attendancesList.Add(attendance);
 
-                                                        }
+                                                    }
 
 
                                                         else
                                                         {
+                                                        request.AttendanceDto.AttendanceId = che.USERID;
 
-                                                            clockIn = null;
+                                                        clockIn = null;
                                                             clockOut = null;
                                                         }
 
@@ -326,8 +332,7 @@ namespace ECX.HR.Application.CQRS.Attendance.Handler.Command
                                                         }
                                                     }
 
-
-                                                    request.AttendanceDto.EmpId = emp?.EmpId ?? null;
+                                                request.AttendanceDto.EmpId = emp?.EmpId ?? null;
 
 
                                                     request.AttendanceDto.Id = Guid.NewGuid();
@@ -361,7 +366,8 @@ namespace ECX.HR.Application.CQRS.Attendance.Handler.Command
 
 
                                                     var Attendance = _mapper.Map<Attendances>(request.AttendanceDto);
-                                                    await _AttendanceRepository.Add(Attendance);
+                                                    
+                                                await _AttendanceRepository.Add(Attendance);
 
 
 
@@ -374,12 +380,13 @@ namespace ECX.HR.Application.CQRS.Attendance.Handler.Command
                                     }
 
 
-                                
-                            }
 
+                                }
+
+                            }
                         }
                     }
-                }
+               /* }*/
             }
             else
             {
